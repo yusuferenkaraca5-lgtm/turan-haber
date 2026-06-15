@@ -577,14 +577,14 @@ document.getElementById('tarih-goster').textContent=`${gunler[s.getDay()]}, ${s.
 // GÜVENLİ METİN KALKANI
 function guvenliMetin(metin) {
   if(!metin) return '';
-  return metin.replace(/'/g, "\\'").replace(/"/g, "&quot;").replace(/\n/g, " ").replace(/\r/g, "");
+  return String(metin).replace(/'/g, "\\'").replace(/"/g, "&quot;").replace(/\n/g, " ").replace(/\r/g, "");
 }
 
 // MODAL AÇ/KAPAT FONKSİYONLARI
 function makaleAc(kategori, baslik, metin, kaynak) {
   document.getElementById('modal-kat').textContent = kategori;
   document.getElementById('modal-baslik').textContent = baslik;
-  const formatliMetin = metin.split('\n').filter(p => p.trim() !== '').map(p => `<p>${p}</p>`).join('');
+  const formatliMetin = String(metin).split('\n').filter(p => p.trim() !== '').map(p => `<p>${p}</p>`).join('');
   document.getElementById('modal-metin').innerHTML = formatliMetin;
   const simdi = new Date();
   document.getElementById('modal-tarih').textContent = `${simdi.getDate()} ${aylar[simdi.getMonth()]} ${simdi.getFullYear()} | ${String(simdi.getHours()).padStart(2,'0')}:${String(simdi.getMinutes()).padStart(2,'0')}`;
@@ -605,7 +605,7 @@ function modalKapat() {
   }, 300);
 }
 
-// ARKA PLAN CANLI SİMÜLASYON VERİ SETLERİ
+// ARKA PLAN CANLI SİMÜLASYON VERİ SETLERİ (ÇİFT KALKAN)
 const simuleHaberler = {
   bilim: [{ baslik: "Kurumsal LLM Entegrasyonlarında Açık Kaynak Dönemi", metin: "Büyük veri ve yönetim bilişim sistemleri mimarilerinde veri egemenliğini korumak isteyen kuruluşlar, lokal altyapılarda çalışan açık kaynak yapay zeka entegrasyonlarını hızlandırdı." }],
   catisma: [{ baslik: "Tedarik Zinciri Koridorlarında Siber Direniş Hatları", metin: "Küresel lojistik ağlar üzerinde kritik veri aktarım noktaları ve liman yönetim sistemleri siber savunma kalkanlarıyla tahkim ediliyor." }],
@@ -620,6 +620,12 @@ const ozelUlusalHavuz = [
   { source: "TRT Haber", badgeClass: "", title: "📉 ENFLASYON RAKAMLARI: TCMB'den Faiz Kararı Öncesi Önemli Değerlendirme", text: "Merkez Bankası yetkilileri, dezenflasyon sürecinin ikinci yarısında gıda ve hizmet sektörü kaynaklı katılıkların kırılmaya başladığını işaret etti.", time: "1 saat önce" }
 ];
 
+const yedekSavas = [
+  { title: "İran ve ABD Anlaştı: Hürmüz Boğazı'ndaki Askeri Abluka Hafifletiliyor", description: "ABD ve İran arasında varılan enerji nakil mutabakatı sonrası Basra Körfezi'ndeki askeri teyakkuz durumu düşürüldü. Piyasalar rahatladı.", source: {name: "Reuters Savunma"} },
+  { title: "Sudan İç Savaşı: Otonom İHA Akınları Lojistik Ağları Vurdu", description: "Hartum ve çevresindeki tedarik hatlarında yürütülen siber ve fiziksel operasyonlar sivil mülteci krizini tırmandırıyor.", source: {name: "BBC World"} },
+  { title: "Ateşkes İhlalleri Sürüyor: İsrail Ordusu Gazze ve Lübnan'ı Vurdu", description: "Diplomatik müzakerelerin gölgesinde güney sınır hattındaki askeri harekat sahalarında hava saldırıları devam ediyor.", source: {name: "AP Kudüs"} }
+];
+
 const apiKategoriMap = { 'bilim': 'technology', 'saglik': 'health', 'catisma': 'general', 'siyaset': 'general', 'turkdunyasi': 'general', 'tarih': 'general' };
 let uretilenHaberSayisi = 0;
 
@@ -628,17 +634,11 @@ function haberSayaciniArtir() {
   document.getElementById('haber-sayisi').textContent = uretilenHaberSayisi;
 }
 
-// 1. DİNAMİK SAVAŞ VE ASKERİ STRATEJİ FİLTRELEME MOTORU (İZOLE EDİLMİŞTİR)
+// SAVAŞ FİLTRELEME MOTORU - İZOLE VE KORUMALI
 async function savasHaberleriniGuncelle() {
   const grid = document.getElementById('savas-grid');
   const zaman = document.getElementById('savas-guncelleme');
   if(!grid) return;
-
-  const yedekSavas = [
-    { baslik: "İran ve ABD Anlaştı: Hürmüz Boğazı'ndaki Askeri Abluka Hafifletiliyor", metin: "ABD ve İran arasında varılan enerji nakil mutabakatı sonrası Basra Körfezi'ndeki askeri teyakkuz durumu düşürüldü. Piyasalar rahatladı.", kaynak: "Reuters Savunma" },
-    { baslik: "Sudan İç Savaşı: Otonom İHA Akınları Lojistik Ağları Vurdu", metin: "Hartum ve çevresindeki tedarik hatlarında yürütülen siber ve fiziksel operasyonlar sivil mülteci krizini tırmandırıyor.", kaynak: "BBC World" },
-    { baslik: "Ateşkes İhlalleri Sürüyor: İsrail Ordusu Gazze ve Lübnan'ı Vurdu", metin: "Diplomatik müzakerelerin gölgesinde güney sınır hattındaki askeri harekat sahalarında hava saldırıları devam ediyor.", kaynak: "AP Kudüs" }
-  ];
 
   let savasHaberleri = [];
 
@@ -647,7 +647,6 @@ async function savasHaberleriniGuncelle() {
     const veri = await response.json();
     
     if (veri && veri.articles) {
-        // Kesin filtremiz: Bu kelimeler geçmiyorsa haberi ASLA savaş bölümüne sokma
         const anahtarKelimeler = ['savaş', 'çatışma', 'operasyon', 'kriz', 'ordu', 'füze', 'asker', 'silah', 'saldırı', 'israil', 'filistin', 'rusya', 'ukrayna', 'iran', 'abd'];
         savasHaberleri = veri.articles.filter(h => {
             const kucukBaslik = (h.title || '').toLowerCase();
@@ -656,7 +655,6 @@ async function savasHaberleriniGuncelle() {
     }
   } catch(e) {}
 
-  // Yeterli gerçek savaş haberi yoksa yedek askeri havuzu devreye sok (Futbol vs girmesini %100 engeller)
   if(savasHaberleri.length < 3) {
       savasHaberleri = [...savasHaberleri, ...yedekSavas].slice(0, 3);
   } else {
@@ -669,24 +667,24 @@ async function savasHaberleriniGuncelle() {
   let altGridHTML = '<div class="sk-alt-grid">';
   
   savasHaberleri.forEach((h, i) => {
-      const title = guvenliMetin(h.title || h.baslik);
-      const desc = guvenliMetin(h.description || h.metin || 'Detaylar analiz ediliyor...');
-      const source = guvenliMetin((h.source && h.source.name) ? h.source.name : h.kaynak);
+      const title = guvenliMetin(h.title);
+      const desc = guvenliMetin(h.description || 'Detaylar analiz ediliyor...');
+      const source = guvenliMetin(h.source?.name || 'Uluslararası İstihbarat');
       
       if(i === 0) {
           grid.innerHTML += `
           <div class="sk-kart" onclick="makaleAc('SAVAŞ', '${title}', '${desc}', '${source}')">
               <div class="sk-ajans">SON DAKİKA · KRİTİK</div>
-              <h3 style="font-size: 26px;">${h.title || h.baslik}</h3>
-              <p style="font-size: 15px; margin-bottom: 20px;">${h.description || h.metin || 'Bölgedeki son jeopolitik ve askeri gelişmeler doğrultusunda sıcak hat verileri güncellenmektedir.'}</p>
+              <h3 style="font-size: 26px;">${h.title}</h3>
+              <p style="font-size: 15px; margin-bottom: 20px;">${h.description || 'Bölgedeki son jeopolitik ve askeri gelişmeler doğrultusunda sıcak hat verileri güncellenmektedir.'}</p>
               <span style="font-size: 11px; color: rgba(255,255,255,0.4);">Şimdi Canlı Yayında</span>
           </div>`;
       } else {
           altGridHTML += `
           <div class="sk-kart sk-mini" onclick="makaleAc('STRATEJİ', '${title}', '${desc}', '${source}')">
               <div class="sk-ajans altin">STRATEJİK ANALİZ</div>
-              <h4>${h.title || h.baslik}</h4>
-              <p>${h.description || h.metin || 'Rapor detayları...'}</p>
+              <h4>${h.title}</h4>
+              <p>${h.description || 'Rapor detayları...'}</p>
           </div>`;
       }
   });
@@ -696,7 +694,7 @@ async function savasHaberleriniGuncelle() {
   for(let i=0; i<3; i++) haberSayaciniArtir();
 }
 
-// 2. DİĞER DİNAMİK VERİ ÇEKME VE GRİD BAĞLANTI MOTORLARI
+// DİNAMİK VERİ ÇEKME MOTORLARI
 async function gercekHaberGetir(katId) {
   const apiKat = apiKategoriMap[katId] || 'general';
   try {
@@ -711,7 +709,7 @@ async function gercekHaberGetir(katId) {
     }
   } catch(e) {}
   const fallbackHavuz = simuleHaberler[katId] || simuleHaberler['bilim'];
-  const fallbackHaber = fallbackHavuz[0] || { baslik: "Siber Güvenlik Altyapısı", metin: "Veri güvenliği entegrasyonu...", kaynak: 'TuranHaber İstihbarat' };
+  const fallbackHaber = fallbackHavuz[0];
   return { baslik: fallbackHaber.baslik, metin: fallbackHaber.metin, kaynak: 'TuranHaber İstihbarat' };
 }
 
@@ -879,7 +877,7 @@ async function sonDakikaBandiniGuncelle() {
         }
       });
     }
-  } catch(e) {}
+  } catch(e) { }
 
   for(let i=0; i<haberCount; i++) { haberSayaciniArtir(); }
   setupDragAndDropScroll();
@@ -936,17 +934,17 @@ async function manuelHaberUret() {
 }
 
 window.addEventListener('load', () => {
+  savasHaberleriniGuncelle();
   mansetleriYenile(); 
   otomatikYenile();   
   canliHaberleriCek(); 
   sonDakikaBandiniGuncelle();
-  savasHaberleriniGuncelle();
   
+  setInterval(savasHaberleriniGuncelle, 600000);
   setInterval(mansetleriYenile, 600000); 
   setInterval(otomatikYenile, 600000); 
   setInterval(canliHaberleriCek, 600000); 
   setInterval(sonDakikaBandiniGuncelle, 600000);
-  setInterval(savasHaberleriniGuncelle, 600000);
 });
 </script>
 </body>
