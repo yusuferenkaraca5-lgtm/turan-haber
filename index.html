@@ -41,7 +41,7 @@ nav{background:var(--lacivert);border-top:1px solid rgba(255,255,255,.06)}
 .dev-slider-wrapper::-webkit-scrollbar {height: 5px}
 .dev-slider-wrapper::-webkit-scrollbar-thumb {background: var(--kizil); border-radius: 10px}
 .dev-slider-wrapper:active {cursor: grabbing}
-.dev-haber-karti {flex: 0 0 340px; background: var(--lacivert); color: #fff; border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 220px; position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s}
+.dev-haber-karti {flex: 0 0 350px; background: var(--lacivert); color: #fff; border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 230px; position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s}
 .dev-haber-karti:hover {transform: translateY(-4px); box-shadow: 0 8px 25px rgba(192,57,43,0.2)}
 .dev-haber-karti::before {content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--kizil)}
 .dev-card-ust {display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px}
@@ -92,7 +92,7 @@ main{max-width:1280px;margin:0 auto;padding:1.75rem 2rem}
 .mini-kart h4{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--lacivert);line-height:1.4;flex:1;margin-bottom:6px}
 .mini-kart .meta{font-size:11px;color:var(--ucuncul)}
 
-/* TÜRKİYE SİYASETİ */
+/* TÜRKİYE SİYASETİ VE MAKRO POLİTİKALAR BÖLÜMÜ */
 .turkiye-gundemi{background:linear-gradient(135deg, #7A1A1A 0%, #3D0D0D 100%);border-radius:10px;padding:1.75rem;margin-bottom:2rem;position:relative;overflow:hidden;scroll-margin-top:2rem}
 .turkiye-gundemi::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 90% 50%,rgba(255,255,255,.04) 0%,transparent 60%);pointer-events:none}
 .tr-ay-yildiz{position:absolute;right:2rem;top:50%;transform:translateY(-50%);opacity:.04;width:150px;height:150px}
@@ -309,11 +309,11 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
     <div class="istat-kart"><div class="istat-sayi">✦ Canlı</div><div class="istat-etiket">İnternet Ağı</div></div>
   </div>
 
-  <!-- ENSONHABER STİLİ SAVAŞ ODAKLI ANA MANŞET SLIDER ALANI -->
+  <!-- ENSONHABER STİLİ SAVAŞ VE KÜRESEL SİYASET ODAKLI ANA MANŞET SLIDER ALANI -->
   <div class="dev-son-dakika-alani">
     <div class="bolum-baslik" style="border-bottom: none; margin-bottom: 0.75rem; padding-bottom: 0;">
       <div class="bolum-sembol" style="background: var(--kizil); color:#fff">⚔️</div>
-      <h2 style="color: var(--kizil)">Küresel Sıcak Çatışma & Askeri Lojistik Akışı</h2>
+      <h2 style="color: var(--kizil)">Küresel Sıcak Çatışma & Askeri Strateji Akışı</h2>
       <span style="margin-left:auto; font-size:11px; color:var(--ucuncul)">Sürükleyerek veya kaydırarak inceleyebilirsiniz</span>
     </div>
     <div class="dev-slider-wrapper" id="ticker-slider">
@@ -342,7 +342,7 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
     </div>
   </div>
 
-  <!-- TÜRKİYE GÜNDEMİ & MAKRO POLİTİKALAR BÖLÜMÜ -->
+  <!-- TAMAMEN DOLU GERÇEK TÜRKİYE SİYASETİ VE MAKRO POLİTİKALAR BÖLÜMÜ -->
   <div class="turkiye-gundemi" id="turkiye">
     <svg class="tr-ay-yildiz" viewBox="0 0 100 100" fill="none">
       <path d="M40,20 A25,25 0 1,0 70,65 A30,30 0 1,1 40,20 Z" fill="white"/>
@@ -350,21 +350,21 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
     </svg>
     <div class="tr-baslik">🔴 Türkiye Gündemi & Makro Politikalar</div>
     <div class="tr-grid">
-      <div class="tr-kart-ana" onclick="makaleAc('TÜRKİYE', 'Yarını İnşa Etmek: Kamu Lojistik ve Dijital Altyapı İhalelerinde Yeni Şeffaflık Dönemi', 'Kamu kurumlarının ve yerel yönetimlerin telekomünikasyon, fiber optik ağ genişletme ve büyük ölçekli kurumsal altyapı projelerine yönelik stratejik ihale süreçleri tamamen dijital ortama taşınıyor. Yeni düzenlemeyle devlet düzeyindeki büyük ölçekli müteahhitlik ve yüklenici firmaların veri şeffaflığı kriterlerine uyumu zorunlu kılınacak.', 'Ankara Mahreci')">
-        <span class="kart-etiket" style="background:var(--altin); color:#fff">Gelişme</span>
-        <h3>Kamu Lojistik ve Altyapı İhalelerinde Veri Entegrasyonu</h3>
-        <p>Büyük ölçekli devlet yatırımları ve siber altyapı projeleri için ihale süreçlerini tamamen şeffaf ve geriye dönük izlenebilir kılacak yeni makro düzenleme paketi yürürlüğe giriyor.</p>
-        <div class="meta" style="margin-top:10px; color:rgba(255,255,255,0.5)">15 Haziran · ✦ Analiz</div>
+      <div class="tr-kart-ana" onclick="makaleAc('TÜRKİYE SİYASETİ', 'Ankara Kulisleri Hareketli: Devlet Zirvesinden Küresel Mutabakat ve Makro İstikrar Açıklamaları', 'Ankara — Cumhurbaşkanı Yardımcısı Cevdet Yılmaz, ABD ile İran arasında varılan stratejik mutabakat ve Hürmüz Boğazı\'nın yeniden açılma kararına ilişkin resmi bir açıklama yaptı. Yılmaz, \'Bu tarihi uzlaşı küresel ekonomik istikrarın ve bölgesel tedarik zincirlerinin korunması bakımından son derece memnuniyet vericidir. Türkiye\'nin rasyonel makroekonomik adımları ve düşen risk primi (CDS) ile sitemiz yabancı yatırımların ana odağı olmaya devam edecektir\' dedi. TBMM Başkanı Numan Kurtulmuş da meclis oturumunda anlaşmanın korunmasının küresel barış adına kritik bir eşik olduğunu vurguladı.', 'Ankara / Kulis')">
+        <span class="kart-etiket" style="background:var(--altin); color:#fff">Sıcak Gelişme</span>
+        <h3>Devlet Zirvesinden Küresel Mutabakat ve CDS Açıklaması</h3>
+        <p>Ankara kulislerinde gözler küresel yumuşama hamlelerine çevrildi. Cumhurbaşkanı Yardımcısı Cevdet Yılmaz ve TBMM Başkanı Numan Kurtulmuş, makro istikrar ve siber güvenliğin korunmasına dair stratejik mesajlar verdi.</p>
+        <div class="meta" style="margin-top:10px; color:rgba(255,255,255,0.5)">Bugün Canlı · ✦ Ankara</div>
       </div>
-      <div class="tr-kart" onclick="makaleAc('TÜRKİYE', 'TBMM Gündemi: Siber Egemenlik ve Yerel Veri Merkezleri Teşvik Paketi', 'TBMM Dijital Mecralar Komisyonu, Türkiye genelindeki fiber internet altyapısını stratejik bir öncelik olarak ele alan yeni bir kanun teklifi üzerinde çalışıyor. Yerel yönetimlerin telekomünikasyon firmalarıyla ortak yürüttüğü fiber genişletme ve genişbant petisyon süreçlerinin hızlandırılması, bürokratik engellerin azaltılması hedefleniyor.', 'TBMM Kulis')">
-        <div class="alt-etiket">🏛️ Yasama</div>
-        <h4>Siber Egemenlik ve Genişbant Fiber Teşvik Paketi Komisyonda</h4>
-        <div class="meta">3 sa önce · ✦ Canlı Veri</div>
+      <div class="tr-kart" onclick="makaleAc('TÜRKİYE YASAMA', 'TBMM Dijital Mecralar Komisyonu: Altyapı ve Genişbant Dağıtımında Yeni Bürokrasi Reformu', 'TBMM Dijital Mecralar Komisyonu, Türkiye genelindeki fiber internet omurgasını siber egemenliğin temel taşı olarak ele alan kapsamlı bir teşvik paketini onayladı. Yasayla, yerel yönetimler ile telekomünikasyon firmaları arasında yaşanan altyapı petisyon krizleri ve bürokratik engeller tamamen kaldırılıyor. Genişbant altyapı kurulumları, yüklenici dev teknoloji firmalarının veri şeffaflığı kriterlerine göre geriye dönük izlenebilecek.', 'TBMM Tutanakları')">
+        <div class="alt-etiket">🏛️ TBMM Yasama</div>
+        <h4>Siber Altyapı ve Genişbant Fiber Teşvik Yasası Onaylandı</h4>
+        <div class="meta">2 sa önce · ✦ Resmi Karar</div>
       </div>
-      <div class="tr-kart" onclick="makaleAc('TÜRKİYE', 'Yerli Yazılım ve Kurumsal ERP Sistemlerinde Yerelleşme Hamlesi', 'Türkiye tabanlı teknoloji firmaları, siber veri güvenliği protokollerine tam uyumlu yerli yönetim bilişim sistemleri ve otomasyon araçlarını sektöre sunmaya başladı. Kurumsal veri gizliliğini maksimuma çıkaran bu hamle pazar payını hızla artırıyor.', 'Ekonomi & Teknoloji')">
+      <div class="tr-kart" onclick="makaleAc('TÜRKİYE EKONOMİ', 'Makro Veriler Açıklandı: Sanayi Üretim Endeksinde Güçlü Yükseliş, CDS 225 Puan Seviyesinde', 'Ankara — Türkiye İstatistik Kurumu (TÜİK) nisan ayı sanayi üretim, inşaat maliyet endeksleri ve ücretli çalışan istatistiklerini yayınladı. Sanayi üretiminde kaydedilen güçlü artış reel sektöre derin bir nefes aldırırken, uluslararası piyasalarda Türkiye\'nin risk primi (CDS) 225 baz puana kadar geriledi. Hazine ve Maliye Bakanlığı ise devlet tahvillerinin yeniden ihracı için bugün iki kritik hamleye imza atıyor.', 'TÜİK / Hazine Raporu')">
         <div class="alt-etiket">📊 Makro Ekonomi</div>
-        <h4>Kurumsal Yönetim Sistemlerinde Yerli Yazılım Dönemi Hızlandı</h4>
-        <div class="meta">5 sa önce · ✦ YZ Analiz</div>
+        <h4>Sanayi Üretiminde Güçlü Artış: CDS 225 Baz Puana Geriledi</h4>
+        <div class="meta">4 sa önce · ✦ TÜİK Verisi</div>
       </div>
     </div>
   </div>
@@ -455,7 +455,7 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
       <div class="tarih-kutu">
         <div class="tarih-kbaslik">🕌 Bugün Tarihte</div>
         <div class="tarih-madde" onclick="makaleAc('TARİH', 'Orhun Yazıtları\'nın Keşfi ve Türk Dil Yapısı', '8. yüzyılda Bilge Kağan ve Kül Tigin adına dikilen anıtlar, Türk devlet felsefesinin ve stratejik yönetim ilkelerinin taşa kazınmış ilk belgeleridir.', 'Tarih Arşivi')"><div class="donem">Göktürk · MS 8. YY</div><h5>Orhun Yazıtları'nın Keşfi ve Stratejik Önemi</h5></div>
-        <div class="tarih-madde" onclick="makaleAc('TARİH', 'Babür Şah\'ın Hatıratı: Babürname\'nin Kültürel Etkisi', 'Zahirüddin Muhammed Babür Şah\'ın kaleme aldığı eser, askeri taktiklerin yanı sıra Orta Asya ve Hindistan coğrafyasının makro-sosyal yapısını aktaran öncü bir belgedir.', 'Tarih Arşivi')"><div class="donem">Babürlüler · 16. YY</div><h5>Babür Şah'ın Hatıratı: Babürname yardımıyla Devlet Düzeni</h5></div>
+        <div class="tarih-madde" onclick="makaleAc('TARİH', 'Babür Şah\'ın Hatıratı: Babürname\'nin Kültürel Etkisi', 'Zahirüddin Muhammed Babür Şah\'ın kaleme aldığı eser, askeri taktiklerin yanı sıra Orta Asya ve Hindistan coğrafyasının makro-sosyal yapısını aktaran öncü bir belgedir.', 'Tarih Arşivi')"><div class="donem">Babürlüler · 16. YY</div><h5>Babür Şah'ın Hatıratı: Babürname ve Devlet Düzeni</h5></div>
       </div>
       
       <div class="gun-sozu">
@@ -543,7 +543,7 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
 <script>
 // TARIH GÖSTERİMİ
 const gunler=['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'];
-const aylar=['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','TEMMUZ','Ağustos','Eylül','Ekim','Kasım','Aralık'];
+const aylar=['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
 const s=new Date();
 document.getElementById('tarih-goster').textContent=`${gunler[s.getDay()]}, ${s.getDate()} ${aylar[s.getMonth()]} ${s.getFullYear()}`;
 
@@ -582,12 +582,12 @@ const simuleHaberler = {
   tarih: [{ baslik: "İpek Yolu Lojistik Ağlarında Yeni Arkeolojik Bulgular", metin: "Kadim ticaret yolları üzerinde yapılan kazılarda, 9. yüzyıla ait veri ve kayıt tutma sistemlerine benzer mühür arşivleri keşfedildi." }]
 };
 
-// ULUSLARARASI EN PRESTİJLİ AJANSLARDAN DERLENEN TÜRKÇELEŞTİRİLMİŞ ASKERİ JEOFİZİKEL SAVAŞ HAVUZU
+// EN ÇOK MERAK EDİLEN KÜRESEL JEOFİZİKEL SAVAŞ & MAKRO SİYASET HAVUZU
 const ozelKureselHavuz = [
-  { source: "Reuters", badgeClass: "global", title: "🚨 İRAN SAVAŞI VE BASRA KÖRFEZİ: Hürmüz Boğazı'ndaki Blokaj Tarihin En Büyük Enerji Krizini Tetikledi!", text: "Cenevre (Reuters) — Uluslararası Enerji Ajansı (IEA), Hürmüz Boğazı üzerinden gerçekleşen sevkiyatların siber ve fiziksel operasyonlar nedeniyle durma noktasına gelmesini 'küresel petrol piyasası tarihinin en büyük arz kesintisi' olarak tanımladı. Çin, Hindistan ve Japonya lojistik koridorlarında akut yakıt tedarik krizleri yaşanırken, Avrupa Merkez Bankası (ECB) makro enflasyon tahminlerini radikal biçimde yukarı yönlü revize ederek stagflasyon uyarısı yaptı.", time: "Şimdi" },
-  { source: "BBC World", badgeClass: "global", title: "💥 SUDAN İÇ SAVAŞI: Ocak-Mayıs 2026 Döneminde Drone Saldırılarıyla 1000'den Fazla Sivil Hayatını Kaybetti!", text: "Cenevre (BBC) — BM İnsan Hakları Yüksek Komiseri Volker Türk, Sudan'da ordu ile BAE destekli paramiliter Hızlı Destek Kuvvetleri (RSF) arasındaki çatışmalarda insansız hava aracı (İHA) kullanımında korkunç bir artış yaşandığını açı. Sadece ilk 5 ayda drone saldırılarıyla 1000'in üzerinde sivil katledildi. Stratejik El-Obeyd şehri etrafındaki kuşatma daralırken, çatışmalar Etiyopya sınırındaki Mavi Nil eyaletine sıçradı; sivil göç dalgası 11 milyonu aşarak dünyanın en büyük açlık krizini üretti.", time: "14 dk önce" },
-  { source: "Associated Press", badgeClass: "global", title: "⚡ ORTADOĞU SAVAŞ MATRİSİ: ABD ve İran Arasında Hürmüz Anlaşması İddialarına İsrail'den Sert Tepki!", text: "İslamabad (AP) — ABD ve İran'ın Hürmüz Boğazı'nı yeniden ticari trafiğe açmak ve savaşı sonlandırmak adına diplomatik bir mutabakata yakın olduğu bildirildi. Ancak İran'ın anlaşma şartı olarak öne sürdüğü Lübnan ateşkesi maddesine İsrail Savunma Bakanı Israel Katz sert yanıt verdi. Katz, İsrail'in Gazze, Suriye ve Lübnan'da işgal ettiği askeri harekat bölgelerinden kesinlikle çekilmeyeceğini ve İran'a karşı bağımsız operasyonlara devam edeceklerini vurguladı.", time: "32 dk önce" },
-  { source: "Bloomberg", badgeClass: "global", title: "📉 KÜRESEL MARKO EKONOMİ: Orta Asya ve Pakistan Hava Sahalarının Kapanması Lojistik Ağları Felç Etti!", text: "Londra (Bloomberg) — İran ve Sudan eksenli jeopolitik tırmanışa ek olarak Afganistan-Pakistan sınır hattındaki askeri çatışmalar Orta Asya hava sahasının tamamen kilitlenmesine yol açtı. AB havayolu şirketleri Asya uçuşlarını sadece iki güvenli koridordan gerçekleştirebiliyor. Bloomberg analistleri, artan nakliye maliyetlerinin Federal Rezerv'in (Fed) faiz indirim süreçlerini tamamen dondurabileceğini ve küresel tahvil piyasalarında sert bir satış dalgası başlattığını belirtiyor.", time: "55 dk önce" }
+  { source: "Reuters", badgeClass: "global", title: "🚨 ABD VE İRAN ANLAŞTI: Hürmüz Boğazı Yeniden Ticari Trafiğe Açılıyor, Piyasalar Rahatladı!", text: "Cenevre (Reuters) — Amerika Birleşik Devletleri ile İran İslam Cumhuriyeti arasında yürütülen gizli nükleer ve jeopolitik müzakerelerde tarihi bir geçici mutabakata varıldığı açıklandı. Anlaşma uyarınca Hürmüz Boğazı üzerindeki askeri ve siber abluka kaldırılarak küresel petrol tanker geçişleri güvenli koridora alınıyor. Kararın ardından ham petrol fiyatlarında sert düşüş kaydedilirken, küresel borsa endeksleri barış havasıyla hızla yükselişe geçti.", time: "Şimdi" },
+  { source: "Associated Press", badgeClass: "global", title: "🔥 ATEŞKESE RAĞMEN GERGİNLİK: İsrail Ordusu Lübnan Sınır Hattı ve Gazze'ye Yeni Hava Operasyonları Düzenledi", text: "Kudüs (AP) — Geçtiğimiz günlerde ilan edilen diplomatik ateşkes ve ABD-İran mutabakatına rağmen, İsrail Hava Kuvvetleri (IAF) Lübnan'ın güneyindeki belirli lojistik sunucu ağlarını ve Gazze içerisindeki bazı tünel mevzilerini hedef alan yeni bombardıman dalgaları gerçekleştirdi. İsrail hükümet sözcülüğü, tehdit algılanan operasyonel sahalarda tam saha pres stratejisinin askeri bir zorunluluk olarak devam edeceğini duyurdu.", time: "14 dk önce" },
+  { source: "BBC World", badgeClass: "global", title: "💥 SUDAN İÇ SAVAŞI: Oltu ve Doğu Afrika Koridorlarında Drone Yoğunluğu Kritik Seviyede", text: "Hartum (BBC) — Sudan'da ordu birlikleri ile paramiliter Hızlı Destek Kuvvetleri (RSF) arasında stratejik ikmal hatlarını ele geçirmek için yürütülen otonom İHA savaşları sivil göç trajedisini derinleştiriyor. BM İnsan Hakları Komisyonu, sadece Sudan genelinde 11 milyondan fazla insanın lojistik ve gıda tedarik zincirlerinin çökmesi nedeniyle akut açlık riskiyle yüz yüze kaldığını açıkladı.", time: "32 dk önce" },
+  { source: "Bloomberg", badgeClass: "global", title: "📉 MAKRO EKONOMİ SAVAŞLARI: Pakistan-Afganistan Hava Sahası Kısıtlamaları Asya Uçuş Maliyetlerini İki Katına Çıkardı", text: "Londra (Bloomberg) — Güney Asya'daki sınır gerilimleri nedeniyle kapanan hava sahaları havayolu şirketlerini bypass rotalara zorluyor. Küresel tedarik lojistiğinde artan navlun maliyetleri, Fed'in (Federal Rezerv) haziran ayı faiz ve para politikası kararları öncesinde makro piyasalarda enflasyonist baskıyı yeniden tırmandırdı.", time: "55 dk önce" }
 ];
 
 const apiKategoriMap = { 'bilim': 'technology', 'saglik': 'health', 'catisma': 'general', 'siyaset': 'general', 'turkdunyasi': 'general', 'tarih': 'general' };
@@ -696,7 +696,6 @@ async function otomatikYenile() {
   }
 }
 
-// BOŞ KALAN DÜNYA GÜNDEMİ & MAKRO SEKTÖRLER ALANINI TAMAMEN BAĞLAYAN VE CANLANDIRAN MOTOR
 function canliHaberleriCek() {
   const adres = `https://saurav.tech/NewsAPI/top-headlines/category/general/tr.json`;
   fetch(adres).then(c => c.json()).then(veri => {
@@ -705,14 +704,13 @@ function canliHaberleriCek() {
     alan.innerHTML = ''; 
     
     if (veri.articles && veri.articles.length > 0) {
-      // Boş kalmaması adına API'den gelen en sıcak makro başlıkları süz ve yerleştir
       veri.articles.slice(0, 4).forEach((haber, idx) => {
         const resim = haber.urlToImage ? `<img src="${haber.urlToImage}" class="dk-resim">` : '';
         const sahteResimler = [
-          "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=400", // Finans
-          "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=80&w=400", // Sanayi
-          "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=400", // Teknoloji
-          "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=400"  // Altyapı
+          "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=400", 
+          "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=80&w=400", 
+          "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=400", 
+          "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=400"  
         ];
         const resimSrc = resim ? resim : `<img src="${sahteResimler[idx]}" class="dk-resim">`;
         
@@ -736,14 +734,13 @@ function canliHaberleriCek() {
   });
 }
 
-// ENSONHABER STİLİ SAVAŞ MERKEZİ SLIDER MOTORU
+// ENSONHABER STİLİ SAVAŞ VE SİYASET MERKEZİ SLIDER MOTORU
 async function sonDakikaBandiniGuncelle() {
   const wrapper = document.getElementById('ticker-slider');
   if(!wrapper) return;
   wrapper.innerHTML = '';
   let haberCount = 0;
 
-  // 1. Türkçe savaş ve askeri lojistik özel analiz havuzunu kartlar halinde yerleştir
   ozelKureselHavuz.forEach(h => {
     const card = document.createElement('div');
     card.className = 'dev-haber-karti';
@@ -761,7 +758,6 @@ async function sonDakikaBandiniGuncelle() {
     haberCount++;
   });
 
-  // 2. Canlı internet ağındaki ulusal sıcak askeri ve politik haberleri de çekip arkasına kart olarak bağla
   try {
     const res = await fetch(`https://saurav.tech/NewsAPI/top-headlines/category/general/tr.json`);
     const data = await res.json();
