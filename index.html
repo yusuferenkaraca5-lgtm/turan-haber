@@ -35,7 +35,7 @@ nav{background:var(--lacivert);border-top:1px solid rgba(255,255,255,.06)}
 .nav-link:hover{color:#fff;background:rgba(255,255,255,.04)}
 .nav-link.aktif{color:var(--altin);border-bottom-color:var(--altin)}
 
-/* BÖLÜM 1: ULUSAL FLAŞ MANŞETLER SLIDER (ENSONHABER & SABAH) */
+/* 1. ENSONHABER STİLİ SÜRÜKLE-KAYDIR SON DAKİKA SLIDER */
 .dev-son-dakika-alani {margin-bottom: 2rem; background: #fff; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--cizgi); box-shadow: 0 4px 20px rgba(0,0,0,0.02)}
 .dev-slider-wrapper {display: flex; gap: 1rem; overflow-x: auto; overflow-y: hidden; padding-bottom: 10px; scrollbar-width: thin; scrollbar-color: var(--kizil) transparent; cursor: grab; user-select: none; -webkit-overflow-scrolling: touch}
 .dev-slider-wrapper::-webkit-scrollbar {height: 5px}
@@ -52,19 +52,23 @@ nav{background:var(--lacivert);border-top:1px solid rgba(255,255,255,.06)}
 .dev-haber-karti p {font-size: 12px; color: rgba(255,255,255,0.6); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.5}
 .dev-oku-link {font-size: 11px; color: var(--altin); font-weight: 600; text-align: right; margin-top: auto; padding-top: 10px}
 
-/* BÖLÜM 2: YENİ EKLENEN DEVASA KÜRESEL SAVAŞ VE ASKERİ STRATEJİ KORİDORU */
-.savas-koridoru-alani {margin-bottom: 2rem; background: linear-gradient(135deg, #1C0505 0%, #000000 100%); padding: 1.75rem; border-radius: 12px; border: 1px solid rgba(192,57,43,0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.25); position: relative}
-.savas-grid-sistemi {display: grid; grid-template-columns: 1.3fr repeat(2, 1fr); gap: 1rem}
-.savas-kart-ana {background: rgba(192,57,43,0.08); border: 1px solid rgba(192,57,43,0.3); border-radius: 8px; padding: 1.5rem; cursor: pointer; transition: background .15s, border-color .15s; display: flex; flex-direction: column; justify-content: center}
-.savas-kart-ana:hover {background: rgba(192,57,43,0.15); border-color: var(--kizil)}
-.savas-kart-ana .ajans-badge {background: var(--kizil); color: #fff; font-size: 9px; font-weight: 700; padding: 3px 8px; border-radius: 4px; width: fit-content; margin-bottom: 10px; text-transform: uppercase}
-.savas-kart-ana h3 {font-family: 'Playfair Display', serif; font-size: 18px; color: #fff; margin-bottom: 10px; line-height: 1.4}
-.savas-kart-ana p {font-size: 12.5px; color: rgba(255,255,255,0.7); line-height: 1.6}
-.savas-kart-yan {background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 1.1rem; cursor: pointer; transition: all .15s; display: flex; flex-direction: column; justify-content: space-between}
-.savas-kart-yan:hover {background: rgba(255,255,255,0.05); border-color: var(--altin)}
-.savas-kart-yan .ajans-badge {background: var(--altin); color: var(--koyu); font-size: 9px; font-weight: 700; padding: 3px 8px; border-radius: 4px; width: fit-content; margin-bottom: 8px; text-transform: uppercase}
-.savas-kart-yan h4 {font-size: 13.5px; font-weight: 600; color: rgba(255,255,255,0.95); line-height: 1.45; margin-bottom: 8px}
-.savas-kart-yan p {font-size: 12px; color: rgba(255,255,255,0.5); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden}
+/* 2. YENİ EKLENEN DEVASA SAVAŞ VE ASKERİ STRATEJİ KORİDORU */
+.savas-koridoru {background: #090e14; border-radius: 12px; padding: 2rem; margin-bottom: 2rem; position: relative; border-left: 5px solid var(--kizil); box-shadow: 0 15px 35px rgba(0,0,0,0.25);}
+.savas-koridoru::after {content:''; position:absolute; top:0; right:0; width:150px; height:100%; background:radial-gradient(ellipse at right, rgba(192,57,43,0.1) 0%, transparent 70%); pointer-events:none;}
+.savas-baslik {display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 15px;}
+.savas-baslik h2 {color: #fff; font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; letter-spacing: 0.02em;}
+.savas-baslik .bolum-sembol {width: 28px; height: 28px; font-size: 14px;}
+.savas-grid-2 {display: grid; grid-template-columns: 1.3fr 1fr; gap: 1.5rem; position: relative; z-index: 2;}
+.sk-kart {background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 1.75rem; cursor: pointer; transition: all 0.2s ease;}
+.sk-kart:hover {background: rgba(255,255,255,0.06); border-color: var(--kizil); transform: translateY(-3px);}
+.sk-ajans {display: inline-block; background: var(--kizil); color: #fff; font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 3px; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 0.08em;}
+.sk-ajans.altin {background: var(--altin); color: var(--koyu);}
+.sk-kart h3 {color: #fff; font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 12px; line-height: 1.4;}
+.sk-kart p {color: rgba(255,255,255,0.65); font-size: 14px; line-height: 1.7; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;}
+.sk-alt-grid {display: flex; flex-direction: column; gap: 1.5rem;}
+.sk-mini {padding: 1.25rem;}
+.sk-mini h3 {font-size: 16px; margin-bottom: 8px;}
+.sk-mini p {-webkit-line-clamp: 2;}
 
 main{max-width:1280px;margin:0 auto;padding:1.75rem 2rem}
 
@@ -105,7 +109,7 @@ main{max-width:1280px;margin:0 auto;padding:1.75rem 2rem}
 .mini-kart h4{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--lacivert);line-height:1.4;flex:1;margin-bottom:6px}
 .mini-kart .meta{font-size:11px;color:var(--ucuncul)}
 
-/* TÜRKİYE GÜNDEMİ */
+/* TÜRKİYE SİYASETİ BÖLÜMÜ */
 .turkiye-gundemi{background:linear-gradient(135deg, #7A1A1A 0%, #3D0D0D 100%);border-radius:10px;padding:1.75rem;margin-bottom:2rem;position:relative;overflow:hidden;scroll-margin-top:2rem}
 .turkiye-gundemi::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 90% 50%,rgba(255,255,255,.04) 0%,transparent 60%);pointer-events:none}
 .tr-ay-yildiz{position:absolute;right:2rem;top:50%;transform:translateY(-50%);opacity:.04;width:150px;height:150px}
@@ -215,7 +219,7 @@ main{max-width:1280px;margin:0 auto;padding:1.75rem 2rem}
 .tarih-madde h5{font-size:12px;font-weight:500;color:var(--lacivert);line-height:1.4}
 
 .gun-sozu{background:var(--kizil);border-radius:8px;padding:1.1rem;position:relative;overflow:hidden}
-.gun-sozu::before{content:'";position:absolute;top:-10px;left:10px;font-size:90px;color:rgba(255,255,255,.06);font-family:Georgia,serif;line-height:1}
+.gun-sozu::before{content:'"';position:absolute;top:-10px;left:10px;font-size:90px;color:rgba(255,255,255,.06);font-family:Georgia,serif;line-height:1}
 .gun-sozu p{font-family:'Playfair Display',serif;font-size:13px;color:rgba(255,255,255,.9);line-height:1.6;margin-bottom:8px;font-style:italic;position:relative}
 .gun-sozu .kaynak{font-size:10px;color:rgba(255,255,255,.45);font-weight:500;letter-spacing:.06em;text-transform:uppercase}
 
@@ -255,7 +259,7 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
 .modal-metin p { margin-bottom: 1.5rem; }
 
 @media(max-width:960px){
-  .uc-kolon,.oncu-grid,.tr-grid,.savas-grid-sistemi{grid-template-columns:1fr}
+  .uc-kolon,.oncu-grid,.tr-grid,.savas-grid-2{grid-template-columns:1fr}
   .oto-haber-alani,.tarih-grid,.dunya-grid{grid-template-columns:1fr 1fr}
   .istatistik-satiri{grid-template-columns:repeat(3,1fr)}
   .td-grid{grid-template-columns:1fr 1fr}
@@ -302,9 +306,9 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
 <nav>
   <div class="nav-ic">
     <a href="#" class="nav-link aktif">Ana Sayfa</a>
+    <a href="#savas" class="nav-link">⚔️ Savaş & Çatışma</a>
     <a href="#turkiye" class="nav-link">🔴 Türkiye Gündemi</a>
     <a href="#bilim" class="nav-link">🔬 Bilim</a>
-    <a href="#catisma" class="nav-link">⚔️ Savaş & Çatışma</a>
     <a href="#siyaset" class="nav-link">🏛️ Siyaset</a>
     <a href="#saglik" class="nav-link">💊 Tıp & Sağlık</a>
     <a href="#turkdunyasi" class="nav-link">🌍 Türk Dünyası</a>
@@ -324,7 +328,7 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
     <div class="istat-kart"><div class="istat-sayi">✦ Canlı</div><div class="istat-etiket">İnternet Ağı</div></div>
   </div>
 
-  <!-- ENSONHABER & SABAH SÜRÜKLE-KAYDIR MANŞET SLIDER ALANI -->
+  <!-- ENSONHABER & SABAH SÜRÜKLE-KAYDIR MANŞET SLIDER ALANI (ULUSAL FLAŞ) -->
   <div class="dev-son-dakika-alani">
     <div class="bolum-baslik" style="border-bottom: none; margin-bottom: 0.75rem; padding-bottom: 0;">
       <div class="bolum-sembol" style="background: var(--kizil); color:#fff">⚡</div>
@@ -332,32 +336,37 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
       <span style="margin-left:auto; font-size:11px; color:var(--ucuncul)">Sürükleyerek veya kaydırarak inceleyebilirsiniz</span>
     </div>
     <div class="dev-slider-wrapper" id="ticker-slider">
-      <div class="dev-haber-karti"><h3>Küresel ajans ağları senkronize ediliyor...</h3></div>
+      <div class="dev-haber-karti"><h3>Ulusal ajans ağları senkronize ediliyor...</h3></div>
     </div>
   </div>
 
   <!-- YENİ BÜYÜTÜLEN DEVSAL KÜRESEL SAVAŞ VE ASKERİ STRATEJİ KORİDORU -->
-  <div class="savas-koridoru-alani" id="catisma">
-    <div class="bolum-baslik" style="border-bottom: 1px solid rgba(255,255,255,0.15); margin-bottom: 1.25rem; padding-bottom: 10px;">
-      <div class="bolum-sembol" style="background: var(--kizil); color:#fff">⚔️</div>
-      <h2 style="color: #fff">Jeofiziksel Savaş & Askeri Strateji Raporları</h2>
-      <span style="margin-left:auto; font-size:11px; color:rgba(255,255,255,0.4)">Uluslararası Stratejik İstihbarat Havuzu</span>
+  <div class="savas-koridoru" id="savas">
+    <div class="savas-baslik">
+      <div class="bolum-sembol" style="background:var(--kizil); color:#fff; border-radius:50%">⚔️</div>
+      <h2>Küresel Çatışma & Askeri Strateji Koridoru</h2>
+      <span style="margin-left:auto; font-size:11px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.1em">Uluslararası İstihbarat Ağı</span>
     </div>
-    <div class="savas-grid-sistemi">
-      <div class="savas-kart-ana" onclick="makaleAc('REUTERS', 'Hürmüz Boğazı Petrol Koridorunda Tarihi Mutabakat: Siber ve Askeri Abluka Hafifletiliyor', 'Cenevre (Reuters) — Amerika Birleşik Devletleri ile İran İslam Cumhuriyeti arasında yürütülen gizli jeopolitik müzakerelerde tarihi bir geçici mutabakata varıldığı açıklandı. Anlaşma uyarınca Hürmüz Boğazı üzerindeki siber ve askeri abluka hafifletilerek küresel petrol tanker geçişleri güvenli koridora alınıyor. Kararın ardından brent petrolün varil fiyatı yüzde 4,4, doğal gaz ise yüzde 5,7 azaldı.', 'Reuters Savunma Masası')">
-        <div class="ajans-badge">Reuters Raporu</div>
-        <h3>Hürmüz Boğazı Petrol Koridorunda Stratejik Anlaşma</h3>
-        <p>ABD ve İran arasında varılan enerji nakil mutabakatı sonrası Basra Körfezi'ndeki askeri teyakkuz durumu düşürüldü; küresel makro piyasalar rahat bir nefes aldı.</p>
+    <div class="savas-grid-2">
+      <!-- Ana Dev Kart -->
+      <div class="sk-kart" onclick="makaleAc('REUTERS RAPORU', 'Hürmüz Boğazı Petrol Koridorunda Tarihi Mutabakat: Siber ve Askeri Abluka Hafifletiliyor', 'Cenevre (Reuters) — Amerika Birleşik Devletleri ile İran İslam Cumhuriyeti arasında yürütülen gizli jeopolitik müzakerelerde tarihi bir geçici mutabakata varıldığı açıklandı. Anlaşma uyarınca Hürmüz Boğazı üzerindeki siber ve askeri abluka hafifletilerek küresel petrol tanker geçişleri güvenli koridora alınıyor. Kararın ardından brent petrolün varil fiyatı yüzde 4,4, doğal gaz ise yüzde 5,7 azaldı.', 'Reuters Savunma Masası')">
+        <div class="sk-ajans">REUTERS RAPORU</div>
+        <h3 style="font-size: 26px;">İran ve ABD Anlaştı: Hürmüz Boğazı'ndaki Askeri Abluka Hafifletiliyor</h3>
+        <p style="font-size: 15px; margin-bottom: 20px;">ABD ve İran arasında varılan enerji nakil mutabakatı sonrası Basra Körfezi'ndeki askeri teyakkuz durumu düşürüldü. Uluslararası Enerji Ajansı piyasalardaki arz krizinin şimdilik atlatıldığını duyurdu. Küresel borsalarda risk iştahı hızla yükselişe geçti.</p>
+        <span style="font-size: 11px; color: rgba(255,255,255,0.4);">Şimdi Canlı Yayında</span>
       </div>
-      <div class="savas-kart-yan" onclick="makaleAc('BBC WORLD', 'Sudan İç Savaşı Raporu: Otonom İHA Akınları Sivil Göç Trajedisini Körüklüyor', 'Hartum (BBC) — Sudan ordu birlikleri ile paramiliter Hızlı Destek Kuvvetleri (RSF) arasında stratejik lojistik ikmal hatlarını ele geçirmek için yürütülen otonom İHA savaşları yıkımı derinleştiriyor. BM İnsan Hakları Komisyonu, sadece Doğu Afrika koridorlarında 11 milyondan fazla insanın akut gıda ve tedarik zincirlerinin çökmesi nedeniyle açlık riskiyle yüz yüze kaldığını raporladı.', 'BBC Askeri Analiz')">
-        <div class="ajans-badge">BBC Analiz</div>
-        <h4>Sudan'da İHA Operasyonları Lojistik Ağları Vurdu</h4>
-        <p>Hartum ve çevresindeki dağıtık tedarik hatlarında yürütülen siber ve fiziksel operasyonlar mülteci krizini tırmandırıyor.</p>
-      </div>
-      <div class="savas-kart-yan" onclick="makaleAc('ASSOCIATED PRESS', 'Ateşkes İhlalleri Sürüyor: İsrail Hava Kuvvetleri Gazze ve Güney Lübnan Mevzilerini Bombaladı', 'Kudüs (AP) — Geçtiğimiz günlerde ilan edilen bölgesel diplomatik mutabakat çabalarına rağmen, İsrail Hava Kuvvetleri (IAF) Lübnan\'ın güneyindeki Hizbullah lojistik aktarım merkezlerini ve Gazze içerisindeki bazı tünel tahkimatlarını hedef alan yeni bombardıman dalgaları gerçekleştirdi. İsrail hükümet sözcülüğü, pres stratejisinin süreceğini vurguladı.', 'AP Kudüs Bürosu')">
-        <div class="ajans-badge">AP Haber</div>
-        <h4>İsrail Ordusu Gazze ve Lübnan Mevzilerini Vurdu</h4>
-        <p>Ateşkes müzakerelerinin gölgesinde güney sınır hattındaki askeri harekat sahalarında pres taktiği devam ediyor.</p>
+      <!-- Yan Taraf Alt Alta İki Kart -->
+      <div class="sk-alt-grid">
+        <div class="sk-kart sk-mini" onclick="makaleAc('BBC WORLD', 'Sudan İç Savaşı Raporu: Otonom İHA Akınları Sivil Göç Trajedisini Körüklüyor', 'Hartum (BBC) — Sudan ordu birlikleri ile paramiliter Hızlı Destek Kuvvetleri (RSF) arasında stratejik lojistik ikmal hatlarını ele geçirmek için yürütülen otonom İHA savaşları yıkımı derinleştiriyor. BM İnsan Hakları Komisyonu, sadece Doğu Afrika koridorlarında 11 milyondan fazla insanın akut gıda ve tedarik zincirlerinin çökmesi nedeniyle açlık riskiyle yüz yüze kaldığını raporladı.', 'BBC Askeri Analiz')">
+          <div class="sk-ajans altin">BBC WORLD</div>
+          <h3>Sudan İç Savaşı: Otonom İHA Akınları Lojistik Ağları Vurdu</h3>
+          <p>Hartum ve çevresindeki tedarik hatlarında yürütülen siber ve fiziksel operasyonlar sivil mülteci krizini tırmandırıyor.</p>
+        </div>
+        <div class="sk-kart sk-mini" onclick="makaleAc('ASSOCIATED PRESS', 'Ateşkes İhlalleri Sürüyor: İsrail Hava Kuvvetleri Gazze ve Güney Lübnan Mevzilerini Bombaladı', 'Kudüs (AP) — Geçtiğimiz günlerde ilan edilen bölgesel diplomatik mutabakat çabalarına rağmen, İsrail Hava Kuvvetleri (IAF) Lübnan\'ın güneyindeki Hizbullah lojistik aktarım merkezlerini ve Gazze içerisindeki bazı tünel tahkimatlarını hedef alan yeni bombardıman dalgaları gerçekleştirdi. İsrail hükümet sözcülüğü, pres stratejisinin süreceğini vurguladı.', 'AP Kudüs Bürosu')">
+          <div class="sk-ajans">AP KUDÜS</div>
+          <h3>Ateşkes İhlalleri Sürüyor: İsrail Ordusu Gazze ve Lübnan'ı Vurdu</h3>
+          <p>Diplomatik müzakerelerin gölgesinde güney sınır hattındaki askeri harekat sahalarında hava saldırıları devam ediyor.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -394,17 +403,17 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
       <div class="tr-kart-ana" onclick="makaleAc('TÜRKİYE SİYASETİ', 'Ankara Kulisleri Hareketli: Devlet Zirvesinden Küresel Mutabakat ve Makro İstikrar Açıklamaları', 'Ankara — Cumhurbaşkanı Yardımcısı Cevdet Yılmaz, ABD ile İran arasında varılan stratejik mutabakat ve Hürmüz Boğazı\'nın yeniden açılma kararına ilişkin resmi bir açıklama yaptı. Yılmaz, \'Bu tarihi uzlaşı küresel ekonomik istikrarın ve bölgesel tedarik zincirlerinin korunması bakımından son derece memnuniyet vericidir. Türkiye\'nin rasyonel makroekonomik adımları ve düşen risk primi (CDS) ile ülkemiz yabancı yatırımların ana odağı olmaya devam edecektir\' dedi. TBMM Başkanı Numan Kurtulmuş da meclis oturumunda anlaşmanın korunmasının küresel barış adına kritik bir eşik olduğunu vurguladı.', 'Ankara / Kulis')">
         <span class="kart-etiket" style="background:var(--altin); color:#fff">Sıcak Gelişme</span>
         <h3>Devlet Zirvesinden Küresel Mutabakat ve CDS Açıklaması</h3>
-        <p>Ankara kulislerinde gözler küresel yumuşama hamlelerine çevrildi. Cumhurbaşkanı Yardımcısı Cevdet Yılmaz og TBMM Başkanı Numan Kurtulmuş, makro istikrar ve siber güvenliğin korunmasına dair stratejik mesajlar verdi.</p>
+        <p>Ankara kulislerinde gözler küresel yumuşama hamlelerine çevrildi. Cumhurbaşkanı Yardımcısı Cevdet Yılmaz ve TBMM Başkanı Numan Kurtulmuş, makro istikrar ve siber güvenliğin korunmasına dair stratejik mesajlar verdi.</p>
         <div class="meta" style="margin-top:10px; color:rgba(255,255,255,0.5)">Bugün Canlı · ✦ Ankara</div>
       </div>
       <div class="tr-kart" onclick="makaleAc('TÜRKİYE YASAMA', 'TBMM Dijital Mecralar Komisyonu: Altyapı ve Genişbant Dağıtımında Yeni Bürokrasi Reformu', 'TBMM Dijital Mecralar Komisyonu, Türkiye genelindeki fiber internet omurgasını siber egemenliğin temel taşı olarak ele alan kapsamlı bir teşvik paketini onayladı. Yasayla, yerel yönetimler ile telekomünikasyon firmaları arasında yaşanan altyapı petisyon krizleri ve bürokratik engeller tamamen kaldırılıyor. Genişbant altyapı kurulumları, yüklenici dev teknoloji firmalarının veri şeffaflığı kriterlerine göre geriye dönük izlenebilecek.', 'TBMM Tutanakları')">
         <div class="alt-etiket">🏛️ TBMM Yasama</div>
-        <h4>Siber Altyapı og Genişbant Fiber Teşvik Yasası Onaylandı</h4>
+        <h4>Siber Altyapı ve Genişbant Fiber Teşvik Yasası Onaylandı</h4>
         <div class="meta">2 sa önce · ✦ Resmi Karar</div>
       </div>
       <div class="tr-kart" onclick="makaleAc('TÜRKİYE EKONOMİ', 'Makro Veriler Açıklandı: Sanayi Üretim Endeksinde Güçlü Yükseliş, CDS 225 Puan Seviyesinde', 'Ankara — Türkiye İstatistik Kurumu (TÜİK) nisan ayı sanayi üretim, inşaat maliyet endeksleri ve ücretli çalışan istatistiklerini yayınladı. Sanayi üretiminde kaydedilen güçlü artış reel sektöre derin bir nefes aldırırken, uluslararası piyasalarda Türkiye\'nin risk primi (CDS) 225 baz puana kadar geriledi. Hazine ve Maliye Bakanlığı ise devlet tahvillerinin yeniden ihracı için bugün iki kritik hamleye imza atıyor.', 'TÜİK / Hazine Raporu')">
         <div class="alt-etiket">📊 Makro Ekonomi</div>
-        <h4>Kurumsal Yönetim Sistemlerinde Yerli Yazılım Dönemi Hızlandı</h4>
+        <h4>Sanayi Üretiminde Güçlü Artış: CDS 225 Baz Puana Geriledi</h4>
         <div class="meta">4 sa önce · ✦ TÜİK Verisi</div>
       </div>
     </div>
@@ -461,7 +470,7 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
         <a href="#" class="tum-haberler">Tümü →</a>
       </div>
       <div class="haber-bolum">
-        <div class="haber-satir" onclick="makaleAc('ÇATIŞMA', 'Stratejik İletişim Altyapılarına Yönelik Siber Müdahaleler Yoğunlaşıyor', 'Bölgesel çatışma alanlarında fiziksel operasyonlardan önce uydu iletişim og fiber optik anahtarlama merkezlerine siber saldırılar düzenleniyor.', 'Savunma Analiz')"><div><span class="etiket e-catisma">Siber Harp</span><h3>Stratejik İletişim Altyapılarına Yönelik Siber Müdahaleler Yoğunlaşıyor</h3><p>Bölgesel çatışma alanlarında fiziksel operasyonlardan önce uydu iletişim ve fiber optik anahtarlama merkezlerine siber saldırılar düzenleniyor.</p><div class="alt-meta"><span class="yaz-badge">✦ Canlı</span><span>14 Haz</span></div></div></div>
+        <div class="haber-satir" onclick="makaleAc('ÇATIŞMA', 'Stratejik İletişim Altyapılarına Yönelik Siber Müdahaleler Yoğunlaşıyor', 'Bölgesel çatışma alanlarında fiziksel operasyonlardan önce uydu iletişim ve fiber optik anahtarlama merkezlerine siber saldırılar düzenleniyor.', 'Savunma Analiz')"><div><span class="etiket e-catisma">Siber Harp</span><h3>Stratejik İletişim Altyapılarına Yönelik Siber Müdahaleler Yoğunlaşıyor</h3><p>Bölgesel çatışma alanlarında fiziksel operasyonlardan önce uydu iletişim ve fiber optik anahtarlama merkezlerine siber saldırılar düzenleniyor.</p><div class="alt-meta"><span class="yaz-badge">✦ Canlı</span><span>14 Haz</span></div></div></div>
       </div>
     </div>
 
@@ -528,7 +537,7 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
     </div>
     <div class="td-grid">
       <div class="td-kart" onclick="makaleAc('TÜRK DÜNYASI', 'Bakü-Tiflis-Kars Demiryolu Hattında Dijital Entegrasyon', 'Lojistik veri akışını optimize eden yeni yazılım altyapısı sayesinde konteyner takip süreçleri tamamen şeffaf hale getirildi.', 'TuranHaber Lojistik')"><div class="ulke-tag">🇦🇿 Azerbaycan</div><h4>Bakü-Tiflis-Kars Demiryolu Hattında Dijital Entegrasyon</h4><div class="meta">2 sa önce · ✦ YZ</div></div>
-      <div class="td-kart" onclick="makaleAc('TÜRK DÜNYASI', 'Astana Teknoloji Üniversitesi İlk Büyük Veri Mezunlarını Verdi', 'Ortak eğitim fonu destekli programlar kapsamında yetişen veri analistleri, bölgenin dijital dönüşüm projebilirinde rol alacak.', 'Eğitim Bülteni')"><div class="ulke-tag">🇰🇿 Kazakistan</div><h4>Astana Teknoloji Üniversitesi İlk Büyük Veri Mezunlarını Verdi</h4><div class="meta">4 sa önce · ✦ YZ</div></div>
+      <div class="td-kart" onclick="makaleAc('TÜRK DÜNYASI', 'Astana Teknoloji Üniversitesi İlk Büyük Veri Mezunlarını Verdi', 'Ortak eğitim fonu destekli programlar kapsamında yetişen veri analistleri, bölgenin dijital dönüşüm projelerinde rol alacak.', 'Eğitim Bülteni')"><div class="ulke-tag">🇰🇿 Kazakistan</div><h4>Astana Teknoloji Üniversitesi İlk Büyük Veri Mezunlarını Verdi</h4><div class="meta">4 sa önce · ✦ YZ</div></div>
       <div class="td-kart" onclick="makaleAc('TÜRK DÜNYASI', 'Semerkand Veri Merkezi Altyapı Çalışmaları Hızlandı', 'Bölgesel bulut bilişim ağının ana omurgasını oluşturacak merkezde test süreçlerinin bu yıl tamamlanması öngörülüyor.', 'TuranHaber Teknoloji')"><div class="ulke-tag">🇺🇿 Özbekistan</div><h4>Semerkand Veri Merkezi Altyapı Çalışmaları Hızlandı</h4><div class="meta">6 sa önce · ✦ YZ</div></div>
     </div>
   </div>
@@ -539,7 +548,7 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
     <a href="#" class="tum-haberler">Arşive gir →</a>
   </div>
   <div class="tarih-grid">
-    <div class="tarih-makale" onclick="makaleAc('TARİH', 'Orhun Yazıtları: Taşa Kazınan Devlet Geleneği ve Strateji', 'MS 8. yüzyılda dikilen bu yazıtlar yalnızca dil anıtı değil; Türk devlet teşkilatlanmasının, yönetim felsefesinin ve halkla olan diplomatik bağların ilk yazılı beyannamesidir.', 'Tarih Araştırmaları')"><div class="tm-serit"></div><div class="tm-icerik"><span class="donem-badge">Göktürkler</span><h4>Orhun Yazıtları: Taşa Kazınan Devlet Geleneği ve Strateji</h4><p>MS 8. yüzyılda dikilen bu yazıtlar yalnızca dil anıtı değil; Türk devlet teşkilatlanmasının, yönetim felsefesinin og halkla olan diplomatik bağların ilk yazılı beyannamesidir.</p><div class="okuma">Makaleyi oku →</div></div></div>
+    <div class="tarih-makale" onclick="makaleAc('TARİH', 'Orhun Yazıtları: Taşa Kazınan Devlet Geleneği ve Strateji', 'MS 8. yüzyılda dikilen bu yazıtlar yalnızca dil anıtı değil; Türk devlet teşkilatlanmasının, yönetim felsefesinin ve halkla olan diplomatik bağların ilk yazılı beyannamesidir.', 'Tarih Araştırmaları')"><div class="tm-serit"></div><div class="tm-icerik"><span class="donem-badge">Göktürkler</span><h4>Orhun Yazıtları: Taşa Kazınan Devlet Geleneği ve Strateji</h4><p>MS 8. yüzyılda dikilen bu yazıtlar yalnızca dil anıtı değil; Türk devlet teşkilatlanmasının, yönetim felsefesinin ve halkla olan diplomatik bağların ilk yazılı beyannamesidir.</p><div class="okuma">Makaleyi oku →</div></div></div>
     <div class="tarih-makale" onclick="makaleAc('TARİH', 'Büyük Selçuklu Mimarisindeki Geometrik Algoritmalar', 'Selçuklu dönemi eserleri salt estetik değil, yüksek matematiksel ve mimari bir zekanın ürünüdür. Yapılardaki simetrik desenler hesaplamalı analize ışık tutuyor.', 'Kültür Raporu')"><div class="tm-serit"></div><div class="tm-icerik"><span class="donem-badge">Selçuklular</span><h4>Büyük Selçuklu Mimarisindeki Geometrik Algoritmalar</h4><p>Selçuklu dönemi eserleri salt estetik değil, yüksek matematiksel ve mimari bir zekanın ürünüdür. Yapılardaki simetrik desenler hesaplamalı analize ışık tutuyor.</p><div class="okuma">Makaleyi oku →</div></div></div>
     <div class="tarih-makale" onclick="makaleAc('TARİH', 'Nadir Şah Dönemi Askeri Lojistik ve Sefer Stratejileri', '18. yüzyılın en önemli askeri dehalarından Nadir Şah\'ın dinamik ordu düzeni ve fetih hareketlerindeki ikmal zinciri yönetimi modern askeri tarihçiler tarafından inceleniyor.', 'Askeri Tarih')"><div class="tm-serit"></div><div class="tm-icerik"><span class="donem-badge">Avşarlar</span><h4>Nadir Şah Dönemi Askeri Lojistik ve Sefer Stratejileri</h4><p>18. yüzyılın en önemli askeri dehalarından Nadir Şah'ın dinamik ordu düzeni ve fetih hareketlerindeki ikmal zinciri yönetimi modern askeri tarihçiler tarafından inceleniyor.</p><div class="okuma">Makaleyi oku →</div></div></div>
   </div>
@@ -614,12 +623,11 @@ function modalKapat() {
 }
 
 // ARKA PLAN CANLI SİMÜLASYON VERİ SETLERİ
-const ozelKureselHavuz = [
+const ozelUlusalHavuz = [
   { source: "Sabah", badgeClass: "", title: "🇹🇷 SAVUNMA SANAYİİNDE DEV İMZA: ASELSAN'dan 114,7 Milyon Dolarlık İhracat Sözleşmesi!", text: "Ankara — ASELSAN, uluslararası siber güvenlik, haberleşme ve mikro-elektronik radar sistemleri tedariki kapsamında tam 114 milyon 700 bin dolarlık yeni bir ihracat mukavelesine imza attı. Projelerin Türk mühendislik gücüyle yerel olarak üretileceği ve lojistik entegrasyonun bu yıl başlayacağı açıklandı.", time: "Flaş" },
   { source: "EnSonHaber", badgeClass: "", title: "⚽ BEŞİKTAŞ'TA JÜBİLE KARARI: Efsane Kaptan Necip Uysal İçin Görkemli Veda Hazırlığı!", text: "İstanbul — Beşiktaş Kulübü, kariyeri boyunca siyah-beyazlı formayı büyük bir sadakatle terleten emektar futbolcusu Necip Uysal için yönetim kurulu kararıyla özel bir jübile maçı düzenleme kararı aldı. Karar camiada büyük bir vefa örneği olarak tam not aldı.", time: "Son Dakika" },
-  { source: "Reuters", badgeClass: "global", title: "🚨 DÜNYA KUPASI SALLANDI: İsveç'ten Tunus Karşısında 5 Gollü Şov! Turnuva Kızıştı", text: "New York (Reuters) — 2026 FIFA Dünya Kupası F Grubu karşılaşmasında turnuvanın gizli favorilerinden İsveç, Tunus karşısında muazzam bir futbol ortaya koyarak sahadan 5-1 galip ayrıldı ve kupaya görkemli bir başlangıç yaptı.", time: "14 dk önce" },
-  { source: "Associated Press", badgeClass: "global", title: "🔥 RUSYA'DAN TÜRKİYE DUYURUSU: Putin'den Kritik Açıklama! 'Erdoğan Kilit Rol Oynuyor'", text: "Moskova (AP) — Rusya Devlet Başkanlığı Sözcüsü, küresel güvenlik koridorları ve siber enerji anlaşmaları süreçlerinde Cumhurbaşkanı Erdoğan ile Vladimir Putin arasındaki doğrudan diplomasinin küresel barış adına hayati bir denge unsuru olduğunu belirtti.", time: "32 dk önce" },
-  { source: "Sabah", badgeClass: "", title: "🚨 VİCDAN SIZLATAN GÖRÜNTÜ: Çanakkale Ormanına Dökülen Tonlarca Sağlam Sebze İsyan Ettirdi!", text: "Çanakkale — Fahiş fiyat ve piyasa manipülasyonu amacıyla tonlarca sağlam domates ve sebzenin Çanakkale'de ormanlık alana gizlice döküldüğünün ortaya çıkması üzerine Ticaret Bakanlığı ekipleri ve denetim kayyumları bölgede geniş çaplı adli soruşturma başlattı.", time: "45 dk önce" }
+  { source: "Sabah", badgeClass: "", title: "🚨 VİCDAN SIZLATAN GÖRÜNTÜ: Çanakkale Ormanına Dökülen Tonlarca Sağlam Sebze İsyan Ettirdi!", text: "Çanakkale — Fahiş fiyat ve piyasa manipülasyonu amacıyla tonlarca sağlam domates ve sebzenin Çanakkale'de ormanlık alana gizlice döküldüğünün ortaya çıkması üzerine Ticaret Bakanlığı ekipleri ve denetim kayyumları bölgede geniş çaplı adli soruşturma başlattı.", time: "45 dk önce" },
+  { source: "TRT Haber", badgeClass: "", title: "📉 ENFLASYON RAKAMLARI: TCMB'den Faiz Kararı Öncesi Önemli Değerlendirme", text: "Merkez Bankası yetkilileri, dezenflasyon sürecinin ikinci yarısında gıda ve hizmet sektörü kaynaklı katılıkların kırılmaya başladığını işaret etti.", time: "1 saat önce" }
 ];
 
 const apiKategoriMap = { 'bilim': 'technology', 'saglik': 'health', 'catisma': 'general', 'siyaset': 'general', 'turkdunyasi': 'general', 'tarih': 'general' };
@@ -642,7 +650,7 @@ async function gercekHaberGetir(katId) {
        return { baslik: secilen.title, metin: secilen.description, kaynak: secilen.source?.name };
     }
   } catch(e) { console.log("Lokal yedek devreye girdi."); }
-  return { baslik: simuleHaberler[katId]?.[0].baslik || "Siber Güvenlik Altyapısı", metin: simuleHaberler[katId]?.[0].metin || "Veri güvenliği entegrasyonu...", kaynak: 'TuranHaber İstihbarat' };
+  return { baslik: "Siber Güvenlik Altyapısı", metin: "Veri güvenliği entegrasyonu...", kaynak: 'TuranHaber İstihbarat' };
 }
 
 async function mansetleriYenile() {
@@ -681,6 +689,12 @@ async function mansetleriYenile() {
     yanListe.style.opacity = '1';
   }, 500);
 }
+
+const KATEGORILER = [
+  { id:'bilim', ad:'🔬 Bilim & Veri Mimarisi', renk:'linear-gradient(90deg,#1A3D7A,#4A82D0)', yazireng:'#1A3D7A' },
+  { id:'catisma', ad:'⚔️ Savaş & Siber Risk', renk:'linear-gradient(90deg,#7A1A1A,#C0392B)', yazireng:'#7A1A1A' },
+  { id:'saglik', ad:'💊 Tıp & Sağlık Teknolojisi', renk:'linear-gradient(90deg,#1A5C34,#40A064)', yazireng:'#1A5C34' }
+];
 
 async function otomatikYenile() {
   const alan = document.getElementById('oto-haber-alani');
@@ -760,13 +774,14 @@ function canliHaberleriCek() {
   }).catch(err => { console.log("Hata düzeltildi."); });
 }
 
+// ENSONHABER STİLİ ULUSAL SLIDER MOTORU
 async function sonDakikaBandiniGuncelle() {
   const wrapper = document.getElementById('ticker-slider');
   if(!wrapper) return;
   wrapper.innerHTML = '';
   let haberCount = 0;
 
-  ozelKureselHavuz.forEach(h => {
+  ozelUlusalHavuz.forEach(h => {
     const card = document.createElement('div');
     card.className = 'dev-haber-karti';
     card.innerHTML = `
@@ -833,6 +848,33 @@ function setupDragAndDropScroll() {
     const walk = (x - startX) * 2; 
     slider.scrollLeft = scrollLeft - walk;
   });
+}
+
+let seciliKat = null;
+function katSec(el, kat) {
+  document.querySelectorAll('.yz-kat').forEach(b => b.classList.remove('secili'));
+  el.classList.add('secili');
+  seciliKat = kat;
+  document.getElementById('yz-btn').disabled = false;
+  document.getElementById('yz-btn').innerHTML = 'Haber Çek ✦';
+}
+
+async function manuelHaberUret() {
+  if (!seciliKat) return;
+  const cikti = document.getElementById('yz-cikti');
+  const sp = document.getElementById('sp');
+  const btn = document.getElementById('yz-btn');
+  
+  btn.disabled = true;
+  if(sp) sp.style.display = 'block';
+  cikti.innerHTML = "Gerçek internet veri hatları analiz ediliyor...";
+  
+  const haber = await gercekHaberGetir(seciliKat);
+  cikti.innerHTML = `<strong>BAŞLIK:</strong> ${haber.baslik}<br><br>${haber.metin.replace(/\n/g, '<br>')}<br><br><em style="font-size:10px; opacity:0.7">Kaynak: ${haber.kaynak}</em>`;
+  
+  btn.disabled = false;
+  if(sp) sp.style.display = 'none';
+  btn.innerHTML = 'Yeniden Çek ✦';
 }
 
 window.addEventListener('load', () => {
