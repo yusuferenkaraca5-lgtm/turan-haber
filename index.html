@@ -38,8 +38,8 @@ nav{background:var(--lacivert);border-top:1px solid rgba(255,255,255,.06)}
 .ticker-bar{background:var(--kizil);padding:8px 0;overflow:hidden;position:relative;height:34px}
 .ticker-etiket{background:var(--koyu);color:#fff;font-size:11px;font-weight:600;letter-spacing:.08em;padding:0 16px;position:absolute;left:0;top:0;bottom:0;z-index:2;display:flex;align-items:center;white-space:nowrap}
 .ticker-icerik{display:flex;animation:ticker 60s linear infinite;padding-left:140px;white-space:nowrap;align-items:center;height:34px}
-.ticker-icerik span{color:#fff;font-size:12px;padding:0 28px;opacity:.9}
-.ticker-icerik span::after{content:'◆';margin-left:28px;opacity:.4;font-size:8px}
+.ticker-icerik span{color:#fff;font-size:12.5px;font-weight:500;padding:0 40px;opacity:0.95;display:inline-flex;align-items:center;cursor:pointer}
+.ticker-icerik span::after{content:'◆';margin-left:40px;color:var(--altin);opacity:0.7;font-size:10px}
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 main{max-width:1280px;margin:0 auto;padding:1.75rem 2rem}
@@ -82,7 +82,7 @@ main{max-width:1280px;margin:0 auto;padding:1.75rem 2rem}
 .mini-kart h4{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--lacivert);line-height:1.4;flex:1;margin-bottom:6px}
 .mini-kart .meta{font-size:11px;color:var(--ucuncul)}
 
-/* YENİ ÖZEL BÖLÜM: TÜRKİYE SİYASETİ */
+/* TÜRKİYE SİYASETİ VE MAKRO POLİTİKALAR BÖLÜMÜ */
 .turkiye-gundemi{background:linear-gradient(135deg, #7A1A1A 0%, #3D0D0D 100%);border-radius:10px;padding:1.75rem;margin-bottom:2rem;position:relative;overflow:hidden;scroll-margin-top:2rem}
 .turkiye-gundemi::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 90% 50%,rgba(255,255,255,.04) 0%,transparent 60%);pointer-events:none}
 .tr-ay-yildiz{position:absolute;right:2rem;top:50%;transform:translateY(-50%);opacity:.04;width:150px;height:150px}
@@ -107,7 +107,6 @@ main{max-width:1280px;margin:0 auto;padding:1.75rem 2rem}
 .oto-kart-kat{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:6px}
 .oto-kart h4{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--lacivert);line-height:1.4;margin-bottom:8px}
 .oto-kart-metin{font-size:12px;color:var(--ikincil);line-height:1.65;min-height:60px}
-.oto-kart-meta{font-size:11px;color:var(--ucuncul);margin-top:10px;padding-top:10px;border-top:.5px solid var(--cizgi);display:flex;justify-content:space-between;align-items:center}
 .oto-yukleniyor{display:flex;align-items:center;gap:8px;color:var(--ucuncul);font-size:12px;font-style:italic}
 .oto-spinner{width:12px;height:12px;border:2px solid var(--cizgi);border-top-color:var(--altin);border-radius:50%;animation:spin .7s linear infinite}
 .yaziliyor-kursor{display:inline-block;width:2px;height:14px;background:var(--lacivert);vertical-align:middle;margin-left:2px;animation:kursor .8s steps(1) infinite}
@@ -135,7 +134,7 @@ main{max-width:1280px;margin:0 auto;padding:1.75rem 2rem}
 .e-bilim{background:#E8F0FB;color:#1A3D7A}
 .e-siyaset{background:#EDE8F5;color:#3A2070}
 .e-saglik{background:#E8F5EE;color:#1A5C34}
-.e-catisma">background:#FBEBEB;color:#7A1A1A}
+.e-catisma{background:#FBEBEB;color:#7A1A1A}
 .e-turan{background:var(--altin-acik);color:#7A5A10}
 .e-tarih{background:#F0EBF8;color:#4A207A}
 .haber-satir h3{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--lacivert);line-height:1.4;margin-bottom:5px}
@@ -290,20 +289,15 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
   </div>
 </nav>
 
-<div class="ticker-bar">
+<div class="ticker-bar" onmouseover="document.getElementById('ticker-icerik').style.animationPlayState='paused'" onmouseout="document.getElementById('ticker-icerik').style.animationPlayState='running'">
   <div class="ticker-etiket">SON DAKİKA</div>
   <div class="ticker-icerik" id="ticker-icerik">
-    <span>TBMM Dijital Mecralar Komisyonu yeni siber egemenlik ve veri koruma kanun teklifini gündeme aldı</span>
-    <span>Türk Devletleri Teşkilatı Semerkand'da kritik dijital altyapı protokolünü imzaladı</span>
-    <span>Ulaştırma Bakanlığı, stratejik fiber optik omurga genişletme projelerinde yeni takvimi açıkladı</span>
-    <span>Kuantum şifreleme algoritmalarında küresel bankacılık konsorsiyumundan yeni güvenlik standardı</span>
-    <span>Hazar Transit Koridoru üzerinden ilk tam otomasyonlu lojistik sevkiyat başarıyla tamamlandı</span>
+    <span>Canlı ağdan en önemli son dakika gelişmeleri yükleniyor...</span>
   </div>
 </div>
 
 <main>
 
-  <!-- İSTATİSTİKLER -->
   <div class="istatistik-satiri">
     <div class="istat-kart"><div class="istat-sayi">6</div><div class="istat-etiket">Türk Devleti</div></div>
     <div class="istat-kart"><div class="istat-sayi">250M+</div><div class="istat-etiket">Türk Dilli Nüfus</div></div>
@@ -313,7 +307,6 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
     <div class="istat-kart"><div class="istat-sayi">✦ Canlı</div><div class="istat-etiket">İnternet Ağı</div></div>
   </div>
 
-  <!-- ÖNCÜ HABERLER -->
   <div class="bolum-baslik">
     <div class="bolum-sembol">★</div>
     <h2>Manşet Haberler</h2>
@@ -334,7 +327,6 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
     </div>
   </div>
 
-  <!-- BÜYÜTÜLEN YENİ BÖLÜM: TÜRKİYE GÜNDEMİ & MAKRO POLİTİKALAR -->
   <div class="turkiye-gundemi" id="turkiye">
     <svg class="tr-ay-yildiz" viewBox="0 0 100 100" fill="none">
       <path d="M40,20 A25,25 0 1,0 70,65 A30,30 0 1,1 40,20 Z" fill="white"/>
@@ -361,7 +353,6 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
     </div>
   </div>
 
-  <!-- OTOMATİK YZ HABER AKIŞ ALANI -->
   <div class="bolum-baslik" style="margin-top:2rem">
     <div class="bolum-sembol">⚡</div>
     <h2>Otomatik YZ Haber Akışı</h2>
@@ -373,13 +364,11 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
     <div class="oto-kart"><div class="oto-kart-icerik"><h4>Veriler yükleniyor...</h4></div></div>
   </div>
 
-  <!-- CANLI DÜNYA GÜNDEMİ -->
   <div class="bolum-baslik">
     <div class="bolum-sembol">🌐</div><h2>Dünya Gündemi & Makro Sektörler (Canlı)</h2>
   </div>
   <div class="dunya-grid" id="canli-haber-alani"></div>
 
-  <!-- ANA 3 KOLON -->
   <div class="uc-kolon">
     <div>
       <div class="bolum-baslik" id="bilim">
@@ -416,7 +405,6 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
       </div>
     </div>
 
-    <!-- KENAR ÇUBUĞU -->
     <div class="kenar">
       <div class="yz-kutu">
         <div class="yz-baslik-row">
@@ -457,7 +445,6 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
     </div>
   </div>
 
-  <!-- TÜRK DÜNYASI -->
   <div class="turk-dunyasi" id="turkdunyasi">
     <svg class="turk-motif" viewBox="0 0 160 160" fill="none">
       <polygon points="80,8 104,24 128,24 140,44 140,72 128,92 104,104 80,112 56,104 32,92 20,72 20,44 32,24 56,24" stroke="white" stroke-width="2" fill="none"/>
@@ -484,7 +471,6 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
     </div>
   </div>
 
-  <!-- TARİH & KÜLTÜR -->
   <div class="bolum-baslik" id="tarih">
     <div class="bolum-sembol">🕌</div><h2>Tarih & Kültür</h2>
     <a href="#" class="tum-haberler">Arşive gir →</a>
@@ -516,7 +502,6 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
   </div>
 </footer>
 
-<!-- MAKALE OKUMA MODAL -->
 <div class="modal-arkaplan" id="makale-modal" onclick="if(event.target===this) modalKapat()">
   <div class="modal-kutu">
     <button class="modal-kapat" onclick="modalKapat()">✖</button>
@@ -573,6 +558,35 @@ const simuleHaberler = {
   turkdunyasi: [{ baslik: "Türk Devletleri Dijital Altyapı Fonu Faaliyete Geçti", metin: "Üye ülkeler arasında ortak bulut altyapısı, sınır ötesi veri hatları ve teknopark entegrasyonlarına öncelikli hibe sağlanacağı açıklandı." }],
   tarih: [{ baslik: "İpek Yolu Lojistik Ağlarında Yeni Arkeolojik Bulgular", metin: "Kadim ticaret yolları üzerinde yapılan kazılarda, 9. yüzyıla ait veri ve kayıt tutma sistemlerine benzer mühür ve idari tablet arşivleri keşfedildi." }]
 };
+
+// GENİŞLETİLMİŞ ÖZEL SON DAKİKA HABER HAVUZU
+const ozelSonDakikaHavuzu = [
+  { 
+    baslik: "🔥 KRİTİK EŞİK AŞILDI: Küresel Finans Ağlarında Kuantum Siber Defans Paketi Devreye Alındı!", 
+    metin: "Dünyanın en büyük 10 yatırım bankası, mevcut şifreleme sistemlerini bypass edebilecek 1.000 kübitlik kuantum işlemcilere karşı 'Dağıtık Post-Kuantum Kriptografi' protokolünü başlattı. Sektör temsilcileri, bu hamlenin siber veri egemenliği savaşlarında bir dönüm noktası olduğunu belirtiyor.",
+    kaynak: "TuranHaber Teknoloji Finansı"
+  },
+  { 
+    baslik: "🚨 STRATEJİK HAMLE: Hazar Geçişli 'Akıllı Orta Koridor' Projesinde Gümrük Süreçleri Tamamen YZ Otomasyonuna Devredildi!", 
+    metin: "Türkiye, Azerbaycan ve Kazakistan lojistik ağlarını birbirine bağlayan transit koridorda yeni bir yönetim bilişim sistemi (MIS) mimarisi devreye girdi. Yapay zeka tabanlı veri analitiği sayesinde tır ve konteyner geçiş süreleri 48 saatten 12 dakikaya düşürülerek küresel tedarik zincirinde yeni bir rekor kırıldı.",
+    kaynak: "TuranHaber Lojistik & Strateji"
+  },
+  { 
+    baslik: "💻 YERLİ YAZILIMDA DEVRİM: Türkiye Menşeili Kurumsal ERP Sistemleri Kamu Altyapılarında Zorunlu Hale Geliyor!", 
+    metin: "TBMM Dijital Mecralar Komisyonu'ndan sızan kulis bilgilerine göre, stratejik altyapı ihale süreçlerini yöneten yüklenici ve müteahhit firmaların, dış kaynaklı bulut servisleri yerine tamamen yerli ve lokal sunucularda çalışan veri yönetim araçlarını kullanmasını zorunlu kılan yasa paketi haftaya meclise geliyor.",
+    kaynak: "Ankara Kulis Grubu"
+  },
+  { 
+    baslik: "🌍 TÜRK DEVLETLERİ TEŞKİLATI: Semerkand Veri Merkezi Ortak Siber Kalkan Yazılımının İlk Canlı Testi Başarıyla Tamamlandı!", 
+    metin: "Üye altı devletin sınır ötesi veri hatlarını hedef alan senaryolu siber saldırı operasyonu, dağıtık yapay zeka ajanları tarafından milisaniyeler içinde bloke edildi. Ortak dijital egemenlik yolunda atılan bu adım, bölgedeki makro teknoloji yatırımlarının güvenliğini garanti altına alıyor.",
+    kaynak: "TuranHaber Savunma Analiz"
+  },
+  { 
+    baslik: "📊 KÜRESEL TEKNOLOJİ SAVAŞLARI: Silikon Vadisi Destekli LLM Modellerine Karşı Avrupa ve Asya'da Lokal Veri Milliyetçiliği Dalgası!", 
+    metin: "Büyük veri setlerinin sınır ötesine kontrolsüz çıkışını engellemek isteyen regülasyon kurumları, çok dilli ve yerel sunucularda barındırılan açık kaynak yapay zeka modellerine devasa vergi muafiyetleri ve teşvikler getiren yeni regülasyon paketlerini sırayla ilan ediyor.",
+    kaynak: "Makro Ekonomi Bülteni"
+  }
+];
 
 const apiKategoriMap = { 'bilim': 'technology', 'saglik': 'health', 'catisma': 'general', 'siyaset': 'general', 'turkdunyasi': 'general', 'tarih': 'general' };
 let uretilenHaberSayisi = 0;
@@ -712,6 +726,49 @@ function canliHaberleriCek() {
   });
 }
 
+// DİNAMİK VE GENİŞLETİLMİŞ SON DAKİKA BANDI AKTİF GÜNCELLEME FONKSİYONU
+async function sonDakikaBandiniGuncelle() {
+  const tickerIcerik = document.getElementById('ticker-icerik');
+  if(!tickerIcerik) return;
+  
+  tickerIcerik.innerHTML = ''; 
+  let haberSayisi = 0;
+
+  try {
+    const res = await fetch(`https://saurav.tech/NewsAPI/top-headlines/category/general/tr.json`);
+    const data = await res.json();
+    
+    if(data.articles && data.articles.length > 0) {
+      data.articles.slice(0, 5).forEach(haber => {
+        if(haber.title && haber.description) {
+          const span = document.createElement('span');
+          span.innerHTML = `🔴 <strong style="color:var(--altin)">CANLI:</strong> ${haber.title}`;
+          span.onclick = () => makaleAc('SON DAKİKA', haber.title, haber.description, haber.source?.name || 'Canlı Ağ');
+          tickerIcerik.appendChild(span);
+          haberSayisi++;
+        }
+      });
+    }
+  } catch(e) { 
+    console.log("Canlı haber API akışında gecikme, özel stratejik havuz devrede."); 
+  }
+
+  ozelSonDakikaHavuzu.forEach(haber => {
+    const span = document.createElement('span');
+    span.innerHTML = `⚡ <strong style="color:#fff">${haber.baslik}</strong>`;
+    span.onclick = () => makaleAc('STRATEJİK SON DAKİKA', haber.baslik, haber.metin, haber.kaynak);
+    tickerIcerik.appendChild(span);
+    haberSayisi++;
+  });
+
+  const mevcutHaberler = tickerIcerik.innerHTML;
+  tickerIcerik.innerHTML = mevcutHaberler + mevcutHaberler;
+  
+  for(let i = 0; i < haberSayisi; i++) {
+    haberSayaciniArtir();
+  }
+}
+
 // KENAR ÇUBUĞU YZ MOTORU
 let seciliKat = null;
 function katSec(el, kat) {
@@ -740,14 +797,18 @@ async function manuelHaberUret() {
   btn.innerHTML = 'Yeniden Çek ✦';
 }
 
+// SAYFA YÜKLENDİĞİNDE ÇALIŞACAK MOTORLAR
 window.addEventListener('load', () => {
   mansetleriYenile(); 
   otomatikYenile();   
   canliHaberleriCek(); 
+  sonDakikaBandiniGuncelle();
   
+  // 10 Dakikada bir (600.000 ms) arka planda verileri tazeleme döngüsü
   setInterval(mansetleriYenile, 600000); 
   setInterval(otomatikYenile, 600000); 
   setInterval(canliHaberleriCek, 600000); 
+  setInterval(sonDakikaBandiniGuncelle, 600000);
 });
 </script>
 </body>
