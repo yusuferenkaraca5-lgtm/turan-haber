@@ -35,7 +35,7 @@ nav{background:var(--lacivert);border-top:1px solid rgba(255,255,255,.06)}
 .nav-link:hover{color:#fff;background:rgba(255,255,255,.04)}
 .nav-link.aktif{color:var(--altin);border-bottom-color:var(--altin)}
 
-/* DEVASA ANA SAYFA JEOFİZİKEL SAVAŞ & SON DAKİKA ALANI */
+/* ENSONHABER STİLİ STRATEJİK MANŞET SLIDER ALANI */
 .dev-son-dakika-alani {margin-bottom: 2rem; background: #fff; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--cizgi); box-shadow: 0 4px 20px rgba(0,0,0,0.02)}
 .dev-slider-wrapper {display: flex; gap: 1rem; overflow-x: auto; overflow-y: hidden; padding-bottom: 10px; scrollbar-width: thin; scrollbar-color: var(--kizil) transparent; cursor: grab; user-select: none; -webkit-overflow-scrolling: touch}
 .dev-slider-wrapper::-webkit-scrollbar {height: 5px}
@@ -92,7 +92,7 @@ main{max-width:1280px;margin:0 auto;padding:1.75rem 2rem}
 .mini-kart h4{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--lacivert);line-height:1.4;flex:1;margin-bottom:6px}
 .mini-kart .meta{font-size:11px;color:var(--ucuncul)}
 
-/* TÜRKİYE SİYASETİ VE MAKRO POLİTİKALAR BÖLÜMÜ */
+/* TÜRKİYE SİYASETİ BÖLÜMÜ */
 .turkiye-gundemi{background:linear-gradient(135deg, #7A1A1A 0%, #3D0D0D 100%);border-radius:10px;padding:1.75rem;margin-bottom:2rem;position:relative;overflow:hidden;scroll-margin-top:2rem}
 .turkiye-gundemi::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 90% 50%,rgba(255,255,255,.04) 0%,transparent 60%);pointer-events:none}
 .tr-ay-yildiz{position:absolute;right:2rem;top:50%;transform:translateY(-50%);opacity:.04;width:150px;height:150px}
@@ -109,6 +109,7 @@ main{max-width:1280px;margin:0 auto;padding:1.75rem 2rem}
 .tr-kart h4{font-size:12.5px;font-weight:500;color:rgba(255,255,255,.9);line-height:1.45;margin-bottom:6px}
 .tr-kart .meta{font-size:11px;color:rgba(255,255,255,.4)}
 
+/* OTOMATİK YZ HABER AKIŞI ALANI */
 .oto-haber-alani{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem}
 .oto-kart{background:#fff;border:.5px solid var(--cizgi);border-radius:8px;overflow:hidden;transition:transform .15s,box-shadow .15s;position:relative;cursor:pointer;}
 .oto-kart:hover{transform:translateY(-2px);box-shadow:0 4px 18px rgba(0,0,0,.07)}
@@ -121,6 +122,7 @@ main{max-width:1280px;margin:0 auto;padding:1.75rem 2rem}
 .oto-spinner{width:12px;height:12px;border:2px solid var(--cizgi);border-top-color:var(--altin);border-radius:50%;animation:spin .7s linear infinite}
 .yaziliyor-kursor{display:inline-block;width:2px;height:14px;background:var(--lacivert);vertical-align:middle;margin-left:2px;animation:kursor .8s steps(1) infinite}
 
+/* DÜNYA GÜNDEMİ VE MAKRO SEKTÖRLER GRİD YAPISI */
 .dunya-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem}
 .dunya-kart{background:#fff;border:.5px solid var(--cizgi);border-radius:8px;overflow:hidden;cursor:pointer;transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column;}
 .dunya-kart:hover{transform:translateY(-2px);box-shadow:0 4px 18px rgba(0,0,0,.07)}
@@ -350,7 +352,7 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
     </svg>
     <div class="tr-baslik">🔴 Türkiye Gündemi & Makro Politikalar</div>
     <div class="tr-grid">
-      <div class="tr-kart-ana" onclick="makaleAc('TÜRKİYE SİYASETİ', 'Ankara Kulisleri Hareketli: Devlet Zirvesinden Küresel Mutabakat ve Makro İstikrar Açıklamaları', 'Ankara — Cumhurbaşkanı Yardımcısı Cevdet Yılmaz, ABD ile İran arasında varılan stratejik mutabakat ve Hürmüz Boğazı\'nın yeniden açılma kararına ilişkin resmi bir açıklama yaptı. Yılmaz, \'Bu tarihi uzlaşı küresel ekonomik istikrarın ve bölgesel tedarik zincirlerinin korunması bakımından son derece memnuniyet vericidir. Türkiye\'nin rasyonel makroekonomik adımları ve düşen risk primi (CDS) ile sitemiz yabancı yatırımların ana odağı olmaya devam edecektir\' dedi. TBMM Başkanı Numan Kurtulmuş da meclis oturumunda anlaşmanın korunmasının küresel barış adına kritik bir eşik olduğunu vurguladı.', 'Ankara / Kulis')">
+      <div class="tr-kart-ana" onclick="makaleAc('TÜRKİYE SİYASETİ', 'Ankara Kulisleri Hareketli: Devlet Zirvesinden Küresel Mutabakat ve Makro İstikrar Açıklamaları', 'Ankara — Cumhurbaşkanı Yardımcısı Cevdet Yılmaz, ABD ile İran arasında varılan stratejik mutabakat ve Hürmüz Boğazı\'nın yeniden açılma kararına ilişkin resmi bir açıklama yaptı. Yılmaz, \'Bu tarihi uzlaşı küresel ekonomik istikrarın ve bölgesel tedarik zincirlerinin korunması bakımından son derece memnuniyet vericidir. Türkiye\'nin rasyonel makroekonomik adımları ve düşen risk primi (CDS) ile ülkemiz yabancı yatırımların ana odağı olmaya devam edecektir\' dedi. TBMM Başkanı Numan Kurtulmuş da meclis oturumunda anlaşmanın korunmasının küresel barış adına kritik bir eşik olduğunu vurguladı.', 'Ankara / Kulis')">
         <span class="kart-etiket" style="background:var(--altin); color:#fff">Sıcak Gelişme</span>
         <h3>Devlet Zirvesinden Küresel Mutabakat ve CDS Açıklaması</h3>
         <p>Ankara kulislerinde gözler küresel yumuşama hamlelerine çevrildi. Cumhurbaşkanı Yardımcısı Cevdet Yılmaz ve TBMM Başkanı Numan Kurtulmuş, makro istikrar ve siber güvenliğin korunmasına dair stratejik mesajlar verdi.</p>
@@ -363,13 +365,13 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
       </div>
       <div class="tr-kart" onclick="makaleAc('TÜRKİYE EKONOMİ', 'Makro Veriler Açıklandı: Sanayi Üretim Endeksinde Güçlü Yükseliş, CDS 225 Puan Seviyesinde', 'Ankara — Türkiye İstatistik Kurumu (TÜİK) nisan ayı sanayi üretim, inşaat maliyet endeksleri ve ücretli çalışan istatistiklerini yayınladı. Sanayi üretiminde kaydedilen güçlü artış reel sektöre derin bir nefes aldırırken, uluslararası piyasalarda Türkiye\'nin risk primi (CDS) 225 baz puana kadar geriledi. Hazine ve Maliye Bakanlığı ise devlet tahvillerinin yeniden ihracı için bugün iki kritik hamleye imza atıyor.', 'TÜİK / Hazine Raporu')">
         <div class="alt-etiket">📊 Makro Ekonomi</div>
-        <h4>Sanayi Üretiminde Güçlü Artış: CDS 225 Baz Puana Geriledi</h4>
+        <h4>Kurumsal Yönetim Sistemlerinde Yerli Yazılım Dönemi Hızlandı</h4>
         <div class="meta">4 sa önce · ✦ TÜİK Verisi</div>
       </div>
     </div>
   </div>
 
-  <!-- OTOMATİK YZ HABER AKIŞ ALANI -->
+  <!-- OTOMATİK YZ HABER AKIŞI ALANI -->
   <div class="bolum-baslik" style="margin-top:2rem">
     <div class="bolum-sembol">⚡</div>
     <h2>Otomatik YZ Haber Akışı</h2>
@@ -454,7 +456,7 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
       
       <div class="tarih-kutu">
         <div class="tarih-kbaslik">🕌 Bugün Tarihte</div>
-        <div class="tarih-madde" onclick="makaleAc('TARİH', 'Orhun Yazıtları\'nın Keşfi ve Türk Dil Yapısı', '8. yüzyılda Bilge Kağan ve Kül Tigin adına dikilen anıtlar, Türk devlet felsefesinin ve stratejik yönetim ilkelerinin taşa kazınmış ilk belgeleridir.', 'Tarih Arşivi')"><div class="donem">Göktürk · MS 8. YY</div><h5>Orhun Yazıtları'nın Keşfi ve Stratejik Önemi</h5></div>
+        <div class="tarih-madde" onclick="makaleAc('TARİH', 'Orhun Yazıtları\'nın Keşfi ve Türk Dil Yapısı', '8. yüzyılda Bilge Kağan og Kül Tigin adına dikilen anıtlar, Türk devlet felsefesinin ve siber yönetim ilkelerinin taşa kazınmış ilk belgeleridir.', 'Tarih Arşivi')"><div class="donem">Göktürk · MS 8. YY</div><h5>Orhun Yazıtları'nın Keşfi ve Stratejik Önemi</h5></div>
         <div class="tarih-madde" onclick="makaleAc('TARİH', 'Babür Şah\'ın Hatıratı: Babürname\'nin Kültürel Etkisi', 'Zahirüddin Muhammed Babür Şah\'ın kaleme aldığı eser, askeri taktiklerin yanı sıra Orta Asya ve Hindistan coğrafyasının makro-sosyal yapısını aktaran öncü bir belgedir.', 'Tarih Arşivi')"><div class="donem">Babürlüler · 16. YY</div><h5>Babür Şah'ın Hatıratı: Babürname ve Devlet Düzeni</h5></div>
       </div>
       
@@ -498,7 +500,7 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
     <a href="#" class="tum-haberler">Arşive gir →</a>
   </div>
   <div class="tarih-grid">
-    <div class="tarih-makale" onclick="makaleAc('TARİH', 'Orhun Yazıtları: Taşa Kazınan Devlet Geleneği ve Strateji', 'MS 8. yüzyılda dikilen bu yazıtlar yalnızca dil anıtı değil; Türk devlet teşkilatlanmasının, yönetim felsefesinin ve halkla olan diplomatik bağların ilk yazılı beyannamesidir.', 'Tarih Araştırmaları')"><div class="tm-serit"></div><div class="tm-icerik"><span class="donem-badge">Göktürkler</span><h4>Orhun Yazıtları: Taşa Kazınan Devlet Geleneği ve Strateji</h4><p>MS 8. yüzyılda dikilen bu yazıtlar yalnızca dil anıtı değil; Türk devlet teşkilatlanmasının, yönetim felsefesinin ve halkla olan diplomatik bağların ilk yazılı beyannamesidir.</p><div class="okuma">Makaleyi oku →</div></div></div>
+    <div class="tarih-makale" onclick="makaleAc('TARİH', 'Orhun Yazıtları: Taşa Kazınan Devlet Geleneği og Strateji', 'MS 8. yüzyılda dikilen bu yazıtlar yalnızca dil anıtı değil; Türk devlet teşkilatlanmasının, yönetim felsefesinin ve halkla olan diplomatik bağların ilk yazılı beyannamesidir.', 'Tarih Araştırmaları')"><div class="tm-serit"></div><div class="tm-icerik"><span class="donem-badge">Göktürkler</span><h4>Orhun Yazıtları: Taşa Kazınan Devlet Geleneği ve Strateji</h4><p>MS 8. yüzyılda dikilen bu yazıtlar yalnızca dil anıtı değil; Türk devlet teşkilatlanmasının, yönetim felsefesinin ve halkla olan diplomatik bağların ilk yazılı beyannamesidir.</p><div class="okuma">Makaleyi oku →</div></div></div>
     <div class="tarih-makale" onclick="makaleAc('TARİH', 'Büyük Selçuklu Mimarisindeki Geometrik Algoritmalar', 'Selçuklu dönemi eserleri salt estetik değil, yüksek matematiksel ve mimari bir zekanın ürünüdür. Yapılardaki simetrik desenler hesaplamalı analize ışık tutuyor.', 'Kültür Raporu')"><div class="tm-serit"></div><div class="tm-icerik"><span class="donem-badge">Selçuklular</span><h4>Büyük Selçuklu Mimarisindeki Geometrik Algoritmalar</h4><p>Selçuklu dönemi eserleri salt estetik değil, yüksek matematiksel ve mimari bir zekanın ürünüdür. Yapılardaki simetrik desenler hesaplamalı analize ışık tutuyor.</p><div class="okuma">Makaleyi oku →</div></div></div>
     <div class="tarih-makale" onclick="makaleAc('TARİH', 'Nadir Şah Dönemi Askeri Lojistik ve Sefer Stratejileri', '18. yüzyılın en önemli askeri dehalarından Nadir Şah\'ın dinamik ordu düzeni ve fetih hareketlerindeki ikmal zinciri yönetimi modern askeri tarihçiler tarafından inceleniyor.', 'Askeri Tarih')"><div class="tm-serit"></div><div class="tm-icerik"><span class="donem-badge">Avşarlar</span><h4>Nadir Şah Dönemi Askeri Lojistik ve Sefer Stratejileri</h4><p>18. yüzyılın en önemli askeri dehalarından Nadir Şah'ın dinamik ordu düzeni ve fetih hareketlerindeki ikmal zinciri yönetimi modern askeri tarihçiler tarafından inceleniyor.</p><div class="okuma">Makaleyi oku →</div></div></div>
   </div>
@@ -572,7 +574,9 @@ function modalKapat() {
   }, 300);
 }
 
-// YEDEK SİMÜLASYON HAVUZU
+// ─────────────────────────────────────────
+// YEDEK VE STATİK HAVUZLAR
+// ─────────────────────────────────────────
 const simuleHaberler = {
   bilim: [{ baslik: "Kurumsal LLM Entegrasyonlarında Açık Kaynak Dönemi", metin: "Büyük veri ve yönetim bilişim sistemleri mimarilerinde veri egemenliğini korumak isteyen kuruluşlar, lokal altyapılarda çalışan açık kaynak yapay zeka entegrasyonlarını hızlandırdı.\n\nBu dönüşüm, bulut bağımlılığını azaltırken operasyonel veri güvenliğini üst seviyeye taşıyor." }],
   catisma: [{ baslik: "Tedarik Zinciri Koridorlarında Siber Direniş Hatları", metin: "Küresel lojistik ağlar üzerinde kritik veri aktarım noktaları ve liman yönetim sistemleri siber savunma kalkanlarıyla tahkim ediliyor." }],
@@ -582,12 +586,11 @@ const simuleHaberler = {
   tarih: [{ baslik: "İpek Yolu Lojistik Ağlarında Yeni Arkeolojik Bulgular", metin: "Kadim ticaret yolları üzerinde yapılan kazılarda, 9. yüzyıla ait veri ve kayıt tutma sistemlerine benzer mühür arşivleri keşfedildi." }]
 };
 
-// EN ÇOK MERAK EDİLEN KÜRESEL JEOFİZİKEL SAVAŞ & MAKRO SİYASET HAVUZU
 const ozelKureselHavuz = [
-  { source: "Reuters", badgeClass: "global", title: "🚨 ABD VE İRAN ANLAŞTI: Hürmüz Boğazı Yeniden Ticari Trafiğe Açılıyor, Piyasalar Rahatladı!", text: "Cenevre (Reuters) — Amerika Birleşik Devletleri ile İran İslam Cumhuriyeti arasında yürütülen gizli nükleer ve jeopolitik müzakerelerde tarihi bir geçici mutabakata varıldığı açıklandı. Anlaşma uyarınca Hürmüz Boğazı üzerindeki askeri ve siber abluka kaldırılarak küresel petrol tanker geçişleri güvenli koridora alınıyor. Kararın ardından ham petrol fiyatlarında sert düşüş kaydedilirken, küresel borsa endeksleri barış havasıyla hızla yükselişe geçti.", time: "Şimdi" },
-  { source: "Associated Press", badgeClass: "global", title: "🔥 ATEŞKESE RAĞMEN GERGİNLİK: İsrail Ordusu Lübnan Sınır Hattı ve Gazze'ye Yeni Hava Operasyonları Düzenledi", text: "Kudüs (AP) — Geçtiğimiz günlerde ilan edilen diplomatik ateşkes ve ABD-İran mutabakatına rağmen, İsrail Hava Kuvvetleri (IAF) Lübnan'ın güneyindeki belirli lojistik sunucu ağlarını ve Gazze içerisindeki bazı tünel mevzilerini hedef alan yeni bombardıman dalgaları gerçekleştirdi. İsrail hükümet sözcülüğü, tehdit algılanan operasyonel sahalarda tam saha pres stratejisinin askeri bir zorunluluk olarak devam edeceğini duyurdu.", time: "14 dk önce" },
-  { source: "BBC World", badgeClass: "global", title: "💥 SUDAN İÇ SAVAŞI: Oltu ve Doğu Afrika Koridorlarında Drone Yoğunluğu Kritik Seviyede", text: "Hartum (BBC) — Sudan'da ordu birlikleri ile paramiliter Hızlı Destek Kuvvetleri (RSF) arasında stratejik ikmal hatlarını ele geçirmek için yürütülen otonom İHA savaşları sivil göç trajedisini derinleştiriyor. BM İnsan Hakları Komisyonu, sadece Sudan genelinde 11 milyondan fazla insanın lojistik ve gıda tedarik zincirlerinin çökmesi nedeniyle akut açlık riskiyle yüz yüze kaldığını açıkladı.", time: "32 dk önce" },
-  { source: "Bloomberg", badgeClass: "global", title: "📉 MAKRO EKONOMİ SAVAŞLARI: Pakistan-Afganistan Hava Sahası Kısıtlamaları Asya Uçuş Maliyetlerini İki Katına Çıkardı", text: "Londra (Bloomberg) — Güney Asya'daki sınır gerilimleri nedeniyle kapanan hava sahaları havayolu şirketlerini bypass rotalara zorluyor. Küresel tedarik lojistiğinde artan navlun maliyetleri, Fed'in (Federal Rezerv) haziran ayı faiz ve para politikası kararları öncesinde makro piyasalarda enflasyonist baskıyı yeniden tırmandırdı.", time: "55 dk önce" }
+  { source: "Reuters", badgeClass: "global", title: "🚨 ABD VE İRAN MUTABAKATI: Hürmüz Boğazı Yeniden Ticari Trafiğe Açılıyor, Piyasalar Rahatladı!", text: "Cenevre — Amerika Birleşik Devletleri ile İran İslam Cumhuriyeti arasında yürütülen gizli nükleer ve jeopolitik müzakerelerde tarihi bir geçici mutabakata varıldığı açıklandı. Anlaşma uyarınca Hürmüz Boğazı üzerindeki siber ve askeri abluka kaldırılarak küresel petrol tanker geçişleri güvenli koridora alınıyor. Kararın ardından ham petrol fiyatlarında sert düşüş kaydedilirken, küresel borsa endeksleri barış havasıyla hızla yükselişe geçti.", time: "Şimdi" },
+  { source: "Associated Press", badgeClass: "global", title: "🔥 ATEŞKESE RAĞMEN GERGİNLİK: İsrail Ordusu Lübnan Sınır Hattı ve Gazze'ye Yeni Hava Operasyonları Düzenledi", text: "Kudüs — Geçtiğimiz günlerde ilan edilen diplomatik ateşkes ve ABD-İran mutabakatına rağmen, İsrail Hava Kuvvetleri (IAF) Lübnan'ın güneyindeki belirli lojistik sunucu ağlarını ve Gazze içerisindeki bazı tünel mevzilerini hedef alan yeni bombardıman dalgaları gerçekleştirdi. İsrail hükümet sözcülüğü, tehdit algılanan operasyonel sahalarda tam saha pres stratejisinin askeri bir zorunluluk olarak devam edeceğini duyurdu.", time: "14 dk önce" },
+  { source: "BBC World", badgeClass: "global", title: "💥 SUDAN İÇ SAVAŞI: Oltu ve Doğu Afrika Koridorlarında Drone Yoğunluğu Kritik Seviyede", text: "Hartum — Sudan'da ordu birlikleri ile paramiliter Hızlı Destek Kuvvetleri (RSF) arasında stratejik ikmal hatlarını ele geçirmek için yürütülen otonom İHA savaşları sivil göç trajedisini derinleştiriyor. BM İnsan Hakları Komisyonu, sadece Sudan genelinde 11 milyondan fazla insanın lojistik ve gıda tedarik zincirlerinin çökmesi nedeniyle akut açlık riskiyle yüz yüze kaldığını açıkladı.", time: "32 dk önce" },
+  { source: "Bloomberg", badgeClass: "global", title: "📉 MAKRO EKONOMİ SAVAŞLARI: Elon Musk Dünyanın İlk Trilyoneri Oldu, Tesla ve SpaceX Borsada Rekor Kırdı", text: "New York — SpaceX hisselerinin halka arz niteliğindeki ilk işlem gününde yüzde 11,85 yükselerek 151 dolara ulaşmasıyla birlikte, şirketin kurucusu Elon Musk resmi olarak dünya tarihinin ilk trilyoneri unvanını kazandı. Küresel piyasalar teknoloji hisselerinin öncülüğünde büyük bir ralli başlattı.", time: "55 dk önce" }
 ];
 
 const apiKategoriMap = { 'bilim': 'technology', 'saglik': 'health', 'catisma': 'general', 'siyaset': 'general', 'turkdunyasi': 'general', 'tarih': 'general' };
@@ -598,7 +601,9 @@ function haberSayaciniArtir() {
   document.getElementById('haber-sayisi').textContent = uretilenHaberSayisi;
 }
 
-// GERÇEK HABER ÇEKME MİMARİSİ
+// ─────────────────────────────────────────
+// DİNAMİK VERİ ÇEKME MOTORLARI (TAM KORUMALI)
+// ─────────────────────────────────────────
 async function gercekHaberGetir(katId) {
   const apiKat = apiKategoriMap[katId] || 'general';
   try {
@@ -609,49 +614,55 @@ async function gercekHaberGetir(katId) {
        const secilen = gecerli[Math.floor(Math.random() * Math.min(gecerli.length, 10))];
        return { baslik: secilen.title, metin: secilen.description, kaynak: secilen.source?.name };
     }
-  } catch(e) { console.log("API hatası, yedeğe dönülüyor..."); }
+  } catch(e) { console.log("API bağlantısı sağlanamadı, lokal havuz devrede."); }
   const havuz = simuleHaberler[katId] || simuleHaberler['bilim'];
   const yHaber = havuz[Math.floor(Math.random() * havuz.length)];
-  return { baslik: yHaber.baslik, metin: yHaber.metin, kaynak: 'TuranHaber Analiz' };
+  return { baslik: yHaber.baslik, metin: yHaber.metin, kaynak: 'TuranHaber Analiz Merkez' };
 }
 
 async function mansetleriYenile() {
   const buyukKart = document.getElementById('manset-buyuk');
   const yanListe = document.getElementById('manset-kucuk');
+  if(!buyukKart || !yanListe) return;
 
-  if(buyukKart && yanListe) {
-    buyukKart.style.opacity = '0';
-    yanListe.style.opacity = '0';
+  buyukKart.style.opacity = '0';
+  yanListe.style.opacity = '0';
 
-    const buyukHaber = await gercekHaberGetir('siyaset');
-    const hBilim = await gercekHaberGetir('bilim');
-    const hCatisma = await gercekHaberGetir('catisma');
-    const hSaglik = await gercekHaberGetir('saglik');
-    const hTuran = await gercekHaberGetir('turkdunyasi');
+  const buyukHaber = await gercekHaberGetir('siyaset');
+  const hBilim = await gercekHaberGetir('bilim');
+  const hCatisma = await gercekHaberGetir('catisma');
+  const hSaglik = await gercekHaberGetir('saglik');
+  const hTuran = await gercekHaberGetir('turkdunyasi');
 
-    setTimeout(() => {
-      buyukKart.innerHTML = `
-        <span class="kart-etiket et-oncu">⚡ Öncü</span>
-        <h3>${buyukHaber.baslik}</h3>
-        <p>${buyukHaber.metin.substring(0, 140)}...</p>
-        <div class="meta"><span class="yaz-badge">✦ Canlı Veri</span><span>Yeni Güncellendi</span><span>5 dk</span></div>
-      `;
-      buyukKart.onclick = () => makaleAc('MANŞET', buyukHaber.baslik, buyukHaber.metin, buyukHaber.kaynak);
-      haberSayaciniArtir();
+  setTimeout(() => {
+    buyukKart.innerHTML = `
+      <span class="kart-etiket et-oncu">⚡ Öncü</span>
+      <h3>${buyukHaber.baslik}</h3>
+      <p>${buyukHaber.metin.substring(0, 140)}...</p>
+      <div class="meta"><span class="yaz-badge">✦ Canlı Veri</span><span>Yeni Güncellendi</span><span>5 dk</span></div>
+    `;
+    buyukKart.onclick = () => makaleAc('MANŞET', buyukHaber.baslik, buyukHaber.metin, buyukHaber.kaynak);
+    haberSayaciniArtir();
 
-      yanListe.innerHTML = `
-        <div class="mini-kart bilim" onclick="makaleAc('BİLİM', '${hBilim.baslik.replace(/'/g,"\\'")}', '${hBilim.metin.replace(/'/g,"\\'")}', '${hBilim.kaynak}')"><div class="kat-ad">🔬 Bilim</div><h4>${hBilim.baslik}</h4><div class="meta">Yeni Güncellendi · ✦ YZ</div></div>
-        <div class="mini-kart catisma" onclick="makaleAc('ÇATIŞMA', '${hCatisma.baslik.replace(/'/g,"\\'")}', '${hCatisma.metin.replace(/'/g,"\\'")}', '${hCatisma.kaynak}')"><div class="kat-ad">⚔️ Çatışma</div><h4>${hCatisma.baslik}</h4><div class="meta">Yeni Güncellendi · ✦ YZ</div></div>
-        <div class="mini-kart saglik" onclick="makaleAc('SAĞLIK', '${hSaglik.baslik.replace(/'/g,"\\'")}', '${hSaglik.metin.replace(/'/g,"\\'")}', '${hSaglik.kaynak}')"><div class="kat-ad">💊 Sağlık</div><h4>${hSaglik.baslik}</h4><div class="meta">Yeni Güncellendi · ✦ YZ</div></div>
-        <div class="mini-kart turan" onclick="makaleAc('TÜRK DÜNYASI', '${hTuran.baslik.replace(/'/g,"\\'")}', '${hTuran.metin.replace(/'/g,"\\'")}', '${hTuran.kaynak}')"><div class="kat-ad">🌍 Türk Dünyası</div><h4>${hTuran.baslik}</h4><div class="meta">Yeni Güncellendi · ✦ YZ</div></div>
-      `;
-      haberSayaciniArtir();
+    yanListe.innerHTML = `
+      <div class="mini-kart bilim" onclick="makaleAc('BİLİM', '${hBilim.baslik.replace(/'/g,"\\'")}', '${hBilim.metin.replace(/'/g,"\\'")}', '${hBilim.kaynak}')"><div class="kat-ad">🔬 Bilim</div><h4>${hBilim.baslik}</h4><div class="meta">Yeni Güncellendi · ✦ YZ</div></div>
+      <div class="mini-kart catisma" onclick="makaleAc('ÇATIŞMA', '${hCatisma.baslik.replace(/'/g,"\\'")}', '${hCatisma.metin.replace(/'/g,"\\'")}', '${hCatisma.kaynak}')"><div class="kat-ad">⚔️ Çatışma</div><h4>${hCatisma.baslik}</h4><div class="meta">Yeni Güncellendi · ✦ YZ</div></div>
+      <div class="mini-kart saglik" onclick="makaleAc('SAĞLIK', '${hSaglik.baslik.replace(/'/g,"\\'")}', '${hSaglik.metin.replace(/'/g,"\\'")}', '${hSaglik.kaynak}')"><div class="kat-ad">💊 Sağlık</div><h4>${hSaglik.baslik}</h4><div class="meta">Yeni Güncellendi · ✦ YZ</div></div>
+      <div class="mini-kart turan" onclick="makaleAc('TÜRK DÜNYASI', '${hTuran.baslik.replace(/'/g,"\\'")}', '${hTuran.metin.replace(/'/g,"\\'")}', '${hTuran.kaynak}')"><div class="kat-ad">🌍 Türk Dünyası</div><h4>${hTuran.baslik}</h4><div class="meta">Yeni Güncellendi · ✦ YZ</div></div>
+    `;
+    haberSayaciniArtir();
 
-      buyukKart.style.opacity = '1';
-      yanListe.style.opacity = '1';
-    }, 500);
-  }
+    buyukKart.style.opacity = '1';
+    yanListe.style.opacity = '1';
+  }, 500);
 }
+
+// BOŞ KALAN "OTOMATİK YZ HABER AKIŞI" ALANINI GERÇEK VERİYLE DOLDURAN MOTOR
+const KATEGORILER = [
+  { id:'bilim', ad:'🔬 Bilim & Veri Mimarisi', renk:'linear-gradient(90deg,#1A3D7A,#4A82D0)', yazireng:'#1A3D7A' },
+  { id:'catisma', ad:'⚔️ Savaş & Siber Risk', renk:'linear-gradient(90deg,#7A1A1A,#C0392B)', yazireng:'#7A1A1A' },
+  { id:'saglik', ad:'💊 Tıp & Sağlık Teknolojisi', renk:'linear-gradient(90deg,#1A5C34,#40A064)', yazireng:'#1A5C34' }
+];
 
 async function otomatikYenile() {
   const alan = document.getElementById('oto-haber-alani');
@@ -666,8 +677,8 @@ async function otomatikYenile() {
       <div class="oto-kart-serit" style="background:${kat.renk}"></div>
       <div class="oto-kart-icerik">
         <div class="oto-kart-kat" style="color:${kat.yazireng}">${kat.ad}</div>
-        <h4 id="baslik-${i}">Canlı ağdan veri çekiliyor...</h4>
-        <div class="oto-kart-metin" id="metin-${i}"><div class="oto-yukleniyor"><div class="oto-spinner"></div>Veri Ayrıştırılıyor...</div></div>
+        <h4 id="baslik-${i}">Canlı siber ağ taranıyor...</h4>
+        <div class="oto-kart-metin" id="metin-${i}"><div class="oto-yukleniyor"><div class="oto-spinner"></div>Veriler Ayrıştırılıyor...</div></div>
       </div>
     `;
     alan.appendChild(kart);
@@ -696,6 +707,7 @@ async function otomatikYenile() {
   }
 }
 
+// BOŞ KALAN "DÜNYA GÜNDEMİ & MAKRO SEKTÖRLER (CANLI)" ALANINI GERÇEK VERİYLE DOLDURAN MOTOR
 function canliHaberleriCek() {
   const adres = `https://saurav.tech/NewsAPI/top-headlines/category/general/tr.json`;
   fetch(adres).then(c => c.json()).then(veri => {
@@ -704,19 +716,18 @@ function canliHaberleriCek() {
     alan.innerHTML = ''; 
     
     if (veri.articles && veri.articles.length > 0) {
-      veri.articles.slice(0, 4).forEach((haber, idx) => {
-        const resim = haber.urlToImage ? `<img src="${haber.urlToImage}" class="dk-resim">` : '';
+      veri.articles.slice(4, 8).forEach((haber, idx) => {
         const sahteResimler = [
           "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=400", 
           "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=80&w=400", 
           "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=400", 
           "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=400"  
         ];
-        const resimSrc = resim ? resim : `<img src="${sahteResimler[idx]}" class="dk-resim">`;
+        const resimSrc = haber.urlToImage ? haber.urlToImage : sahteResimler[idx];
         
         alan.innerHTML += `
           <div class="dunya-kart" onclick="makaleAc('DÜNYA GÜNDEMİ', '${haber.title.replace(/'/g,"\\'")}', '${(haber.description || 'Detaylar ve makro ekonomik etkiler veri akışında işleniyor...').replace(/'/g,"\\'")}', '${haber.source?.name || 'Uluslararası Veri Ağı'}')">
-            ${resimSrc}
+            <img src="${resimSrc}" class="dk-resim" onerror="this.src='${sahteResimler[idx]}'">
             <div class="dk-serit" style="background:var(--altin)"></div>
             <div class="dk-icerik">
               <div class="kat dk-catisma-yazi">🌐 KÜRESEL SEKTÖREL AKIŞ</div>
@@ -730,7 +741,7 @@ function canliHaberleriCek() {
       });
     }
   }).catch(err => {
-    console.log("Dünya gündemi canlı akışında gecikme yaşandı.");
+    console.log("Dünya gündemi canlı akışında senkronizasyon hatası.");
   });
 }
 
@@ -781,7 +792,7 @@ async function sonDakikaBandiniGuncelle() {
         }
       });
     }
-  } catch(e) { console.log("Canlı veri gecikmesi yaşandı."); }
+  } catch(e) { console.log("Canlı veri slider gecikmesi."); }
 
   for(let i=0; i<haberCount; i++) { haberSayaciniArtir(); }
   setupDragAndDropScroll();
@@ -839,13 +850,14 @@ async function manuelHaberUret() {
   btn.innerHTML = 'Yeniden Çek ✦';
 }
 
-// SİSTEM BAŞLATICILAR
+// SİSTEM BAŞLATICILAR (TAMAMI AKTİFLEŞTİRİLDİ)
 window.addEventListener('load', () => {
   mansetleriYenile(); 
   otomatikYenile();   
   canliHaberleriCek(); 
   sonDakikaBandiniGuncelle();
   
+  // Her 10 dakikada bir otomatik yenileme döngüsü
   setInterval(mansetleriYenile, 600000); 
   setInterval(otomatikYenile, 600000); 
   setInterval(canliHaberleriCek, 600000); 
