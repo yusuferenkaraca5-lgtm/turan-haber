@@ -35,16 +35,22 @@ nav{background:var(--lacivert);border-top:1px solid rgba(255,255,255,.06)}
 .nav-link:hover{color:#fff;background:rgba(255,255,255,.04)}
 .nav-link.aktif{color:var(--altin);border-bottom-color:var(--altin)}
 
-/* YENİ ENSONHABER STİLİ SÜRÜKLE-BRAK / KAYDIRILABİLİR SON DAKİKA ŞERİDİ */
-.ticker-container {display:flex; background:var(--koyu); height:44px; position:relative; overflow:hidden; border-bottom:2px solid var(--kizil)}
-.ticker-label-fixed {background:var(--kizil); color:#fff; font-size:11px; font-weight:700; letter-spacing:.08em; padding:0 18px; display:flex; align-items:center; justify-content:center; white-space:nowrap; z-index:10; box-shadow:4px 0 10px rgba(0,0,0,0.3)}
-.ticker-scroll-wrapper {flex:1; display:flex; align-items:center; overflow-x:auto; overflow-y:hidden; white-space:nowrap; padding:0 15px; scrollbar-width:none; cursor:grab; user-select:none; -webkit-overflow-scrolling:touch}
-.ticker-scroll-wrapper::-webkit-scrollbar {display:none}
-.ticker-scroll-wrapper:active {cursor:grabbing}
-.ticker-card-item {display:inline-flex; align-items:center; background:rgba(255,255,255,0.04); border:.5px solid rgba(255,255,255,0.08); padding:6px 14px; margin-right:10px; border-radius:4px; height:32px; font-size:12.5px; color:rgba(255,255,255,0.9); cursor:pointer; transition:background .15s, border-color .15s}
-.ticker-card-item:hover {background:rgba(255,255,255,0.08); border-color:var(--altin)}
-.ticker-card-item .source-badge {font-size:9px; font-weight:700; background:var(--kizil); color:#fff; padding:2px 6px; border-radius:3px; margin-right:8px; text-transform:uppercase}
-.ticker-card-item .source-badge.global {background:var(--altin); color:var(--koyu)}
+/* YENİ DEVASA VE KAYDIRILABİLİR ANA MATBU SON DAKİKA ALANI (ENSONHABER STİLİ) */
+.dev-son-dakika-alani {margin-bottom: 2rem; background: #fff; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--cizgi); box-shadow: 0 4px 20px rgba(0,0,0,0.02)}
+.dev-slider-wrapper {display: flex; gap: 1rem; overflow-x: auto; overflow-y: hidden; padding-bottom: 10px; scrollbar-width: thin; scrollbar-color: var(--altin) transparent; cursor: grab; user-select: none; -webkit-overflow-scrolling: touch}
+.dev-slider-wrapper::-webkit-scrollbar {height: 5px}
+.dev-slider-wrapper::-webkit-scrollbar-thumb {background: var(--altin); border-radius: 10px}
+.dev-slider-wrapper:active {cursor: grabbing}
+.dev-haber-karti {flex: 0 0 320px; background: var(--lacivert); color: #fff; border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 200px; position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s}
+.dev-haber-karti:hover {transform: translateY(-4px); box-shadow: 0 8px 25px rgba(26,42,74,0.15)}
+.dev-haber-karti::before {content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--kizil)}
+.dev-card-ust {display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px}
+.dev-kaynak-badge {font-size: 10px; font-weight: 700; background: var(--kizil); padding: 3px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em}
+.dev-kaynak-badge.global {background: var(--altin); color: var(--koyu)}
+.dev-kart-zaman {font-size: 11px; color: rgba(255,255,255,0.4)}
+.dev-haber-karti h3 {font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; line-height: 1.4; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; color: #fff}
+.dev-haber-karti p {font-size: 12px; color: rgba(255,255,255,0.6); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.5}
+.dev-oku-link {font-size: 11px; color: var(--altin); font-weight: 600; text-align: right; margin-top: auto; padding-top: 10px}
 
 main{max-width:1280px;margin:0 auto;padding:1.75rem 2rem}
 
@@ -59,7 +65,6 @@ main{max-width:1280px;margin:0 auto;padding:1.75rem 2rem}
 .istat-sayi{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--lacivert);margin-bottom:2px}
 .istat-etiket{font-size:10px;color:var(--ucuncul)}
 
-.oncu-kart, .yan-oncu { transition: opacity 0.5s ease; }
 .oncu-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:1.25rem;margin-bottom:2rem}
 .oncu-kart{background:var(--lacivert);border-radius:8px;padding:2rem;position:relative;overflow:hidden;min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer;}
 .oncu-kart:hover{opacity:.93}
@@ -86,7 +91,7 @@ main{max-width:1280px;margin:0 auto;padding:1.75rem 2rem}
 .mini-kart h4{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--lacivert);line-height:1.4;flex:1;margin-bottom:6px}
 .mini-kart .meta{font-size:11px;color:var(--ucuncul)}
 
-/* TÜRKİYE SİYASETİ VE MAKRO POLİTİKALAR BÖLÜMÜ */
+/* TÜRKİYE SİYASETİ BÖLÜMÜ */
 .turkiye-gundemi{background:linear-gradient(135deg, #7A1A1A 0%, #3D0D0D 100%);border-radius:10px;padding:1.75rem;margin-bottom:2rem;position:relative;overflow:hidden;scroll-margin-top:2rem}
 .turkiye-gundemi::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 90% 50%,rgba(255,255,255,.04) 0%,transparent 60%);pointer-events:none}
 .tr-ay-yildiz{position:absolute;right:2rem;top:50%;transform:translateY(-50%);opacity:.04;width:150px;height:150px}
@@ -114,8 +119,6 @@ main{max-width:1280px;margin:0 auto;padding:1.75rem 2rem}
 .oto-yukleniyor{display:flex;align-items:center;gap:8px;color:var(--ucuncul);font-size:12px;font-style:italic}
 .oto-spinner{width:12px;height:12px;border:2px solid var(--cizgi);border-top-color:var(--altin);border-radius:50%;animation:spin .7s linear infinite}
 .yaziliyor-kursor{display:inline-block;width:2px;height:14px;background:var(--lacivert);vertical-align:middle;margin-left:2px;animation:kursor .8s steps(1) infinite}
-@keyframes kursor{0%,100%{opacity:1}50%{opacity:0}}
-@keyframes spin{to{transform:rotate(360deg)}}
 
 .dunya-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem}
 .dunya-kart{background:#fff;border:.5px solid var(--cizgi);border-radius:8px;overflow:hidden;cursor:pointer;transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column;}
@@ -191,7 +194,7 @@ main{max-width:1280px;margin:0 auto;padding:1.75rem 2rem}
 .tarih-kbaslik{background:var(--altin-acik);border-bottom:.5px solid rgba(200,150,58,.2);padding:10px 1rem;font-size:13px;font-weight:600;color:#7A5A10;font-family:'Playfair Display',serif}
 .tarih-madde{padding:10px 1rem;border-bottom:.5px solid var(--cizgi);cursor:pointer;transition:background .1s}
 .tarih-madde:last-child{border-bottom:none}
-.tarih-madde:hover{background:rgba(0,0,0,.01)}
+.tarih-madde :hover{background:rgba(0,0,0,.01)}
 .tarih-madde .donem{font-size:10px;font-weight:600;color:var(--altin);letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}
 .tarih-madde h5{font-size:12px;font-weight:500;color:var(--lacivert);line-height:1.4}
 
@@ -293,15 +296,6 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
   </div>
 </nav>
 
-<!-- SÜRÜKLE-BRAK / ELLE SAĞA SOLA KAYDIRILABİLİR ENSONHABER STİLİ ŞERİT -->
-<div class="ticker-container">
-  <div class="ticker-label-fixed">SON DAKİKA</div>
-  <div class="ticker-scroll-wrapper" id="ticker-slider">
-    <!-- İçerik JavaScript tarafından dinamik küresel kaynaklarla doldurulacak -->
-    <div class="ticker-card-item"><span>Küresel ağlardan canlı veriler senkronize ediliyor...</span></div>
-  </div>
-</div>
-
 <main>
 
   <!-- İSTATİSTİKLER -->
@@ -314,7 +308,20 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
     <div class="istat-kart"><div class="istat-sayi">✦ Canlı</div><div class="istat-etiket">İnternet Ağı</div></div>
   </div>
 
-  <!-- ÖNCÜ HABERLER -->
+  <!-- YENİ BÜYÜTÜLEN ANA MANŞET TİPİ SON DAKİKA ALANI -->
+  <div class="dev-son-dakika-alani">
+    <div class="bolum-baslik" style="border-bottom: none; margin-bottom: 0.75rem; padding-bottom: 0;">
+      <div class="bolum-sembol" style="background: var(--kizil); color:#fff">⚡</div>
+      <h2 style="color: var(--kizil)">Dünyadan Son Dakika Gelişmeleri</h2>
+      <span style="margin-left:auto; font-size:11px; color:var(--ucuncul)">Sağa-sola sürükleyerek kaydırabilirsiniz</span>
+    </div>
+    <div class="dev-slider-wrapper" id="ticker-slider">
+      <!-- İçerik JavaScript tarafından canlı ve Türkçe olarak buraya basılacak -->
+      <div class="dev-haber-karti"><h3>Küresel haber ağları senkronize ediliyor...</h3></div>
+    </div>
+  </div>
+
+  <!-- MANŞET HABERLER -->
   <div class="bolum-baslik">
     <div class="bolum-sembol">★</div>
     <h2>Manşet Haberler</h2>
@@ -349,7 +356,7 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
         <p>Büyük ölçekli devlet yatırımları ve siber altyapı projeleri için ihale süreçlerini tamamen şeffaf ve geriye dönük izlenebilir kılacak yeni makro düzenleme paketi yürürlüğe giriyor.</p>
         <div class="meta" style="margin-top:10px; color:rgba(255,255,255,0.5)">15 Haziran · ✦ Analiz</div>
       </div>
-      <div class="tr-kart" onclick="makaleAc('TÜRKİYE', 'TBMM Gündemi: Siber Egemenlik ve Yerel Veri Merkezleri Teşvor Paketi', 'TBMM Dijital Mecralar Komisyonu, Türkiye genelindeki fiber internet altyapısını stratejik bir öncelik olarak ele alan yeni bir kanun teklifi üzerinde çalışıyor. Yerel yönetimlerin telekomünikasyon firmalarıyla ortak yürüttüğü fiber genişletme ve genişbant petisyon süreçlerinin hızlandırılması, bürokratik engellerin azaltılması hedefleniyor.', 'TBMM Kulis')">
+      <div class="tr-kart" onclick="makaleAc('TÜRKİYE', 'TBMM Gündemi: Siber Egemenlik ve Yerel Veri Merkezleri Teşvik Paketi', 'TBMM Dijital Mecralar Komisyonu, Türkiye genelindeki fiber internet altyapısını stratejik bir öncelik olarak ele alan yeni bir kanun teklifi üzerinde çalışıyor. Yerel yönetimlerin telekomünikasyon firmalarıyla ortak yürüttüğü fiber genişletme ve genişbant petisyon süreçlerinin hızlandırılması, bürokratik engellerin azaltılması hedefleniyor.', 'TBMM Kulis')">
         <div class="alt-etiket">🏛️ Yasama</div>
         <h4>Siber Egemenlik ve Genişbant Fiber Teşvik Paketi Komisyonda</h4>
         <div class="meta">3 sa önce · ✦ Canlı Veri</div>
@@ -572,16 +579,16 @@ const simuleHaberler = {
   saglik: [{ baslik: "Veri Analitiği Destekli mRNA Aşısında Yeni Faz Aşaması", metin: "Yapay zeka modelleriyle biyolojik veri setlerinin eşleştirilmesi sonucu üretilen hücresel onkoloji aşıları klinik testlerde kararlı sonuçlar verdi." }],
   siyaset: [{ baslik: "Dijital Sınırlar ve Bölgesel Veri Güvenliği Politikaları", metin: "Uluslararası veri aktarım protokollerinde ülkelerin kendi veri egemenliklerini ilan etme süreçleri makroekonomik dengeleri yeniden şekillendiriyor." }],
   turkdunyasi: [{ baslik: "Türk Devletleri Dijital Altyapı Fonu Faaliyete Geçti", metin: "Üye ülkeler arasında ortak bulut altyapısı, sınır ötesi veri hatları ve teknopark entegrasyonlarına öncelikli hibe sağlanacağı açıklandı." }],
-  tarih: [{ baslik: "İpek Yolu Lojistik Ağlarında Yeni Arkeolojik Bulgular", metin: "Kadim ticaret yolları üzerinde yapılan kazılarda, 9. yüzyıla ait veri ve kayıt tutma sistemlerine benzer mühür ve idari tablet arşivleri keşfedildi." }]
+  tarih: [{ baslik: "İpek Yolu Lojistik Ağlarında Yeni Arkeolojik Bulgular", metin: "Kadim ticaret yolları üzerinde yapılan kazılarda, 9. yüzyıla ait veri ve kayıt tutma sistemlerine benzer mühür and idari tablet arşivleri keşfedildi." }]
 };
 
-// KÜRESEL STRATEJİK SON DAKİKA HABER HAVUZU (CNN, FOX, BBC, REUTERS ODAKLI)
+// TÜRÇEYE ÇEVRİLMİŞ VE GENİŞLETİLMİŞ KÜRESEL SON DAKİKA HABER HAVUZU (CNN, FOX, BBC, REUTERS)
 const ozelKureselHavuz = [
-  { source: "CNN International", badgeClass: "global", title: "🚨 BREAKING: Global Cloud Infrastructure Hit by Quantum Decryption Shield Rollout", text: "New York (CNN) — The world's top banking consortia have simultaneously deployed active post-quantum cryptography frameworks across transatlantic server nodes. Financial tech analysts report this as a massive tactical pivot in sub-second data security.", time: "Just Now" },
-  { source: "BBC World", badgeClass: "global", title: "⚡ STRATEGIC: Middle Corridor Supply Chain Migrates to Decentralized MIS Architecture", text: "London (BBC) — Port operations and customs gates linking Europe and Central Asia have successfully integrated an automated, multi-national data layer. Transition matrices show waiting intervals slashed from days to mere minutes.", time: "12 mins ago" },
-  { source: "Fox News", badgeClass: "global", title: "🔥 ECO-TECH: Silicon Valley Artificial Intelligence Hubs Mandate Localized Power Grids", text: "Washington (FOX) — Under new dual-use technology guidelines, large-scale training centers and computing facilities are now required to maintain completely isolated, dedicated cooling and micro-grid energy setups to prevent national load failures.", time: "28 mins ago" },
-  { source: "Reuters", badgeClass: "global", title: "📊 REVENUE SPRINT: Sovereign Data Protection Regulations Disrupt Cross-Border Cloud Pipelines", text: "Geneva (Reuters) — Enterprise resource planning (ERP) systems across multiple trade blocs face immediate compliance overhauls as regional commissions pass strict data-residency mandates, giving heavy operational advantages to localized storage vendors.", time: "40 mins ago" },
-  { source: "Ankara Mahreci", badgeClass: "", title: "🇹🇷 SİBER GÜNDEM: Kamu Altyapı Entegrasyonlarında Yerli Yazılım Zorunluluğu Meclis Yolunda", text: "Ankara — TBMM siber güvenlik alt komisyonlarında yürütülen çalışmalara göre, kritik veri tutan lojistik ve müteahhitlik ihalelerini alan tüm yüklenici dev firmaların, yerli yönetim bilişim araçlarına tam geçiş takvimi belirleniyor.", time: "1 saat önce" }
+  { source: "CNN Int.", badgeClass: "global", title: "🚨 KONTROL SAĞLANDI: Küresel Finans Ağlarında Kuantum Siber Kalkan Protokolü Devreye Alındı!", text: "New York — Dünyanın önde gelen bankacılık konsorsiyumları, transatlantik sunucu düğümleri üzerinde 'Dağıtık Post-Kuantum Kriptografi' şifreleme altyapısını eşzamanlı olarak başlattı. Finansal teknoloji analistleri, bu hamlenin siber veri egemenliği savaşlarında büyük bir taktiksel dönüm noktası olduğunu bildiriyor.", time: "Şimdi" },
+  { source: "BBC World", badgeClass: "global", title: "⚡ STRATEJİK GEÇİŞ: Akıllı Orta Koridor Lojistik Ağı Tamamen Yapay Zeka Altyapısına Taşındı", text: "Londra — Avrupa ve Orta Asya'yı birbirine bağlayan gümrük kapıları ve liman operasyonları, çok uluslu ve dağıtık bir veri yönetim katmanıyla (MIS) entegre edildi. İlk analiz verilerine göre, konteyner ve lojistik geçiş süreleri günlerden dakikalara indirildi.", time: "12 dk önce" },
+  { source: "Fox News", badgeClass: "global", title: "🔥 TEKNO-POLİTİK: Silikon Vadisi Yapay Zeka Merkezlerine Bağımsız Enerji Sınırı Getirildi", text: "Washington — Ulusal güvenlik ve teknoloji koruma yönergeleri kapsamında, büyük ölçekli veri işleme ve yapay zeka model eğitim tesislerinin, şebeke kesintilerini önlemek adına tamamen izole edilmiş mikro-grid güç ve soğutma sistemleri kurması zorunlu kılındı.", time: "28 dk önce" },
+  { source: "Reuters", badgeClass: "global", title: "📊 KÜRESEL REGÜLASYON: Sınır Ötesi Bulut Veri Akışlarına Devlet Düzeyinde Egemenlik Sınırı", text: "Cenevre — Çok uluslu ticaret bloklarındaki kurumsal kaynak planlama (ERP) altyapıları, yeni veri ikameti kanunları nedeniyle büyük bir uyum operasyonuna giriyor. Bölgesel komisyonların kararları, lokal veri depolama sunucularına sahip yerli yazılım firmalarına makro avantaj sağlıyor.", time: "40 dk önce" },
+  { source: "TuranHaber", badgeClass: "", title: "🇹🇷 YERLİ ALTYAPI: Kamu Entegrasyonlarında Yerli Yönetim Bilişim Sistemleri Zorunlu Oluyor", text: "Ankara — TBMM Dijital Mecralar Komisyonu'ndan edinilen bilgilere göre, devlet düzeyindeki büyük lojistik, müteahhitlik ve altyapı ihalelerini üstlenen tüm yüklenici firmaların, verilerini yerli ve lokal sunucularda tutmasını zorunlu kılacak yasa paketi netleşiyor.", time: "1 saat önce" }
 ];
 
 const apiKategoriMap = { 'bilim': 'technology', 'saglik': 'health', 'catisma': 'general', 'siyaset': 'general', 'turkdunyasi': 'general', 'tarih': 'general' };
@@ -722,46 +729,62 @@ function canliHaberleriCek() {
   });
 }
 
-// YENİ ENSONHABER STİLİ SÜRÜKLE-BRAK / KAYDIRILABİLİR SON DAKİKA SLIDER MOTORU
+// GÜNCELLENEN ENSONHABER STİLİ ANA SAYFA SON DAKİKA SLIDER MOTORU (TÜRKÇE VE GENİŞ KARTLAR)
 async function sonDakikaBandiniGuncelle() {
   const wrapper = document.getElementById('ticker-slider');
   if(!wrapper) return;
   wrapper.innerHTML = '';
   let haberCount = 0;
 
-  // 1. Önce Küresel Devlerden (BBC, FOX, CNN) Özel Havuzumuzu kartlar halinde yerleştir
+  // 1. Türkçe küresel özel analiz havuzunu büyük kartlar şeklinde yerleştir
   ozelKureselHavuz.forEach(h => {
     const card = document.createElement('div');
-    card.className = 'ticker-card-item';
-    card.innerHTML = `<span class="source-badge ${h.badgeClass}">${h.source}</span> ${h.title}`;
-    card.onclick = () => makaleAc(h.source.toUpperCase(), h.title, h.text, h.source);
+    card.className = 'dev-haber-karti';
+    card.innerHTML = `
+      <div class="dev-card-ust">
+        <span class="dev-kaynak-badge ${h.badgeClass}">${h.source}</span>
+        <span class="dev-kart-zaman">${h.time}</span>
+      </div>
+      <h3>${h.title}</h3>
+      <p>${h.text}</p>
+      <div class="dev-oku-link">Detayları Oku →</div>
+    `;
+    card.onclick = () => makaleAc(h.source, h.title, h.text, h.source);
     wrapper.appendChild(card);
     haberCount++;
   });
 
-  // 2. Canlı İnternet Ağındaki En Sıcak Ulusal Haberleri Çek ve Kart Olarak Arkasına Bağla
+  // 2. Canlı internet ağındaki ulusal sıcak haberleri de çekip arkasına kart olarak ekle
   try {
     const res = await fetch(`https://saurav.tech/NewsAPI/top-headlines/category/general/tr.json`);
     const data = await res.json();
     if(data.articles && data.articles.length > 0) {
-      data.articles.slice(0, 6).forEach(art => {
+      data.articles.slice(0, 6).forEach((art, index) => {
         if(art.title && art.description) {
           const card = document.createElement('div');
-          card.className = 'ticker-card-item';
-          card.innerHTML = `<span class="source-badge">CANLI</span> ${art.title}`;
-          card.onclick = () => makaleAc('Sıcak Akış', art.title, art.description, art.source?.name || 'Ajanslar');
+          card.className = 'dev-haber-karti';
+          card.innerHTML = `
+            <div class="dev-card-ust">
+              <span class="dev-kaynak-badge">CANLI AKIŞ</span>
+              <span class="dev-kart-zaman">${index + 1} dk önce</span>
+            </div>
+            <h3>${art.title}</h3>
+            <p>${art.description}</p>
+            <div class="dev-oku-link">Detayları Oku →</div>
+          `;
+          card.onclick = () => makaleAc('Sıcak Gelişme', art.title, art.description, art.source?.name || 'Ajanslar');
           wrapper.appendChild(card);
           haberCount++;
         }
       });
     }
-  } catch(e) { console.log("Canlı ağ bağlantı gecikmesi."); }
+  } catch(e) { console.log("Canlı veri gecikmesi yaşandı."); }
 
   for(let i=0; i<haberCount; i++) { haberSayaciniArtir(); }
   setupDragAndDropScroll();
 }
 
-// ELLE KAYDIRMA VE MOUSE SÜRÜKLEME ALGORİTMASI
+// SÜRÜKLEME VE KAYDIRMA ALGORİTMASI
 function setupDragAndDropScroll() {
   const slider = document.getElementById('ticker-slider');
   if(!slider) return;
@@ -771,21 +794,16 @@ function setupDragAndDropScroll() {
 
   slider.addEventListener('mousedown', (e) => {
     isDown = true;
-    slider.classList.add('active');
     startX = e.pageX - slider.offsetLeft;
     scrollLeft = slider.scrollLeft;
   });
-  slider.addEventListener('mouseleave', () => {
-    isDown = false;
-  });
-  slider.addEventListener('mouseup', () => {
-    isDown = false;
-  });
+  slider.addEventListener('mouseleave', () => {isDown = false;});
+  slider.addEventListener('mouseup', () => {isDown = false;});
   slider.addEventListener('mousemove', (e) => {
     if(!isDown) return;
     e.preventDefault();
     const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 2; // Kaydırma hassasiyeti hızı
+    const walk = (x - startX) * 2; 
     slider.scrollLeft = scrollLeft - walk;
   });
 }
