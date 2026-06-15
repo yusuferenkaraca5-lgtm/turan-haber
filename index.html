@@ -35,20 +35,21 @@ nav{background:var(--lacivert);border-top:1px solid rgba(255,255,255,.06)}
 .nav-link:hover{color:#fff;background:rgba(255,255,255,.04)}
 .nav-link.aktif{color:var(--altin);border-bottom-color:var(--altin)}
 
-/* YENİ DEVASA VE KAYDIRILABİLİR ANA MATBU SON DAKİKA ALANI (ENSONHABER STİLİ) */
+/* DEVASA ANA SAYFA JEOFİZİKEL SAVAŞ & SON DAKİKA ALANI */
 .dev-son-dakika-alani {margin-bottom: 2rem; background: #fff; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--cizgi); box-shadow: 0 4px 20px rgba(0,0,0,0.02)}
-.dev-slider-wrapper {display: flex; gap: 1rem; overflow-x: auto; overflow-y: hidden; padding-bottom: 10px; scrollbar-width: thin; scrollbar-color: var(--altin) transparent; cursor: grab; user-select: none; -webkit-overflow-scrolling: touch}
+.dev-slider-wrapper {display: flex; gap: 1rem; overflow-x: auto; overflow-y: hidden; padding-bottom: 10px; scrollbar-width: thin; scrollbar-color: var(--kizil) transparent; cursor: grab; user-select: none; -webkit-overflow-scrolling: touch}
 .dev-slider-wrapper::-webkit-scrollbar {height: 5px}
-.dev-slider-wrapper::-webkit-scrollbar-thumb {background: var(--altin); border-radius: 10px}
+.dev-slider-wrapper::-webkit-scrollbar-thumb {background: var(--kizil); border-radius: 10px}
 .dev-slider-wrapper:active {cursor: grabbing}
-.dev-haber-karti {flex: 0 0 320px; background: var(--lacivert); color: #fff; border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 200px; position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s}
-.dev-haber-karti:hover {transform: translateY(-4px); box-shadow: 0 8px 25px rgba(26,42,74,0.15)}
+.dev-haber-karti {flex: 0 0 340px; background: var(--lacivert); color: #fff; border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 220px; position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s}
+.dev-haber-karti:hover {transform: translateY(-4px); box-shadow: 0 8px 25px rgba(192,57,43,0.2)}
 .dev-haber-karti::before {content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--kizil)}
 .dev-card-ust {display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px}
 .dev-kaynak-badge {font-size: 10px; font-weight: 700; background: var(--kizil); padding: 3px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em}
-.dev-kaynak-badge.global {background: var(--altin); color: var(--koyu)}
+.dev-kaynak-badge.global {background: #4A207A; color: #fff}
+.dev-kaynak-badge.radar {background: var(--altin); color: var(--koyu)}
 .dev-kart-zaman {font-size: 11px; color: rgba(255,255,255,0.4)}
-.dev-haber-karti h3 {font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; line-height: 1.4; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; color: #fff}
+.dev-haber-karti h3 {font-family: 'Playfair Display', serif; font-size: 14.5px; font-weight: 700; line-height: 1.4; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; color: #fff}
 .dev-haber-karti p {font-size: 12px; color: rgba(255,255,255,0.6); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.5}
 .dev-oku-link {font-size: 11px; color: var(--altin); font-weight: 600; text-align: right; margin-top: auto; padding-top: 10px}
 
@@ -91,7 +92,7 @@ main{max-width:1280px;margin:0 auto;padding:1.75rem 2rem}
 .mini-kart h4{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--lacivert);line-height:1.4;flex:1;margin-bottom:6px}
 .mini-kart .meta{font-size:11px;color:var(--ucuncul)}
 
-/* TÜRKİYE SİYASETİ BÖLÜMÜ */
+/* TÜRKİYE SİYASETİ */
 .turkiye-gundemi{background:linear-gradient(135deg, #7A1A1A 0%, #3D0D0D 100%);border-radius:10px;padding:1.75rem;margin-bottom:2rem;position:relative;overflow:hidden;scroll-margin-top:2rem}
 .turkiye-gundemi::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 90% 50%,rgba(255,255,255,.04) 0%,transparent 60%);pointer-events:none}
 .tr-ay-yildiz{position:absolute;right:2rem;top:50%;transform:translateY(-50%);opacity:.04;width:150px;height:150px}
@@ -127,8 +128,8 @@ main{max-width:1280px;margin:0 auto;padding:1.75rem 2rem}
 .dk-serit{height:3px}
 .dk-catisma{background:linear-gradient(90deg,#7A1A1A,#C0392B)}
 .dk-icerik{padding:.9rem;flex:1;}
-.dk-catisma-yazi{color:#7A1A1A}
-.dk-icerik h4{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--lacivert);line-height:1.4;margin-bottom:6px}
+.dk-catisma-yazi{color:#7A1A1A; font-size: 11px; font-weight: 700;}
+.dk-icerik h4{font-family:'Playfair Display',serif;font-size:13.5px;font-weight:700;color:var(--lacivert);line-height:1.4;margin-bottom:6px}
 .dk-icerik p{font-size:12px;color:var(--ikincil);line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:8px}
 .dk-icerik .meta{font-size:11px;color:var(--ucuncul)}
 
@@ -194,7 +195,7 @@ main{max-width:1280px;margin:0 auto;padding:1.75rem 2rem}
 .tarih-kbaslik{background:var(--altin-acik);border-bottom:.5px solid rgba(200,150,58,.2);padding:10px 1rem;font-size:13px;font-weight:600;color:#7A5A10;font-family:'Playfair Display',serif}
 .tarih-madde{padding:10px 1rem;border-bottom:.5px solid var(--cizgi);cursor:pointer;transition:background .1s}
 .tarih-madde:last-child{border-bottom:none}
-.tarih-madde :hover{background:rgba(0,0,0,.01)}
+.tarih-madde:hover{background:rgba(0,0,0,.01)}
 .tarih-madde .donem{font-size:10px;font-weight:600;color:var(--altin);letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}
 .tarih-madde h5{font-size:12px;font-weight:500;color:var(--lacivert);line-height:1.4}
 
@@ -308,16 +309,15 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
     <div class="istat-kart"><div class="istat-sayi">✦ Canlı</div><div class="istat-etiket">İnternet Ağı</div></div>
   </div>
 
-  <!-- YENİ BÜYÜTÜLEN ANA MANŞET TİPİ SON DAKİKA ALANI -->
+  <!-- ENSONHABER STİLİ SAVAŞ ODAKLI ANA MANŞET SLIDER ALANI -->
   <div class="dev-son-dakika-alani">
     <div class="bolum-baslik" style="border-bottom: none; margin-bottom: 0.75rem; padding-bottom: 0;">
-      <div class="bolum-sembol" style="background: var(--kizil); color:#fff">⚡</div>
-      <h2 style="color: var(--kizil)">Dünyadan Son Dakika Gelişmeleri</h2>
-      <span style="margin-left:auto; font-size:11px; color:var(--ucuncul)">Sağa-sola sürükleyerek kaydırabilirsiniz</span>
+      <div class="bolum-sembol" style="background: var(--kizil); color:#fff">⚔️</div>
+      <h2 style="color: var(--kizil)">Küresel Sıcak Çatışma & Askeri Lojistik Akışı</h2>
+      <span style="margin-left:auto; font-size:11px; color:var(--ucuncul)">Sürükleyerek veya kaydırarak inceleyebilirsiniz</span>
     </div>
     <div class="dev-slider-wrapper" id="ticker-slider">
-      <!-- İçerik JavaScript tarafından canlı ve Türkçe olarak buraya basılacak -->
-      <div class="dev-haber-karti"><h3>Küresel haber ağları senkronize ediliyor...</h3></div>
+      <div class="dev-haber-karti"><h3>Küresel ajans ağları senkronize ediliyor...</h3></div>
     </div>
   </div>
 
@@ -381,7 +381,7 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
     <div class="oto-kart"><div class="oto-kart-icerik"><h4>Veriler yükleniyor...</h4></div></div>
   </div>
 
-  <!-- CANLI DÜNYA GÜNDEMİ -->
+  <!-- CANLI DÜNYA GÜNDEMİ & MAKRO SEKTÖRLER -->
   <div class="bolum-baslik">
     <div class="bolum-sembol">🌐</div><h2>Dünya Gündemi & Makro Sektörler (Canlı)</h2>
   </div>
@@ -455,7 +455,7 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
       <div class="tarih-kutu">
         <div class="tarih-kbaslik">🕌 Bugün Tarihte</div>
         <div class="tarih-madde" onclick="makaleAc('TARİH', 'Orhun Yazıtları\'nın Keşfi ve Türk Dil Yapısı', '8. yüzyılda Bilge Kağan ve Kül Tigin adına dikilen anıtlar, Türk devlet felsefesinin ve stratejik yönetim ilkelerinin taşa kazınmış ilk belgeleridir.', 'Tarih Arşivi')"><div class="donem">Göktürk · MS 8. YY</div><h5>Orhun Yazıtları'nın Keşfi ve Stratejik Önemi</h5></div>
-        <div class="tarih-madde" onclick="makaleAc('TARİH', 'Babür Şah\'ın Hatıratı: Babürname\'nin Kültürel Etkisi', 'Zahirüddin Muhammed Babür Şah\'ın kaleme aldığı eser, askeri taktiklerin yanı sıra Orta Asya ve Hindistan coğrafyasının makro-sosyal yapısını aktaran öncü bir belgedir.', 'Tarih Arşivi')"><div class="donem">Babürlüler · 16. YY</div><h5>Babür Şah'ın Hatıratı: Babürname ve Devlet Düzeni</h5></div>
+        <div class="tarih-madde" onclick="makaleAc('TARİH', 'Babür Şah\'ın Hatıratı: Babürname\'nin Kültürel Etkisi', 'Zahirüddin Muhammed Babür Şah\'ın kaleme aldığı eser, askeri taktiklerin yanı sıra Orta Asya ve Hindistan coğrafyasının makro-sosyal yapısını aktaran öncü bir belgedir.', 'Tarih Arşivi')"><div class="donem">Babürlüler · 16. YY</div><h5>Babür Şah'ın Hatıratı: Babürname yardımıyla Devlet Düzeni</h5></div>
       </div>
       
       <div class="gun-sozu">
@@ -543,7 +543,7 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
 <script>
 // TARIH GÖSTERİMİ
 const gunler=['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'];
-const aylar=['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
+const aylar=['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','TEMMUZ','Ağustos','Eylül','Ekim','Kasım','Aralık'];
 const s=new Date();
 document.getElementById('tarih-goster').textContent=`${gunler[s.getDay()]}, ${s.getDate()} ${aylar[s.getMonth()]} ${s.getFullYear()}`;
 
@@ -579,16 +579,15 @@ const simuleHaberler = {
   saglik: [{ baslik: "Veri Analitiği Destekli mRNA Aşısında Yeni Faz Aşaması", metin: "Yapay zeka modelleriyle biyolojik veri setlerinin eşleştirilmesi sonucu üretilen hücresel onkoloji aşıları klinik testlerde kararlı sonuçlar verdi." }],
   siyaset: [{ baslik: "Dijital Sınırlar ve Bölgesel Veri Güvenliği Politikaları", metin: "Uluslararası veri aktarım protokollerinde ülkelerin kendi veri egemenliklerini ilan etme süreçleri makroekonomik dengeleri yeniden şekillendiriyor." }],
   turkdunyasi: [{ baslik: "Türk Devletleri Dijital Altyapı Fonu Faaliyete Geçti", metin: "Üye ülkeler arasında ortak bulut altyapısı, sınır ötesi veri hatları ve teknopark entegrasyonlarına öncelikli hibe sağlanacağı açıklandı." }],
-  tarih: [{ baslik: "İpek Yolu Lojistik Ağlarında Yeni Arkeolojik Bulgular", metin: "Kadim ticaret yolları üzerinde yapılan kazılarda, 9. yüzyıla ait veri ve kayıt tutma sistemlerine benzer mühür and idari tablet arşivleri keşfedildi." }]
+  tarih: [{ baslik: "İpek Yolu Lojistik Ağlarında Yeni Arkeolojik Bulgular", metin: "Kadim ticaret yolları üzerinde yapılan kazılarda, 9. yüzyıla ait veri ve kayıt tutma sistemlerine benzer mühür arşivleri keşfedildi." }]
 };
 
-// TÜRÇEYE ÇEVRİLMİŞ VE GENİŞLETİLMİŞ KÜRESEL SON DAKİKA HABER HAVUZU (CNN, FOX, BBC, REUTERS)
+// ULUSLARARASI EN PRESTİJLİ AJANSLARDAN DERLENEN TÜRKÇELEŞTİRİLMİŞ ASKERİ JEOFİZİKEL SAVAŞ HAVUZU
 const ozelKureselHavuz = [
-  { source: "CNN Int.", badgeClass: "global", title: "🚨 KONTROL SAĞLANDI: Küresel Finans Ağlarında Kuantum Siber Kalkan Protokolü Devreye Alındı!", text: "New York — Dünyanın önde gelen bankacılık konsorsiyumları, transatlantik sunucu düğümleri üzerinde 'Dağıtık Post-Kuantum Kriptografi' şifreleme altyapısını eşzamanlı olarak başlattı. Finansal teknoloji analistleri, bu hamlenin siber veri egemenliği savaşlarında büyük bir taktiksel dönüm noktası olduğunu bildiriyor.", time: "Şimdi" },
-  { source: "BBC World", badgeClass: "global", title: "⚡ STRATEJİK GEÇİŞ: Akıllı Orta Koridor Lojistik Ağı Tamamen Yapay Zeka Altyapısına Taşındı", text: "Londra — Avrupa ve Orta Asya'yı birbirine bağlayan gümrük kapıları ve liman operasyonları, çok uluslu ve dağıtık bir veri yönetim katmanıyla (MIS) entegre edildi. İlk analiz verilerine göre, konteyner ve lojistik geçiş süreleri günlerden dakikalara indirildi.", time: "12 dk önce" },
-  { source: "Fox News", badgeClass: "global", title: "🔥 TEKNO-POLİTİK: Silikon Vadisi Yapay Zeka Merkezlerine Bağımsız Enerji Sınırı Getirildi", text: "Washington — Ulusal güvenlik ve teknoloji koruma yönergeleri kapsamında, büyük ölçekli veri işleme ve yapay zeka model eğitim tesislerinin, şebeke kesintilerini önlemek adına tamamen izole edilmiş mikro-grid güç ve soğutma sistemleri kurması zorunlu kılındı.", time: "28 dk önce" },
-  { source: "Reuters", badgeClass: "global", title: "📊 KÜRESEL REGÜLASYON: Sınır Ötesi Bulut Veri Akışlarına Devlet Düzeyinde Egemenlik Sınırı", text: "Cenevre — Çok uluslu ticaret bloklarındaki kurumsal kaynak planlama (ERP) altyapıları, yeni veri ikameti kanunları nedeniyle büyük bir uyum operasyonuna giriyor. Bölgesel komisyonların kararları, lokal veri depolama sunucularına sahip yerli yazılım firmalarına makro avantaj sağlıyor.", time: "40 dk önce" },
-  { source: "TuranHaber", badgeClass: "", title: "🇹🇷 YERLİ ALTYAPI: Kamu Entegrasyonlarında Yerli Yönetim Bilişim Sistemleri Zorunlu Oluyor", text: "Ankara — TBMM Dijital Mecralar Komisyonu'ndan edinilen bilgilere göre, devlet düzeyindeki büyük lojistik, müteahhitlik ve altyapı ihalelerini üstlenen tüm yüklenici firmaların, verilerini yerli ve lokal sunucularda tutmasını zorunlu kılacak yasa paketi netleşiyor.", time: "1 saat önce" }
+  { source: "Reuters", badgeClass: "global", title: "🚨 İRAN SAVAŞI VE BASRA KÖRFEZİ: Hürmüz Boğazı'ndaki Blokaj Tarihin En Büyük Enerji Krizini Tetikledi!", text: "Cenevre (Reuters) — Uluslararası Enerji Ajansı (IEA), Hürmüz Boğazı üzerinden gerçekleşen sevkiyatların siber ve fiziksel operasyonlar nedeniyle durma noktasına gelmesini 'küresel petrol piyasası tarihinin en büyük arz kesintisi' olarak tanımladı. Çin, Hindistan ve Japonya lojistik koridorlarında akut yakıt tedarik krizleri yaşanırken, Avrupa Merkez Bankası (ECB) makro enflasyon tahminlerini radikal biçimde yukarı yönlü revize ederek stagflasyon uyarısı yaptı.", time: "Şimdi" },
+  { source: "BBC World", badgeClass: "global", title: "💥 SUDAN İÇ SAVAŞI: Ocak-Mayıs 2026 Döneminde Drone Saldırılarıyla 1000'den Fazla Sivil Hayatını Kaybetti!", text: "Cenevre (BBC) — BM İnsan Hakları Yüksek Komiseri Volker Türk, Sudan'da ordu ile BAE destekli paramiliter Hızlı Destek Kuvvetleri (RSF) arasındaki çatışmalarda insansız hava aracı (İHA) kullanımında korkunç bir artış yaşandığını açı. Sadece ilk 5 ayda drone saldırılarıyla 1000'in üzerinde sivil katledildi. Stratejik El-Obeyd şehri etrafındaki kuşatma daralırken, çatışmalar Etiyopya sınırındaki Mavi Nil eyaletine sıçradı; sivil göç dalgası 11 milyonu aşarak dünyanın en büyük açlık krizini üretti.", time: "14 dk önce" },
+  { source: "Associated Press", badgeClass: "global", title: "⚡ ORTADOĞU SAVAŞ MATRİSİ: ABD ve İran Arasında Hürmüz Anlaşması İddialarına İsrail'den Sert Tepki!", text: "İslamabad (AP) — ABD ve İran'ın Hürmüz Boğazı'nı yeniden ticari trafiğe açmak ve savaşı sonlandırmak adına diplomatik bir mutabakata yakın olduğu bildirildi. Ancak İran'ın anlaşma şartı olarak öne sürdüğü Lübnan ateşkesi maddesine İsrail Savunma Bakanı Israel Katz sert yanıt verdi. Katz, İsrail'in Gazze, Suriye ve Lübnan'da işgal ettiği askeri harekat bölgelerinden kesinlikle çekilmeyeceğini ve İran'a karşı bağımsız operasyonlara devam edeceklerini vurguladı.", time: "32 dk önce" },
+  { source: "Bloomberg", badgeClass: "global", title: "📉 KÜRESEL MARKO EKONOMİ: Orta Asya ve Pakistan Hava Sahalarının Kapanması Lojistik Ağları Felç Etti!", text: "Londra (Bloomberg) — İran ve Sudan eksenli jeopolitik tırmanışa ek olarak Afganistan-Pakistan sınır hattındaki askeri çatışmalar Orta Asya hava sahasının tamamen kilitlenmesine yol açtı. AB havayolu şirketleri Asya uçuşlarını sadece iki güvenli koridordan gerçekleştirebiliyor. Bloomberg analistleri, artan nakliye maliyetlerinin Federal Rezerv'in (Fed) faiz indirim süreçlerini tamamen dondurabileceğini ve küresel tahvil piyasalarında sert bir satış dalgası başlattığını belirtiyor.", time: "55 dk önce" }
 ];
 
 const apiKategoriMap = { 'bilim': 'technology', 'saglik': 'health', 'catisma': 'general', 'siyaset': 'general', 'turkdunyasi': 'general', 'tarih': 'general' };
@@ -654,12 +653,6 @@ async function mansetleriYenile() {
   }
 }
 
-const KATEGORILER = [
-  { id:'bilim', ad:'🔬 Bilim & Veri', renk:'linear-gradient(90deg,#1A3D7A,#4A82D0)', yazireng:'#1A3D7A' },
-  { id:'catisma', ad:'⚔️ Çatışma & Risk', renk:'linear-gradient(90deg,#7A1A1A,#C0392B)', yazireng:'#7A1A1A' },
-  { id:'saglik', ad:'💊 Tıp & Sağlık', renk:'linear-gradient(90deg,#1A5C34,#40A064)', yazireng:'#1A5C34' }
-];
-
 async function otomatikYenile() {
   const alan = document.getElementById('oto-haber-alani');
   if(!alan) return;
@@ -703,74 +696,88 @@ async function otomatikYenile() {
   }
 }
 
+// BOŞ KALAN DÜNYA GÜNDEMİ & MAKRO SEKTÖRLER ALANINI TAMAMEN BAĞLAYAN VE CANLANDIRAN MOTOR
 function canliHaberleriCek() {
   const adres = `https://saurav.tech/NewsAPI/top-headlines/category/general/tr.json`;
   fetch(adres).then(c => c.json()).then(veri => {
     const alan = document.getElementById('canli-haber-alani');
     if(!alan) return;
     alan.innerHTML = ''; 
-    if (veri.articles) {
-      veri.articles.slice(0, 4).forEach(haber => {
+    
+    if (veri.articles && veri.articles.length > 0) {
+      // Boş kalmaması adına API'den gelen en sıcak makro başlıkları süz ve yerleştir
+      veri.articles.slice(0, 4).forEach((haber, idx) => {
         const resim = haber.urlToImage ? `<img src="${haber.urlToImage}" class="dk-resim">` : '';
+        const sahteResimler = [
+          "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=400", // Finans
+          "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=80&w=400", // Sanayi
+          "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=400", // Teknoloji
+          "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=400"  // Altyapı
+        ];
+        const resimSrc = resim ? resim : `<img src="${sahteResimler[idx]}" class="dk-resim">`;
+        
         alan.innerHTML += `
-          <div class="dunya-kart" onclick="window.open('${haber.url}', '_blank')">
-            ${resim}
-            <div class="dk-serit dk-catisma"></div>
+          <div class="dunya-kart" onclick="makaleAc('DÜNYA GÜNDEMİ', '${haber.title.replace(/'/g,"\\'")}', '${(haber.description || 'Detaylar ve makro ekonomik etkiler veri akışında işleniyor...').replace(/'/g,"\\'")}', '${haber.source?.name || 'Uluslararası Veri Ağı'}')">
+            ${resimSrc}
+            <div class="dk-serit" style="background:var(--altin)"></div>
             <div class="dk-icerik">
-              <div class="kat dk-catisma-yazi">🔴 CANLI VERİ AKIŞI</div>
+              <div class="kat dk-catisma-yazi">🌐 KÜRESEL SEKTÖREL AKIŞ</div>
               <h4>${haber.title}</h4>
-              <p>${haber.description || 'Haber detayları ve makro sektörel analizler için kaynağa tıklayınız...'}</p>
-              <div class="meta">${haber.source?.name || 'Canlı Akış'}</div>
+              <p>${haber.description || 'Makro piyasa hareketleri ve endüstriyel tedarik zinciri entegrasyonu detayları...'}</p>
+              <div class="meta">${haber.source?.name || 'Canlı Veri Havuzu'}</div>
             </div>
           </div>
         `;
+        haberSayaciniArtir();
       });
     }
+  }).catch(err => {
+    console.log("Dünya gündemi canlı akışında gecikme yaşandı.");
   });
 }
 
-// GÜNCELLENEN ENSONHABER STİLİ ANA SAYFA SON DAKİKA SLIDER MOTORU (TÜRKÇE VE GENİŞ KARTLAR)
+// ENSONHABER STİLİ SAVAŞ MERKEZİ SLIDER MOTORU
 async function sonDakikaBandiniGuncelle() {
   const wrapper = document.getElementById('ticker-slider');
   if(!wrapper) return;
   wrapper.innerHTML = '';
   let haberCount = 0;
 
-  // 1. Türkçe küresel özel analiz havuzunu büyük kartlar şeklinde yerleştir
+  // 1. Türkçe savaş ve askeri lojistik özel analiz havuzunu kartlar halinde yerleştir
   ozelKureselHavuz.forEach(h => {
     const card = document.createElement('div');
     card.className = 'dev-haber-karti';
     card.innerHTML = `
       <div class="dev-card-ust">
-        <span class="dev-kaynak-badge ${h.badgeClass}">${h.source}</span>
+        <span class="dev-kaynak-badge global">${h.source}</span>
         <span class="dev-kart-zaman">${h.time}</span>
       </div>
       <h3>${h.title}</h3>
       <p>${h.text}</p>
-      <div class="dev-oku-link">Detayları Oku →</div>
+      <div class="dev-oku-link">Analiz Raporunu Oku →</div>
     `;
     card.onclick = () => makaleAc(h.source, h.title, h.text, h.source);
     wrapper.appendChild(card);
     haberCount++;
   });
 
-  // 2. Canlı internet ağındaki ulusal sıcak haberleri de çekip arkasına kart olarak ekle
+  // 2. Canlı internet ağındaki ulusal sıcak askeri ve politik haberleri de çekip arkasına kart olarak bağla
   try {
     const res = await fetch(`https://saurav.tech/NewsAPI/top-headlines/category/general/tr.json`);
     const data = await res.json();
     if(data.articles && data.articles.length > 0) {
-      data.articles.slice(0, 6).forEach((art, index) => {
+      data.articles.slice(0, 4).forEach((art, index) => {
         if(art.title && art.description) {
           const card = document.createElement('div');
           card.className = 'dev-haber-karti';
           card.innerHTML = `
             <div class="dev-card-ust">
-              <span class="dev-kaynak-badge">CANLI AKIŞ</span>
-              <span class="dev-kart-zaman">${index + 1} dk önce</span>
+              <span class="dev-kaynak-badge radar">CANLI RADAR</span>
+              <span class="dev-kart-zaman">${index + 3} dk önce</span>
             </div>
             <h3>${art.title}</h3>
             <p>${art.description}</p>
-            <div class="dev-oku-link">Detayları Oku →</div>
+            <div class="dev-oku-link">Sıcak Gelişmeyi Oku →</div>
           `;
           card.onclick = () => makaleAc('Sıcak Gelişme', art.title, art.description, art.source?.name || 'Ajanslar');
           wrapper.appendChild(card);
