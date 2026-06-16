@@ -15,8 +15,8 @@
   --koyu: #0a111a; --yazi: #1f2937; --ikincil: #4b5563; --ucuncul: #9ca3af;
   --cizgi: rgba(0,0,0,0.06); --arkaplan: #F9FAFB;
   --kart-bg: #ffffff;
-  --golge: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
-  --gecis: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --golge: 0 10px 30px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+  --gecis: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* KOYU TEMA DEĞİŞKENLERİ */
@@ -27,12 +27,16 @@
   --ikincil: #9ca3af;
   --ucuncul: #6b7280;
   --cizgi: rgba(255,255,255,0.08);
-  --golge: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  --golge: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
   --lacivert: #60a5fa;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+
+/* GENEL ANİMASYON SINIFLARI */
+.anim-up { opacity: 0; transform: translateY(35px); transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.anim-up.goster { opacity: 1; transform: translateY(0); }
 
 /* OKUMA İLERLEME ÇUBUĞU */
 #ilerleme-cubugu {
@@ -47,7 +51,7 @@ body {
   color: var(--yazi);
   line-height: 1.6;
   position: relative;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 body::before {
@@ -55,10 +59,9 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 10 L40 30 L30 50 L20 30 Z' fill='%23C8963A' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
 
-@keyframes spin { to { transform: rotate(360deg); } }
 @keyframes pulse { 0%,100% { opacity:1; transform:scale(1) } 50% { opacity:.5; transform:scale(1.3) } }
 @keyframes float { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-5px) } }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes spin { to { transform: rotate(360deg); } }
 
 .gokturk-bg-text {
   font-family: 'Noto Sans Old Turkic', serif;
@@ -94,38 +97,28 @@ nav { background: var(--kart-bg); border-bottom: 1px solid var(--cizgi); positio
 
 main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 
-/* İSTATİSTİKLER */
-.istatistik-satiri { display: grid; grid-template-columns: repeat(6, 1fr); gap: 15px; margin-bottom: 2.5rem; }
-.istat-kart { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; padding: 1.2rem; text-align: center; position: relative; overflow: hidden; box-shadow: var(--golge); transition: var(--gecis); }
-.istat-kart:hover { transform: translateY(-3px); border-color: rgba(200,150,58,0.3); }
-.istat-kart::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--altin), var(--kizil)); }
-.istat-sayi { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--lacivert); margin-bottom: 4px; }
-.istat-etiket { font-size: 11px; font-weight: 500; color: var(--ikincil); text-transform: uppercase; letter-spacing: 0.05em; }
-
-/* BÖLÜM BAŞLIKLARI (After elementi başlıkların altındaki kırmızı çizgidir) */
+/* BÖLÜM BAŞLIKLARI */
 .bolum-baslik { display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; padding-bottom: 12px; border-bottom: 2px solid var(--cizgi); position: relative; }
 .bolum-baslik::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 60px; height: 2px; background: var(--kizil); }
 .bolum-baslik h2 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--lacivert); }
 .bolum-sembol { width: 32px; height: 32px; background: var(--altin-acik); color: var(--altin); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; border: 1px solid rgba(200,150,58,0.2); }
 
-/* SON DAKİKA SLIDER */
-.dev-son-dakika-alani { margin-bottom: 2.5rem; background: var(--lacivert); padding: 2.5rem; border-radius: 20px; position: relative; overflow: hidden; box-shadow: 0 20px 40px -10px rgba(20, 33, 61, 0.3); }
-.dev-son-dakika-alani::before { content: '𐰀𐰃𐰅𐰆𐰇𐰈𐰉𐰊𐰋𐰌'; font-family: 'Noto Sans Old Turkic'; position: absolute; right: -20px; top: -20px; font-size: 150px; color: rgba(255,255,255,0.02); pointer-events: none; }
-.dev-slider-wrapper { display: flex; gap: 1.5rem; overflow-x: auto; padding-bottom: 15px; padding-top: 5px; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--altin) rgba(255,255,255,0.05); }
-.dev-slider-wrapper::-webkit-scrollbar { height: 6px; }
-.dev-slider-wrapper::-webkit-scrollbar-thumb { background: var(--altin); border-radius: 10px; }
-.dev-haber-karti { flex: 0 0 400px; background: rgba(255,255,255,0.03); color: #fff; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 260px; position: relative; border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(10px); scroll-snap-align: center; transition: var(--gecis); cursor: pointer; }
-.dev-haber-karti:hover { transform: translateY(-5px) scale(1.02); background: rgba(255,255,255,0.06); border-color: rgba(200,150,58,0.4); box-shadow: 0 15px 35px rgba(0,0,0,0.4); z-index: 10;}
-.dev-haber-karti::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg, var(--kizil), var(--altin)); border-radius: 12px 0 0 12px; }
-.dev-card-ust { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-.dev-kaynak-badge { font-size: 11px; font-weight: 700; background: rgba(200,150,58,0.2); color: var(--altin); padding: 6px 12px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid rgba(200,150,58,0.3);}
-.dev-kart-zaman { font-size: 11px; color: rgba(255,255,255,0.5); font-weight: 500;}
-.dev-haber-karti h3 { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 700; line-height: 1.4; margin-bottom: 10px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-.dev-haber-karti p { font-size: 13px; color: rgba(255,255,255,0.6); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.6; }
-.dev-oku-link { font-size: 12px; color: var(--altin); font-weight: 600; text-align: right; margin-top: auto; padding-top: 15px; transition: var(--gecis); }
+/* YENİ: BÜYÜK MANŞET SLIDER (HERO SLIDER) */
+.hero-slider-alani { margin-bottom: 3.5rem; position: relative; border-radius: 20px; overflow: hidden; box-shadow: var(--golge); height: 500px; background: var(--koyu); }
+.hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.8s ease-in-out; background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem; color: #fff; cursor: pointer; }
+.hero-slide.active { opacity: 1; z-index: 2; }
+.hero-slide::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,17,26,0.95) 0%, rgba(10,17,26,0.4) 50%, transparent 100%); z-index: -1; }
+.hero-icerik { position: relative; z-index: 3; max-width: 800px; transform: translateY(30px); transition: transform 0.8s ease-out, opacity 0.8s ease-out; opacity: 0; }
+.hero-slide.active .hero-icerik { transform: translateY(0); opacity: 1; }
+.hero-etiket { display: inline-block; background: var(--kizil); color: #fff; font-size: 11px; font-weight: 700; padding: 6px 12px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 15px; }
+.hero-baslik { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; line-height: 1.2; margin-bottom: 15px; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+.hero-ozet { font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.hero-noktalar { position: absolute; bottom: 2rem; right: 3rem; z-index: 10; display: flex; gap: 10px; }
+.hero-nokta { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; transition: var(--gecis); }
+.hero-nokta.active { background: var(--altin); transform: scale(1.4); }
 
 /* KÜRESEL BİLİM VE TEKNOLOJİ */
-.bilim-ozel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
+.bilim-ozel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3.5rem; }
 .bilim-ozel-kart { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; padding: 1.8rem; box-shadow: var(--golge); transition: var(--gecis); cursor: pointer; display: flex; flex-direction: column; position: relative; overflow: hidden; }
 .bilim-ozel-kart::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, #3b82f6, #8b5cf6); }
 .bilim-ozel-kart:hover { transform: translateY(-5px); border-color: #3b82f6; box-shadow: 0 15px 30px rgba(59, 130, 246, 0.1); }
@@ -134,7 +127,7 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .bilim-ozel-kart p { font-size: 13px; color: var(--ikincil); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
 
 /* KÜRESEL SAVAŞ */
-.savas-koridoru { background: var(--koyu); border-radius: 16px; padding: 2.5rem; margin-bottom: 2.5rem; position: relative; border-left: 6px solid var(--kizil); box-shadow: 0 15px 40px rgba(0,0,0,0.15); overflow: hidden;}
+.savas-koridoru { background: var(--koyu); border-radius: 16px; padding: 2.5rem; margin-bottom: 3.5rem; position: relative; border-left: 6px solid var(--kizil); box-shadow: 0 15px 40px rgba(0,0,0,0.15); overflow: hidden;}
 .savas-koridoru::after { content:''; position:absolute; top:0; right:0; width:300px; height:100%; background:radial-gradient(ellipse at right, rgba(192,57,43,0.1) 0%, transparent 70%); pointer-events:none; }
 .savas-baslik { display: flex; align-items: center; gap: 15px; margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 15px; }
 .savas-baslik h2 { color: #fff; font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; }
@@ -149,44 +142,8 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .sk-mini { padding: 1.5rem; }
 .sk-mini h3 { font-size: 17px; margin-bottom: 8px; }
 
-/* 3'LÜ KOLON VE LİSTE HABERLERİ */
-.uc-kolon { display: grid; grid-template-columns: 1fr 1fr 340px; gap: 2rem; margin-bottom: 2.5rem; }
-.haber-bolum { display: flex; flex-direction: column; background: var(--kart-bg); border-radius: 12px; border: 1px solid var(--cizgi); overflow: hidden; box-shadow: var(--golge);}
-.haber-satir { padding: 1.5rem; border-bottom: 1px solid var(--cizgi); cursor: pointer; transition: var(--gecis); }
-.haber-satir:hover { background: rgba(0,0,0,0.015); padding-left: 1.8rem; }
-.haber-satir:last-child { border-bottom: none; }
-.etiket { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; padding: 4px 10px; border-radius: 4px; }
-.e-bilim { background: rgba(59, 130, 246, 0.15); color: #1e40af; }
-.e-siyaset { background: rgba(139, 92, 246, 0.15); color: #5b21b6; }
-.e-saglik { background: rgba(16, 185, 129, 0.15); color: #065f46; }
-.haber-satir h3 { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--lacivert); line-height: 1.35; margin-bottom: 8px; }
-.haber-satir p { font-size: 13px; color: var(--ikincil); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 10px; }
-
-/* KENAR ÇUBUĞU */
-.kenar { display: flex; flex-direction: column; gap: 1.5rem; }
-.yz-kutu { background: linear-gradient(135deg, var(--lacivert), var(--lacivert-acik)); border-radius: 12px; padding: 1.5rem; position: relative; overflow: hidden; box-shadow: var(--golge); color: #fff;}
-.yz-baslik-row { display: flex; align-items: center; gap: 10px; margin-bottom: 1.2rem; }
-.yz-badge-badge { background: var(--altin); color: var(--koyu); font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 4px; letter-spacing: 0.05em;}
-.yz-kat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 15px; }
-.yz-kat { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: 6px; padding: 10px; color: rgba(255,255,255,.7); font-size: 12px; cursor: pointer; font-family: 'Inter', sans-serif; transition: var(--gecis); text-align: left; font-weight: 500;}
-.yz-kat:hover, .yz-kat.secili { background: rgba(200,150,58,.2); border-color: var(--altin); color: #fff; }
-.yz-uret { width: 100%; background: var(--kizil); color: #fff; border: none; border-radius: 6px; padding: 12px; font-size: 14px; font-weight: 600; cursor: pointer; transition: var(--gecis); display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 15px; }
-.yz-uret:hover { background: var(--kizil-koyu); box-shadow: 0 4px 15px rgba(192,57,43,0.3);}
-.yz-cikti { background: rgba(0,0,0,.3); border-radius: 8px; padding: 15px; font-size: 13px; line-height: 1.7; color: rgba(255,255,255,.8); min-height: 100px; max-height: 300px; overflow-y: auto; border: 1px solid rgba(255,255,255,0.05);}
-
-.catisma-radar { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; overflow: hidden; box-shadow: var(--golge); }
-.cr-baslik { background: rgba(192,57,43,0.1); border-bottom: 1px solid rgba(192,57,43,.15); padding: 12px 1.5rem; font-size: 14px; font-weight: 700; color: #7A1A1A; font-family: 'Playfair Display', serif; display: flex; align-items: center; gap: 8px; }
-[data-theme="dark"] .cr-baslik { color: #ff8787; }
-.cr-dot { width: 8px; height: 8px; background: var(--kizil); border-radius: 50%; animation: pulse 1.5s infinite; }
-.cr-madde { padding: 12px 1.5rem; border-bottom: 1px solid var(--cizgi); cursor: pointer; transition: var(--gecis); }
-.cr-madde:last-child { border-bottom: none; }
-.cr-madde:hover { background: rgba(0,0,0,.02); padding-left: 1.8rem; }
-.cr-madde .bolge { font-size: 10px; font-weight: 700; color: var(--kizil); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 5px; }
-.cr-madde h5 { font-size: 13px; font-weight: 600; color: var(--lacivert); line-height: 1.4; margin-bottom: 4px; }
-.cr-madde .durum { font-size: 11px; color: var(--ucuncul); font-weight: 500;}
-
 /* DÜNYA GÜNDEMİ KARTLARI */
-.dunya-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 2.5rem; }
+.dunya-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 3.5rem; }
 .dunya-kart { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; overflow: hidden; cursor: pointer; transition: var(--gecis); display: flex; flex-direction: column; box-shadow: var(--golge);}
 .dunya-kart:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); border-color: rgba(200,150,58,0.3); }
 .dk-resim { width: 100%; height: 240px; object-fit: cover; transition: transform 0.5s ease;}
@@ -198,21 +155,47 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .dk-icerik h4 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--lacivert); line-height: 1.3; margin-bottom: 12px; }
 .dk-icerik p { font-size: 14px; color: var(--ikincil); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 15px; flex: 1;}
 
-/* TÜRK DÜNYASI BÖLÜMÜ */
-.turk-dunyasi { background: linear-gradient(135deg, var(--lacivert) 0%, #1a2a40 100%); border-radius: 16px; padding: 2.5rem; margin-bottom: 2.5rem; position: relative; overflow: hidden; box-shadow: var(--golge); border: 1px solid rgba(255,255,255,0.08); }
+/* 2'Lİ KOLON VE LİSTE HABERLERİ */
+.ikili-kolon { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 3.5rem; }
+.haber-bolum { display: flex; flex-direction: column; background: var(--kart-bg); border-radius: 12px; border: 1px solid var(--cizgi); overflow: hidden; box-shadow: var(--golge);}
+.haber-satir { padding: 1.5rem; border-bottom: 1px solid var(--cizgi); cursor: pointer; transition: var(--gecis); }
+.haber-satir:hover { background: rgba(0,0,0,0.015); padding-left: 1.8rem; }
+.haber-satir:last-child { border-bottom: none; }
+.etiket { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; padding: 4px 10px; border-radius: 4px; }
+.e-siyaset { background: rgba(139, 92, 246, 0.15); color: #5b21b6; }
+.e-saglik { background: rgba(16, 185, 129, 0.15); color: #065f46; }
+.haber-satir h3 { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--lacivert); line-height: 1.35; margin-bottom: 8px; }
+.haber-satir p { font-size: 13px; color: var(--ikincil); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 10px; }
+
+/* RADAR */
+.catisma-radar { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; overflow: hidden; box-shadow: var(--golge); height: 100%; }
+.cr-baslik { background: rgba(192,57,43,0.1); border-bottom: 1px solid rgba(192,57,43,.15); padding: 15px 1.5rem; font-size: 15px; font-weight: 700; color: #7A1A1A; font-family: 'Playfair Display', serif; display: flex; align-items: center; gap: 8px; }
+[data-theme="dark"] .cr-baslik { color: #ff8787; }
+.cr-dot { width: 8px; height: 8px; background: var(--kizil); border-radius: 50%; animation: pulse 1.5s infinite; }
+.cr-madde { padding: 15px 1.5rem; border-bottom: 1px solid var(--cizgi); cursor: pointer; transition: var(--gecis); }
+.cr-madde:last-child { border-bottom: none; }
+.cr-madde:hover { background: rgba(0,0,0,.02); padding-left: 1.8rem; }
+.cr-madde .bolge { font-size: 10px; font-weight: 700; color: var(--kizil); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 5px; }
+.cr-madde h5 { font-size: 14px; font-weight: 600; color: var(--lacivert); line-height: 1.4; margin-bottom: 4px; }
+.cr-madde .durum { font-size: 11px; color: var(--ucuncul); font-weight: 500;}
+
+/* TÜRK DÜNYASI BÖLÜMÜ (ÇEVİRİ ROZETLİ) */
+.turk-dunyasi { background: linear-gradient(135deg, var(--lacivert) 0%, #1a2a40 100%); border-radius: 16px; padding: 2.5rem; margin-bottom: 3.5rem; position: relative; overflow: hidden; box-shadow: var(--golge); border: 1px solid rgba(255,255,255,0.08); }
 .turk-dunyasi::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 85% 50%, rgba(200,150,58,.1) 0%, transparent 60%); pointer-events: none; }
 .turk-motif { position: absolute; right: 2rem; top: 50%; transform: translateY(-50%); opacity: .06; width: 200px; height: 200px; animation: spin 60s linear infinite;}
 .td-baslik { font-family: 'Playfair Display', serif; font-size: 24px; color: #fff; font-weight: 700; margin-bottom: 20px; position: relative; display: flex; align-items: center; gap: 10px;}
 .td-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; position: relative; z-index: 2;}
 .td-kart { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 1.5rem; cursor: pointer; transition: var(--gecis); backdrop-filter: blur(5px); display: flex; flex-direction: column;}
 .td-kart:hover { background: rgba(255,255,255,.08); border-color: rgba(200,150,58,0.4); transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.2);}
-.td-kart .ulke-tag { display: inline-block; font-size: 10px; color: var(--koyu); background: var(--altin); font-weight: 700; padding: 4px 8px; border-radius: 4px; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 12px; align-self: flex-start;}
+.td-kart-ust { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.td-kart .ulke-tag { font-size: 10px; color: var(--koyu); background: var(--altin); font-weight: 700; padding: 4px 8px; border-radius: 4px; letter-spacing: 0.05em; text-transform: uppercase; }
+.ceviri-badge { font-size: 9px; color: #60a5fa; background: rgba(96, 165, 250, 0.15); padding: 4px 8px; border-radius: 20px; font-weight: 600; display: flex; align-items: center; gap: 4px; border: 1px solid rgba(96, 165, 250, 0.3); }
 .td-kart h4 { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: #fff; line-height: 1.4; margin-bottom: 10px; }
 .td-kart p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 15px;}
 
 /* TARİH BÖLÜMÜ */
 .tarih-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2.5rem; }
-.tarih-makale { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; overflow: hidden; cursor: pointer; transition: var(--gecis); box-shadow: var(--golge); display: flex; flex-direction: column; animation: fadeUp 0.6s ease-out;}
+.tarih-makale { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; overflow: hidden; cursor: pointer; transition: var(--gecis); box-shadow: var(--golge); display: flex; flex-direction: column;}
 .tarih-makale:hover { transform: translateY(-4px); border-color: rgba(200,150,58,0.3); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
 .tm-serit { height: 4px; background: linear-gradient(90deg, var(--lacivert), var(--altin)); }
 .tm-icerik { padding: 1.5rem; flex: 1; display: flex; flex-direction: column;}
@@ -246,7 +229,6 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; margin-top: 3rem; pos
 .modal-metin { font-size: 16px; color: var(--yazi); line-height: 1.8; }
 .modal-metin p { margin-bottom: 1.5rem; }
 
-/* MODAL İÇİ İLGİLİ HABERLER */
 .ilgili-haberler-alani { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--cizgi); }
 .ilgili-haberler-alani h4 { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--lacivert); margin-bottom: 1.5rem; }
 .ilgili-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
@@ -256,16 +238,17 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; margin-top: 3rem; pos
 .ilgili-kart .i-kaynak { font-size: 10px; color: var(--ikincil); font-weight: 600; text-transform: uppercase; }
 
 @media(max-width:960px){
-  .uc-kolon, .savas-grid-2 { grid-template-columns: 1fr; }
+  .ikili-kolon, .savas-grid-2 { grid-template-columns: 1fr; }
   .dunya-grid, .tarih-grid, .td-grid, .bilim-ozel-grid, .ilgili-grid { grid-template-columns: 1fr 1fr; }
-  .istatistik-satiri { grid-template-columns: repeat(3, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
-  .dev-haber-karti { flex: 0 0 85vw; }
+  .hero-baslik { font-size: 26px; }
 }
 @media(max-width:600px){
-  .dunya-grid, .tarih-grid, .td-grid, .istatistik-satiri, .footer-grid, .bilim-ozel-grid, .ilgili-grid { grid-template-columns: 1fr; }
+  .dunya-grid, .tarih-grid, .td-grid, .footer-grid, .bilim-ozel-grid, .ilgili-grid { grid-template-columns: 1fr; }
   .modal-icerik { padding: 2.5rem 1.5rem; }
   .modal-baslik { font-size: 24px; }
+  .hero-slider-alani { height: 400px; }
+  .hero-slide { padding: 2rem; }
 }
 </style>
 </head>
@@ -276,7 +259,7 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; margin-top: 3rem; pos
 <div class="ust-bant">
   <div class="sol-kisim">
     <span class="tarih" id="tarih-goster"></span>
-    <span class="canli-sayac" id="canli-okuyucu">👁️ Kullanıcı analizi yapılıyor...</span>
+    <span class="canli-sayac" id="canli-okuyucu">👁️ Analiz ediliyor...</span>
   </div>
   <div class="sag-kisim">
     <div class="dil-secimi"><a href="#" class="aktif">TR</a><a href="#">AZ</a><a href="#">KK</a><a href="#">EN</a></div>
@@ -318,33 +301,19 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; margin-top: 3rem; pos
 
 <main>
 
-  <div class="istatistik-satiri">
-    <div class="istat-kart"><div class="istat-sayi">5</div><div class="istat-etiket">Bağımsız Cumhuriyet</div></div>
-    <div class="istat-kart"><div class="istat-sayi">250M+</div><div class="istat-etiket">Türk Dilli Nüfus</div></div>
-    <div class="istat-kart"><div class="istat-sayi">8</div><div class="istat-etiket">Çatışma Bölgesi</div></div>
-    <div class="istat-kart"><div class="istat-sayi" id="haber-sayisi">0</div><div class="istat-etiket">Üretilen Haber</div></div>
-    <div class="istat-kart"><div class="istat-sayi">6</div><div class="istat-etiket">Kategori</div></div>
-    <div class="istat-kart"><div class="istat-sayi" style="color:var(--kizil)">✦ Aktif</div><div class="istat-etiket">Veri Ağı</div></div>
+  <!-- BÜYÜK MANŞET (HERO SLIDER) -->
+  <div class="hero-slider-alani anim-up" id="hero-slider">
+    <!-- JS tarafından doldurulacak -->
+    <div style="color:white; display:flex; height:100%; align-items:center; justify-content:center;">Manşetler yükleniyor...</div>
   </div>
 
-  <div class="dev-son-dakika-alani">
-    <div class="bolum-baslik" style="border-bottom: none; margin-bottom: 1rem; padding-bottom: 0;">
-      <div class="bolum-sembol" style="background: var(--kizil); color:#fff; border:none;">⚡</div>
-      <h2 style="color: #fff">Sıcak Manşet Akışı</h2>
-      <span style="margin-left:auto; font-size:12px; color:rgba(255,255,255,0.5);">Kaydırarak inceleyin</span>
-    </div>
-    <div class="dev-slider-wrapper" id="ticker-slider"></div>
-  </div>
-
-  <div class="bolum-baslik" id="kuresel-bilim">
+  <div class="bolum-baslik anim-up" id="kuresel-bilim">
     <div class="bolum-sembol">🚀</div><h2>Küresel Bilim & Teknoloji Gündemi</h2>
     <span style="margin-left:auto; font-size:11px; color:var(--ucuncul); text-transform:uppercase;">ABD · ÇİN · AB</span>
   </div>
-  <div class="bilim-ozel-grid" id="bilim-ozel-alani">
-    <div class="bilim-ozel-kart"><h4 style="color:var(--lacivert)">Laboratuvar verileri taranıyor...</h4></div>
-  </div>
+  <div class="bilim-ozel-grid" id="bilim-ozel-alani"></div>
 
-  <div class="savas-koridoru" id="savas">
+  <div class="savas-koridoru anim-up" id="savas">
     <div class="savas-baslik">
       <div class="bolum-sembol" style="background:var(--kizil); color:#fff; border-radius:50%; border:none;">⚔️</div>
       <h2>Küresel Çatışma & Askeri Strateji</h2>
@@ -355,49 +324,31 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; margin-top: 3rem; pos
     </div>
   </div>
 
-  <div class="bolum-baslik">
+  <div class="bolum-baslik anim-up">
     <div class="bolum-sembol">🌐</div><h2>Dünya Gündemi (Canlı)</h2>
   </div>
   <div class="dunya-grid" id="canli-haber-alani"></div>
 
-  <div class="uc-kolon">
-    <div>
-      <div class="bolum-baslik" id="siyaset"><div class="bolum-sembol">🏛️</div><h2>Dünya Siyaseti</h2></div>
+  <div class="ikili-kolon">
+    <div class="anim-up">
+      <div class="bolum-baslik" id="siyaset"><div class="bolum-sembol">🏛️</div><h2>Dünya Siyaseti & Sağlık</h2></div>
       <div class="haber-bolum">
-        <div class="haber-satir" onclick="makaleAc('SİYASET', 'AB Dijital Pazarlar Kanunu\'nda Veri Taşınabilirliği Güncellemesi', 'Avrupa Birliği, kullanıcı verilerinin platformlar arasında kesintisiz aktarımını zorunlu kılan yeni veri egemenliği paketini onayladı.', 'Brüksel Mahreci')"><div><span class="etiket e-siyaset">AB</span><h3>AB Dijital Pazarlar Kanunu Güncellemesi</h3><p>Avrupa Birliği, kullanıcı verilerinin platformlar arasında kesintisiz aktarımını...</p></div></div>
-      </div>
-      <div class="bolum-baslik" id="saglik" style="margin-top:2rem"><div class="bolum-sembol">💊</div><h2>Tıp & Sağlık</h2></div>
-      <div class="haber-bolum">
+        <div class="haber-satir" onclick="makaleAc('SİYASET', 'AB Dijital Pazarlar Kanunu\'nda Veri Taşınabilirliği Güncellemesi', 'Avrupa Birliği, kullanıcı verilerinin platformlar arasında kesintisiz aktarımını zorunlu kılan yeni veri egemenliği paketini onayladı.', 'Brüksel Mahreci')"><div><span class="etiket e-siyaset">Avrupa Birliği</span><h3>AB Dijital Pazarlar Kanunu Güncellemesi</h3><p>Avrupa Birliği, kullanıcı verilerinin platformlar arasında kesintisiz aktarımını...</p></div></div>
         <div class="haber-satir" onclick="makaleAc('SAĞLIK', 'Nöral Implant Sistemleri Robotik Protez Kontrolünde Hassasiyeti Artırdı', 'İsviçre tabanlı nörotenoloji laboratuvarı, motor korteks sinyallerini eşzamanlı işleyen yeni algoritmasıyla felçli hastalara milimetrik kontrol sağladı.', 'NöroTıp')"><div><span class="etiket e-saglik">Nöroloji</span><h3>Nöral Implant Sistemleri Geliştirildi</h3><p>İsviçre tabanlı nörotenoloji laboratuvarı, motor korteks sinyallerini...</p></div></div>
       </div>
     </div>
     
-    <div>
-      <div class="bolum-baslik"><div class="bolum-sembol">⚡</div><h2>Otomatik YZ Akışı</h2></div>
-      <div class="haber-bolum" id="oto-haber-alani">
-      </div>
-    </div>
-    
-    <div class="kenar">
-      <div class="yz-kutu">
-        <div class="yz-baslik-row"><span class="yz-badge-badge">✦ YZ MOTORU</span><span class="yz-sub">Haber Üret</span></div>
-        <div class="yz-kat-grid">
-          <button class="yz-kat" onclick="katSec(this,'turkdunyasi')">🌍 Türk Dünyası</button><button class="yz-kat" onclick="katSec(this,'tarih')">🕌 Tarih</button>
-          <button class="yz-kat" onclick="katSec(this,'bilim')">🚀 Teknoloji</button><button class="yz-kat" onclick="katSec(this,'catisma')">⚔️ Savaş</button>
-        </div>
-        <button class="yz-uret" id="yz-btn" onclick="manuelHaberUret()" disabled><div id="sp"></div><span id="yz-yazi">Kategori seçin</span></button>
-        <div class="yz-cikti" id="yz-cikti">Gerçek internet haberleri analiz edilecek...</div>
-      </div>
-      
+    <div class="anim-up">
       <div class="catisma-radar">
-        <div class="cr-baslik"><div class="cr-dot"></div>Hızlı Radar</div>
+        <div class="cr-baslik"><div class="cr-dot"></div>Sıcak Çatışma Radarı</div>
         <div class="cr-madde" onclick="makaleAc('RADAR', 'Kızıldeniz Tedarik Hattı Elektronik Baskı Altında', 'Ticari gemilerin seyrüsefer sistemlerine yönelik yanıltıcı sinyal müdahaleleri sürüyor.', 'Bölge Raporu')"><div class="bolge">🌐 Kızıldeniz</div><h5>Kızıldeniz Tedarik Hattı Elektronik Baskı Altında</h5><div class="durum">Yüksek Yoğunluklu Risk</div></div>
         <div class="cr-madde" onclick="makaleAc('RADAR', 'Doğu Avrupa Sınır Hattı Tahkimat Süreci', 'Bölgede lojistik destek ve ikmal yolları üzerindeki insansız hava aracı devriyeleri artırıldı.', 'Bölge Raporu')"><div class="bolge">🇪🇺 Doğu Avrupa</div><h5>Doğu Avrupa Sınır Hattı Tahkimat Süreci</h5><div class="durum">Mevzi Konsolidasyonu</div></div>
+        <div class="cr-madde" onclick="makaleAc('RADAR', 'Pasifik Donanma Hareketliliği', 'Güney Çin Denizi açıklarında karşılıklı deniz tatbikatları gerilimi artırdı.', 'Pasifik Raporu')"><div class="bolge">🌊 Pasifik Okyanusu</div><h5>Güney Çin Denizi Askeri Tatbikatları</h5><div class="durum">Stratejik Teyakkuz</div></div>
       </div>
     </div>
   </div>
 
-  <div class="turk-dunyasi" id="turkdunyasi">
+  <div class="turk-dunyasi anim-up" id="turkdunyasi">
     <svg class="turk-motif" viewBox="0 0 160 160" fill="none">
       <polygon points="80,8 104,24 128,24 140,44 140,72 128,92 104,104 80,112 56,104 32,92 20,72 20,44 32,24 56,24" stroke="white" stroke-width="2" fill="none"/>
       <circle cx="80" cy="68" r="20" stroke="white" stroke-width="1.5" fill="none"/>
@@ -409,15 +360,15 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; margin-top: 3rem; pos
     </svg>
     <div class="td-baslik">🌍 Türk Devletleri Gündemi (Canlı)</div>
     <div class="td-grid" id="td-dinamik-grid">
-      <div class="td-kart"><h4 style="color:#fff">Haberler çekiliyor...</h4></div>
+      <div class="td-kart"><h4 style="color:#fff">Haberler çekiliyor ve çevriliyor...</h4></div>
     </div>
   </div>
 
-  <div class="bolum-baslik" id="tarih">
+  <div class="bolum-baslik anim-up" id="tarih">
       <div class="bolum-sembol">🕌</div><h2>Tarih & Kültür Arşivi</h2>
       <span style="margin-left:auto; font-size:11px; color:var(--ucuncul);">Otomatik Yenilenir</span>
   </div>
-  <div class="tarih-grid" id="tarih-grid-alan"></div>
+  <div class="tarih-grid anim-up" id="tarih-grid-alan"></div>
 
 </main>
 
@@ -478,7 +429,20 @@ function temaDegistir() {
 }
 temaUygula();
 
-// İLERLEME ÇUBUĞU JS
+// SCROLL ANİMASYONLARI (Intersection Observer)
+function animasyonlariBaslat() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add('goster');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.anim-up').forEach(el => observer.observe(el));
+}
+
+// İLERLEME ÇUBUĞU
 window.addEventListener('scroll', () => {
   const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -486,19 +450,18 @@ window.addEventListener('scroll', () => {
   document.getElementById('ilerleme-cubugu').style.width = scrolled + "%";
 });
 
-// SAATE GÖRE GERÇEKÇİ CANLI KULLANICI ALGORİTMASI
+// CANLI KULLANICI ALGORİTMASI
 function anlikKullaniciTabaniGetir() {
   const saat = new Date().getHours();
-  if (saat >= 2 && saat < 7) return 45; // Gece yarısı sessizliği
-  if (saat >= 7 && saat < 12) return 320; // Sabah haber okuma
-  if (saat >= 12 && saat < 18) return 850; // Öğle/İkindi
-  if (saat >= 18 && saat < 24) return 1250; // Akşam prime time
-  return 150; // Geç gece
+  if (saat >= 2 && saat < 7) return 45; 
+  if (saat >= 7 && saat < 12) return 320; 
+  if (saat >= 12 && saat < 18) return 850; 
+  if (saat >= 18 && saat < 24) return 1250; 
+  return 150; 
 }
 
 setInterval(() => {
   const bazDeger = anlikKullaniciTabaniGetir();
-  // Bulunan baz değere, baz değerin %5'i kadar rastgele organik dalgalanma ekle
   const dalgalanma = Math.floor(Math.random() * (bazDeger * 0.1)) - (bazDeger * 0.05); 
   document.getElementById('canli-okuyucu').textContent = `👁️ Şu an ${Math.floor(bazDeger + dalgalanma)} kişi okuyor`;
 }, 6500);
@@ -523,8 +486,7 @@ const yedekIlgiliHaberler = [
   {t:"Küresel Tedarik Zincirinde Yeni Rota Arayışları", k:"Ekonomi", m:"Yeni ticari koridorlar oluşturuluyor. Özellikle Orta Koridor projesinde önemli anlaşmalar imzalandı."}, 
   {t:"Yarı İletken Pazarında Rekabet Kızışıyor", k:"Teknoloji", m:"Çip üretiminde yeni yatırımlar ve devlet teşvikleri sektör dinamiklerini tamamen değiştiriyor."}, 
   {t:"Bölgesel Güvenlik Zirvesinden Çıkan Kararlar", k:"Jeopolitik", m:"Savunma bütçelerinin artırılması ve siber güvenlik odaklı ortak tatbikatlar gündemde."}, 
-  {t:"Yapay Zeka ve Veri Gizliliği Yasaları", k:"Hukuk", m:"Avrupa ve ABD düzenleyicileri yeni nesil veri koruma algoritmalarını zorunlu hale getiriyor."}, 
-  {t:"Havacılık Sektöründe Karbon Sıfır Hedefi", k:"Bilim", m:"Sentetik yakıtlar ve hidrojen itiş sistemleriyle ticari havacılıkta yeni bir çağ başlıyor."}
+  {t:"Yapay Zeka ve Veri Gizliliği Yasaları", k:"Hukuk", m:"Avrupa ve ABD düzenleyicileri yeni nesil veri koruma algoritmalarını zorunlu hale getiriyor."}
 ];
 
 function makaleAc(kategori, baslik, metin, kaynak) {
@@ -537,7 +499,6 @@ function makaleAc(kategori, baslik, metin, kaynak) {
   document.getElementById('modal-tarih').textContent = `${simdi.getDate()} ${aylar[simdi.getMonth()]} ${simdi.getFullYear()}`;
   document.getElementById('modal-kaynak').innerHTML = `<strong>Kaynak:</strong> ${guvenliMetin(kaynak) || 'TuranHaber Özel'}`;
   
-  // XSS GÜVENLİK AÇIĞI KAPATILDI: createElement kullanılarak ilgili haberler eklendi
   const ilgiliGrid = document.getElementById('ilgili-haberler-grid');
   ilgiliGrid.innerHTML = '';
   const secilenIlgili = [...yedekIlgiliHaberler].sort(() => 0.5 - Math.random()).slice(0, 3);
@@ -545,20 +506,12 @@ function makaleAc(kategori, baslik, metin, kaynak) {
   secilenIlgili.forEach(ih => {
      const kart = document.createElement('div');
      kart.className = 'ilgili-kart';
-     // Demo alert yerine doğrudan sistemi besleyen bir makaleAc tetiklemesi eklendi
-     kart.addEventListener('click', () => {
-         makaleAc(ih.k, ih.t, ih.m + " (Bu haber ilgili okuma algoritması tarafından önerilmiştir.)", "TuranHaber Arşivi");
-     });
+     kart.addEventListener('click', () => makaleAc(ih.k, ih.t, ih.m, "TuranHaber Arşivi"));
      
-     const kaynakSpan = document.createElement('span');
-     kaynakSpan.className = 'i-kaynak';
-     kaynakSpan.textContent = ih.k;
+     const kaynakSpan = document.createElement('span'); kaynakSpan.className = 'i-kaynak'; kaynakSpan.textContent = ih.k;
+     const baslikH5 = document.createElement('h5'); baslikH5.textContent = ih.t;
      
-     const baslikH5 = document.createElement('h5');
-     baslikH5.textContent = ih.t;
-     
-     kart.appendChild(kaynakSpan);
-     kart.appendChild(baslikH5);
+     kart.appendChild(kaynakSpan); kart.appendChild(baslikH5);
      ilgiliGrid.appendChild(kart);
   });
 
@@ -574,13 +527,6 @@ function modalKapat() {
   setTimeout(() => { modal.style.display = 'none'; document.body.style.overflow = ''; }, 300);
 }
 
-let uretilenHaberSayisi = 0;
-function haberSayaciniArtir() {
-  uretilenHaberSayisi++;
-  const s = document.getElementById('haber-sayisi');
-  if(s) s.textContent = uretilenHaberSayisi;
-}
-
 async function apiIstekAt(url) { 
     try {
         const response = await fetch(url);
@@ -588,6 +534,80 @@ async function apiIstekAt(url) {
         if (data && data.status === "success" && Array.isArray(data.results)) return haberFiltrele(data.results);
         return null;
     } catch (error) { return null; }
+}
+
+/* YENİ: BÜYÜK HERO SLIDER (MANŞET AKIŞI) */
+let heroSliderInterval;
+async function heroSliderGuncelle() {
+  const sliderAlani = document.getElementById('hero-slider');
+  if(!sliderAlani) return;
+  const results = await apiIstekAt(`${WORKER_URL}/?kategori=top`);
+  if(results && results.length > 0) {
+    sliderAlani.innerHTML = '';
+    const manseHaberler = results.slice(0, 5);
+    const noktaKapsayici = document.createElement('div');
+    noktaKapsayici.className = 'hero-noktalar';
+
+    manseHaberler.forEach((h, index) => {
+      const sahteResimler = [
+        "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=1200", 
+        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200", 
+        "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=80&w=1200",
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200",
+        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200"
+      ];
+      const resimSrc = h.image_url ? h.image_url : sahteResimler[index % sahteResimler.length];
+      const bBas = guvenliMetin(h.title); 
+      const bMet = guvenliMetin(h.description || h.content || ''); 
+      const bKay = guvenliMetin(h.source_id || 'AJANSLAR');
+
+      // Slide Div
+      const slide = document.createElement('div');
+      slide.className = `hero-slide ${index === 0 ? 'active' : ''}`;
+      slide.style.backgroundImage = `url('${resimSrc}')`;
+      slide.onclick = () => makaleAc('SICAK MANŞET', bBas, bMet, bKay);
+
+      slide.innerHTML = `
+        <div class="hero-icerik">
+          <div class="hero-etiket">⚡ SON DAKİKA · ${bKay}</div>
+          <h2 class="hero-baslik">${bBas}</h2>
+          <p class="hero-ozet">${bMet}</p>
+        </div>
+      `;
+      sliderAlani.appendChild(slide);
+
+      // Nokta Div
+      const nokta = document.createElement('div');
+      nokta.className = `hero-nokta ${index === 0 ? 'active' : ''}`;
+      nokta.onclick = (e) => { e.stopPropagation(); heroSlideGecis(index); };
+      noktaKapsayici.appendChild(nokta);
+    });
+
+    sliderAlani.appendChild(noktaKapsayici);
+    heroSliderOtomatikBaslat(manseHaberler.length);
+  }
+}
+
+let aktifSlayt = 0;
+function heroSlideGecis(index) {
+  const slaytlar = document.querySelectorAll('.hero-slide');
+  const noktalar = document.querySelectorAll('.hero-nokta');
+  if(slaytlar.length === 0) return;
+  
+  slaytlar[aktifSlayt].classList.remove('active');
+  noktalar[aktifSlayt].classList.remove('active');
+  
+  aktifSlayt = index % slaytlar.length;
+  
+  slaytlar[aktifSlayt].classList.add('active');
+  noktalar[aktifSlayt].classList.add('active');
+}
+
+function heroSliderOtomatikBaslat(toplam) {
+  if(heroSliderInterval) clearInterval(heroSliderInterval);
+  heroSliderInterval = setInterval(() => {
+    heroSlideGecis(aktifSlayt + 1);
+  }, 6000); // Her 6 saniyede bir geçiş
 }
 
 const yedekSavas = [{ title: "İran ve ABD Anlaştı", description: "Basra Körfezi'ndeki askeri teyakkuz durumu düşürüldü.", source_id: "Reuters" }, { title: "Sınır Hatlarında İHA Devriyeleri Artırıldı", description: "Bölgedeki kritik lojistik ağlar üzerinde siber ve fiziksel operasyonlar sürüyor.", source_id: "Bölge İstihbarat" }];
@@ -617,7 +637,6 @@ async function savasHaberleriniGuncelle() {
           card.innerHTML = `<div class="sk-ajans altin">STRATEJİK ANALİZ</div><h3>${bBas}</h3><p>${bMet.substring(0, 100)}...</p>`;
           altGrid.appendChild(card);
       }
-      haberSayaciniArtir();
   });
   grid.appendChild(altGrid);
 }
@@ -629,18 +648,20 @@ async function kureselBilimGuncelle() {
   
   if(bilimHaberleri.length > 0) {
      grid.innerHTML = '';
-     bilimHaberleri.slice(0, 3).forEach(h => {
+     bilimHaberleri.slice(0, 3).forEach((h, idx) => {
         const bBas = guvenliMetin(h.title); const bMet = guvenliMetin(h.description || h.content); const bKay = guvenliMetin(h.source_id);
         const ulkeler = ['ABD Raporu', 'Pekin - Çin', 'Avrupa Uzay Ajansı', 'Silikon Vadisi'];
         const rastgeleUlke = ulkeler[Math.floor(Math.random() * ulkeler.length)];
         
         const card = document.createElement('div');
-        card.className = 'bilim-ozel-kart';
+        card.className = `bilim-ozel-kart anim-up`;
+        // Scroll animasyonunun gecikmesi için
+        card.style.transitionDelay = `${idx * 0.15}s`;
         card.onclick = () => makaleAc('KÜRESEL BİLİM', bBas, bMet, bKay);
         card.innerHTML = `<div class="bo-ulke">🔬 ${rastgeleUlke}</div><h4>${bBas}</h4><p>${bMet}</p><div style="margin-top:15px; font-size:11px; color:var(--kizil); font-weight:bold;">KAYNAK: ${bKay.toUpperCase()}</div>`;
         grid.appendChild(card);
-        haberSayaciniArtir();
      });
+     animasyonlariBaslat(); // Yeni eklenenlere animasyon atamak için
   }
 }
 
@@ -655,15 +676,17 @@ async function canliHaberleriCek() {
       const resimSrc = h.image_url ? h.image_url : sahteResimler[idx];
       const bBas = guvenliMetin(h.title); const bMet = guvenliMetin(h.description || h.content || 'Makro piyasa hareketleri detayları...'); const bKay = guvenliMetin(h.source_id || 'Canlı Veri');
       const card = document.createElement('div');
-      card.className = 'dunya-kart';
+      card.className = 'dunya-kart anim-up';
+      card.style.transitionDelay = `${idx * 0.1}s`;
       card.onclick = () => makaleAc('DÜNYA GÜNDEMİ', bBas, bMet, bKay);
       card.innerHTML = `<div class="dk-resim-wrapper"><img src="${resimSrc}" class="dk-resim" onerror="this.src='${sahteResimler[idx]}'"></div><div class="dk-serit"></div><div class="dk-icerik"><div class="dk-catisma-yazi">🌐 KÜRESEL SEKTÖREL AKIŞ</div><h4>${bBas}</h4><p>${bMet.substring(0,150)}...</p><div class="meta">${bKay.toUpperCase()}</div></div>`;
       alan.appendChild(card);
-      haberSayaciniArtir();
     });
+    animasyonlariBaslat();
   }
 }
 
+// TÜRK DÜNYASI VE ÇEVİRİ ANİMASYONU
 async function turkDunyasiGuncelle() {
     const grid = document.getElementById('td-dinamik-grid');
     if(!grid) return;
@@ -671,7 +694,7 @@ async function turkDunyasiGuncelle() {
     
     if(results && results.length > 0) {
         grid.innerHTML = '';
-        results.slice(0, 3).forEach(h => {
+        results.slice(0, 3).forEach((h, idx) => {
             const bBas = guvenliMetin(h.title);
             const bMet = guvenliMetin(h.description || h.content);
             const bKay = guvenliMetin(h.source_id);
@@ -679,12 +702,20 @@ async function turkDunyasiGuncelle() {
             let ulke = (h.country && h.country[0] && h.country[0] !== 'tr') ? h.country[0].toUpperCase() : ulkeler[Math.floor(Math.random() * ulkeler.length)];
             
             const card = document.createElement('div');
-            card.className = 'td-kart';
+            card.className = 'td-kart anim-up';
+            card.style.transitionDelay = `${idx * 0.15}s`;
             card.onclick = () => makaleAc(ulke, bBas, bMet, bKay);
-            card.innerHTML = `<div class="ulke-tag">${ulke}</div><h4>${bBas}</h4><p>${bMet}</p><div class="meta">✦ Gündem · ${bKay}</div>`;
+            
+            // Çeviri Rozeti Eklendi
+            card.innerHTML = `
+              <div class="td-kart-ust">
+                <div class="ulke-tag">${ulke}</div>
+                <div class="ceviri-badge" title="Bu metin otomatik dil modeliyle Türkçe'ye çevrilmiştir.">🔄 Çevrildi</div>
+              </div>
+              <h4>${bBas}</h4><p>${bMet}</p><div class="meta" style="font-size:11px; color:rgba(255,255,255,0.4)">✦ Kaynak: ${bKay}</div>`;
             grid.appendChild(card);
-            haberSayaciniArtir();
         });
+        animasyonlariBaslat();
     }
 }
 
@@ -700,107 +731,31 @@ function tarihiOlaylariYenile() {
     if(!grid) return;
     grid.innerHTML = '';
     const secilenler = [...tarihHavuzu].sort(() => 0.5 - Math.random()).slice(0, 3);
-    secilenler.forEach(o => {
+    secilenler.forEach((o, idx) => {
         const card = document.createElement('div');
-        card.className = 'tarih-makale';
+        card.className = 'tarih-makale anim-up';
+        card.style.transitionDelay = `${idx * 0.1}s`;
         card.onclick = () => makaleAc('TARİH', o.t, o.m, o.k);
         card.innerHTML = `<div class="tm-serit"></div><div class="tm-icerik"><span class="donem-badge">${o.d}</span><h4>${o.t}</h4><p>${o.m}</p></div>`;
         grid.appendChild(card);
     });
-}
-
-async function sonDakikaBandiniGuncelle() {
-  const wrapper = document.getElementById('ticker-slider');
-  if(!wrapper) return;
-  const results = await apiIstekAt(`${WORKER_URL}/?kategori=top`);
-  if(results && results.length > 0) {
-    wrapper.innerHTML = '';
-    results.slice(0, 8).forEach((h, index) => {
-      const bBas = guvenliMetin(h.title); const bMet = guvenliMetin(h.description || h.content || ''); const bKay = guvenliMetin(h.source_id || 'Ajanslar');
-      const card = document.createElement('div');
-      card.className = 'dev-haber-karti';
-      card.onclick = () => makaleAc('Sıcak Akış', bBas, bMet, bKay);
-      card.innerHTML = `<div class="dev-card-ust"><span class="dev-kaynak-badge radar">AJANS FLAŞ</span><span class="dev-kart-zaman">${index + 2} dk önce</span></div><h3>${bBas}</h3><p>${bMet}</p><div class="dev-oku-link">Sıcak Akışı Gör →</div>`;
-      wrapper.appendChild(card);
-      haberSayaciniArtir();
-    });
-  }
-  setupDragAndDropScroll();
-}
-
-function setupDragAndDropScroll() {
-  const slider = document.getElementById('ticker-slider');
-  if(!slider) return;
-  let isDown = false; let startX; let scrollLeft;
-  slider.addEventListener('mousedown', (e) => { isDown = true; slider.style.scrollSnapType = 'none'; startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
-  slider.addEventListener('mouseleave', () => { isDown = false; slider.style.scrollSnapType = 'x mandatory'; });
-  slider.addEventListener('mouseup', () => { isDown = false; slider.style.scrollSnapType = 'x mandatory'; });
-  slider.addEventListener('mousemove', (e) => { if(!isDown) return; e.preventDefault(); const x = e.pageX - slider.offsetLeft; slider.scrollLeft = scrollLeft - (x - startX) * 2; });
-}
-
-async function gercekHaberGetir(katId) {
-  let url = `${WORKER_URL}/?`;
-  if (katId === 'catisma') url += `kategori=world&q=${encodeURIComponent('savaş OR çatışma')}`;
-  else if (katId === 'bilim') url += `kategori=technology&q=${encodeURIComponent('uzay OR bilim OR teknoloji')}`;
-  else if (katId === 'turkdunyasi') url += `country=az,kz,uz,kg`;
-  else url += `kategori=top`;
-  const results = await apiIstekAt(url);
-  if(results && results.length > 0) {
-      const s = results[Math.floor(Math.random() * Math.min(results.length, 10))];
-      return { baslik: s.title, metin: s.description || s.content, kaynak: s.source_id.toUpperCase() };
-  }
-  return { baslik: "Veri Bekleniyor...", metin: "Ağ taranıyor...", kaynak: "Sistem" };
-}
-
-const KATEGORILER = [ { id:'bilim', ad:'🔬 Bilim' }, { id:'catisma', ad:'⚔️ Savaş' } ];
-
-async function otomatikYenile() {
-  const alan = document.getElementById('oto-haber-alani');
-  if(!alan) return;
-  alan.innerHTML = '';
-  for (let i = 0; i < 2; i++) {
-    const kat = KATEGORILER[i];
-    const kart = document.createElement('div');
-    kart.className = 'haber-satir';
-    kart.innerHTML = `<div><span class="etiket e-bilim">GÜNCELLENİYOR</span><h3 id="baslik-${i}">Yükleniyor...</h3><p id="metin-${i}">Ağ taranıyor...</p></div>`;
-    alan.appendChild(kart);
-    gercekHaberGetir(kat.id).then(h => {
-      kart.onclick = () => makaleAc('OTOMATİK BÜLTEN', h.baslik, h.metin, h.kaynak);
-      document.getElementById(`baslik-${i}`).textContent = guvenliMetin(h.baslik);
-      document.getElementById(`metin-${i}`).textContent = guvenliMetin(h.metin).substring(0, 100) + '...';
-      haberSayaciniArtir();
-    });
-  }
-}
-
-let seciliKat = null;
-function katSec(el, kat) {
-  document.querySelectorAll('.yz-kat').forEach(b => b.classList.remove('secili')); el.classList.add('secili');
-  seciliKat = kat; document.getElementById('yz-btn').disabled = false; document.getElementById('yz-yazi').textContent = 'Haber Çek ✦';
-}
-
-async function manuelHaberUret() {
-  if (!seciliKat) return;
-  const cikti = document.getElementById('yz-cikti'); const btn = document.getElementById('yz-btn'); const yzYazi = document.getElementById('yz-yazi');
-  btn.disabled = true; yzYazi.textContent = 'Yükleniyor...'; cikti.innerHTML = "Ağ taranıyor...";
-  const h = await gercekHaberGetir(seciliKat);
-  cikti.innerHTML = `<strong>BAŞLIK:</strong> ${guvenliMetin(h.baslik)}<br><br>${guvenliMetin(h.metin).replace(/\n/g, '<br>')}<br><br><em style="font-size:10px; opacity:0.7">Kaynak: ${guvenliMetin(h.kaynak)}</em>`;
-  btn.disabled = false; yzYazi.textContent = 'Yeniden Çek ✦';
+    animasyonlariBaslat();
 }
 
 window.addEventListener('load', () => {
-  // Canlı sayaç ilk değerini anında atar, bekletmez
   document.getElementById('canli-okuyucu').textContent = `👁️ Şu an ${Math.floor(anlikKullaniciTabaniGetir() + (Math.random() * 10))} kişi okuyor`;
   
+  heroSliderGuncelle(); // Yeni Büyük Slider Modülü
   savasHaberleriniGuncelle(); 
-  otomatikYenile(); 
   canliHaberleriCek(); 
-  sonDakikaBandiniGuncelle();
   turkDunyasiGuncelle();
   kureselBilimGuncelle(); 
   
   tarihiOlaylariYenile();
   setInterval(tarihiOlaylariYenile, 15000); 
+  
+  // Mevcut statik elemanların animasyonlarını tetikle
+  animasyonlariBaslat();
 });
 </script>
 </body>
