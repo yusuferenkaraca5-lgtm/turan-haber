@@ -122,7 +122,7 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .gm-metin { font-size: 15px; color: var(--ikincil); line-height: 1.7; margin-bottom: 25px; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;}
 .gm-okuma-suresi { font-size: 12px; font-weight: 600; color: var(--kizil); }
 
-/* DÜNYA GÜNDEMİ KARTLARI (RESİMLİ) */
+/* DÜNYA GÜNDEMİ KARTLARI */
 .dunya-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 3.5rem; }
 .dunya-kart { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; overflow: hidden; cursor: pointer; transition: var(--gecis); display: flex; flex-direction: column; box-shadow: var(--golge);}
 .dunya-kart:hover { transform: translateY(-5px); border-color: rgba(200,150,58,0.3); }
@@ -211,9 +211,7 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
 .ilgili-kart h5 { font-size: 13px; color: var(--lacivert); margin-bottom: 8px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .ilgili-kart .i-kaynak { font-size: 10px; color: var(--ikincil); font-weight: 600; text-transform: uppercase; }
 
-/* =========================================
-   KUSURSUZ MOBİL (RESPONSIVE) CSS
-   ========================================= */
+/* RESPONSIVE */
 @media(max-width: 960px){
   .ikili-kolon, .savas-grid-2 { grid-template-columns: 1fr; }
   .dunya-grid, .tarih-grid, .td-grid, .bilim-ozel-grid, .ilgili-grid { grid-template-columns: 1fr 1fr; }
@@ -224,44 +222,19 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
   [data-theme="dark"] .gm-resim::after { background: linear-gradient(0deg, var(--kart-bg) 0%, transparent 50%); }
   .gm-icerik { width: 100%; padding: 2.5rem; }
 }
-
 @media(max-width: 600px){
-  /* Üst Bant ve Header */
   .ust-bant { flex-direction: column; gap: 10px; padding: 12px; text-align: center; }
   .ust-bant .sol-kisim, .ust-bant .sag-kisim { justify-content: center; }
   header { padding: 1.5rem 1rem; }
   .logo-alan { flex-direction: column; text-align: center; width: 100%; }
   .logo-bas { font-size: 28px; }
   main { padding: 1.5rem 1rem; }
-
-  /* Bütün Gridler Tek Kolon */
   .dunya-grid, .tarih-grid, .td-grid, .bilim-ozel-grid, .ilgili-grid, .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-  
-  /* Hero Slider Mobilde Tam Uyumlu */
   .hero-slider-alani { height: 400px; margin-bottom: 2.5rem; }
   .hero-slide { padding: 1.5rem; }
   .hero-baslik { font-size: 24px; }
   .hero-ozet { display: -webkit-box; -webkit-line-clamp: 2; font-size: 13px; }
   .hero-noktalar { bottom: 1rem; right: 1.5rem; }
-
-  /* Kartların İç Boşlukları ve Fontları Düzenleme */
-  .savas-koridoru { padding: 1.5rem; }
-  .savas-baslik h2 { font-size: 20px; }
-  .sk-kart { padding: 1.5rem; }
-  .sk-kart h3 { font-size: 20px; }
-  
-  .gm-baslik { font-size: 22px; }
-  .gm-icerik { padding: 1.5rem; }
-  .gm-metin { font-size: 14px; }
-
-  .turk-dunyasi { padding: 1.5rem; }
-  .td-baslik { font-size: 20px; }
-
-  .modal-icerik { padding: 2rem 1.5rem; }
-  .modal-baslik { font-size: 24px; }
-
-  /* MOBİLDE GÖRÜNMEZLİK SORUNUNU KÖKTEN ÇÖZEN CSS: 
-     Tarayıcı JS kısıtlaması yaparsa elemanlar direkt görünsün */
   .anim-up { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
 </style>
@@ -412,7 +385,6 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
 <script>
 const WORKER_URL = "https://turan-cache.yusuferenkaraca5.workers.dev";
 
-// TEMA
 function temaUygula() {
   const isDark = localStorage.getItem('tema') === 'dark';
   document.body.setAttribute('data-theme', isDark ? 'dark' : '');
@@ -424,7 +396,6 @@ function temaDegistir() {
 }
 temaUygula();
 
-// SAĞLAMLAŞTIRILMIŞ OBSERVER (MOBİL PERFORMANS İÇİN)
 const animObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if(entry.isIntersecting) {
@@ -435,7 +406,6 @@ const animObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.05, rootMargin: '100px' }); 
 
 function animasyonlariBaslat() {
-  // Sadece ekranda henüz gösterilmemiş (.goster sınıfı almamış) elemanları dinle
   if(window.innerWidth > 600) {
      document.querySelectorAll('.anim-up:not(.goster)').forEach(el => animObserver.observe(el));
   }
@@ -470,6 +440,22 @@ function guvenliMetin(metin) {
   return t.replace(/&/g, '&amp;').replace(/'/g, '&#39;').replace(/"/g, '&quot;').replace(/\n/g, ' ');
 }
 
+// MAGAZİN, DİZİ VE HİNT HABERLERİNİ TAMAMEN SİLEN SIKI EDİTORYAL FİLTRE
+function haberFiltrele(res) { 
+  const yasakliKelimeler = [
+    'only available', 'paid plans', 'dizi', 'oyuncu', 'magazin', 'bollywood', 
+    'fragman', 'kimdir', 'sevgili', 'sinema', 'şarkıcı', 'actor', 'actress', 
+    'movie', 'episode', 'season', 'aşk', 'kız', 'survivor', 'masterchef'
+  ];
+  
+  return res ? res.filter(h => {
+    if(!h.title) return false;
+    const baslik = h.title.toLowerCase();
+    // Eğer başlık yasaklı kelimelerden herhangi birini içeriyorsa haber reddedilir
+    return !yasakliKelimeler.some(yasakli => baslik.includes(yasakli));
+  }) : []; 
+}
+
 function turkceyeCevir(metin) {
   if(!metin) return '';
   let m = String(metin);
@@ -478,7 +464,6 @@ function turkceyeCevir(metin) {
   return m.replace(/ə/g, 'e').replace(/Ə/g, 'E').replace(/q/g, 'k').replace(/Q/g, 'K').replace(/x/g, 'h').replace(/X/g, 'H');
 }
 
-function haberFiltrele(res) { return res ? res.filter(h => h.title && !h.title.includes('ONLY AVAILABLE')) : []; }
 
 const yedekIlgili = [{t:"Tedarik Zincirinde Rota Arayışları", k:"Ekonomi", m:"Yeni ticari koridorlar oluşturuluyor."}, {t:"Yarı İletken Pazarında Rekabet", k:"Teknoloji", m:"Çip üretiminde yeni yatırımlar."}, {t:"Yapay Zeka ve Veri Yasaları", k:"Hukuk", m:"Veri koruma algoritmaları zorunlu hale getiriliyor."}];
 
@@ -567,7 +552,7 @@ async function savasHaberleriniGuncelle() {
       else { c.className = 'sk-kart sk-mini'; c.innerHTML = `<div class="sk-ajans altin">ANALİZ</div><h3>${guvenliMetin(h.title)}</h3><p>${guvenliMetin(h.description).substring(0,80)}...</p>`; ag.appendChild(c); }
   });
   grid.appendChild(ag);
-  animasyonlariBaslat(); // Her eklemeden sonra observer'ı tetikle
+  animasyonlariBaslat(); 
 }
 
 async function kureselBilimGuncelle() {
@@ -608,9 +593,11 @@ async function turkDunyasiGuncelle() {
     if(res) {
         grid.innerHTML = '';
         res.slice(0, 3).forEach((h, idx) => {
+            const trBaslik = turkceyeCevir(h.title);
+            const trDescription = turkceyeCevir(h.description || h.content);
             const c = document.createElement('div'); c.className = 'td-kart anim-up'; c.style.transitionDelay = `${idx*0.1}s`;
-            c.onclick = () => makaleAc('TÜRK DÜNYASI', turkceyeCevir(h.title), turkceyeCevir(h.description), h.source_id);
-            c.innerHTML = `<div class="td-kart-ust"><div class="ulke-tag">TÜRK DEVLETLERİ</div><div class="ceviri-badge">🔄 Çevrildi</div></div><h4>${guvenliMetin(turkceyeCevir(h.title))}</h4><p>${guvenliMetin(turkceyeCevir(h.description))}</p>`;
+            c.onclick = () => makaleAc('TÜRK DÜNYASI', trBaslik, trDescription, h.source_id);
+            c.innerHTML = `<div class="td-kart-ust"><div class="ulke-tag">TÜRK DEVLETLERİ</div><div class="ceviri-badge">🔄 Çevrildi</div></div><h4>${guvenliMetin(trBaslik)}</h4><p>${guvenliMetin(trDescription)}</p>`;
             grid.appendChild(c);
         });
         animasyonlariBaslat();
@@ -634,8 +621,6 @@ window.addEventListener('load', () => {
   document.getElementById('canli-okuyucu').textContent = `👁️ Şu an ${Math.floor(anlikKullaniciTabaniGetir() + (Math.random() * 10))} kişi okuyor`;
   heroSliderGuncelle(); gununMakalesiniYukle(); savasHaberleriniGuncelle(); 
   canliHaberleriCek(); turkDunyasiGuncelle(); kureselBilimGuncelle(); tarihiOlaylariYenile();
-  
-  // Güvenlik: JS her şey bittiğinde bir kez daha observer tetikle
   setTimeout(animasyonlariBaslat, 300);
 });
 </script>
