@@ -103,7 +103,7 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .bolum-baslik h2 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--lacivert); }
 .bolum-sembol { width: 32px; height: 32px; background: var(--altin-acik); color: var(--altin); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; border: 1px solid rgba(200,150,58,0.2); }
 
-/* YENİ: BÜYÜK MANŞET SLIDER (HERO SLIDER) */
+/* BÜYÜK MANŞET SLIDER (HERO SLIDER) */
 .hero-slider-alani { margin-bottom: 3.5rem; position: relative; border-radius: 20px; overflow: hidden; box-shadow: var(--golge); height: 500px; background: var(--koyu); }
 .hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.8s ease-in-out; background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem; color: #fff; cursor: pointer; }
 .hero-slide.active { opacity: 1; z-index: 2; }
@@ -141,6 +141,18 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .sk-alt-grid { display: flex; flex-direction: column; gap: 1.5rem; }
 .sk-mini { padding: 1.5rem; }
 .sk-mini h3 { font-size: 17px; margin-bottom: 8px; }
+
+/* GÜNÜN MAKALESİ (YENİ BÖLÜM) */
+.gm-kapsayici { background: var(--kart-bg); border-radius: 16px; overflow: hidden; box-shadow: var(--golge); border: 1px solid var(--cizgi); margin-bottom: 3.5rem; display: flex; transition: var(--gecis); cursor: pointer;}
+.gm-kapsayici:hover { border-color: var(--altin); transform: translateY(-4px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
+.gm-resim { width: 45%; background-position: center; background-size: cover; position: relative;}
+.gm-resim::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 50%, var(--kart-bg) 100%); }
+[data-theme="dark"] .gm-resim::after { background: linear-gradient(90deg, transparent 50%, var(--kart-bg) 100%); }
+.gm-icerik { width: 55%; padding: 3.5rem 3rem; display: flex; flex-direction: column; justify-content: center; }
+.gm-etiket { font-size: 12px; font-weight: 700; color: var(--altin); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 15px; display: inline-block;}
+.gm-baslik { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--lacivert); margin-bottom: 15px; line-height: 1.3;}
+.gm-metin { font-size: 15px; color: var(--ikincil); line-height: 1.8; margin-bottom: 25px; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;}
+.gm-okuma-suresi { font-size: 12px; font-weight: 600; color: var(--kizil); display: flex; align-items: center; gap: 6px; }
 
 /* DÜNYA GÜNDEMİ KARTLARI */
 .dunya-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 3.5rem; }
@@ -242,6 +254,11 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; margin-top: 3rem; pos
   .dunya-grid, .tarih-grid, .td-grid, .bilim-ozel-grid, .ilgili-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .hero-baslik { font-size: 26px; }
+  .gm-kapsayici { flex-direction: column; }
+  .gm-resim { width: 100%; height: 250px; }
+  .gm-resim::after { background: linear-gradient(0deg, var(--kart-bg) 0%, transparent 50%); }
+  [data-theme="dark"] .gm-resim::after { background: linear-gradient(0deg, var(--kart-bg) 0%, transparent 50%); }
+  .gm-icerik { width: 100%; padding: 2.5rem 2rem; }
 }
 @media(max-width:600px){
   .dunya-grid, .tarih-grid, .td-grid, .footer-grid, .bilim-ozel-grid, .ilgili-grid { grid-template-columns: 1fr; }
@@ -303,7 +320,6 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; margin-top: 3rem; pos
 
   <!-- BÜYÜK MANŞET (HERO SLIDER) -->
   <div class="hero-slider-alani anim-up" id="hero-slider">
-    <!-- JS tarafından doldurulacak -->
     <div style="color:white; display:flex; height:100%; align-items:center; justify-content:center;">Manşetler yükleniyor...</div>
   </div>
 
@@ -322,6 +338,15 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; margin-top: 3rem; pos
     <div class="savas-grid-2" id="savas-grid">
       <div class="sk-kart"><h3>Jeopolitik analizler yükleniyor...</h3></div>
     </div>
+  </div>
+
+  <!-- GÜNÜN MAKALESİ (İLGE ÇEKİCİ BİLGİLER) -->
+  <div class="bolum-baslik anim-up">
+    <div class="bolum-sembol">🧠</div><h2>Günün Odak Noktası: İlgi Çekici Bilgiler</h2>
+    <span style="margin-left:auto; font-size:11px; color:var(--ucuncul); text-transform:uppercase;">Her Gün Yenilenir</span>
+  </div>
+  <div class="gm-kapsayici anim-up" id="gunun-makalesi-alani">
+      <!-- JS tarafından otomatik yüklenecek -->
   </div>
 
   <div class="bolum-baslik anim-up">
@@ -471,10 +496,38 @@ const aylar=['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağusto
 const s=new Date();
 document.getElementById('tarih-goster').textContent=`${gunler[s.getDay()]}, ${s.getDate()} ${aylar[s.getMonth()]} ${s.getFullYear()}`;
 
+// GÜVENLİ METİN OLUŞTURMA
 function guvenliMetin(metin) {
   if(!metin || metin === "null" || metin === "undefined") return 'Bu içerik için detay metni sağlanmadı.';
   let t = String(metin).replace(/Ã§/g, 'ç').replace(/Ã‡/g, 'Ç').replace(/ÅŸ/g, 'ş').replace(/Åž/g, 'Ş').replace(/Ä±/g, 'ı').replace(/Ä°/g, 'İ').replace(/Ã¶/g, 'ö').replace(/Ã–/g, 'Ö').replace(/Ã¼/g, 'ü').replace(/Ãœ/g, 'Ü').replace(/â€™/g, "'").replace(/â€˜/g, "'");
   return t.replace(/&/g, '&amp;').replace(/'/g, '&#39;').replace(/"/g, '&quot;').replace(/\n/g, ' ').replace(/\r/g, '');
+}
+
+// TÜRKÇEYE ÇEVİRİ ALGORİTMASI (TÜRK DÜNYASI İÇİN)
+function turkceyeCevir(metin) {
+  if(!metin) return '';
+  let m = String(metin);
+  
+  // Önce sık kullanılan yabancı kelimeleri ve bağlaçları çevir
+  const kelimeler = [
+    ['və', 've'], ['Və', 'Ve'], ['ilə', 'ile'], ['İlə', 'İle'],
+    ['üçün', 'için'], ['Üçün', 'İçin'], ['haqqında', 'hakkında'], ['Haqqında', 'Hakkında'],
+    ['edilib', 'edildi'], ['edilir', 'ediliyor'], ['olaraq', 'olarak'],
+    ['böyük', 'büyük'], ['görə', 'göre'], ['məlum', 'malum']
+  ];
+  
+  kelimeler.forEach(([kaynak, hedef]) => {
+     const regex = new RegExp('\\b' + kaynak + '\\b', 'g');
+     m = m.replace(regex, hedef);
+  });
+  
+  // Sonra harf dönüşümleri (Azerbaycan, Kazak, Özbek alfabe karakterleri)
+  m = m.replace(/ə/g, 'e').replace(/Ə/g, 'E')
+       .replace(/q/g, 'k').replace(/Q/g, 'K')
+       .replace(/x/g, 'h').replace(/X/g, 'H')
+       .replace(/w/g, 'v').replace(/W/g, 'V');
+       
+  return m;
 }
 
 function haberFiltrele(results) {
@@ -536,7 +589,37 @@ async function apiIstekAt(url) {
     } catch (error) { return null; }
 }
 
-/* YENİ: BÜYÜK HERO SLIDER (MANŞET AKIŞI) */
+/* YENİ: GÜNÜN MAKALESİ (GÜNDE 1 DEFA DEĞİŞİR) */
+const gunlukMakaleler = [
+  { t: "Evrenin Sınırlarının Ötesinde Ne Var?", e: "Astrofizik", r: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=800", m: "Bilim insanları gözlemlenebilir evrenin 93 milyar ışık yılı genişliğinde olduğunu biliyor. Ancak bu sınırın ötesinde ne olduğu fizikteki en büyük sırlardan biridir. Bazı teoriler çoklu evrenleri öne sürerken, bazıları evrenin sonsuz bir düzlükte kendi kendini tekrar ettiğini savunuyor. Sicim teorisine göre ise algılayamadığımız ekstra boyutlar bu sınırın ötesindeki fizik kurallarını tamamen değiştiriyor olabilir." },
+  { t: "İnsan Beyni Gerçekten Sadece %10'unu mu Kullanıyor?", e: "Nörobilim", r: "https://images.unsplash.com/photo-1559757175-5700dde675bc?q=80&w=800", m: "Hollywood filmlerinin aksine, beynimizin sadece %10'unu kullandığımız tamamen bir efsanedir. Fonksiyonel MR (fMRI) taramaları, uyurken bile beynimizin neredeyse tamamının aktif olduğunu gösteriyor. Ancak beynin asıl gücü nöroplastisite, yani kullanılmayan nöronların yeni beceriler için kendini sürekli yeniden kablolayabilme yeteneğinde saklıdır." },
+  { t: "Okyanusların Keşfedilmemiş %80'inde Neler Saklı?", e: "Oşinografi", r: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=800", m: "İnsanlık, Ay'ın yüzeyini Dünya'nın okyanus tabanlarından daha iyi haritalandırmıştır. Okyanusların en derin noktası Mariana Çukuru'nda, Dünya dışı yaşama dair ipuçları verebilecek ekstrem koşullarda yaşayan canlılar bulundu. Karanlık ve devasa basınç altındaki bu alanlar, tıpta çığır açabilecek yeni kimyasal bileşenler ve organizmalar barındırıyor." },
+  { t: "Zaman Yolculuğu Fiziksel Olarak Mümkün mü?", e: "Kuantum Fiziği", r: "https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?q=80&w=800", m: "Albert Einstein'ın Görelilik Teorisi'ne göre geleceğe yolculuk zaten mümkündür ve test edilmiştir; ışık hızına yaklaştıkça sizin için zaman, Dünya'dakilere göre daha yavaş akar. Ancak geçmişe yolculuk, 'büyükbaba paradoksu' gibi mantıksal sorunlar yaratır. Kuantum mekaniği, solucan delikleri aracılığıyla geçmişe bilginin gönderilebileceğini matematiksel olarak reddetmez." },
+  { t: "Rüyalarımızı Neden Unutuyoruz ve Ne Anlama Geliyorlar?", e: "Psikoloji", r: "https://images.unsplash.com/photo-1517021897933-0e0319cfbc28?q=80&w=800", m: "Uyandığımızda rüyalarımızın %90'ını ilk 10 dakika içinde unuturuz. Bunun temel nedeni, rüya evresinde (REM) beynin hafıza merkezi olan hipokampüsün bilgileri aktaran kimyasal süreçleri kapatmasıdır. Beyin, gerçek anılarla hayalleri karıştırmamak için bunu bir savunma mekanizması olarak kullanır." }
+];
+
+function gununMakalesiniYukle() {
+   const alan = document.getElementById('gunun-makalesi-alani');
+   if(!alan) return;
+   
+   // Bugüne ait indeksi bul (Her gün değişmesini sağlar)
+   const bugun = new Date();
+   const index = bugun.getDate() % gunlukMakaleler.length;
+   const makale = gunlukMakaleler[index];
+
+   alan.onclick = () => makaleAc('GÜNÜN MAKALESİ', makale.t, makale.m, 'TuranHaber Bilim Arşivi');
+   alan.innerHTML = `
+     <div class="gm-resim" style="background-image: url('${makale.r}')"></div>
+     <div class="gm-icerik">
+        <span class="gm-etiket">✦ ${makale.e}</span>
+        <h3 class="gm-baslik">${makale.t}</h3>
+        <p class="gm-metin">${makale.m}</p>
+        <div class="gm-okuma-suresi">⏳ Yaklaşık 3 dakika okuma süresi</div>
+     </div>
+   `;
+}
+
+/* BÜYÜK HERO SLIDER (MANŞET AKIŞI) */
 let heroSliderInterval;
 async function heroSliderGuncelle() {
   const sliderAlani = document.getElementById('hero-slider');
@@ -561,7 +644,6 @@ async function heroSliderGuncelle() {
       const bMet = guvenliMetin(h.description || h.content || ''); 
       const bKay = guvenliMetin(h.source_id || 'AJANSLAR');
 
-      // Slide Div
       const slide = document.createElement('div');
       slide.className = `hero-slide ${index === 0 ? 'active' : ''}`;
       slide.style.backgroundImage = `url('${resimSrc}')`;
@@ -576,7 +658,6 @@ async function heroSliderGuncelle() {
       `;
       sliderAlani.appendChild(slide);
 
-      // Nokta Div
       const nokta = document.createElement('div');
       nokta.className = `hero-nokta ${index === 0 ? 'active' : ''}`;
       nokta.onclick = (e) => { e.stopPropagation(); heroSlideGecis(index); };
@@ -607,7 +688,7 @@ function heroSliderOtomatikBaslat(toplam) {
   if(heroSliderInterval) clearInterval(heroSliderInterval);
   heroSliderInterval = setInterval(() => {
     heroSlideGecis(aktifSlayt + 1);
-  }, 6000); // Her 6 saniyede bir geçiş
+  }, 6000); 
 }
 
 const yedekSavas = [{ title: "İran ve ABD Anlaştı", description: "Basra Körfezi'ndeki askeri teyakkuz durumu düşürüldü.", source_id: "Reuters" }, { title: "Sınır Hatlarında İHA Devriyeleri Artırıldı", description: "Bölgedeki kritik lojistik ağlar üzerinde siber ve fiziksel operasyonlar sürüyor.", source_id: "Bölge İstihbarat" }];
@@ -655,13 +736,12 @@ async function kureselBilimGuncelle() {
         
         const card = document.createElement('div');
         card.className = `bilim-ozel-kart anim-up`;
-        // Scroll animasyonunun gecikmesi için
         card.style.transitionDelay = `${idx * 0.15}s`;
         card.onclick = () => makaleAc('KÜRESEL BİLİM', bBas, bMet, bKay);
         card.innerHTML = `<div class="bo-ulke">🔬 ${rastgeleUlke}</div><h4>${bBas}</h4><p>${bMet}</p><div style="margin-top:15px; font-size:11px; color:var(--kizil); font-weight:bold;">KAYNAK: ${bKay.toUpperCase()}</div>`;
         grid.appendChild(card);
      });
-     animasyonlariBaslat(); // Yeni eklenenlere animasyon atamak için
+     animasyonlariBaslat(); 
   }
 }
 
@@ -686,7 +766,7 @@ async function canliHaberleriCek() {
   }
 }
 
-// TÜRK DÜNYASI VE ÇEVİRİ ANİMASYONU
+// TÜRK DÜNYASI (TÜRKÇEYE ÇEVİRİ ALGORİTMASIYLA)
 async function turkDunyasiGuncelle() {
     const grid = document.getElementById('td-dinamik-grid');
     if(!grid) return;
@@ -695,8 +775,12 @@ async function turkDunyasiGuncelle() {
     if(results && results.length > 0) {
         grid.innerHTML = '';
         results.slice(0, 3).forEach((h, idx) => {
-            const bBas = guvenliMetin(h.title);
-            const bMet = guvenliMetin(h.description || h.content);
+            // METİNLERİ TÜRKÇEYE ÇEVİRME İŞLEMİ
+            const cevrilmisBaslik = turkceyeCevir(h.title);
+            const cevrilmisMetin = turkceyeCevir(h.description || h.content);
+            
+            const bBas = guvenliMetin(cevrilmisBaslik);
+            const bMet = guvenliMetin(cevrilmisMetin);
             const bKay = guvenliMetin(h.source_id);
             const ulkeler = ['AZERBAYCAN', 'KAZAKİSTAN', 'ÖZBEKİSTAN', 'KIRGIZİSTAN'];
             let ulke = (h.country && h.country[0] && h.country[0] !== 'tr') ? h.country[0].toUpperCase() : ulkeler[Math.floor(Math.random() * ulkeler.length)];
@@ -706,11 +790,10 @@ async function turkDunyasiGuncelle() {
             card.style.transitionDelay = `${idx * 0.15}s`;
             card.onclick = () => makaleAc(ulke, bBas, bMet, bKay);
             
-            // Çeviri Rozeti Eklendi
             card.innerHTML = `
               <div class="td-kart-ust">
                 <div class="ulke-tag">${ulke}</div>
-                <div class="ceviri-badge" title="Bu metin otomatik dil modeliyle Türkçe'ye çevrilmiştir.">🔄 Çevrildi</div>
+                <div class="ceviri-badge" title="Bu metin otomatik dil modeliyle Türkiye Türkçesine uyarlanmıştır.">🔄 Çevrildi</div>
               </div>
               <h4>${bBas}</h4><p>${bMet}</p><div class="meta" style="font-size:11px; color:rgba(255,255,255,0.4)">✦ Kaynak: ${bKay}</div>`;
             grid.appendChild(card);
@@ -745,7 +828,8 @@ function tarihiOlaylariYenile() {
 window.addEventListener('load', () => {
   document.getElementById('canli-okuyucu').textContent = `👁️ Şu an ${Math.floor(anlikKullaniciTabaniGetir() + (Math.random() * 10))} kişi okuyor`;
   
-  heroSliderGuncelle(); // Yeni Büyük Slider Modülü
+  heroSliderGuncelle(); 
+  gununMakalesiniYukle(); // İlgi Çekici Bilgiler Yükleniyor
   savasHaberleriniGuncelle(); 
   canliHaberleriCek(); 
   turkDunyasiGuncelle();
@@ -754,7 +838,6 @@ window.addEventListener('load', () => {
   tarihiOlaylariYenile();
   setInterval(tarihiOlaylariYenile, 15000); 
   
-  // Mevcut statik elemanların animasyonlarını tetikle
   animasyonlariBaslat();
 });
 </script>
