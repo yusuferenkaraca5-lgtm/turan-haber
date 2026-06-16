@@ -312,7 +312,7 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
       <span style="margin-left:auto; font-size:11px; color:rgba(255,255,255,0.6)">Sürükleyerek veya kaydırarak inceleyebilirsiniz</span>
     </div>
     <div class="dev-slider-wrapper" id="ticker-slider">
-      </div>
+    </div>
   </div>
 
   <div class="savas-koridoru" id="savas">
@@ -519,7 +519,7 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
 
 <script>
 // =======================================================
-// TURAN HABER - CLOUDFLARE WORKERS API MOTORU
+// TURAN HABER - ORİJİNAL ÇALIŞAN WORKER MOTORU
 // =======================================================
 
 const WORKER_URL = "https://turan-cache.yusuferenkaraca5.workers.dev";
@@ -529,6 +529,7 @@ const aylar=['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağusto
 const s=new Date();
 document.getElementById('tarih-goster').textContent=`${gunler[s.getDay()]}, ${s.getDate()} ${aylar[s.getMonth()]} ${s.getFullYear()}`;
 
+// Türkçe Karakter Düzeltici
 function guvenliMetin(metin) {
   if(!metin) return '';
   let t = String(metin)
@@ -536,12 +537,15 @@ function guvenliMetin(metin) {
     .replace(/ÅŸ/g, 'ş').replace(/Åž/g, 'Ş')
     .replace(/Ä±/g, 'ı').replace(/Ä°/g, 'İ')
     .replace(/Ã¶/g, 'ö').replace(/Ã–/g, 'Ö')
-    .replace(/Ã¼/g, 'ü').replace(/Ãœ/g, 'Ü');
+    .replace(/Ã¼/g, 'ü').replace(/Ãœ/g, 'Ü')
+    .replace(/â€™/g, "'").replace(/â€˜/g, "'");
     
   return t.replace(/&/g, '&amp;').replace(/'/g, '&#39;').replace(/"/g, '&quot;').replace(/\n/g, ' ').replace(/\r/g, '');
 }
 
+// Reklam Haberleri ve Bundle'ı Filtreleyen Zırh
 function haberFiltrele(results) {
+  if (!results) return [];
   return results.filter(h => h.title && 
          !h.title.toUpperCase().includes('ONLY AVAILABLE') && 
          !h.title.toUpperCase().includes('PAID PLANS') && 
@@ -582,8 +586,7 @@ const simuleHaberler = {
 
 const yedekSavas = [
   { title: "İran ve ABD Anlaştı: Hürmüz Boğazı'ndaki Askeri Abluka Hafifletiliyor", description: "ABD ve İran arasında varılan enerji nakil mutabakatı sonrası Basra Körfezi'ndeki askeri teyakkuz durumu düşürüldü. Piyasalar rahatladı.", source_id: "Reuters" },
-  { title: "Sınır Hatlarında İHA Devriyeleri Artırıldı", description: "Bölgedeki kritik lojistik ağlar üzerinde siber ve fiziksel operasyonlara karşı güvenlik seviyesi yükseltildi.", source_id: "Bölge İstihbarat" },
-  { title: "Diplomatik Krizde Yeni Eşik: Büyükelçiler Geri Çağrıldı", description: "Avrupa Konseyi toplantısı sonrası yaşanan gerilim üzerine karşılıklı diplomatik notalar verildi.", source_id: "Uluslararası Basın" }
+  { title: "Sınır Hatlarında İHA Devriyeleri Artırıldı", description: "Bölgedeki kritik lojistik ağlar üzerinde siber ve fiziksel operasyonlara karşı güvenlik seviyesi yükseltildi.", source_id: "Bölge İstihbarat" }
 ];
 
 const apiKategoriMap = { 
@@ -601,20 +604,23 @@ function haberSayaciniArtir() {
   document.getElementById('haber-sayisi').textContent = uretilenHaberSayisi;
 }
 
-// CACHE SİSTEMİ: Hafıza anahtarı v6 olarak yenilendi!
+// YEPYENİ CACHE V8 - ESKİ HAFIZAYI SIFIRLIYORUZ
 async function fetchWithCacheV2(url, cacheKey) { 
     try {
         const cached = localStorage.getItem(cacheKey);
         if (cached) {
             const parsed = JSON.parse(cached);
-            if (Date.now() - parsed.timestamp < 7200000 && parsed.data) return parsed.data; 
+            // 2 saatlik önbellek
+            if (Date.now() - parsed.timestamp < 7200000 && parsed.data) {
+                return parsed.data; 
+            }
         }
         
         const response = await fetch(url);
         const data = await response.json();
         
-        // Hata varsa veya results dizisi yoksa ASLA cache'leme
-        if (data && data.status === "success" && Array.isArray(data.results)) { 
+        if (data && data.status === "success" && data.results) { 
+            // Burada Bundle'ı ve reklamları HTML'de filtreliyoruz
             data.results = haberFiltrele(data.results);
             localStorage.setItem(cacheKey, JSON.stringify({
                 timestamp: Date.now(),
@@ -639,12 +645,15 @@ async function savasHaberleriniGuncelle() {
   try {
     const query = "savaş OR operasyon OR ordu";
     const url = `${WORKER_URL}/?kategori=world&q=${encodeURIComponent(query)}`;
-    const veri = await fetchWithCacheV2(url, 'news_cache_v6_savas');
+    const veri = await fetchWithCacheV2(url, 'news_cache_v8_savas'); // V8 ile yenilendi
     if (veri && veri.results) savasHaberleri = veri.results;
   } catch(e) {}
 
-  if(savasHaberleri.length < 3) savasHaberleri = [...savasHaberleri, ...yedekSavas].slice(0, 3);
-  else savasHaberleri = savasHaberleri.slice(0, 3);
+  if(savasHaberleri.length < 3) {
+      savasHaberleri = [...savasHaberleri, ...yedekSavas].slice(0, 3);
+  } else {
+      savasHaberleri = savasHaberleri.slice(0, 3);
+  }
 
   let htmlStr = '';
   let altGridHTML = '<div class="sk-alt-grid">';
@@ -691,15 +700,20 @@ async function gercekHaberGetir(katId) {
   else if (katId === 'turkdunyasi') url = `${WORKER_URL}/?country=tr,az,kz,uz`;
 
   try {
-    const data = await fetchWithCacheV2(url, 'news_cache_v6_' + katId);
+    const data = await fetchWithCacheV2(url, 'news_cache_v8_' + katId); // V8 ile yenilendi
     if(data && data.results && data.results.length > 0) {
         const secilen = data.results[Math.floor(Math.random() * Math.min(data.results.length, 10))];
-        return { baslik: secilen.title, metin: secilen.description || secilen.content, kaynak: secilen.source_id.toUpperCase() };
+        return { 
+            baslik: secilen.title, 
+            metin: secilen.description || secilen.content, 
+            kaynak: secilen.source_id.toUpperCase() 
+        };
     }
   } catch(e) {}
   
   const fallbackHavuz = simuleHaberler[katId] || simuleHaberler['bilim'];
-  return { baslik: fallbackHavuz[0].baslik, metin: fallbackHavuz[0].metin, kaynak: 'TuranHaber İstihbarat' };
+  const fallbackHaber = fallbackHavuz[0];
+  return { baslik: fallbackHaber.baslik, metin: fallbackHaber.metin, kaynak: 'TuranHaber İstihbarat' };
 }
 
 const KATEGORILER = [
@@ -755,12 +769,13 @@ async function otomatikYenile() {
 async function canliHaberleriCek() {
   const url = `${WORKER_URL}/?kategori=top`;
   try {
-    const veri = await fetchWithCacheV2(url, 'news_cache_v6_canli');
+    const veri = await fetchWithCacheV2(url, 'news_cache_v8_canli'); // V8 ile yenilendi
     const alan = document.getElementById('canli-haber-alani');
     if(!alan) return;
     
     if (veri && veri.results && veri.results.length > 0) {
       alan.innerHTML = ''; 
+      
       veri.results.slice(0, 6).forEach((haber, idx) => {
         const sahteResimler = [
           "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=400", 
@@ -805,7 +820,7 @@ async function sonDakikaBandiniGuncelle() {
 
   try {
     const url = `${WORKER_URL}/?kategori=top`;
-    const data = await fetchWithCacheV2(url, 'news_cache_v6_sondakika');
+    const data = await fetchWithCacheV2(url, 'news_cache_v8_sondakika'); // V8 ile yenilendi
     
     if(data && data.results && data.results.length > 0) {
       data.results.slice(0, 6).forEach((art, index) => {
@@ -895,7 +910,13 @@ async function manuelHaberUret() {
   yzYazi.textContent = 'Yeniden Çek ✦';
 }
 
+// -----------------------------------------------------------
+// SAYFA YÜKLENDİĞİNDE OTOMATİK ZORLA TEMİZLİK
+// -----------------------------------------------------------
 window.addEventListener('load', () => {
+  // Eski tüm bozuk verileri zorla sil ki site tertemiz çeksin
+  localStorage.clear(); 
+  
   savasHaberleriniGuncelle();
   otomatikYenile();   
   canliHaberleriCek(); 
