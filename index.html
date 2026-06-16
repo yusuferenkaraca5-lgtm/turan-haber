@@ -6,7 +6,7 @@
 <title>TuranHaber — Türk Dünyası & Dünya Gündemi</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
-/* GÖKTÜRK YAZISI FONTu */
+/* GÖKTÜRK YAZISI FONTU */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Old+Turkic&display=swap');
 
 :root{--kizil:#C0392B;--altin:#C8963A;--lacivert:#1A2A4A;--koyu:#0E1820;--yazi:#1C1C1C;--ikincil:#555;--ucuncul:#888;--cizgi:rgba(0,0,0,0.08);--altin-acik:rgba(200,150,58,0.12)}
@@ -170,6 +170,7 @@ main{max-width:1280px;margin:0 auto;padding:1.75rem 2rem}
 .e-siyaset{background:#EDE8F5;color:#3A2070}
 .e-saglik{background:#E8F5EE;color:#1A5C34}
 .e-catisma{background:#FBEBEB;color:#7A1A1A}
+.e-turan{background:var(--altin-acik);color:#7A5A10}
 .e-turan{background:var(--altin-acik);color:#7A5A10}
 .e-tarih{background:#F0EBF8;color:#4A207A}
 .haber-satir h3{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--lacivert);line-height:1.4;margin-bottom:5px}
@@ -383,7 +384,7 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
         <h4>Siber Altyapı ve Genişbant Fiber Teşvik Yasası Onaylandı</h4>
         <div class="meta">2 sa önce · ✦ Resmi Karar</div>
       </div>
-      <div class="tr-kart" onclick="makaleAc('TÜRKİYE EKONOMİ', 'Makro Veriler Açıklandı: Sanayi Üretim Endeksinde Güçlü Yükseliş, CDS 225 Puan Seviyesinde', 'Ankara — Türkiye İstatistik Kurumu (TÜİK) nisan ayı sanayi üretim, inşaat maliyet endeksleri and ücretli çalışan istatistiklerini yayınladı. Sanayi üretiminde kaydedilen güçlü artış reel sektöre derin bir nefes aldırırken, uluslararası piyasalarda Türkiye\'nin risk primi (CDS) 225 baz puana kadar geriledi. Hazine ve Maje Bakanlığı ise devlet tahvillerinin yeniden ihracı için bugün iki kritik hamleye imza atıyor.', 'TÜİK / Hazine Raporu')">
+      <div class="tr-kart" onclick="makaleAc('TÜRKİYE EKONOMİ', 'Makro Veriler Açıklandı: Sanayi Üretim Endeksinde Güçlü Yükseliş, CDS 225 Puan Seviyesinde', 'Ankara — Türkiye İstatistik Kurumu (TÜİK) nisan ayı sanayi üretim, inşaat maliyet endeksleri ve ücretli çalışan istatistiklerini yayınladı. Sanayi üretiminde kaydedilen güçlü artış reel sektöre derin bir nefes aldırırken, uluslararası piyasalarda Türkiye\'nin risk primi (CDS) 225 baz puana kadar geriledi. Hazine ve Maliye Bakanlığı ise devlet tahvillerinin yeniden ihracı için bugün iki kritik hamleye imza atıyor.', 'TÜİK / Hazine Raporu')">
         <div class="alt-etiket">📊 Makro Ekonomi</div>
         <h4>Sanayi Üretiminde Güçlü Artış: CDS 225 Baz Puana Geriledi</h4>
         <div class="meta">4 sa önce · ✦ TÜİK Verisi</div>
@@ -462,7 +463,7 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
       <div class="catisma-radar">
         <div class="cr-baslik"><div class="cr-dot"></div>Çatışma Radarı</div>
         <div class="cr-madde" onclick="makaleAc('RADAR', 'Kızıldeniz Tedarik Hattı Elektronik Baskı Altında', 'Ticari gemilerin seyrüsefer sistemlerine yönelik yanıltıcı sinyal müdahaleleri sürüyor.', 'Bölge Raporu')"><div class="bolge">🌐 Kızıldeniz</div><h5>Kızıldeniz Tedarik Hattı Elektronik Baskı Altında</h5><div class="durum">Yüksek Yoğunluklu Siber/Fiziksel Risk</div></div>
-        <div class="cr-madde" onclick="makaleAc('RADAR', 'Doğu Avrupa Sınır Hattı Tahkimat Süreci', 'Bölgede lojistik destek ve ikmal yolları üzerindeki insansız hava aracı devriyeleri artırıldı.', 'Bölge Raporu')"><div class="bolge">🇪🇺 Doğu Avrupa</div><h5>Doğu Avrupa Sınır Hattı Tahkimat Süreci</h5><div class="durum">Mevzi Konsolidasyonu</div></div>
+        <div class="cr-madde" onclick="makaleAc('RADAR', 'Doğu Avrupa Sınır Hattı Tahkimat Süreci', 'Bölgede lojistik destek og ikmal yolları üzerindeki insansız hava aracı devriyeleri artırıldı.', 'Bölge Raporu')"><div class="bolge">🇪🇺 Doğu Avrupa</div><h5>Doğu Avrupa Sınır Hattı Tahkimat Süreci</h5><div class="durum">Mevzi Consolidationı</div></div>
       </div>
       
       <div class="tarih-kutu">
@@ -563,7 +564,7 @@ const aylar=['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağusto
 const s=new Date();
 document.getElementById('tarih-goster').textContent=`${gunler[s.getDay()]}, ${s.getDate()} ${aylar[s.getMonth()]} ${s.getFullYear()}`;
 
-// 3. GÜNCELLEME: Karakter encoding çakışmalarını önlemek için sadeleştirilmiş ve güvenli metin dönüştürücü
+// KÖKTEN GÜVENLİ: HTML Entity temelli temizlik (Karakter filtrelerini sunucu yaptığı için burası hafifletildi)
 function guvenliMetin(metin) {
   if(!metin) return '';
   return String(metin)
@@ -576,12 +577,12 @@ function guvenliMetin(metin) {
 
 function makaleAc(kategori, baslik, metin, kaynak) {
   document.getElementById('modal-kat').textContent = kategori;
-  document.getElementById('modal-baslik').textContent = baslik;
-  const formatliMetin = String(metin).split('\n').filter(p => p.trim() !== '').map(p => `<p>${p}</p>`).join('');
+  document.getElementById('modal-baslik').textContent = guvenliMetin(baslik);
+  const formatliMetin = String(guvenliMetin(metin)).split('\n').filter(p => p.trim() !== '').map(p => `<p>${p}</p>`).join('');
   document.getElementById('modal-metin').innerHTML = formatliMetin;
   const simdi = new Date();
   document.getElementById('modal-tarih').textContent = `${simdi.getDate()} ${aylar[simdi.getMonth()]} ${simdi.getFullYear()} | ${String(simdi.getHours()).padStart(2,'0')}:${String(simdi.getMinutes()).padStart(2,'0')}`;
-  document.getElementById('modal-kaynak').innerHTML = `<strong>Kaynak:</strong> ${kaynak || 'TuranHaber Özel'}`;
+  document.getElementById('modal-kaynak').innerHTML = `<strong>Kaynak:</strong> ${guvenliMetin(kaynak) || 'TuranHaber Özel'}`;
   
   const modal = document.getElementById('makale-modal');
   modal.style.display = 'flex';
@@ -603,11 +604,11 @@ const simuleHaberler = {
   catisma: [{ baslik: "Tedarik Zinciri Koridorlarında Siber Direniş Hatları", metin: "Küresel lojistik ağlar üzerinde kritik veri aktarım noktaları ve liman yönetim sistemleri siber savunma kalkanlarıyla tahkim ediliyor." }],
   saglik: [{ baslik: "Veri Analitiği Destekli mRNA Aşısında Yeni Faz Aşaması", metin: "Yapay zeka modelleriyle biyolojik veri setlerinin eşleştirilmesi sonucu üretilen hücresel onkoloji aşıları klinik testlerde kararlı sonuçlar verdi." }],
   siyaset: [{ baslik: "Dijital Sınırlar ve Bölgesel Veri Güvenliği Politikaları", metin: "Uluslararası veri aktarım protokollerinde ülkelerin kendi veri egemenliklerini ilan etme süreçleri makroekonomik dengeleri yeniden şekillendiriyor." }],
-  turkdunyasi: [{ baslik: "Türk Devletleri Dijital Altyapı Fonu Faaliyete Geçti", metin: "Üye ülkeler arasında ortak bulut altyapısı, sınır ötesi veri hatları ve teknopark entegrasyonlarına öncelikli hibe sağlanacağı açıkllandı." }]
+  turkdunyasi: [{ baslik: "Türk Devletleri Dijital Altyapı Fonu Faaliyete Geçti", metin: "Üye ülkeler arasında ortak bulut altyapısı, sınır ötesi veri hatları ve teknopark entegrasyonlarına öncelikli hibe sağlanacağı açıklandı." }]
 };
 
 const yedekSavas = [
-  { title: "İran ve ABD Anlaştı: Hürmüz Boğazı'ndaki Askeri Abluka Hafifletiliyor", description: "ABD ve İran arasında varılan energy nakil mutabakatı sonrası Basra Körfezi'ndeki askeri teyakkuz durumu düşürüldü. Piyasalar rahatladı.", source_id: "Reuters" },
+  { title: "İran ve ABD Anlaştı: Hürmüz Boğazı'ndaki Askeri Abluka Hafifletiliyor", description: "ABD ve İran arasında varılan enerji nakil mutabakatı sonrası Basra Körfezi'ndeki askeri teyakkuz durumu düşürüldü. Piyasalar rahatladı.", source_id: "Reuters" },
   { title: "Sınır Hatlarında İHA Devriyeleri Artırıldı", description: "Bölgedeki kritik lojistik ağlar üzerinde siber ve fiziksel operasyonlara karşı güvenlik seviyesi yükseltildi.", source_id: "Bölge İstihbarat" },
   { title: "Diplomatik Krizde Yeni Eşik: Büyükelçiler Geri Çağrıldı", description: "Avrupa Konseyi toplantısı sonrası yaşanan gerilim üzerine karşılıklı diplomatik notalar verildi.", source_id: "Uluslararası Basın" }
 ];
@@ -627,7 +628,7 @@ function haberSayaciniArtir() {
   document.getElementById('haber-sayisi').textContent = uretilenHaberSayisi;
 }
 
-// CACHE SİSTEMİ
+// CACHE SİSTEMİ (Temiz eşleşme için news_cache_v3 sürümü)
 async function fetchWithCacheV2(url, cacheKey, ttl = 7200000) { 
     try {
         const cached = localStorage.getItem(cacheKey);
@@ -668,7 +669,7 @@ async function savasHaberleriniGuncelle() {
   try {
     const query = "savaş OR operasyon OR ordu";
     const url = `${WORKER_URL}/?kategori=world&q=${encodeURIComponent(query)}`;
-    const veri = await fetchWithCacheV2(url, 'news_cache_v2_savas_q');
+    const veri = await fetchWithCacheV2(url, 'news_cache_v3_savas_temiz');
     
     if (veri && veri.results && veri.results.length > 0) {
         savasHaberleri = veri.results;
@@ -736,7 +737,7 @@ async function gercekHaberGetir(katId) {
       url = `${WORKER_URL}/?country=tr,az,kz,uz`;
   }
 
-  const cacheKey = 'news_cache_v2_' + katId + '_q';
+  const cacheKey = 'news_cache_v3_' + katId + '_temiz';
 
   try {
     const data = await fetchWithCacheV2(url, cacheKey);
@@ -790,19 +791,20 @@ async function otomatikYenile() {
       kart.onclick = () => makaleAc(kat.ad.replace(/[^a-zA-ZğüşıöçĞÜŞİÖÇ\s]/g, ''), haber.baslik, haber.metin, haber.kaynak);
       const h4 = document.getElementById(`baslik-${i}`);
       const m = document.getElementById(`metin-${i}`);
-      h4.innerHTML = haber.baslik + '<span class="yaziliyor-kursor"></span>';
+      h4.innerHTML = guvenliMetin(haber.baslik) + '<span class="yaziliyor-kursor"></span>';
       
       let index = 0;
       let yazi = "";
       const timer = setInterval(() => {
-        if(index < haber.metin.length) {
-          yazi += haber.metin[index];
+        const dMetin = guvenliMetin(haber.metin);
+        if(index < dMetin.length) {
+          yazi += dMetin[index];
           m.innerHTML = yazi + '<span class="yaziliyor-kursor"></span>';
           index++;
         } else {
           clearInterval(timer);
           m.innerHTML = yazi;
-          h4.innerHTML = haber.baslik;
+          h4.innerHTML = guvenliMetin(haber.baslik);
           haberSayaciniArtir();
         }
       }, 8);
@@ -816,21 +818,15 @@ async function otomatikYenile() {
 async function canliHaberleriCek() {
   const url = `${WORKER_URL}/?kategori=top`;
   try {
-    const veri = await fetchWithCacheV2(url, 'news_cache_v2_canli_q');
+    const veri = await fetchWithCacheV2(url, 'news_cache_v3_canli_temiz');
     const alan = document.getElementById('canli-haber-alani');
     if(!alan) return;
     
     if (veri && veri.results && veri.results.length > 0) {
       alan.innerHTML = ''; 
       
-      // 1. GÜNCELLEME: Gereksiz ve kısıtlanmış kaynakları ayrıştıran filtre eklendi.
-      const filtrelenmis = veri.results.filter(h => 
-        h.title && 
-        !h.title.includes('ONLY AVAILABLE') && 
-        h.source_id !== 'bundle_app'
-      );
-
-      filtrelenmis.slice(0, 6).forEach((haber, idx) => {
+      // Filtreleme artık tamamen Worker (sunucu) tarafında yapıldığı için temiz veriyi doğrudan listeliyoruz
+      veri.results.slice(0, 6).forEach((haber, idx) => {
         const sahteResimler = [
           "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=400", 
           "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=80&w=400", 
@@ -842,16 +838,19 @@ async function canliHaberleriCek() {
         const resimSrc = haber.image_url ? haber.image_url : sahteResimler[idx];
         const desc = haber.description || haber.content || 'Makro piyasa hareketleri detayları...';
         
-        // 2. GÜNCELLEME: guvenliMetin koruması doğrudan HTML kart enjeksiyonuna entegre edildi.
+        const bBaslik = guvenliMetin(haber.title);
+        const bDesc = guvenliMetin(desc);
+        const bKaynak = guvenliMetin(haber.source_id || 'Canlı Veri');
+
         alan.innerHTML += `
-          <div class="dunya-kart" onclick="makaleAc('DÜNYA GÜNDEMİ', '${guvenliMetin(haber.title)}', '${guvenliMetin(desc)}', '${guvenliMetin(haber.source_id)}')">
+          <div class="dunya-kart" onclick="makaleAc('DÜNYA GÜNDEMİ', '${bBaslik}', '${bDesc}', '${bKaynak}')">
             <img src="${resimSrc}" class="dk-resim" onerror="this.src='${sahteResimler[idx]}'">
             <div class="dk-serit" style="background:var(--altin)"></div>
             <div class="dk-icerik">
               <div class="kat dk-catisma-yazi">🌐 KÜRESEL SEKTÖREL AKIŞ</div>
-              <h4>${guvenliMetin(haber.title)}</h4>
-              <p>${guvenliMetin(desc).substring(0, 100)}...</p>
-              <div class="meta">${(haber.source_id || 'Canlı Veri').toUpperCase()}</div>
+              <h4>${bBaslik}</h4>
+              <p>${bDesc.substring(0, 150)}...</p>
+              <div class="meta">${bKaynak.toUpperCase()}</div>
             </div>
           </div>
         `;
@@ -874,31 +873,29 @@ async function sonDakikaBandiniGuncelle() {
 
   try {
     const url = `${WORKER_URL}/?kategori=top`;
-    const data = await fetchWithCacheV2(url, 'news_cache_v2_sondakika_q');
+    const data = await fetchWithCacheV2(url, 'news_cache_v3_sondakika_temiz');
     
     if(data && data.results && data.results.length > 0) {
-      // 1. GÜNCELLEME: Üst slider için de filtre aktif edildi.
-      const filtrelenmis2 = data.results.filter(h => 
-        h.title && 
-        !h.title.includes('ONLY AVAILABLE') && 
-        h.source_id !== 'bundle_app'
-      );
-
-      filtrelenmis2.slice(0, 6).forEach((art, index) => {
+      data.results.slice(0, 6).forEach((art, index) => {
         if(art.title) {
           const desc = art.description || art.content || '';
           const card = document.createElement('div');
           card.className = 'dev-haber-karti';
+          
+          const bBaslik = guvenliMetin(art.title);
+          const bDesc = guvenliMetin(desc);
+          const bKaynak = guvenliMetin(art.source_id || 'Ajanslar');
+
           card.innerHTML = `
             <div class="dev-card-ust">
               <span class="dev-kaynak-badge radar">AJANS FLAŞ</span>
               <span class="dev-kart-zaman">${index + 2} dk önce</span>
             </div>
-            <h3>${guvenliMetin(art.title)}</h3>
-            <p>${guvenliMetin(desc).substring(0, 120)}...</p>
+            <h3>${bBaslik}</h3>
+            <p>${bDesc.substring(0, 120)}...</p>
             <div class="dev-oku-link">Sıcak Akışı Gör →</div>
           `;
-          card.onclick = () => makaleAc('Sıcak Akış', art.title, desc, art.source_id?.toUpperCase() || 'AJANSLAR');
+          card.onclick = () => makaleAc('Sıcak Akış', bBaslik, bDesc, bKaynak);
           wrapper.appendChild(card);
           haberCount++;
         }
@@ -958,7 +955,12 @@ async function manuelHaberUret() {
   cikti.innerHTML = "NewsData üzerinden ağ taranıyor...";
   
   const haber = await gercekHaberGetir(seciliKat);
-  cikti.innerHTML = `<strong>BAŞLIK:</strong> ${guvenliMetin(haber.baslik)}<br><br>${guvenliMetin(haber.metin).replace(/\n/g, '<br>')}<br><br><em style="font-size:10px; opacity:0.7">Kaynak: ${guvenliMetin(haber.kaynak)}</em>`;
+  
+  const bBaslik = guvenliMetin(haber.baslik);
+  const bMetin = guvenliMetin(haber.metin);
+  const bKaynak = guvenliMetin(haber.kaynak);
+
+  cikti.innerHTML = `<strong>BAŞLIK:</strong> ${bBaslik}<br><br>${bMetin.replace(/\n/g, '<br>')}<br><br><em style="font-size:10px; opacity:0.7">Kaynak: ${bKaynak}</em>`;
   
   btn.disabled = false;
   if(sp) sp.style.display = 'none';
