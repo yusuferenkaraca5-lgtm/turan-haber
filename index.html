@@ -88,32 +88,6 @@ main{max-width:1280px;margin:0 auto;padding:1.75rem 2rem}
 .istat-sayi{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--lacivert);margin-bottom:2px}
 .istat-etiket{font-size:10px;color:var(--ucuncul)}
 
-.oncu-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:1.25rem;margin-bottom:2rem}
-.oncu-kart{background:var(--lacivert);border-radius:8px;padding:2rem;position:relative;overflow:hidden;min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer; transition: opacity 0.4s ease;}
-.oncu-kart:hover{opacity:.93}
-.kart-etiket{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:600;letter-spacing:.07em;padding:3px 9px;border-radius:3px;margin-bottom:10px;text-transform:uppercase;width:fit-content}
-.et-oncu{background:var(--kizil);color:#fff}
-.oncu-kart h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;line-height:1.35;margin-bottom:8px}
-.oncu-kart p{color:rgba(255,255,255,.58);font-size:13px;line-height:1.6;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
-.oncu-kart .meta{display:flex;align-items:center;gap:10px;font-size:11px;color:rgba(255,255,255,.38)}
-.yaz-badge{background:rgba(200,150,58,.2);color:var(--altin);padding:2px 7px;border-radius:3px;font-size:10px;font-weight:600}
-
-.yan-oncu{display:flex;flex-direction:column;gap:.9rem; transition: opacity 0.4s ease;}
-.mini-kart{background:#fff;border:.5px solid var(--cizgi);border-radius:8px;padding:1.1rem;flex:1;cursor:pointer;transition:border-color .15s,transform .15s;display:flex;flex-direction:column;position:relative;overflow:hidden}
-.mini-kart::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px 0 0 3px}
-.mini-kart.bilim::after{background:#2255A0}
-.mini-kart.saglik::after{background:#1A5C34}
-.mini-kart.catisma::after{background:var(--kizil)}
-.mini-kart.turan::after{background:var(--altin)}
-.mini-kart:hover{border-color:rgba(200,150,58,.35);transform:translateY(-1px)}
-.mini-kart .kat-ad{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;margin-bottom:6px}
-.mini-kart.bilim .kat-ad{color:#2255A0}
-.mini-kart.saglik .kat-ad{color:#1A5C34}
-.mini-kart.catisma .kat-ad{color:var(--kizil)}
-.mini-kart.turan .kat-ad{color:#9A6A10}
-.mini-kart h4{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--lacivert);line-height:1.4;flex:1;margin-bottom:6px}
-.mini-kart .meta{font-size:11px;color:var(--ucuncul)}
-
 /* TÜRKİYE SİYASETİ BÖLÜMÜ */
 .turkiye-gundemi{background:linear-gradient(135deg, #7A1A1A 0%, #3D0D0D 100%);border-radius:10px;padding:1.75rem;margin-bottom:2rem;position:relative;overflow:hidden;scroll-margin-top:2rem}
 .turkiye-gundemi::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 90% 50%,rgba(255,255,255,.04) 0%,transparent 60%);pointer-events:none}
@@ -144,17 +118,17 @@ main{max-width:1280px;margin:0 auto;padding:1.75rem 2rem}
 .oto-spinner{width:12px;height:12px;border:2px solid var(--cizgi);border-top-color:var(--altin);border-radius:50%;animation:spin .7s linear infinite}
 .yaziliyor-kursor{display:inline-block;width:2px;height:14px;background:var(--lacivert);vertical-align:middle;margin-left:2px;animation:kursor .8s steps(1) infinite}
 
-/* DÜNYA GÜNDEMİ VE MAKRO SEKTÖRLER */
-.dunya-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem}
+/* DÜNYA GÜNDEMİ VE MAKRO SEKTÖRLER (BÜYÜTÜLDÜ) */
+.dunya-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-bottom:2rem}
 .dunya-kart{background:#fff;border:.5px solid var(--cizgi);border-radius:8px;overflow:hidden;cursor:pointer;transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column;}
-.dunya-kart:hover{transform:translateY(-2px);box-shadow:0 4px 18px rgba(0,0,0,.07)}
-.dk-resim{width:100%;height:150px;object-fit:cover;display:block;}
+.dunya-kart:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.1)}
+.dk-resim{width:100%;height:220px;object-fit:cover;display:block;}
 .dk-serit{height:3px}
 .dk-catisma{background:linear-gradient(90deg,#7A1A1A,#C0392B)}
-.dk-icerik{padding:.9rem;flex:1;}
-.dk-catisma-yazi{color:#7A1A1A; font-size: 11px; font-weight: 700;}
-.dk-icerik h4{font-family:'Playfair Display',serif;font-size:13.5px;font-weight:700;color:var(--lacivert);line-height:1.4;margin-bottom:6px}
-.dk-icerik p{font-size:12px;color:var(--ikincil);line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:8px}
+.dk-icerik{padding:1.25rem;flex:1;}
+.dk-catisma-yazi{color:#7A1A1A; font-size: 11px; font-weight: 700; margin-bottom: 8px; display:inline-block;}
+.dk-icerik h4{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--lacivert);line-height:1.4;margin-bottom:10px}
+.dk-icerik p{font-size:13px;color:var(--ikincil);line-height:1.6;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:12px}
 .dk-icerik .meta{font-size:11px;color:var(--ucuncul)}
 
 .uc-kolon{display:grid;grid-template-columns:1fr 1fr 320px;gap:1.5rem;margin-bottom:2rem}
@@ -265,8 +239,9 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
 .modal-metin p { margin-bottom: 1.5rem; }
 
 @media(max-width:960px){
-  .uc-kolon,.oncu-grid,.tr-grid,.savas-grid-2{grid-template-columns:1fr}
-  .oto-haber-alani,.tarih-grid,.dunya-grid{grid-template-columns:1fr 1fr}
+  .uc-kolon,.tr-grid,.savas-grid-2{grid-template-columns:1fr}
+  .dunya-grid{grid-template-columns:1fr}
+  .oto-haber-alani,.tarih-grid{grid-template-columns:1fr 1fr}
   .istatistik-satiri{grid-template-columns:repeat(3,1fr)}
   .td-grid{grid-template-columns:1fr 1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
@@ -356,19 +331,9 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
   </div>
 
   <div class="bolum-baslik">
-    <div class="bolum-sembol">★</div>
-    <h2>Manşet Haberler</h2>
-    <a href="#" class="tum-haberler">Tümünü gör →</a>
+    <div class="bolum-sembol">🌐</div><h2>Dünya Gündemi & Makro Sektörler (Canlı)</h2>
   </div>
-  <div class="oncu-grid">
-    <div class="oncu-kart" id="manset-buyuk">
-      <span class="kart-etiket et-oncu">⚡ Öncü</span>
-      <h3>Manşet yükleniyor...</h3>
-      <p>Veriler işleniyor...</p>
-    </div>
-    <div class="yan-oncu" id="manset-kucuk">
-      </div>
-  </div>
+  <div class="dunya-grid" id="canli-haber-alani"></div>
 
   <div class="turkiye-gundemi" id="turkiye">
     <svg class="tr-ay-yildiz" viewBox="0 0 100 100" fill="none">
@@ -406,11 +371,6 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
     <div class="oto-kart"><div class="oto-kart-icerik"><h4>Veriler yükleniyor...</h4></div></div>
     <div class="oto-kart"><div class="oto-kart-icerik"><h4>Veriler yükleniyor...</h4></div></div>
   </div>
-
-  <div class="bolum-baslik">
-    <div class="bolum-sembol">🌐</div><h2>Dünya Gündemi & Makro Sektörler (Canlı)</h2>
-  </div>
-  <div class="dunya-grid" id="canli-haber-alani"></div>
 
   <div class="uc-kolon">
     <div>
@@ -619,8 +579,8 @@ const yedekSavas = [
 const apiKategoriMap = { 
     'bilim': 'technology,science', 
     'saglik': 'health', 
-    'catisma': 'world,politics', 
-    'siyaset': 'politics', 
+    'catisma': 'world', 
+    'siyaset': 'top', 
     'turkdunyasi': 'top', 
     'tarih': 'world' 
 };
@@ -631,7 +591,7 @@ function haberSayaciniArtir() {
   document.getElementById('haber-sayisi').textContent = uretilenHaberSayisi;
 }
 
-// CACHE SİSTEMİ (Artık önbelleği Worker yapıyor ama tarayıcıda da tutmak API'yi daha da rahatlatır)
+// CACHE SİSTEMİ
 async function fetchWithCacheV2(url, cacheKey, ttl = 7200000) { 
     try {
         const cached = localStorage.getItem(cacheKey);
@@ -763,51 +723,14 @@ async function gercekHaberGetir(katId) {
 }
 
 // -----------------------------------------------------------
-// 3. MANŞETLERİ YENİLEME
+// 3. OTOMATİK YZ AKIŞI
 // -----------------------------------------------------------
-async function mansetleriYenile() {
-  const buyukKart = document.getElementById('manset-buyuk');
-  const yanListe = document.getElementById('manset-kucuk');
-  if(!buyukKart || !yanListe) return;
-
-  try {
-    const buyukHaber = await gercekHaberGetir('siyaset');
-    const hBilim = await gercekHaberGetir('bilim');
-    const hCatisma = await gercekHaberGetir('catisma');
-    const hSaglik = await gercekHaberGetir('saglik');
-    const hTuran = await gercekHaberGetir('turkdunyasi');
-
-    buyukKart.innerHTML = `
-      <span class="kart-etiket et-oncu">⚡ Öncü</span>
-      <h3>${buyukHaber.baslik}</h3>
-      <p>${buyukHaber.metin.substring(0, 140)}...</p>
-      <div class="meta"><span class="yaz-badge">✦ Canlı Veri</span><span>Yeni Güncellendi</span><span>5 dk</span></div>
-    `;
-    buyukKart.onclick = () => makaleAc('MANŞET', buyukHaber.baslik, buyukHaber.metin, buyukHaber.kaynak);
-    
-    yanListe.innerHTML = `
-      <div class="mini-kart bilim" onclick="makaleAc('BİLİM', '${guvenliMetin(hBilim.baslik)}', '${guvenliMetin(hBilim.metin)}', '${guvenliMetin(hBilim.kaynak)}')"><div class="kat-ad">🔬 Bilim</div><h4>${hBilim.baslik}</h4><div class="meta">Yeni Güncellendi · ✦ YZ</div></div>
-      <div class="mini-kart catisma" onclick="makaleAc('ÇATIŞMA', '${guvenliMetin(hCatisma.baslik)}', '${guvenliMetin(hCatisma.metin)}', '${guvenliMetin(hCatisma.kaynak)}')"><div class="kat-ad">⚔️ Çatışma</div><h4>${hCatisma.baslik}</h4><div class="meta">Yeni Güncellendi · ✦ YZ</div></div>
-      <div class="mini-kart saglik" onclick="makaleAc('SAĞLIK', '${guvenliMetin(hSaglik.baslik)}', '${guvenliMetin(hSaglik.metin)}', '${guvenliMetin(hSaglik.kaynak)}')"><div class="kat-ad">💊 Sağlık</div><h4>${hSaglik.baslik}</h4><div class="meta">Yeni Güncellendi · ✦ YZ</div></div>
-      <div class="mini-kart turan" onclick="makaleAc('TÜRK DÜNYASI', '${guvenliMetin(hTuran.baslik)}', '${guvenliMetin(hTuran.metin)}', '${guvenliMetin(hTuran.kaynak)}')"><div class="kat-ad">🌍 Türk Dünyası</div><h4>${hTuran.baslik}</h4><div class="meta">Yeni Güncellendi · ✦ YZ</div></div>
-    `;
-    
-    for(let i=0; i<5; i++) { haberSayaciniArtir(); }
-    buyukKart.style.opacity = '1';
-    yanListe.style.opacity = '1';
-
-  } catch(e) { }
-}
-
 const KATEGORILER = [
   { id:'bilim', ad:'🔬 Bilim & Veri', renk:'linear-gradient(90deg,#1A3D7A,#4A82D0)', yazireng:'#1A3D7A' },
   { id:'catisma', ad:'⚔️ Savaş & Risk', renk:'linear-gradient(90deg,#7A1A1A,#C0392B)', yazireng:'#7A1A1A' },
   { id:'saglik', ad:'💊 Tıp & Sağlık', renk:'linear-gradient(90deg,#1A5C34,#40A064)', yazireng:'#1A5C34' }
 ];
 
-// -----------------------------------------------------------
-// 4. OTOMATİK YZ AKIŞI
-// -----------------------------------------------------------
 async function otomatikYenile() {
   const alan = document.getElementById('oto-haber-alani');
   if(!alan) return;
@@ -852,7 +775,7 @@ async function otomatikYenile() {
 }
 
 // -----------------------------------------------------------
-// 5. CANLI DÜNYA GÜNDEMİ
+// 4. CANLI DÜNYA GÜNDEMİ
 // -----------------------------------------------------------
 async function canliHaberleriCek() {
   const url = `${WORKER_URL}/?kategori=top`;
@@ -863,12 +786,14 @@ async function canliHaberleriCek() {
     
     if (veri && veri.results && veri.results.length > 0) {
       alan.innerHTML = ''; 
-      veri.results.slice(0, 4).forEach((haber, idx) => {
+      veri.results.slice(0, 6).forEach((haber, idx) => {
         const sahteResimler = [
           "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=400", 
           "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=80&w=400", 
           "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=400", 
-          "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=400"  
+          "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=400",
+          "https://images.unsplash.com/photo-1495020689067-958852a7765e?q=80&w=400",
+          "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=400"
         ];
         const resimSrc = haber.image_url ? haber.image_url : sahteResimler[idx];
         const desc = haber.description || haber.content || 'Makro piyasa hareketleri detayları...';
@@ -894,7 +819,7 @@ async function canliHaberleriCek() {
 }
 
 // -----------------------------------------------------------
-// 6. ULUSAL FLAŞ SLIDER 
+// 5. ULUSAL FLAŞ SLIDER 
 // -----------------------------------------------------------
 async function sonDakikaBandiniGuncelle() {
   const wrapper = document.getElementById('ticker-slider');
@@ -903,7 +828,7 @@ async function sonDakikaBandiniGuncelle() {
   let haberCount = 0;
 
   try {
-    const url = `${WORKER_URL}/?kategori=top,politics`;
+    const url = `${WORKER_URL}/?kategori=top`;
     const data = await fetchWithCacheV2(url, 'news_cache_v2_sondakika_q');
     
     if(data && data.results && data.results.length > 0) {
@@ -957,7 +882,7 @@ function setupDragAndDropScroll() {
 }
 
 // -----------------------------------------------------------
-// 7. YZ MOTORU KONTROLLERİ 
+// 6. YZ MOTORU KONTROLLERİ 
 // -----------------------------------------------------------
 let seciliKat = null;
 function katSec(el, kat) {
@@ -991,7 +916,6 @@ async function manuelHaberUret() {
 // Başlatma ve Döngüler
 window.addEventListener('load', () => {
   savasHaberleriniGuncelle();
-  mansetleriYenile(); 
   otomatikYenile();   
   canliHaberleriCek(); 
   sonDakikaBandiniGuncelle();
