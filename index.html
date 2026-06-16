@@ -375,7 +375,7 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
       <div class="tr-kart-ana" onclick="makaleAc('TÜRKİYE SİYASETİ', 'Ankara Kulisleri Hareketli: Devlet Zirvesinden Küresel Mutabakat ve Makro İstikrar Açıklamaları', 'Ankara — Cumhurbaşkanı Yardımcısı Cevdet Yılmaz, ABD ile İran arasında varılan stratejik mutabakat ve Hürmüz Boğazı\'nın yeniden açılma kararına ilişkin resmi bir açıklama yaptı. Yılmaz, \'Bu tarihi uzlaşı küresel ekonomik istikrarın ve bölgesel tedarik zincirlerinin korunması bakımından son derece memnuniyet vericidir. Türkiye\'nin rasyonel makroekonomik adımları ve düşen risk primi (CDS) ile ülkemiz yabancı yatırımların ana odağı olmaya devam edecektir\' dedi. TBMM Başkanı Numan Kurtulmuş da meclis oturumunda anlaşmanın korunmasının küresel barış adına kritik bir eşik olduğunu vurguladı.', 'Ankara / Kulis')">
         <span class="kart-etiket" style="background:var(--altin); color:#fff">Sıcak Gelişme</span>
         <h3>Devlet Zirvesinden Küresel Mutabakat ve CDS Açıklaması</h3>
-        <p>Ankara kulislerinde gözler küresel yumuşama hamlelerine çevrildi. Cumhurbaşkanı Yardımcısı Cevdet Yılmaz ve TBMM Başkanı Numan Kurtulmuş, makro istikrar and siber güvenliğin korunmasına dair stratejik mesajlar verdi.</p>
+        <p>Ankara kulislerinde gözler küresel yumuşama hamlelerine çevrildi. Cumhurbaşkanı Yardımcısı Cevdet Yılmaz ve TBMM Başkanı Numan Kurtulmuş, makro istikrar ve siber güvenliğin korunmasına dair stratejik mesajlar verdi.</p>
         <div class="meta" style="margin-top:10px; color:rgba(255,255,255,0.5)">Bugün Canlı · ✦ Ankara</div>
       </div>
       <div class="tr-kart" onclick="makaleAc('TÜRKİYE YASAMA', 'TBMM Dijital Mecralar Komisyonu: Altyapı ve Genişbant Dağıtımında Yeni Bürokrasi Reformu', 'TBMM Dijital Mecralar Komisyonu, Türkiye genelindeki fiber internet omurgasını siber egemenliğin temel taşı olarak ele alan kapsamlı bir teşvik paketini onayladı. Yasayla, yerel yönetimler ile telekomünikasyon firmaları arasında yaşanan altyapı petisyon krizleri ve bürokratik engeller tamamen kaldırılıyor. Genişbant altyapı kurulumları, yüklenici dev teknoloji firmalarının veri şeffaflığı kriterlerine göre geriye dönük izlenebilecek.', 'TBMM Tutanakları')">
@@ -383,7 +383,7 @@ footer{background:var(--koyu);padding:2.5rem 2rem 1.5rem;margin-top:1rem}
         <h4>Siber Altyapı ve Genişbant Fiber Teşvik Yasası Onaylandı</h4>
         <div class="meta">2 sa önce · ✦ Resmi Karar</div>
       </div>
-      <div class="tr-kart" onclick="makaleAc('TÜRKİYE EKONOMİ', 'Makro Veriler Açıklandı: Sanayi Üretim Endeksinde Güçlü Yükseliş, CDS 225 Puan Seviyesinde', 'Ankara — Türkiye İstatistik Kurumu (TÜİK) nisan ayı sanayi üretim, inşaat maliyet endeksleri ve ücretli çalışan istatistiklerini yayınladı. Sanayi üretiminde kaydedilen güçlü artış reel sektöre derin bir nefes aldırırken, uluslararası piyasalarda Türkiye\'nin risk primi (CDS) 225 baz puana kadar geriledi. Hazine ve Maliye Bakanlığı ise devlet tahvillerinin yeniden ihracı için bugün iki kritik hamleye imza atıyor.', 'TÜİK / Hazine Raporu')">
+      <div class="tr-kart" onclick="makaleAc('TÜRKİYE EKONOMİ', 'Makro Veriler Açıklandı: Sanayi Üretim Endeksinde Güçlü Yükseliş, CDS 225 Puan Seviyesinde', 'Ankara — Türkiye İstatistik Kurumu (TÜİK) nisan ayı sanayi üretim, inşaat maliyet endeksleri and ücretli çalışan istatistiklerini yayınladı. Sanayi üretiminde kaydedilen güçlü artış reel sektöre derin bir nefes aldırırken, uluslararası piyasalarda Türkiye\'nin risk primi (CDS) 225 baz puana kadar geriledi. Hazine ve Maje Bakanlığı ise devlet tahvillerinin yeniden ihracı için bugün iki kritik hamleye imza atıyor.', 'TÜİK / Hazine Raporu')">
         <div class="alt-etiket">📊 Makro Ekonomi</div>
         <h4>Sanayi Üretiminde Güçlü Artış: CDS 225 Baz Puana Geriledi</h4>
         <div class="meta">4 sa önce · ✦ TÜİK Verisi</div>
@@ -563,23 +563,15 @@ const aylar=['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağusto
 const s=new Date();
 document.getElementById('tarih-goster').textContent=`${gunler[s.getDay()]}, ${s.getDate()} ${aylar[s.getMonth()]} ${s.getFullYear()}`;
 
-// 1. GÜNCELLEME: Türkçe karakter bozulmalarını engellemek için decodeURIComponent(escape(metin)) zırhı eklendi.
+// 3. GÜNCELLEME: Karakter encoding çakışmalarını önlemek için sadeleştirilmiş ve güvenli metin dönüştürücü
 function guvenliMetin(metin) {
   if(!metin) return '';
-  try {
-    const duzeltilmis = decodeURIComponent(escape(metin));
-    return duzeltilmis
-      .replace(/'/g, "\\'")
-      .replace(/"/g, "&quot;")
-      .replace(/\n/g, " ")
-      .replace(/\r/g, "");
-  } catch(e) {
-    return String(metin)
-      .replace(/'/g, "\\'")
-      .replace(/"/g, "&quot;")
-      .replace(/\n/g, " ")
-      .replace(/\r/g, "");
-  }
+  return String(metin)
+    .replace(/&/g, '&amp;')
+    .replace(/'/g, '&#39;')
+    .replace(/"/g, '&quot;')
+    .replace(/\n/g, ' ')
+    .replace(/\r/g, '');
 }
 
 function makaleAc(kategori, baslik, metin, kaynak) {
@@ -611,11 +603,11 @@ const simuleHaberler = {
   catisma: [{ baslik: "Tedarik Zinciri Koridorlarında Siber Direniş Hatları", metin: "Küresel lojistik ağlar üzerinde kritik veri aktarım noktaları ve liman yönetim sistemleri siber savunma kalkanlarıyla tahkim ediliyor." }],
   saglik: [{ baslik: "Veri Analitiği Destekli mRNA Aşısında Yeni Faz Aşaması", metin: "Yapay zeka modelleriyle biyolojik veri setlerinin eşleştirilmesi sonucu üretilen hücresel onkoloji aşıları klinik testlerde kararlı sonuçlar verdi." }],
   siyaset: [{ baslik: "Dijital Sınırlar ve Bölgesel Veri Güvenliği Politikaları", metin: "Uluslararası veri aktarım protokollerinde ülkelerin kendi veri egemenliklerini ilan etme süreçleri makroekonomik dengeleri yeniden şekillendiriyor." }],
-  turkdunyasi: [{ baslik: "Türk Devletleri Dijital Altyapı Fonu Faaliyete Geçti", metin: "Üye ülkeler arasında ortak bulut altyapısı, sınır ötesi veri hatları dairy teknopark entegrasyonlarına öncelikli hibe sağlanacağı açıklandı." }]
+  turkdunyasi: [{ baslik: "Türk Devletleri Dijital Altyapı Fonu Faaliyete Geçti", metin: "Üye ülkeler arasında ortak bulut altyapısı, sınır ötesi veri hatları ve teknopark entegrasyonlarına öncelikli hibe sağlanacağı açıkllandı." }]
 };
 
 const yedekSavas = [
-  { title: "İran ve ABD Anlaştı: Hürmüz Boğazı'ndaki Askeri Abluka Hafifletiliyor", description: "ABD ve İran arasında varılan enerji nakil mutabakatı sonrası Basra Körfezi'ndeki askeri teyakkuz durumu düşürüldü. Piyasalar rahatladı.", source_id: "Reuters" },
+  { title: "İran ve ABD Anlaştı: Hürmüz Boğazı'ndaki Askeri Abluka Hafifletiliyor", description: "ABD ve İran arasında varılan energy nakil mutabakatı sonrası Basra Körfezi'ndeki askeri teyakkuz durumu düşürüldü. Piyasalar rahatladı.", source_id: "Reuters" },
   { title: "Sınır Hatlarında İHA Devriyeleri Artırıldı", description: "Bölgedeki kritik lojistik ağlar üzerinde siber ve fiziksel operasyonlara karşı güvenlik seviyesi yükseltildi.", source_id: "Bölge İstihbarat" },
   { title: "Diplomatik Krizde Yeni Eşik: Büyükelçiler Geri Çağrıldı", description: "Avrupa Konseyi toplantısı sonrası yaşanan gerilim üzerine karşılıklı diplomatik notalar verildi.", source_id: "Uluslararası Basın" }
 ];
@@ -830,7 +822,15 @@ async function canliHaberleriCek() {
     
     if (veri && veri.results && veri.results.length > 0) {
       alan.innerHTML = ''; 
-      veri.results.slice(0, 6).forEach((haber, idx) => {
+      
+      // 1. GÜNCELLEME: Gereksiz ve kısıtlanmış kaynakları ayrıştıran filtre eklendi.
+      const filtrelenmis = veri.results.filter(h => 
+        h.title && 
+        !h.title.includes('ONLY AVAILABLE') && 
+        h.source_id !== 'bundle_app'
+      );
+
+      filtrelenmis.slice(0, 6).forEach((haber, idx) => {
         const sahteResimler = [
           "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=400", 
           "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=80&w=400", 
@@ -842,7 +842,7 @@ async function canliHaberleriCek() {
         const resimSrc = haber.image_url ? haber.image_url : sahteResimler[idx];
         const desc = haber.description || haber.content || 'Makro piyasa hareketleri detayları...';
         
-        // 2. GÜNCELLEME: Başlık ve metin yapıları guvenliMetin filtresinden geçirilerek karakter bozulmaları giderildi.
+        // 2. GÜNCELLEME: guvenliMetin koruması doğrudan HTML kart enjeksiyonuna entegre edildi.
         alan.innerHTML += `
           <div class="dunya-kart" onclick="makaleAc('DÜNYA GÜNDEMİ', '${guvenliMetin(haber.title)}', '${guvenliMetin(desc)}', '${guvenliMetin(haber.source_id)}')">
             <img src="${resimSrc}" class="dk-resim" onerror="this.src='${sahteResimler[idx]}'">
@@ -877,7 +877,14 @@ async function sonDakikaBandiniGuncelle() {
     const data = await fetchWithCacheV2(url, 'news_cache_v2_sondakika_q');
     
     if(data && data.results && data.results.length > 0) {
-      data.results.slice(0, 6).forEach((art, index) => {
+      // 1. GÜNCELLEME: Üst slider için de filtre aktif edildi.
+      const filtrelenmis2 = data.results.filter(h => 
+        h.title && 
+        !h.title.includes('ONLY AVAILABLE') && 
+        h.source_id !== 'bundle_app'
+      );
+
+      filtrelenmis2.slice(0, 6).forEach((art, index) => {
         if(art.title) {
           const desc = art.description || art.content || '';
           const card = document.createElement('div');
@@ -887,8 +894,8 @@ async function sonDakikaBandiniGuncelle() {
               <span class="dev-kaynak-badge radar">AJANS FLAŞ</span>
               <span class="dev-kart-zaman">${index + 2} dk önce</span>
             </div>
-            <h3>${art.title}</h3>
-            <p>${desc.substring(0, 120)}...</p>
+            <h3>${guvenliMetin(art.title)}</h3>
+            <p>${guvenliMetin(desc).substring(0, 120)}...</p>
             <div class="dev-oku-link">Sıcak Akışı Gör →</div>
           `;
           card.onclick = () => makaleAc('Sıcak Akış', art.title, desc, art.source_id?.toUpperCase() || 'AJANSLAR');
@@ -951,7 +958,7 @@ async function manuelHaberUret() {
   cikti.innerHTML = "NewsData üzerinden ağ taranıyor...";
   
   const haber = await gercekHaberGetir(seciliKat);
-  cikti.innerHTML = `<strong>BAŞLIK:</strong> ${haber.baslik}<br><br>${haber.metin.replace(/\n/g, '<br>')}<br><br><em style="font-size:10px; opacity:0.7">Kaynak: ${haber.kaynak}</em>`;
+  cikti.innerHTML = `<strong>BAŞLIK:</strong> ${guvenliMetin(haber.baslik)}<br><br>${guvenliMetin(haber.metin).replace(/\n/g, '<br>')}<br><br><em style="font-size:10px; opacity:0.7">Kaynak: ${guvenliMetin(haber.kaynak)}</em>`;
   
   btn.disabled = false;
   if(sp) sp.style.display = 'none';
