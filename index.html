@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Ccircle cx='26' cy='26' r='26' fill='%2314213d'/%3E%3Ccircle cx='26' cy='26' r='24' stroke='%23C8963A' stroke-width='1.5' fill='none'/%3E%3Ccircle cx='26' cy='26' r='16' stroke='%23C8963A' stroke-width='1' fill='none'/%3E%3Ccircle cx='26' cy='26' r='5' fill='%23C8963A'/%3E%3Cline x1='26' y1='6' x2='26' y2='12' stroke='%23C8963A' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='26' y1='40' x2='26' y2='46' stroke='%23C8963A' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='6' y1='26' x2='12' y2='26' stroke='%23C8963A' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='40' y1='26' x2='46' y2='26' stroke='%23C8963A' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
 <title>TuranHaber — Türk Dünyası & Dünya Gündemi</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
@@ -30,6 +31,7 @@ html { scroll-behavior: smooth; overflow-x: hidden; }
 
 .anim-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
 .anim-up.goster { opacity: 1; transform: translateY(0); }
+
 #ilerleme-cubugu { position: fixed; top: 0; left: 0; height: 4px; background: linear-gradient(90deg, var(--kizil), var(--altin)); width: 0%; z-index: 10000; transition: width 0.1s ease; }
 
 body { font-family: 'Inter', sans-serif; background-color: var(--arkaplan); color: var(--yazi); line-height: 1.6; position: relative; transition: background-color 0.4s ease, color 0.4s ease; overflow-x: hidden;}
@@ -40,7 +42,7 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-even
 
 .gokturk-bg-text { font-family: 'Noto Sans Old Turkic', serif; color: var(--altin); opacity: 0.04; font-size: 80px; letter-spacing: 15px; position: absolute; top: 0; left: 0; width: 100%; text-align: center; pointer-events: none; user-select: none; overflow: hidden; white-space: nowrap; }
 
-/* HEADER */
+/* HEADER & BANT */
 .ust-bant { background: var(--koyu); color: rgba(255,255,255,.6); font-size: 12px; padding: 8px 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
 .ust-bant .sol-kisim, .ust-bant .sag-kisim { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
 .ust-bant .tarih { color: var(--altin); font-weight: 500; }
@@ -64,7 +66,7 @@ nav { background: var(--kart-bg); border-bottom: 1px solid var(--cizgi); positio
 
 main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 
-/* BAŞLIKLAR */
+/* BÖLÜM BAŞLIKLARI */
 .bolum-baslik { display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; padding-bottom: 12px; border-bottom: 2px solid var(--cizgi); position: relative; }
 .bolum-baslik::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 60px; height: 2px; background: var(--kizil); }
 .bolum-baslik h2 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--lacivert); }
@@ -84,11 +86,8 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .hero-nokta { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: var(--gecis); cursor: pointer;}
 .hero-nokta.active { background: var(--altin); transform: scale(1.4); }
 
-/* BİLİM & DÜNYA & TARİH KARTLARI */
-.bilim-ozel-grid, .tarih-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3.5rem; }
-.dunya-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 3.5rem; }
-.td-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; position: relative; z-index: 2;}
-
+/* KÜRESEL BİLİM */
+.bilim-ozel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3.5rem; }
 .bilim-ozel-kart { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; padding: 1.8rem; box-shadow: var(--golge); cursor: pointer; display: flex; flex-direction: column; position: relative; overflow: hidden; }
 .bilim-ozel-kart::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, #3b82f6, #8b5cf6); }
 .bo-ulke { font-size: 10px; font-weight: 700; color: #fff; background: #1e3a8a; display: inline-block; padding: 4px 10px; border-radius: 4px; margin-bottom: 12px; align-self: flex-start;}
@@ -123,6 +122,7 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .gm-okuma-suresi { font-size: 12px; font-weight: 600; color: var(--kizil); }
 
 /* DÜNYA GÜNDEMİ KARTLARI */
+.dunya-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 3.5rem; }
 .dunya-kart { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; overflow: hidden; cursor: pointer; transition: var(--gecis); display: flex; flex-direction: column; box-shadow: var(--golge);}
 .dunya-kart:hover { transform: translateY(-5px); border-color: rgba(200,150,58,0.3); }
 .dk-resim { width: 100%; height: 220px; object-fit: cover; transition: transform 0.5s ease;}
@@ -134,7 +134,7 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .dk-icerik h4 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--lacivert); line-height: 1.3; margin-bottom: 12px; }
 .dk-icerik p { font-size: 14px; color: var(--ikincil); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 15px; flex: 1;}
 
-/* İKİLİ KOLON & LİSTELER */
+/* İKİLİ KOLON */
 .ikili-kolon { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 3.5rem; }
 .haber-bolum { background: var(--kart-bg); border-radius: 12px; border: 1px solid var(--cizgi); overflow: hidden; box-shadow: var(--golge);}
 .haber-satir { padding: 1.5rem; border-bottom: 1px solid var(--cizgi); cursor: pointer; transition: var(--gecis); }
@@ -146,7 +146,7 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .haber-satir h3 { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--lacivert); line-height: 1.35; margin-bottom: 8px; }
 .haber-satir p { font-size: 13px; color: var(--ikincil); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
-/* RADAR */
+/* RADAR & TÜRK DÜNYASI */
 .catisma-radar { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; overflow: hidden; box-shadow: var(--golge); height: 100%; }
 .cr-baslik { background: rgba(192,57,43,0.1); border-bottom: 1px solid rgba(192,57,43,.15); padding: 15px 1.5rem; font-size: 15px; font-weight: 700; color: #7A1A1A; display: flex; align-items: center; gap: 8px; }
 [data-theme="dark"] .cr-baslik { color: #ff8787; }
@@ -156,10 +156,10 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .cr-madde .bolge { font-size: 10px; font-weight: 700; color: var(--kizil); margin-bottom: 5px; text-transform: uppercase;}
 .cr-madde h5 { font-size: 14px; font-weight: 600; color: var(--lacivert); line-height: 1.4; }
 
-/* TÜRK DÜNYASI */
 .turk-dunyasi { background: linear-gradient(135deg, var(--lacivert) 0%, #1a2a40 100%); border-radius: 16px; padding: 2.5rem; margin-bottom: 3.5rem; position: relative; overflow: hidden; box-shadow: var(--golge);}
 .turk-motif { position: absolute; right: -2rem; top: 50%; transform: translateY(-50%); opacity: .06; width: 250px; height: 250px; animation: spin 60s linear infinite;}
 .td-baslik { font-family: 'Playfair Display', serif; font-size: 24px; color: #fff; font-weight: 700; margin-bottom: 20px;}
+.td-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; position: relative; z-index: 2;}
 .td-kart { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 1.5rem; cursor: pointer; backdrop-filter: blur(5px); transition: var(--gecis); }
 .td-kart:hover { background: rgba(255,255,255,.08); border-color: rgba(200,150,58,0.4); transform: translateY(-4px); }
 .td-kart-ust { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;}
@@ -169,6 +169,7 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .td-kart p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;}
 
 /* TARİH */
+.tarih-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3.5rem; }
 .tarih-makale { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; transition: var(--gecis); box-shadow: var(--golge);}
 .tarih-makale:hover { transform: translateY(-4px); border-color: rgba(200,150,58,0.3); }
 .tm-serit { height: 4px; background: linear-gradient(90deg, var(--lacivert), var(--altin)); }
@@ -177,7 +178,7 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .tarih-makale h4 { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--lacivert); line-height: 1.4; margin-bottom: 10px; }
 .tarih-makale p { font-size: 13px; color: var(--ikincil); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; flex: 1;}
 
-/* FOOTER & MODAL */
+/* FOOTER */
 footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; overflow: hidden; border-top: 4px solid var(--altin);}
 .footer-ic { max-width: 1300px; margin: 0 auto; position: relative; z-index: 2;}
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.05); }
@@ -186,7 +187,9 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
 .footer-kolon h5 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--altin); margin-bottom: 20px; }
 .footer-kolon a { display: block; font-size: 13px; color: rgba(255,255,255,.5); text-decoration: none; margin-bottom: 10px; transition: var(--gecis); }
 .footer-kolon a:hover { color: #fff; padding-left: 5px; }
+.footer-alt { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,.3); }
 
+/* MODAL */
 .modal-arkaplan { position: fixed; inset: 0; background: rgba(10, 17, 26, 0.9); z-index: 9999; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; padding: 1rem;}
 .modal-arkaplan.goster { display: flex; opacity: 1; }
 .modal-kutu { background: var(--kart-bg); width: 100%; max-width: 750px; max-height: 90vh; border-radius: 12px; overflow-y: auto; position: relative; transform: translateY(20px); transition: transform 0.3s ease; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5); }
@@ -206,6 +209,7 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
 .ilgili-kart { background: var(--arkaplan); border: 1px solid var(--cizgi); border-radius: 8px; padding: 1.2rem; cursor: pointer; transition: var(--gecis);}
 .ilgili-kart:hover { border-color: var(--altin); transform: translateY(-3px); }
 .ilgili-kart h5 { font-size: 13px; color: var(--lacivert); margin-bottom: 8px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.ilgili-kart .i-kaynak { font-size: 10px; color: var(--ikincil); font-weight: 600; text-transform: uppercase; }
 
 /* RESPONSIVE */
 @media(max-width: 960px){
@@ -284,18 +288,15 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
 
 <main>
 
-  <!-- HERO MANŞET SLIDER -->
   <div class="hero-slider-alani anim-up" id="hero-slider">
     <div style="color:white; display:flex; height:100%; align-items:center; justify-content:center;">Manşetler yükleniyor...</div>
   </div>
 
-  <!-- BİLİM -->
   <div class="bolum-baslik anim-up" id="kuresel-bilim">
     <div class="bolum-sembol">🚀</div><h2>Küresel Bilim Gündemi</h2>
   </div>
   <div class="bilim-ozel-grid" id="bilim-ozel-alani"></div>
 
-  <!-- SAVAŞ -->
   <div class="savas-koridoru anim-up" id="savas">
     <div class="savas-baslik">
       <div class="bolum-sembol" style="background:var(--kizil); color:#fff; border:none;">⚔️</div>
@@ -304,19 +305,16 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
     <div class="savas-grid-2" id="savas-grid"></div>
   </div>
 
-  <!-- GÜNÜN MAKALESİ -->
   <div class="bolum-baslik anim-up">
     <div class="bolum-sembol">🧠</div><h2>Günün Odak Noktası</h2>
   </div>
   <div class="gm-kapsayici anim-up" id="gunun-makalesi-alani"></div>
 
-  <!-- DÜNYA GÜNDEMİ -->
   <div class="bolum-baslik anim-up">
     <div class="bolum-sembol">🌐</div><h2>Dünya Gündemi (Canlı)</h2>
   </div>
   <div class="dunya-grid" id="canli-haber-alani"></div>
 
-  <!-- İKİLİ KOLON -->
   <div class="ikili-kolon">
     <div class="anim-up">
       <div class="bolum-baslik" id="siyaset"><div class="bolum-sembol">🏛️</div><h2>Dünya Siyaseti & Sağlık</h2></div>
@@ -335,7 +333,6 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
     </div>
   </div>
 
-  <!-- TÜRK DÜNYASI -->
   <div class="turk-dunyasi anim-up" id="turkdunyasi">
     <svg class="turk-motif" viewBox="0 0 160 160" fill="none">
       <polygon points="80,8 104,24 128,24 140,44 140,72 128,92 104,104 80,112 56,104 32,92 20,72 20,44 32,24 56,24" stroke="white" stroke-width="2"/>
@@ -344,7 +341,6 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
     <div class="td-grid" id="td-dinamik-grid"></div>
   </div>
 
-  <!-- TARİH -->
   <div class="bolum-baslik anim-up" id="tarih">
       <div class="bolum-sembol">🕌</div><h2>Tarih & Kültür Arşivi</h2>
   </div>
@@ -438,16 +434,20 @@ const aylar=['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağusto
 const s=new Date();
 document.getElementById('tarih-goster').textContent=`${s.getDate()} ${aylar[s.getMonth()]} ${s.getFullYear()}`;
 
-// GÜVENLİ METİN (HTML Temizleyici Eklendi)
+// GÜVENLİ METİN (HTML ve Entity Temizleyici)
 function guvenliMetin(metin) {
-  if(!metin || metin === "null" || metin === "undefined") return 'Bu içerik sağlanmadı.';
-  // API'den gelen bozuk HTML (<li>, <p>, <a> vb) etiketlerini gizlice temizler
-  let t = String(metin).replace(/<[^>]*>?/gm, ''); 
-  t = t.replace(/Ã§/g, 'ç').replace(/Ã‡/g, 'Ç').replace(/ÅŸ/g, 'ş').replace(/Åž/g, 'Ş').replace(/Ä±/g, 'ı').replace(/Ä°/g, 'İ').replace(/Ã¶/g, 'ö').replace(/Ã–/g, 'Ö').replace(/Ã¼/g, 'ü').replace(/Ãœ/g, 'Ü');
-  return t.replace(/&/g, '&amp;').replace(/'/g, '&#39;').replace(/"/g, '&quot;').replace(/\n/g, ' ');
+  if(!metin || metin === "null" || metin === "undefined") return '';
+  let t = String(metin)
+    .replace(/<[^>]*>?/gm, '')   // HTML etiketleri temizle
+    .replace(/ə/g, 'e').replace(/Ə/g, 'E')
+    .replace(/&amp;/g, '&')      // çift encode düzelt
+    .replace(/&quot;/g, '"')
+    .replace(/\n/g, ' ')
+    .trim();
+  return t;
 }
 
-// SIKI EDİTORYAL FİLTRE (Dizi, Magazin, Hint, Bollywood Haberlerini Siler)
+// SIKI EDİTORYAL FİLTRE
 function haberFiltrele(res) { 
   const yasakliKelimeler = [
     'only available', 'paid plans', 'dizi', 'oyuncu', 'magazin', 'bollywood', 
@@ -461,12 +461,11 @@ function haberFiltrele(res) {
   }) : []; 
 }
 
-// GELİŞMİŞ SÖZLÜK TABANLI YAPAY ÇEVİRİ MATRİSİ (Türk Dünyası İçin)
+// SÖZLÜK TABANLI YAPAY ÇEVİRİ MATRİSİ
 function turkceyeCevir(metin) {
   if(!metin || metin === "null" || metin === "undefined") return '';
   let m = String(metin);
   
-  // Harf değiştirmeden, tam kök kelime analizi yaparak Türkiye Türkçesine uyarla
   const sozluk = {
     'və':'ve', 'Və':'Ve', 'ilə':'ile', 'İlə':'İle', 'üçün':'için', 'Üçün':'İçin',
     'haqqında':'hakkında', 'Haqqında':'Hakkında', 'olaraq':'olarak', 'böyük':'büyük',
@@ -484,7 +483,7 @@ function turkceyeCevir(metin) {
   for(let k in sozluk) {
      m = m.replace(new RegExp('\\b'+k+'\\b', 'g'), sozluk[k]);
   }
-  return m.replace(/ə/g, 'e').replace(/Ə/g, 'E'); // Sadece E/A sesleri dönüşür, Q ve X gibi harfler global olarak silinmez.
+  return m;
 }
 
 const yedekIlgili = [{t:"Tedarik Zincirinde Rota Arayışları", k:"Ekonomi"}, {t:"Yarı İletken Pazarında Rekabet", k:"Teknoloji"}, {t:"Yapay Zeka ve Veri Yasaları", k:"Hukuk"}];
@@ -531,7 +530,7 @@ function gununMakalesiniYukle() {
    alan.innerHTML = `<div class="gm-resim" style="background-image: url('${makale.r}')"></div><div class="gm-icerik"><span class="gm-etiket">✦ ${makale.e}</span><h3 class="gm-baslik">${makale.t}</h3><p class="gm-metin">${makale.m}</p><div class="gm-okuma-suresi">⏳ 3 dakika okuma süresi</div></div>`;
 }
 
-// OFFLINE KORUMASI (API Çökerse Site Boş Kalmaz)
+// OFFLINE KORUMASI (Yedek Veriler)
 const yedekManset = [
   {title: "Küresel Ekonomik Koridorlarda Yeni Anlaşma", description: "Bölgesel ticarette lojistik bariyerler kaldırılıyor. Kritik toplantı sona erdi.", image_url: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=1200", source_id: "KÜRESEL RAPOR"},
   {title: "Yarı İletken Savaşında Stratejik Hamle", description: "Dev teknoloji şirketleri çip üretimini millileştirme kararı aldı.", image_url: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=80&w=1200", source_id: "TEKNOLOJİ"}
@@ -541,7 +540,7 @@ let hSlider, aSlide = 0;
 async function heroSliderGuncelle() {
   const al = document.getElementById('hero-slider'); if(!al) return;
   let res = await apiIstekAt(`${WORKER_URL}/?kategori=top`);
-  if(!res || res.length === 0) res = yedekManset; // API Çökme Koruması
+  if(!res || res.length === 0) res = yedekManset; 
   
   al.innerHTML = ''; const mH = res.slice(0, 5);
   const nk = document.createElement('div'); nk.className = 'hero-noktalar';
@@ -570,7 +569,7 @@ const yedekSavas = [{ title: "İran ve ABD Mutabakatı", description: "Hürmüz 
 async function savasHaberleriniGuncelle() {
   const grid = document.getElementById('savas-grid'); if(!grid) return;
   let sH = await apiIstekAt(`${WORKER_URL}/?kategori=world&q=${encodeURIComponent("savaş OR ordu")}`);
-  if(!sH || sH.length < 2) sH = yedekSavas; // API Çökme Koruması
+  if(!sH || sH.length < 2) sH = yedekSavas; 
   
   sH = sH.slice(0, 3); grid.innerHTML = '';
   const ag = document.createElement('div'); ag.className = 'sk-alt-grid';
@@ -583,11 +582,11 @@ async function savasHaberleriniGuncelle() {
   animasyonlariBaslat(); 
 }
 
-const yedekBilim = [{title: "Nöral Ağa Sahip Robotlar", description: "Yapay zeka robotik donanımla birleşerek ince motor becerisi kazandı."}, {title:"Kuantum İşlemci Engeli aşıldı", description: "Oda sıcaklığında çalışabilen ilk ticari kuantum işlemci prototipi tanıtıldı."}];
+const yedekBilim = [{title: "Nöral Ağa Sahip Robotlar", description: "Yapay zeka robotik donanımla birleşerek ince motor becerisi kazandı."}, {title:"Kuantum İşlemci Engeli Aşıldı", description: "Oda sıcaklığında çalışabilen ilk ticari kuantum işlemci prototipi tanıtıldı."}];
 async function kureselBilimGuncelle() {
   const grid = document.getElementById('bilim-ozel-alani'); if(!grid) return;
   let bH = await apiIstekAt(`${WORKER_URL}/?kategori=technology&q=${encodeURIComponent('uzay OR yapay zeka')}`);
-  if(!bH || bH.length === 0) bH = yedekBilim; // API Çökme Koruması
+  if(!bH || bH.length === 0) bH = yedekBilim; 
   
   grid.innerHTML = '';
   bH.slice(0, 3).forEach((h, idx) => {
@@ -603,7 +602,7 @@ const yedekDunya = [{title:"Avrupa Parlamentosu Kararı", description:"Yeni tekn
 async function canliHaberleriCek() {
   const alan = document.getElementById('canli-haber-alani'); if(!alan) return;
   let res = await apiIstekAt(`${WORKER_URL}/?kategori=top`);
-  if(!res || res.length === 0) res = yedekDunya; // API Çökme Koruması
+  if(!res || res.length === 0) res = yedekDunya; 
   
   alan.innerHTML = ''; 
   res.slice(0, 4).forEach((h, idx) => {
@@ -618,18 +617,39 @@ async function canliHaberleriCek() {
 }
 
 const yedekTurk = [{title:"TDT Zirvesi Tamamlandı", description:"Lojistik ve enerji nakil hatlarında ortak mutabakata varıldı."}, {title:"Eğitimde Ortak Alfabe", description:"Türk dünyası standart alfabe geçişini hızlandırma kararı aldı."}];
+
+// XSS Korumalı Türk Dünyası Güncellemesi (innerHTML yerine textContent kullanımı)
 async function turkDunyasiGuncelle() {
     const grid = document.getElementById('td-dinamik-grid'); if(!grid) return;
     let res = await apiIstekAt(`${WORKER_URL}/?country=az,kz,uz,kg`);
-    if(!res || res.length === 0) res = yedekTurk; // API Çökme Koruması
+    if(!res || res.length === 0) res = yedekTurk; 
     
     grid.innerHTML = '';
     res.slice(0, 3).forEach((h, idx) => {
         const trBaslik = turkceyeCevir(h.title);
         const trDescription = turkceyeCevir(h.description || h.content || "Haber detayı sisteme aktarılıyor.");
-        const c = document.createElement('div'); c.className = 'td-kart anim-up'; c.style.transitionDelay = `${idx*0.1}s`;
-        c.onclick = () => makaleAc('TÜRK DÜNYASI', trBaslik, trDescription, h.source_id);
-        c.innerHTML = `<div class="td-kart-ust"><div class="ulke-tag">TÜRK DEVLETLERİ</div><div class="ceviri-badge">🔄 Çevrildi</div></div><h4>${guvenliMetin(trBaslik)}</h4><p>${guvenliMetin(trDescription)}</p>`;
+        const ulkeler = ['AZERBAYCAN', 'KAZAKİSTAN', 'ÖZBEKİSTAN', 'KIRGIZİSTAN'];
+        const ulke = (h.country && h.country[0] && h.country[0] !== 'tr') ? h.country[0].toUpperCase() : ulkeler[Math.floor(Math.random() * ulkeler.length)];
+        
+        const c = document.createElement('div'); 
+        c.className = 'td-kart anim-up'; 
+        c.style.transitionDelay = `${idx*0.1}s`;
+        c.onclick = () => makaleAc(ulke, trBaslik, trDescription, h.source_id);
+        
+        const ustDiv = document.createElement('div');
+        ustDiv.className = 'td-kart-ust';
+        ustDiv.innerHTML = `<div class="ulke-tag">${ulke}</div><div class="ceviri-badge">🔄 Çevrildi</div>`;
+
+        const baslikEl = document.createElement('h4');
+        baslikEl.textContent = guvenliMetin(trBaslik);
+
+        const pEl = document.createElement('p');
+        pEl.textContent = guvenliMetin(trDescription);
+        
+        c.appendChild(ustDiv);
+        c.appendChild(baslikEl);
+        c.appendChild(pEl);
+        
         grid.appendChild(c);
     });
     animasyonlariBaslat();
