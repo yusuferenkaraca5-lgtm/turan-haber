@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!-- MOBİL ÖNBELLEK ENGELLEYİCİ META ETİKETLERİ -->
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -33,6 +34,7 @@
   --gecis: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* MEDENİYET TEMALARI */
 :root[data-medeniyet="gokturk"] {  
   --altin: #C17F3B;  --lacivert: #2C1810;  --koyu: #1A0F08;  --kizil: #8B2500;  
   --arkaplan: #F5ECD7;  --kart-bg: #FDF6E8;  --cizgi: rgba(0,0,0,0.08);
@@ -149,7 +151,6 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .tb-detay h4 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--altin); margin-bottom: 8px; }
 .tb-detay p { font-size: 14px; color: #d1d5db; line-height: 1.6; }
 
-/* YENİ TÜRKİYE GÜNDEMİ GRID (Görselli 3'lü Kolon) */
 .turkiye-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3.5rem; }
 .turkiye-kart { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; overflow: hidden; cursor: pointer; transition: var(--gecis); display: flex; flex-direction: column; box-shadow: var(--golge);}
 .turkiye-kart:hover { transform: translateY(-5px); border-color: var(--kizil); box-shadow: 0 15px 30px -5px rgba(192, 57, 43, 0.15); }
@@ -520,7 +521,6 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
   </div>
 </footer>
 
-<!-- HABER OKUMA MODALI -->
 <div class="modal-arkaplan" id="makale-modal" onclick="if(event.target===this) modalKapat()">
   <div class="modal-kutu">
     <div class="modal-icerik">
@@ -542,7 +542,6 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
   </div>
 </div>
 
-<!-- TEMA SEÇİCİ MODAL -->
 <div class="tema-secici-arkaplan" id="tema-secici" onclick="if(event.target===this) temaSeciciKapat()">
   <div class="tema-secici-kutu">
     <div class="ts-baslik">
@@ -824,8 +823,8 @@ function haberleriBirlestir(yeniHaberler, depoHaberler) {
 }
 
 const gunlukMakaleler = [
-  { t: "Evrenin Sınırlarının Ötesinde Ne Var?", e: "Astrofizik", r: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564", m: "Bilim insanları gözlemlenebilir evrenin 93 milyar ışık yılı genişliğinde olduğunu biliyor. Ancak bu sınırın ötesinde ne olduğu fizikteki en büyük sırlardan biridir." },
-  { t: "İnsan Beyni %10'unu mu Kullanıyor?", e: "Nörobilim", r: "https://images.unsplash.com/photo-1559757175-5700dde675bc", m: "Uyurken bile beynimizin tamamı aktiftir. Ancak beynin asıl gücü nöroplastisite, yani kullanılmayan nöronların kendini sürekli kablolamasındadır." }
+  { t: "Evrenin Sınırlarının Ötesinde Ne Var?", e: "Astrofizik", r: "https://placehold.co/800x600/14213d/C8963A?text=KÜRESEL+BİLİM", m: "Bilim insanları gözlemlenebilir evrenin 93 milyar ışık yılı genişliğinde olduğunu biliyor. Ancak bu sınırın ötesinde ne olduğu fizikteki en büyük sırlardan biridir." },
+  { t: "İnsan Beyni %10'unu mu Kullanıyor?", e: "Nörobilim", r: "https://placehold.co/800x600/14213d/C8963A?text=KÜRESEL+BİLİM", m: "Uyurken bile beynimizin tamamı aktiftir. Ancak beynin asıl gücü nöroplastisite, yani kullanılmayan nöronların kendini sürekli kablolamasındadır." }
 ];
 function gununMakalesiniYukle() {
    const alan = document.getElementById('gunun-makalesi-alani'); if(!alan) return;
@@ -835,11 +834,11 @@ function gununMakalesiniYukle() {
 }
 
 const statikYedekManset = [
-  {title: "Kuantum Şifreleme Ağlarında İlk Kıtalararası Başarı", description: "Avrupa ve Asya arasındaki fiber optik hatlarda kuantum anahtar dağıtımı (QKD) ile hacklenmesi imkansız ilk veri transferi gerçekleştirildi.", image_url: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e", source_id: "KÜRESEL SİBER RAPOR"},
-  {title: "Yarı İletken Savaşında Tayvan Alternatifi", description: "Dev teknoloji şirketleri, tedarik zincirini güvence altına almak için çip üretimini Japonya ve ABD'deki yeni mega fabrikalara kaydırma kararı aldı.", image_url: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0", source_id: "TEKNOLOJİ & EKONOMİ"},
-  {title: "Uzay Lojistiğinde Yeni Dönem: Ay Yörüngesinde İstasyon", description: "Derin uzay görevleri için kullanılacak olan yeni nesil lojistik ve ikmal istasyonunun ilk modülü başarıyla fırlatıldı.", image_url: "https://images.unsplash.com/photo-1451187580459-43490279c0fa", source_id: "UZAY PROGRAMI"},
-  {title: "Küresel Tedarik Zincirinde Yapay Zeka Devrimi", description: "Dünya deniz ticaretinde rota optimizasyonu sağlayan otonom AI sistemleri, gemi yakıt maliyetlerini %15 oranında düşürdü.", image_url: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e", source_id: "EKONOMİ"},
-  {title: "Siber Güvenlikte Yeni Protokoller Yürürlüğe Girdi", description: "Uluslararası siber savunma birimleri, kritik altyapıları korumak adına sıfır güven (zero trust) mimarisini standartlaştırdı.", image_url: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0", source_id: "SAVUNMA"}
+  {title: "Kuantum Şifreleme Ağlarında İlk Kıtalararası Başarı", description: "Avrupa ve Asya arasındaki fiber optik hatlarda kuantum anahtar dağıtımı (QKD) ile hacklenmesi imkansız ilk veri transferi gerçekleştirildi.", image_url: "https://placehold.co/1200x600/0a111a/C8963A?text=MANŞET", source_id: "KÜRESEL SİBER RAPOR"},
+  {title: "Yarı İletken Savaşında Tayvan Alternatifi", description: "Dev teknoloji şirketleri, tedarik zincirini güvence altına almak için çip üretimini Japonya ve ABD'deki yeni mega fabrikalara kaydırma kararı aldı.", image_url: "https://placehold.co/1200x600/14213d/ffffff?text=SON+DAKİKA", source_id: "TEKNOLOJİ & EKONOMİ"},
+  {title: "Uzay Lojistiğinde Yeni Dönem: Ay Yörüngesinde İstasyon", description: "Derin uzay görevleri için kullanılacak olan yeni nesil lojistik ve ikmal istasyonunun ilk modülü başarıyla fırlatıldı.", image_url: "https://placehold.co/1200x600/0a111a/C8963A?text=MANŞET", source_id: "UZAY PROGRAMI"},
+  {title: "Küresel Tedarik Zincirinde Yapay Zeka Devrimi", description: "Dünya deniz ticaretinde rota optimizasyonu sağlayan otonom AI sistemleri, gemi yakıt maliyetlerini %15 oranında düşürdü.", image_url: "https://placehold.co/1200x600/14213d/ffffff?text=SON+DAKİKA", source_id: "EKONOMİ"},
+  {title: "Siber Güvenlikte Yeni Protokoller Yürürlüğe Girdi", description: "Uluslararası siber savunma birimleri, kritik altyapıları korumak adına sıfır güven (zero trust) mimarisini standartlaştırdı.", image_url: "https://placehold.co/1200x600/0a111a/C8963A?text=MANŞET", source_id: "SAVUNMA"}
 ];
 let hSlider, aSlide = 0;
 function heroSliderOlustur(veriler) {
@@ -849,7 +848,7 @@ function heroSliderOlustur(veriler) {
   aSlide = 0;
   al.innerHTML = ''; const mH = veriler.slice(0, 5);
   const nk = document.createElement('div'); nk.className = 'hero-noktalar';
-  const sahte = ["https://images.unsplash.com/photo-1526304640581-d334cdbbf45e", "https://images.unsplash.com/photo-1451187580459-43490279c0fa"];
+  const sahte = ["https://placehold.co/1200x600/0a111a/C8963A?text=MANŞET", "https://placehold.co/1200x600/14213d/ffffff?text=SON+DAKİKA"];
   mH.forEach((h, i) => {
     const sl = document.createElement('div'); sl.className = `hero-slide ${i===0?'active':''}`;
     const rawUrl = h.image_url || sahte[i%sahte.length];
@@ -876,21 +875,20 @@ function hGec(i) {
   sList[aSlide].classList.add('active'); nList[aSlide].classList.add('active');
 }
 
-// TÜRKİYE GÜNDEMİ (YENİ BÜYÜK GRID EKLENDİ)
+// TÜRKİYE GÜNDEMİ
 const statikYedekTurkiye = [
-  {title: "Ankara'da Kritik Güvenlik Zirvesi Tamamlandı", description: "Bölgesel gelişmeler ve sınır güvenliği konularının ele alındığı üst düzey toplantı sona erdi. Bölgedeki diplomatik temasların artırılması yönünde kritik kararlar alındı.", source_id: "İç Politika", image_url: "https://images.unsplash.com/photo-1541872703-74c5e44368f9"},
-  {title: "Merkez Bankası'ndan Yeni Faiz Kararı", description: "Piyasaların merakla beklediği faiz kararı açıklandı, yerel ve küresel piyasalara etkileri değerlendiriliyor. Uzmanlara göre yeni dönemin ilk sinyalleri gelmeye başladı.", source_id: "Ekonomi", image_url: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3"},
-  {title: "Savunma Sanayiinde Yeni İhracat Rekoru", description: "Yerli üretim SİHA ve zırhlı araçların küresel pazardaki payı bu çeyrekte tarihi zirveye ulaştı. Savunma sanayi ihracatı geçtiğimiz yıla oranla %40 artış gösterdi.", source_id: "Savunma", image_url: "https://images.unsplash.com/photo-1574883492868-d0e5170d1a4e"}
+  {title: "Ankara'da Kritik Güvenlik Zirvesi Tamamlandı", description: "Bölgesel gelişmeler ve sınır güvenliği konularının ele alındığı üst düzey toplantı sona erdi. Bölgedeki diplomatik temasların artırılması yönünde kritik kararlar alındı.", source_id: "İç Politika", image_url: "https://placehold.co/800x600/96281E/ffffff?text=TÜRKİYE+GÜNDEMİ"},
+  {title: "Merkez Bankası'ndan Yeni Faiz Kararı", description: "Piyasaların merakla beklediği faiz kararı açıklandı, yerel ve küresel piyasalara etkileri değerlendiriliyor. Uzmanlara göre yeni dönemin ilk sinyalleri gelmeye başladı.", source_id: "Ekonomi", image_url: "https://placehold.co/800x600/14213d/C8963A?text=İÇ+SİYASET"},
+  {title: "Savunma Sanayiinde Yeni İhracat Rekoru", description: "Yerli üretim SİHA ve zırhlı araçların küresel pazardaki payı bu çeyrekte tarihi zirveye ulaştı. Savunma sanayi ihracatı geçtiğimiz yıla oranla %40 artış gösterdi.", source_id: "Savunma", image_url: "https://placehold.co/800x600/0a111a/ffffff?text=EKONOMİ"}
 ];
-
 function turkiyeHaberleriOlustur(veriler) {
   const alan = document.getElementById('turkiye-gundemi-alani'); if(!alan) return;
   if(!Array.isArray(veriler)) veriler = statikYedekTurkiye;
   alan.innerHTML = '';
   const sahte = [
-      "https://images.unsplash.com/photo-1541872703-74c5e44368f9", 
-      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3",
-      "https://images.unsplash.com/photo-1574883492868-d0e5170d1a4e"
+      "https://placehold.co/800x600/96281E/ffffff?text=TÜRKİYE+GÜNDEMİ", 
+      "https://placehold.co/800x600/14213d/C8963A?text=İÇ+SİYASET",
+      "https://placehold.co/800x600/0a111a/ffffff?text=EKONOMİ"
   ];
   veriler.slice(0, 3).forEach((h, idx) => {
       const r = h.image_url ? gorselUrlOptimize(h.image_url) : gorselUrlOptimize(sahte[idx%3]);
@@ -912,10 +910,8 @@ function turkiyeHaberleriOlustur(veriler) {
   });
   animasyonlariBaslat();
 }
-
 async function turkiyeGundemiGuncelle() {
-  const depo = dinamikDepoGetir('turkiye', statikYedekTurkiye);
-  turkiyeHaberleriOlustur(depo);
+  const depo = dinamikDepoGetir('turkiye', statikYedekTurkiye); turkiyeHaberleriOlustur(depo);
   const res = await apiIstekAt(`${WORKER_URL}/?country=tr&kategori=top`, 'turkiye');
   if(res) turkiyeHaberleriOlustur(haberleriBirlestir(res, depo));
 }
@@ -977,7 +973,11 @@ function canliHaberleriOlustur(veriler) {
   const alan = document.getElementById('canli-haber-alani'); if(!alan) return;
   if(!Array.isArray(veriler)) veriler = statikYedekDunya;
   alan.innerHTML = ''; 
-  const sahte = ["https://images.unsplash.com/photo-1526304640581-d334cdbbf45e", "https://images.unsplash.com/photo-1518186285589-2f7649de83e0", "https://images.unsplash.com/photo-1451187580459-43490279c0fa"];
+  const sahte = [
+      "https://placehold.co/800x600/14213d/C8963A?text=DÜNYA+GÜNDEMİ", 
+      "https://placehold.co/800x600/0a111a/ffffff?text=KÜRESEL+AKIŞ",
+      "https://placehold.co/800x600/96281E/ffffff?text=SON+DAKİKA"
+  ];
   veriler.slice(0, 6).forEach((h, idx) => {
     const r = h.image_url ? gorselUrlOptimize(h.image_url) : gorselUrlOptimize(sahte[idx%3]);
     const c = document.createElement('div'); c.className = 'dunya-kart anim-up'; c.style.transitionDelay = `${(idx%3)*0.1}s`;
