@@ -147,7 +147,7 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .haber-satir h3 { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--lacivert); line-height: 1.35; margin-bottom: 8px; }
 .haber-satir p { font-size: 13px; color: var(--ikincil); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
-/* RADAR & FUTBOL & TARİH (3'lü Grid Kartları) */
+/* RADAR & FUTBOL & TARİH */
 .catisma-radar { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; overflow: hidden; box-shadow: var(--golge); height: 100%; }
 .cr-baslik { background: rgba(192,57,43,0.1); border-bottom: 1px solid rgba(192,57,43,.15); padding: 15px 1.5rem; font-size: 15px; font-weight: 700; color: #7A1A1A; display: flex; align-items: center; gap: 8px; }
 [data-theme="dark"] .cr-baslik { color: #ff8787; }
@@ -189,6 +189,7 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.05); }
 .footer-logo .logo-bas { font-family: 'Playfair Display', serif; font-size: 28px; color: #fff; }
 .footer-logo .aciklama { font-size: 13px; color: rgba(255,255,255,.4); line-height: 1.7; margin-top: 15px; max-width: 280px; }
+.footer-isim { margin-top: 15px; font-size: 12px; color: rgba(255,255,255,0.6); padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); }
 .footer-kolon h5 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--altin); margin-bottom: 20px; }
 .footer-kolon a { display: block; font-size: 13px; color: rgba(255,255,255,.5); text-decoration: none; margin-bottom: 10px; transition: var(--gecis); }
 .footer-kolon a:hover { color: #fff; padding-left: 5px; }
@@ -371,12 +372,13 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
       <div class="footer-logo">
         <div class="logo-bas">TURAN<span style="color:var(--altin)">HABER</span></div>
         <p class="aciklama">Türk Dünyası, küresel bilim-teknoloji ve spor gündemini sunan bağımsız dijital platform.</p>
+        <div class="footer-isim"><strong>İmtiyaz Sahibi:</strong> Yusuf Eren Karaca</div>
       </div>
       <div class="footer-kolon"><h5>Kategoriler</h5><a href="#">Küresel Teknoloji</a><a href="#">Savaş Radarı</a><a href="#">Futbol</a></div>
       <div class="footer-kolon"><h5>Kurum</h5><a href="#">Hakkımızda</a><a href="#">İletişim</a></div>
     </div>
     <div class="footer-alt">
-      <span>© 2026 TuranHaber. Tüm hakları saklıdır.</span>
+      <span>© 2026 Turan Global Haber. İmtiyaz Sahibi & Geliştirici: Yusuf Eren Karaca. Tüm hakları saklıdır.</span>
       <div style="display:flex; align-items:center; gap:8px;"><div style="width:6px; height:6px; background:var(--altin); border-radius:50%; animation:pulse 2s infinite"></div> Sistem Aktif</div>
     </div>
   </div>
@@ -636,31 +638,56 @@ function tarihiOlaylariYenile() {
     animasyonlariBaslat();
 }
 
-// MİNİ OYUN (BİLGİ TESTİ) MANTIĞI
-const oyunSorulari = [
-    { soru: "Hangi tarihi figür, Hint altkıtasında Babür İmparatorluğu'nu kurarak askeri strateji tarihine geçmiştir?", secenekler: ["Timur", "Babür Şah", "Cengiz Han", "Nadir Şah"], dogru: 1 },
-    { soru: "Günümüzde dünyanın en değerli şirketlerinin üretiminde rekabet ettiği temel donanım bileşeni aşağıdakilerden hangisidir?", secenekler: ["Grafik İşlemci (GPU) / Çip", "Lityum İyon Batarya", "Fiber Optik Kablo", "Nükleer Reaktör"], dogru: 0 },
-    { soru: "Tarihte 'Enver Paşa'nın son askeri harekatı hangi coğrafyada gerçekleşmiştir?", secenekler: ["Kafkaslar", "Balkanlar", "Orta Asya (Türkistan)", "Kuzey Afrika"], dogru: 2 },
-    { soru: "Futbolda UEFA'nın Şampiyonlar Ligi için geçtiği yeni formatın genel adı nedir?", secenekler: ["Eleme Modeli", "İsviçre Modeli", "İskandinav Modeli", "Süper Lig Modeli"], dogru: 1 },
-    { soru: "Kızıldeniz'deki tedarik zinciri krizinin en temel lojistik sebebi nedir?", secenekler: ["Korsan Saldırıları", "Kanalın Kapanması", "Seyrüsefer Sinyal Müdahaleleri", "Fırtınalar"], dogru: 2 }
+// ==========================================
+// MİNİ OYUN (GÜNLÜK DEĞİŞEN SORU HAVUZU)
+// ==========================================
+
+const tumSorular = [
+    // --- SET 1 ---
+    { soru: "Hint altkıtasında Babür İmparatorluğu'nu kurarak askeri strateji tarihine geçen figür kimdir?", secenekler: ["Timur", "Babür Şah", "Cengiz Han", "Nadir Şah"], dogru: 1 },
+    { soru: "I. Dünya Savaşı'nda Turan ideali ile Orta Asya'da askeri harekatlar yöneten tarihi kişilik kimdir?", secenekler: ["Kâzım Karabekir", "Mustafa Kemal", "Enver Paşa", "Cemal Paşa"], dogru: 2 },
+    { soru: "Günümüzde dünyanın en değerli teknoloji şirketlerinin üretiminde rekabet ettiği temel donanım bileşeni hangisidir?", secenekler: ["Grafik İşlemci (GPU/Çip)", "Fiber Optik Kablo", "Lityum İyon Batarya", "Sensör Ağları"], dogru: 0 },
+    { soru: "İlişkisel veritabanı sistemlerini yönetmek için geliştirilen, günümüzde yazılım dünyasının temeli olan sorgu dili hangisidir?", secenekler: ["HTML", "Python", "SQL", "Java"], dogru: 2 },
+    { soru: "Futbolda 'Kıtalararası Derbi' olarak bilinen Fenerbahçe - Galatasaray rekabetindeki ilk maç hangi yıl oynanmıştır?", secenekler: ["1905", "1907", "1909", "1911"], dogru: 2 },
+    // --- SET 2 ---
+    { soru: "Türk devlet felsefesinin taşa kazınmış ilk belgeleri olan Orhun Yazıtları hangi devlete aittir?", secenekler: ["Uygurlar", "Göktürkler", "Karahanlılar", "Hunlar"], dogru: 1 },
+    { soru: "Avrupa bilim dünyasına yön veren ünlü yıldız haritalarını hazırlayan Timurlu astronom ve devlet adamı kimdir?", secenekler: ["Ali Kuşçu", "Uluğ Bey", "Harezmi", "Biruni"], dogru: 1 },
+    { soru: "1453 İstanbul'un Fethi'nde surları yıkmak için kullanılan 'Şahi' isimli dev topların tasarımcılarından biri kimdir?", secenekler: ["Mimar Sinan", "Urban", "Lagari Hasan", "Davud Ağa"], dogru: 1 },
+    { soru: "Bilgisayar biliminin temeli sayılan 'algoritma' kavramını kuran ve cebirin atası kabul edilen İslam alimi kimdir?", secenekler: ["Harezmi", "Farabi", "İbn Sina", "Kindi"], dogru: 0 },
+    { soru: "Şampiyonlar Ligi'nde grupların kaldırılarak tek lig usulüne geçilen yeni sistemin adı nedir?", secenekler: ["Eleme Modeli", "Süper Lig Modeli", "İsviçre Modeli", "Karma Model"], dogru: 2 },
+    // --- SET 3 ---
+    { soru: "1915 Çanakkale Cephesi'nde Nusret Mayın Gemisi'nin döşediği mayınlarla batan ünlü İngiliz zırhlısı hangisidir?", secenekler: ["HMS Queen Elizabeth", "HMS Agamemnon", "HMS Ocean", "HMS Irresistible"], dogru: 2 },
+    { soru: "16. yüzyılda Hint Okyanusu'nda Portekiz donanmasına karşı Piri Reis'in de katıldığı deniz harekatlarının adı nedir?", secenekler: ["Hint Deniz Seferleri", "Preveze Deniz Savaşı", "Cerbe Kuşatması", "Malta Seferi"], dogru: 0 },
+    { soru: "Dünyada nesne yönelimli programlamanın (OOP) ve C# gibi modern dillerin temel mantığını oluşturan yazılım paradigması ilk kez hangi on yılda ortaya çıkmıştır?", secenekler: ["1940'lar", "1960'lar", "1980'ler", "2000'ler"], dogru: 1 },
+    { soru: "Spor tarihinde Şükrü Saracoğlu stadyumunun bulunduğu ve Türk futbolunun kalbi sayılan semt neresidir?", secenekler: ["Beşiktaş", "Kadıköy", "Mecidiyeköy", "Kasımpaşa"], dogru: 1 },
+    { soru: "Kızıldeniz'deki tedarik zinciri krizinin en temel lojistik sebebi olarak gösterilen gelişme nedir?", secenekler: ["Korsan Saldırıları", "Kanalın Çökmesi", "Seyrüsefer Sinyal Müdahaleleri", "İklim Krizleri"], dogru: 2 }
 ];
 
 let mevcutSoruIndeksi = 0;
 let oyunSkoru = 0;
 let oyunBittiMi = false;
+let gunlukSorular = [];
 
 function oyunuBaslat() {
+    // BUGÜNÜN TARİHİNE GÖRE 5 SORULUK BİR SET SEÇME MANTIĞI
+    const bugunGun = new Date().getDate(); // Ayın 1'i ile 31'i arası bir değer
+    const toplamSetSayisi = Math.floor(tumSorular.length / 5);
+    const setIndeksi = bugunGun % toplamSetSayisi; 
+    
+    // İlgili 5 soruyu havuzdan çek
+    gunlukSorular = tumSorular.slice(setIndeksi * 5, (setIndeksi * 5) + 5);
+
     mevcutSoruIndeksi = 0;
     oyunSkoru = 0;
     oyunBittiMi = false;
     document.getElementById('oyun-skor').textContent = oyunSkoru;
-    document.getElementById('oyun-toplam-soru').textContent = oyunSorulari.length;
+    document.getElementById('oyun-toplam-soru').textContent = gunlukSorular.length;
     soruGoster();
 }
 
 function soruGoster() {
     if(oyunBittiMi) return;
-    const s = oyunSorulari[mevcutSoruIndeksi];
+    const s = gunlukSorular[mevcutSoruIndeksi];
     document.getElementById('oyun-soru-metni').textContent = s.soru;
     document.getElementById('oyun-mevcut-soru').textContent = mevcutSoruIndeksi + 1;
     
@@ -692,7 +719,7 @@ function cevapKontrol(btn, secilenSecenek, dogruSecenek) {
     
     setTimeout(() => {
         mevcutSoruIndeksi++;
-        if(mevcutSoruIndeksi < oyunSorulari.length) {
+        if(mevcutSoruIndeksi < gunlukSorular.length) {
             soruGoster();
         } else {
             oyunBitir();
@@ -700,17 +727,15 @@ function cevapKontrol(btn, secilenSecenek, dogruSecenek) {
     }, 1500);
 }
 
-// ARKA PLANDA OTOMATİK GÜNCELLEME ZAMANLAYICISI BURADA EKLENDİ
 window.addEventListener('load', () => {
   document.getElementById('canli-okuyucu').textContent = `👁️ Şu an ${Math.floor(anlikKullaniciTabaniGetir() + (Math.random() * 10))} kişi okuyor`;
   
-  // Site ilk açıldığında çalışan fonksiyonlar
   heroSliderGuncelle(); gununMakalesiniYukle(); savasHaberleriniGuncelle(); 
   canliHaberleriCek(); futbolHaberleriGuncelle(); kureselBilimGuncelle(); tarihiOlaylariYenile();
-  oyunuBaslat();
+  
+  oyunuBaslat(); // Testi başlat
   setTimeout(animasyonlariBaslat, 300);
 
-  // Arka planda ekran yenilenmeden 2 saatte bir (7.200.000 ms) tüm haberleri güncelleyen fonksiyon
   setInterval(() => {
       heroSliderGuncelle();
       savasHaberleriniGuncelle();
