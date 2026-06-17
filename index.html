@@ -29,6 +29,7 @@
   --gecis: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* MEDENİYET TEMALARI */
 :root[data-medeniyet="gokturk"] {  
   --altin: #C17F3B;  --lacivert: #2C1810;  --koyu: #1A0F08;  --kizil: #8B2500;  
   --arkaplan: #F5ECD7;  --kart-bg: #FDF6E8;  --cizgi: rgba(0,0,0,0.08);
@@ -61,7 +62,6 @@
 :root[data-theme="dark"][data-medeniyet="cumhuriyet"] {  
   --arkaplan: #0D1117; --kart-bg: #161B22;
 }
-
 :root[data-theme="dark"] {
   --arkaplan: #05080f; --kart-bg: #0d1522; --yazi: #e5e7eb;
   --ikincil: #9ca3af; --ucuncul: #6b7280; --cizgi: rgba(255,255,255,0.08);
@@ -370,6 +370,9 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
   .hero-ozet { display: -webkit-box; -webkit-line-clamp: 2; font-size: 13px; }
   .hero-noktalar { bottom: 1rem; right: 1.5rem; }
   .ts-footer { flex-direction: column; gap: 10px; align-items: stretch; text-align: center; }
+  
+  /* MOBİL KARANLIK EKRAN KESİN ÇÖZÜMÜ */
+  .anim-up { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
 </style>
 </head>
@@ -571,9 +574,7 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
 </div>
 
 <script>
-// ==========================================
 // KÜRESEL DEĞİŞKENLER & OPTİMİZASYON
-// ==========================================
 const WORKER_URL = "https://turan-cache.yusuferenkaraca5.workers.dev";
 const aylar = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
 const bugunTarihi = new Date(); 
@@ -585,9 +586,7 @@ function gorselUrlOptimize(url) {
   return url.replace(/w=\d+/, mobil ? 'w=600' : 'w=900').replace(/q=\d+/, 'q=70');
 }
 
-// ==========================================
 // GECE/GÜNDÜZ TEMASI
-// ==========================================
 function temaUygula() {
   const isDark = localStorage.getItem('tema') === 'dark';
   document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
@@ -600,9 +599,7 @@ function temaDegistir() {
 }
 window.addEventListener('DOMContentLoaded', temaUygula);
 
-// ==========================================
 // MEDENİYET TEMA SİSTEMİ
-// ==========================================
 const MEDENIYETLER = [
   { id: 'gokturk',     isim: 'Göktürk',     donem: '552 – 744',    emoji: '🐺', renk: '#C17F3B, #8B2500' },
   { id: 'uygur',       isim: 'Uygur',        donem: '744 – 840',    emoji: '📜', renk: '#D4A843, #1B5E8E' },
@@ -711,9 +708,7 @@ function bildirimGoster(mesaj) {
   setTimeout(() => bildirim.style.transform = 'translateX(-50%) translateY(100px)', 3000);
 }
 
-// ==========================================
 // ANİMASYONLAR
-// ==========================================
 const animObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if(entry.isIntersecting) {
@@ -735,9 +730,7 @@ window.addEventListener('scroll', () => {
   document.getElementById('ilerleme-cubugu').style.width = ((winScroll / height) * 100) + "%";
 });
 
-// ==========================================
 // GÜVENLİK (XSS KALKANI)
-// ==========================================
 function guvenliMetin(metin) {
   if(!metin || metin === "null" || metin === "undefined") return '';
   let t = String(metin)
@@ -763,9 +756,7 @@ function haberFiltrele(res) {
   }) : []; 
 }
 
-// ==========================================
-// OKUMA LİSTESİ (GÜVENLİ FİLTRELEME İLE)
-// ==========================================
+// OKUMA LİSTESİ
 let aktifMakaleObjesi = null;
 function okumaListesiniGetir() {
     let liste = localStorage.getItem('turanOkumaListesi');
@@ -839,9 +830,7 @@ function okumaListesiniAc() {
     document.body.style.overflow = 'hidden';
 }
 
-// ==========================================
 // MODAL (MAKALE AÇMA)
-// ==========================================
 const yedekIlgili = [{t:"Tedarik Zincirinde Rota Arayışları", k:"Ekonomi"}, {t:"Yarı İletken Pazarında Rekabet", k:"Teknoloji"}, {t:"Yapay Zeka ve Veri Yasaları", k:"Hukuk"}];
 
 function makaleAc(kat, bas, met, kay) {
@@ -895,9 +884,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// ==========================================
-// GÜVENLİ API İSTEĞİ (ABORT CONTROLLER EKLENDİ)
-// ==========================================
+// GÜVENLİ API İSTEĞİ
 async function apiIstekAt(url) { 
     try { 
       const controller = new AbortController();
@@ -911,8 +898,8 @@ async function apiIstekAt(url) {
 }
 
 const gunlukMakaleler = [
-  { t: "Evrenin Sınırlarının Ötesinde Ne Var?", e: "Astrofizik", r: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=800", m: "Bilim insanları gözlemlenebilir evrenin 93 milyar ışık yılı genişliğinde olduğunu biliyor. Ancak bu sınırın ötesinde ne olduğu fizikteki en büyük sırlardan biridir." },
-  { t: "İnsan Beyni %10'unu mu Kullanıyor?", e: "Nörobilim", r: "https://images.unsplash.com/photo-1559757175-5700dde675bc?q=80&w=800", m: "Uyurken bile beynimizin tamamı aktiftir. Ancak beynin asıl gücü nöroplastisite, yani kullanılmayan nöronların kendini sürekli kablolamasındadır." }
+  { t: "Evrenin Sınırlarının Ötesinde Ne Var?", e: "Astrofizik", r: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564", m: "Bilim insanları gözlemlenebilir evrenin 93 milyar ışık yılı genişliğinde olduğunu biliyor. Ancak bu sınırın ötesinde ne olduğu fizikteki en büyük sırlardan biridir." },
+  { t: "İnsan Beyni %10'unu mu Kullanıyor?", e: "Nörobilim", r: "https://images.unsplash.com/photo-1559757175-5700dde675bc", m: "Uyurken bile beynimizin tamamı aktiftir. Ancak beynin asıl gücü nöroplastisite, yani kullanılmayan nöronların kendini sürekli kablolamasındadır." }
 ];
 
 function gununMakalesiniYukle() {
@@ -920,15 +907,13 @@ function gununMakalesiniYukle() {
    if(!alan) return;
    const makale = gunlukMakaleler[bugunTarihi.getDate() % gunlukMakaleler.length];
    alan.onclick = () => makaleAc('GÜNÜN MAKALESİ', makale.t, makale.m, 'TuranHaber Bilim Arşivi');
-   alan.innerHTML = `<div class="gm-resim" style="background-image: url('${makale.r}')"></div><div class="gm-icerik"><span class="gm-etiket">✦ ${makale.e}</span><h3 class="gm-baslik">${makale.t}</h3><p class="gm-metin">${makale.m}</p><div class="gm-okuma-suresi">⏳ 3 dakika okuma süresi</div></div>`;
+   alan.innerHTML = `<div class="gm-resim" style="background-image: url('${gorselUrlOptimize(makale.r)}')"></div><div class="gm-icerik"><span class="gm-etiket">✦ ${makale.e}</span><h3 class="gm-baslik">${makale.t}</h3><p class="gm-metin">${makale.m}</p><div class="gm-okuma-suresi">⏳ 3 dakika okuma süresi</div></div>`;
 }
 
-// ==========================================
 // OPTIMISTIC UI: ÖNCE YEDEK GÖSTER SONRA API
-// ==========================================
 const yedekManset = [
-  {title: "Kuantum Şifreleme Ağlarında İlk Kıtalararası Başarı", description: "Avrupa ve Asya arasındaki fiber optik hatlarda kuantum anahtar dağıtımı (QKD) ile hacklenmesi imkansız ilk veri transferi gerçekleştirildi.", image_url: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=1200", source_id: "KÜRESEL SİBER RAPOR"},
-  {title: "Yarı İletken Savaşında Tayvan Alternatifi", description: "Dev teknoloji şirketleri, tedarik zincirini güvence altına almak için çip üretimini Japonya ve ABD'deki yeni mega fabrikalara kaydırma kararı aldı.", image_url: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=80&w=1200", source_id: "TEKNOLOJİ & EKONOMİ"}
+  {title: "Kuantum Şifreleme Ağlarında İlk Kıtalararası Başarı", description: "Avrupa ve Asya arasındaki fiber optik hatlarda kuantum anahtar dağıtımı (QKD) ile hacklenmesi imkansız ilk veri transferi gerçekleştirildi.", image_url: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e", source_id: "KÜRESEL SİBER RAPOR"},
+  {title: "Yarı İletken Savaşında Tayvan Alternatifi", description: "Dev teknoloji şirketleri, tedarik zincirini güvence altına almak için çip üretimini Japonya ve ABD'deki yeni mega fabrikalara kaydırma kararı aldı.", image_url: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0", source_id: "TEKNOLOJİ & EKONOMİ"}
 ];
 
 let hSlider, aSlide = 0;
@@ -1223,11 +1208,8 @@ function oyunBitir() {
   document.getElementById('oyun-secenekler').innerHTML = `<button class="oyun-secenek" style="max-width:300px" onclick="oyunuBaslat()">↩ Bugünkü Soruları Tekrarla</button>`;
 }
 
-// ==========================================
-// KADEMELİ YÜKLEME (Sıralı Await Mimarisi)
-// ==========================================
+// KADEMELİ YÜKLEME
 window.addEventListener('load', async () => {
-  // 1. Senkron işlemleri ve yedek verileri anında bas
   const aktifMedeniyet = aktifMedeniyetiGetir();
   medeniyetTemasiUygula(aktifMedeniyet);
   
@@ -1239,13 +1221,11 @@ window.addEventListener('load', async () => {
   
   setTimeout(animasyonlariBaslat, 300);
 
-  // 2. API isteklerini sıraya diz (Mobil darboğazını önler)
   await heroSliderGuncelle();
   await kureselBilimGuncelle();
   await savasHaberleriniGuncelle();
   await canliHaberleriCek();
 
-  // 3. Arka plan yenilemelerini de kademeli başlat
   setInterval(() => heroSliderGuncelle(), 3600000);
   setInterval(() => savasHaberleriniGuncelle(), 3600000 + 15000); 
   setInterval(() => canliHaberleriCek(), 3600000 + 30000);
