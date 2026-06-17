@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<!-- MOBİL ÖNBELLEK ENGELLEYİCİ META ETİKETLERİ -->
+<!-- MOBİL ÖNBELLEK ENGELLEYİCİ -->
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -34,7 +34,6 @@
   --gecis: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* MEDENİYET TEMALARI */
 :root[data-medeniyet="gokturk"] {  
   --altin: #C17F3B;  --lacivert: #2C1810;  --koyu: #1A0F08;  --kizil: #8B2500;  
   --arkaplan: #F5ECD7;  --kart-bg: #FDF6E8;  --cizgi: rgba(0,0,0,0.08);
@@ -88,7 +87,6 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-even
 
 .gokturk-bg-text { font-family: 'Noto Sans Old Turkic', serif; color: var(--altin); opacity: 0.04; font-size: 80px; letter-spacing: 15px; position: absolute; top: 0; left: 0; width: 100%; text-align: center; pointer-events: none; user-select: none; overflow: hidden; white-space: nowrap; }
 
-/* HEADER & BANT */
 .ust-bant { background: var(--koyu); color: rgba(255,255,255,.6); font-size: 12px; padding: 8px 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
 .ust-bant .sol-kisim, .ust-bant .sag-kisim { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
 .ust-bant .tarih { color: var(--altin); font-weight: 500; }
@@ -132,13 +130,11 @@ nav { background: var(--kart-bg); border-bottom: 1px solid var(--cizgi); positio
 
 main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 
-/* BÖLÜM BAŞLIKLARI */
 .bolum-baslik { display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; padding-bottom: 12px; border-bottom: 2px solid var(--cizgi); position: relative; }
 .bolum-baslik::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 60px; height: 2px; background: var(--kizil); }
 .bolum-baslik h2 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--lacivert); }
 .bolum-sembol { width: 32px; height: 32px; background: var(--altin-acik); color: var(--altin); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
 
-/* HERO SLIDER */
 .hero-slider-alani { margin-bottom: 3.5rem; position: relative; border-radius: 16px; overflow: hidden; box-shadow: var(--golge); height: 500px; background: var(--koyu); }
 .hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.8s ease-in-out; background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem; color: #fff; cursor: pointer; }
 .hero-slide.active { opacity: 1; z-index: 2; }
@@ -152,7 +148,6 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .hero-nokta { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: var(--gecis); cursor: pointer;}
 .hero-nokta.active { background: var(--altin); transform: scale(1.4); }
 
-/* TARİHTE BUGÜN ÖZEL KART */
 .tarihte-bugun-kart { background: linear-gradient(135deg, #1e1b4b 0%, #311042 100%); color: #fff; border-radius: 16px; padding: 2rem; margin-bottom: 3.5rem; display: flex; gap: 2rem; align-items: center; box-shadow: var(--golge); border-left: 5px solid var(--altin); position: relative; overflow: hidden;}
 .tarihte-bugun-kart::after { content: '⏳'; position: absolute; right: -10px; bottom: -20px; font-size: 120px; opacity: 0.05; pointer-events: none; }
 .tb-tarih-kutusu { background: rgba(200,150,58,0.15); border: 2px dashed var(--altin); padding: 1rem; border-radius: 12px; text-align: center; min-width: 140px; }
@@ -162,7 +157,6 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .tb-detay h4 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--altin); margin-bottom: 8px; }
 .tb-detay p { font-size: 14px; color: #d1d5db; line-height: 1.6; }
 
-/* KÜRESEL BİLİM */
 .bilim-ozel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3.5rem; }
 .bilim-ozel-kart { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; padding: 1.8rem; box-shadow: var(--golge); cursor: pointer; display: flex; flex-direction: column; position: relative; overflow: hidden; }
 .bilim-ozel-kart::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, #3b82f6, #8b5cf6); }
@@ -170,7 +164,6 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .bilim-ozel-kart h4 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--lacivert); line-height: 1.4; margin-bottom: 10px; }
 .bilim-ozel-kart p { font-size: 13px; color: var(--ikincil); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
 
-/* SAVAŞ KORİDORU */
 .savas-koridoru { background: var(--koyu); border-radius: 16px; padding: 2.5rem; margin-bottom: 3.5rem; position: relative; border-left: 5px solid var(--kizil); box-shadow: 0 15px 40px rgba(0,0,0,0.15); overflow: hidden;}
 .savas-baslik { display: flex; align-items: center; gap: 15px; margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 15px; }
 .savas-baslik h2 { color: #fff; font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; }
@@ -185,7 +178,6 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .sk-mini { padding: 1.5rem; }
 .sk-mini h3 { font-size: 18px; margin-bottom: 8px; }
 
-/* GÜNÜN MAKALESİ */
 .gm-kapsayici { background: var(--kart-bg); border-radius: 16px; overflow: hidden; box-shadow: var(--golge); border: 1px solid var(--cizgi); margin-bottom: 3.5rem; display: flex; cursor: pointer; transition: var(--gecis);}
 .gm-kapsayici:hover { border-color: var(--altin); transform: translateY(-4px); }
 .gm-resim { width: 45%; background-position: center; background-size: cover; position: relative;}
@@ -197,7 +189,6 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .gm-metin { font-size: 15px; color: var(--ikincil); line-height: 1.7; margin-bottom: 25px; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;}
 .gm-okuma-suresi { font-size: 12px; font-weight: 600; color: var(--kizil); }
 
-/* DÜNYA GÜNDEMİ KARTLARI */
 .dunya-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 3.5rem; }
 .dunya-kart { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; overflow: hidden; cursor: pointer; transition: var(--gecis); display: flex; flex-direction: column; box-shadow: var(--golge);}
 .dunya-kart:hover { transform: translateY(-5px); border-color: rgba(200,150,58,0.3); }
@@ -210,7 +201,6 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .dk-icerik h4 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--lacivert); line-height: 1.3; margin-bottom: 12px; }
 .dk-icerik p { font-size: 14px; color: var(--ikincil); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 15px; flex: 1;}
 
-/* İKİLİ KOLON (TÜRKİYE GÜNDEMİ VE RADAR) */
 .ikili-kolon { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 3.5rem; }
 .haber-bolum { background: var(--kart-bg); border-radius: 12px; border: 1px solid var(--cizgi); overflow: hidden; box-shadow: var(--golge);}
 .haber-satir { padding: 1.5rem; border-bottom: 1px solid var(--cizgi); cursor: pointer; transition: var(--gecis); }
@@ -218,11 +208,10 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .haber-satir:last-child { border-bottom: none; }
 .etiket { display: inline-block; font-size: 10px; font-weight: 700; margin-bottom: 8px; padding: 4px 10px; border-radius: 4px; text-transform: uppercase;}
 .e-turkiye { background: rgba(192, 57, 43, 0.1); color: var(--kizil); border: 1px solid rgba(192, 57, 43, 0.2); }
-.e-ekonomi { background: rgba(16, 185, 129, 0.15); color: #065f46; }
+.e-saglik { background: rgba(16, 185, 129, 0.15); color: #065f46; }
 .haber-satir h3 { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--lacivert); line-height: 1.35; margin-bottom: 8px; }
 .haber-satir p { font-size: 13px; color: var(--ikincil); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
-/* RADAR & FUTBOL & TARİH */
 .catisma-radar { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; overflow: hidden; box-shadow: var(--golge); height: 100%; }
 .cr-baslik { background: rgba(192,57,43,0.1); border-bottom: 1px solid rgba(192,57,43,.15); padding: 15px 1.5rem; font-size: 15px; font-weight: 700; color: #7A1A1A; display: flex; align-items: center; gap: 8px; }
 [data-theme="dark"] .cr-baslik { color: #ff8787; }
@@ -243,7 +232,6 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .standart-makale-kart h4 { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--lacivert); line-height: 1.4; margin-bottom: 10px; }
 .standart-makale-kart p { font-size: 13px; color: var(--ikincil); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; flex: 1;}
 
-/* MİNİ OYUN ALANI */
 .mini-oyun-kapsayici { background: linear-gradient(135deg, var(--lacivert) 0%, #1a2a40 100%); border-radius: 16px; padding: 3rem 2rem; margin-bottom: 3.5rem; position: relative; overflow: hidden; box-shadow: var(--golge); color: #fff; text-align: center; border: 1px solid rgba(200,150,58,0.3);}
 .mini-oyun-kapsayici::before { content: '🎯'; font-size: 150px; position: absolute; right: -20px; top: -20px; opacity: 0.05; transform: rotate(15deg); pointer-events: none;}
 .oyun-baslik-alan { margin-bottom: 2rem; position: relative; z-index: 2; }
@@ -259,7 +247,6 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .skor-vurgu { color: var(--altin); font-size: 18px; }
 .oyun-liderlik { background: rgba(200,150,58,0.15); padding: 6px 12px; border-radius: 6px; font-size: 12px; color: var(--altin); border: 1px dashed var(--altin); }
 
-/* FOOTER */
 footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; overflow: hidden; border-top: 4px solid var(--altin);}
 .footer-ic { max-width: 1300px; margin: 0 auto; position: relative; z-index: 2;}
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.05); }
@@ -421,7 +408,7 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
         <a href="#" class="nav-link aktif">Ana Sayfa</a>
         <a href="#kuresel-bilim" class="nav-link">🚀 Teknoloji</a>
         <a href="#savas" class="nav-link">⚔️ Savaş & Çatışma</a>
-        <a href="#siyaset" class="nav-link">🏛️ Siyaset</a>
+        <a href="#siyaset" class="nav-link">🇹🇷 Siyaset</a>
         <a href="#futbol" class="nav-link">⚽ Spor</a>
         <a href="#tarih" class="nav-link">🕌 Tarih</a>
         <a href="#oyun" class="nav-link">🎯 Oyun</a>
@@ -479,10 +466,10 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
 
   <!-- YENİ EKLENEN DİNAMİK TÜRKİYE GÜNDEMİ -->
   <div class="ikili-kolon">
-    <div class="anim-up">
-      <div class="bolum-baslik" id="siyaset"><div class="bolum-sembol">🇹🇷</div><h2>Türkiye Gündemi & Siyaset</h2></div>
+    <div class="anim-up" id="siyaset">
+      <div class="bolum-baslik"><div class="bolum-sembol">🇹🇷</div><h2>Türkiye Gündemi & Siyaset</h2></div>
       <div class="haber-bolum" id="turkiye-gundemi-alani">
-        <!-- Dinamik JS İçeriği -->
+        <!-- Dinamik JS İçeriği Buraya Gelecek -->
       </div>
     </div>
     
@@ -586,7 +573,7 @@ const bugunTarihi = new Date();
 document.getElementById('tarih-goster').textContent = `${bugunTarihi.getDate()} ${aylar[bugunTarihi.getMonth()]} ${bugunTarihi.getFullYear()}`;
 
 function gorselUrlOptimize(url) {
-  if(!url || !url.includes('unsplash.com')) return url;
+  if(!url || typeof url !== 'string' || !url.includes('unsplash.com')) return url;
   const mobil = window.innerWidth < 768;
   return url.replace(/w=\d+/, mobil ? 'w=600' : 'w=900').replace(/q=\d+/, 'q=70');
 }
@@ -765,7 +752,11 @@ function haberFiltrele(res) {
 let aktifMakaleObjesi = null;
 function okumaListesiniGetir() {
     let liste = localStorage.getItem('turanOkumaListesi');
-    return liste ? JSON.parse(liste) : [];
+    try {
+        return liste ? JSON.parse(liste) : [];
+    } catch(e) {
+        return [];
+    }
 }
 
 function okumaListesiniKaydet(liste) {
@@ -889,7 +880,9 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// API İSTEK & DİNAMİK DEPO SİSTEMİ
+// ==========================================
+// API İSTEK & KIRILMAZ DİNAMİK DEPO SİSTEMİ
+// ==========================================
 async function apiIstekAt(url, depoAnahtari) { 
     try { 
       const controller = new AbortController();
@@ -923,12 +916,26 @@ async function apiIstekAt(url, depoAnahtari) {
 }
 
 function dinamikDepoGetir(anahtar, statikYedek) {
-    const depo = localStorage.getItem(`turan_depo_${anahtar}`);
-    return depo ? JSON.parse(depo) : statikYedek;
+    try {
+        const depo = localStorage.getItem(`turan_depo_${anahtar}`);
+        if (!depo) return statikYedek;
+        const parsed = JSON.parse(depo);
+        // HATA ÖNLEYİCİ: Bozuk veri varsa sil ve statik yedeği ver
+        if (!Array.isArray(parsed) || parsed.length === 0) {
+            localStorage.removeItem(`turan_depo_${anahtar}`);
+            return statikYedek;
+        }
+        return parsed;
+    } catch (e) {
+        localStorage.removeItem(`turan_depo_${anahtar}`);
+        return statikYedek;
+    }
 }
 
 function haberleriBirlestir(yeniHaberler, depoHaberler) {
-    const birlesik = [...(yeniHaberler || []), ...(depoHaberler || [])];
+    const arr1 = Array.isArray(yeniHaberler) ? yeniHaberler : [];
+    const arr2 = Array.isArray(depoHaberler) ? depoHaberler : [];
+    const birlesik = [...arr1, ...arr2];
     return birlesik.filter((v, i, a) => a.findIndex(t => (t.title === v.title)) === i);
 }
 
@@ -959,6 +966,7 @@ let hSlider, aSlide = 0;
 
 function heroSliderOlustur(veriler) {
   const al = document.getElementById('hero-slider'); if(!al) return;
+  if(!Array.isArray(veriler)) veriler = statikYedekManset;
   if(hSlider) { clearInterval(hSlider); hSlider = null; }
   aSlide = 0;
   
@@ -999,7 +1007,7 @@ function hGec(i) {
   sList[aSlide].classList.add('active'); nList[aSlide].classList.add('active');
 }
 
-// TÜRKİYE GÜNDEMİ (YENİ MODÜL - DİNAMİK DEPOLU)
+// TÜRKİYE GÜNDEMİ
 const statikYedekTurkiye = [
   {title: "Ankara'da Kritik Güvenlik Zirvesi", description: "Bölgesel gelişmeler ve sınır güvenliği konularının ele alındığı üst düzey toplantı sona erdi.", source_id: "İç Politika"},
   {title: "Merkez Bankası'ndan Yeni Faiz Kararı", description: "Piyasaların merakla beklediği faiz kararı açıklandı, yerel ve küresel piyasalara etkileri değerlendiriliyor.", source_id: "Ekonomi"},
@@ -1009,6 +1017,7 @@ const statikYedekTurkiye = [
 
 function turkiyeHaberleriOlustur(veriler) {
   const alan = document.getElementById('turkiye-gundemi-alani'); if(!alan) return;
+  if(!Array.isArray(veriler)) veriler = statikYedekTurkiye;
   alan.innerHTML = '';
   veriler.slice(0, 4).forEach((h, idx) => {
       const div = document.createElement('div');
@@ -1025,7 +1034,6 @@ async function turkiyeGundemiGuncelle() {
   const depo = dinamikDepoGetir('turkiye', statikYedekTurkiye);
   turkiyeHaberleriOlustur(depo);
   
-  // Sadece Türkiye manşetlerini çekmek için country=tr parametresi kullanılıyor
   const res = await apiIstekAt(`${WORKER_URL}/?country=tr&kategori=top`, 'turkiye');
   if(res) {
       const guncelHavuz = haberleriBirlestir(res, depo);
@@ -1042,6 +1050,7 @@ const statikYedekSavas = [
 
 function savasHaberleriOlustur(veriler) {
   const grid = document.getElementById('savas-grid'); if(!grid) return;
+  if(!Array.isArray(veriler)) veriler = statikYedekSavas;
   grid.innerHTML = '';
   const ag = document.createElement('div'); ag.className = 'sk-alt-grid';
   veriler.slice(0, 3).forEach((h, i) => {
@@ -1073,6 +1082,7 @@ const statikYedekBilim = [
 
 function bilimHaberleriOlustur(veriler) {
   const grid = document.getElementById('bilim-ozel-alani'); if(!grid) return;
+  if(!Array.isArray(veriler)) veriler = statikYedekBilim;
   grid.innerHTML = '';
   veriler.slice(0, 3).forEach((h, idx) => {
      const c = document.createElement('div'); c.className = `bilim-ozel-kart anim-up`; c.style.transitionDelay = `${idx*0.1}s`;
@@ -1106,6 +1116,7 @@ const statikYedekDunya = [
 
 function canliHaberleriOlustur(veriler) {
   const alan = document.getElementById('canli-haber-alani'); if(!alan) return;
+  if(!Array.isArray(veriler)) veriler = statikYedekDunya;
   alan.innerHTML = ''; 
   const sahte = [
       "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e", 
@@ -1174,7 +1185,152 @@ function tarihiOlaylariYenile() {
     animasyonlariBaslat();
 }
 
-// KADEMELİ YÜKLEME (Türkiye Gündemi Eklendi)
+const tarihteBugunVerileri = {
+  "1 Ocak": "1 Ocak 1923 — Türkiye Futbol Federasyonu (TFF) Yusuf Ziya Öniş başkanlığında kuruldu.",
+  "11 Ocak": "11 Ocak 1055 — Tuğrul Bey komutasındaki Büyük Selçuklu Ordusu Bağdat'a girdi.",
+  "13 Şubat": "13 Şubat 1925 — Şeyh Said İsyanı başladı. Genç Cumhuriyet en büyük iç krizlerinden biriyle yüzleşti.",
+  "18 Şubat": "18 Şubat 1952 — Türkiye Cumhuriyeti resmi olarak NATO (Kuzey Atlantik Antlaşması Örgütü) üyesi oldu.",
+  "12 Mart": "12 Mart 1921 — Mehmet Akif Ersoy'un yazdığı İstiklal Marşı, TBMM tarafından milli marş olarak kabul edildi.",
+  "18 Mart": "18 Mart 1915 — Çanakkale Deniz Zaferi. Nusret Mayın Gemisi ve topçu birlikleri İtilaf donanmasına geçit vermedi.",
+  "23 Nisan": "23 Nisan 1920 — Türkiye Büyük Millet Meclisi (TBMM) Ankara'da açıldı. Egemenliğin kayıtsız şartsız millete ait olduğu ilan edildi.",
+  "25 Nisan": "25 Nisan 1915 — Anzak ve İngiliz birliklerinin Çanakkale (Arıburnu) kara çıkarması başladı; Mustafa Kemal'in tarihi savunması devreye girdi.",
+  "19 Mayıs": "19 Mayıs 1919 — Mustafa Kemal Paşa'nın 9. Ordu Müfettişi olarak Bandırma Vapuru ile Samsun'a çıkmasıyla Milli Mücadele fiilen başladı.",
+  "29 Mayıs": "29 Mayıs 1453 — Fatih Sultan Mehmet komutasındaki Osmanlı Ordusu İstanbul'u fethetti. Doğu Roma İmparatorluğu yıkıldı.",
+  "15 Haziran": "15 Haziran 1920 — Doğu Cephesi Komutanlığı'na Kâzım Karabekir Paşa tayin edildi.",
+  "17 Haziran": "17 Haziran 1462 — Fatih Sultan Mehmet, Eflak Prensi Kont Drakula'ya (Kazıklı Voyvoda) karşı ünlü gece baskınını düzenledi.",
+  "20 Temmuz": "20 Temmuz 1974 — Türk Silahlı Kuvvetleri, adadaki Türklere yönelik saldırıları durdurmak için Kıbrıs Barış Harekâtı'nı başlattı.",
+  "24 Temmuz": "24 Temmuz 1923 — Lozan Barış Antlaşması imzalandı. Modern Türkiye'nin sınırları ve bağımsızlığı uluslararası alanda tescillendi.",
+  "26 Ağustos": "26 Ağustos 1071 / 1922 — Sultan Alparslan komutasındaki Selçuklu Ordusu Malazgirt Zaferi'ni kazandı. Aynı gün 1922'de Büyük Taarruz başladı.",
+  "30 Ağustos": "30 Ağustos 1922 — Başkomutanlık Meydan Muharebesi (Dumlupınar) zaferle sonuçlandı, Yunan ordusu hezimete uğratıldı.",
+  "9 Eylül": "9 Eylül 1922 — Türk süvarileri İzmir'e girdi, Anadolu'daki Yunan işgali fiilen sona erdi.",
+  "27 Eylül": "27 Eylül 1538 — Preveze Deniz Muharebesi. Barbaros Hayreddin Paşa komutasındaki Osmanlı Donanması, Haçlı donanmasını mağlup etti.",
+  "29 Ekim": "29 Ekim 1923 — Cumhuriyet ilan edildi. Gazi Mustafa Kemal Atatürk, Türkiye'nin ilk Cumhurbaşkanı seçildi.",
+  "31 Ekim": "31 Ekim 1918 — Yıldırım Orduları Grup Komutanı Liman von Sanders, komutayı Mustafa Kemal Paşa'ya devretti.",
+  "10 Kasım": "10 Kasım 1938 — Türkiye Cumhuriyeti'nin kurucusu Gazi Mustafa Kemal Atatürk hayata gözlerini yumdu.",
+  "15 Kasım": "15 Kasım 1983 — Kuzey Kıbrıs Türk Cumhuriyeti (KKTC) bağımsız bir devlet olarak kurulduğunu ilan etti.",
+  "22 Aralık": "22 Aralık 1914 — Enver Paşa komutasındaki Osmanlı Ordusu'nun Ruslara karşı düzenlediği trajik Sarıkamış Harekâtı başladı."
+};
+
+function tarihteBugunYukle() {
+  const gun = bugunTarihi.getDate();
+  const ayIsmi = aylar[bugunTarihi.getMonth()];
+  const anahtar = `${gun} ${ayIsmi}`;
+  
+  document.getElementById('tb-gun').textContent = gun;
+  document.getElementById('tb-ay').textContent = ayIsmi;
+  
+  const olayMetni = tarihteBugunVerileri[anahtar] || `${gun} ${ayIsmi} — Türk tarihinde askeri, diplomatik ve stratejik kurumsallaşma adımları kapsamında bu tarihte kayıtlı majör bir savaş veya antlaşma verisi işlenmemiştir. Ancak imparatorluk bürokrasisi güncel işleyişine devam etmiştir.`;
+  document.getElementById('tb-olay-metni').textContent = olayMetni;
+}
+
+const devSoruHavuzu = [
+    { soru: "Hint altkıtasında Babür İmparatorluğu'nu kurarak askeri strateji tarihine geçen figür kimdir?", secenekler: ["Timur", "Babür Şah", "Cengiz Han", "Nadir Şah"], dogru: 1 },
+    { soru: "I. Dünya Savaşı'nda Turan ideali ile Orta Asya'da askeri harekatlar yöneten tarihi kişilik kimdir?", secenekler: ["Kâzım Karabekir", "Mustafa Kemal", "Enver Paşa", "Cemal Paşa"], dogru: 2 },
+    { soru: "Günümüzde dünyanın en değerli teknoloji şirketlerinin üretiminde rekabet ettiği temel donanım bileşeni hangisidir?", secenekler: ["Grafik İşlemci (GPU/Çip)", "Fiber Optik Kablo", "Lityum İyon Batarya", "Sensör Ağları"], dogru: 0 },
+    { soru: "İlişkisel veritabanı sistemlerini yönetmek için geliştirilen, günümüzde yazılım dünyasının temeli olan sorgu dili hangisidir?", secenekler: ["HTML", "Python", "SQL", "Java"], dogru: 2 },
+    { soru: "Futbolda 'Kıtalararası Derbi' olarak bilinen Fenerbahçe - Galatasaray rekabetindeki ilk maç hangi yıl oynanmıştır?", secenekler: ["1905", "1907", "1909", "1911"], dogru: 2 },
+    { soru: "Türk devlet felsefesinin taşa kazınmış ilk belgeleri olan Orhun Yazıtları hangi devlete aittir?", secenekler: ["Uygurlar", "Göktürkler", "Karahanlılar", "Hunlar"], dogru: 1 },
+    { soru: "Avrupa bilim dünyasına yön veren ünlü yıldız haritalarını hazırlayan Timurlu astronom ve devlet adamı kimdir?", secenekler: ["Ali Kuşçu", "Uluğ Bey", "Harezmi", "Biruni"], dogru: 1 },
+    { soru: "1453 İstanbul'un Fethi'nde surları yıkmak için kullanılan 'Şahi' isimli dev topların tasarımcılarından kimdir?", secenekler: ["Mimar Sinan", "Urban", "Lagari Hasan", "Davud Ağa"], dogru: 1 },
+    { soru: "Bilgisayar biliminin temeli sayılan 'algoritma' kavramını kuran ve cebirin atası kabul edilen İslam alimi kimdir?", secenekler: ["Harezmi", "Farabi", "İbn Sina", "Kindi"], dogru: 0 },
+    { soru: "1915 Çanakkale Cephesi'nde Nusret Mayın Gemisi'nin döşediği mayınlarla batan ünlü İngiliz zırhlısı hangisidir?", secenekler: ["HMS Queen Elizabeth", "HMS Agamemnon", "HMS Ocean", "HMS Irresistible"], dogru: 2 },
+    { soru: "Şampiyonlar Ligi'nde grupların kaldırılarak tek lig usulüne geçilen yeni sistemin adı nedir?", secenekler: ["Eleme Modeli", "Süper Lig Modeli", "İsviçre Modeli", "Karma Model"], dogru: 2 },
+    { soru: "Linux çekirdeği üzerine kurulan ve TÜBİTAK tarafından geliştirilen milli işletim sistemimizin adı nedir?", secenekler: ["Pardus", "Kızılelma", "Ulus", "Bora"], dogru: 0 },
+    { soru: "Tarihte ilk düzenli posta (ulak) ve istihbarat teşkilatını Asya steplerinde kuran devlet adamı kimdir?", secenekler: ["Mete Han", "Attila", "Cengiz Han", "Teoman"], dogru: 0 }
+];
+
+function gununSorulariniGetir(havuz, adet) {
+    let seed = bugunTarihi.getFullYear() * 10000 + (bugunTarihi.getMonth() + 1) * 100 + bugunTarihi.getDate();
+    let random = () => {
+        let x = Math.sin(seed++) * 10000;
+        return x - Math.floor(x);
+    };
+    
+    let kopyaHavuz = [...havuz];
+    for (let i = kopyaHavuz.length - 1; i > 0; i--) {
+        const j = Math.floor(random() * (i + 1));
+        [kopyaHavuz[i], kopyaHavuz[j]] = [kopyaHavuz[j], kopyaHavuz[i]];
+    }
+    return kopyaHavuz.slice(0, adet);
+}
+
+let mevcutSoruIndeksi = 0;
+let oyunSkoru = 0;
+let oyunBittiMi = false;
+let gunlukSorular = [];
+
+function oyunuBaslat() {
+    gunlukSorular = gununSorulariniGetir(devSoruHavuzu, 5); 
+    mevcutSoruIndeksi = 0;
+    oyunSkoru = 0;
+    oyunBittiMi = false;
+    document.getElementById('oyun-skor').textContent = oyunSkoru;
+    document.getElementById('oyun-toplam-soru').textContent = gunlukSorular.length;
+    
+    let enYuksek = localStorage.getItem('turanHaberEnYuksekSkor') || 0;
+    document.getElementById('en-yuksek-skor').textContent = `🏆 Liderlik Tablosu: ${enYuksek}`;
+    
+    soruGoster();
+}
+
+function soruGoster() {
+    if(oyunBittiMi) return;
+    const sObj = gunlukSorular[mevcutSoruIndeksi];
+    document.getElementById('oyun-soru-metni').textContent = sObj.soru;
+    document.getElementById('oyun-mevcut-soru').textContent = mevcutSoruIndeksi + 1;
+    
+    const seceneklerAlan = document.getElementById('oyun-secenekler');
+    seceneklerAlan.innerHTML = '';
+    
+    sObj.secenekler.forEach((secenek, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'oyun-secenek';
+        btn.textContent = secenek;
+        btn.onclick = () => cevapKontrol(btn, i, sObj.dogru);
+        seceneklerAlan.appendChild(btn);
+    });
+}
+
+function cevapKontrol(btn, secilenSecenek, dogruSecenek) {
+    if(oyunBittiMi) return;
+    const butonlar = document.querySelectorAll('.oyun-secenek');
+    butonlar.forEach(b => b.disabled = true);
+    
+    if(secilenSecenek === dogruSecenek) {
+        btn.classList.add('dogru');
+        oyunSkoru += 100;
+        document.getElementById('oyun-skor').textContent = oyunSkoru;
+    } else {
+        btn.classList.add('yanlis');
+        butonlar[dogruSecenek].classList.add('dogru');
+    }
+    
+    setTimeout(() => {
+        mevcutSoruIndeksi++;
+        if(mevcutSoruIndeksi < gunlukSorular.length) {
+            soruGoster();
+        } else {
+            oyunBitir();
+        }
+    }, 1500);
+}
+
+function oyunBitir() {
+  oyunBittiMi = true;
+  
+  let mevcutEnYuksek = parseInt(localStorage.getItem('turanHaberEnYuksekSkor') || '0');
+  let tebrikMesaji = "";
+  if(oyunSkoru > mevcutEnYuksek) {
+      localStorage.setItem('turanHaberEnYuksekSkor', oyunSkoru);
+      tebrikMesaji = "<br><span style='color:var(--altin)'>🎯 Yeni Liderlik Rekoru Kırdınız!</span>";
+      document.getElementById('en-yuksek-skor').textContent = `🏆 Liderlik Tablosu: ${oyunSkoru}`;
+  }
+  
+  document.getElementById('oyun-soru-metni').innerHTML = `Günün Strateji Testi Tamamlandı!<br>İstihbarat Puanınız: <strong>${oyunSkoru}</strong>${tebrikMesaji}`;
+  document.getElementById('oyun-secenekler').innerHTML = `<button class="oyun-secenek" style="max-width:300px" onclick="oyunuBaslat()">↩ Bugünkü Soruları Tekrarla</button>`;
+}
+
+// KADEMELİ YÜKLEME
 window.addEventListener('load', async () => {
   const aktifMedeniyet = aktifMedeniyetiGetir();
   medeniyetTemasiUygula(aktifMedeniyet);
@@ -1189,7 +1345,7 @@ window.addEventListener('load', async () => {
 
   await heroSliderGuncelle();
   await kureselBilimGuncelle();
-  await turkiyeGundemiGuncelle(); // Yeni Türkiye Gündemi
+  await turkiyeGundemiGuncelle(); 
   await savasHaberleriniGuncelle();
   await canliHaberleriCek();
 
@@ -1199,7 +1355,7 @@ window.addEventListener('load', async () => {
   setInterval(() => futbolHaberleriGuncelle(), 3600000 + 45000);
   setInterval(() => kureselBilimGuncelle(), 3600000 + 60000);
   setInterval(() => tarihiOlaylariYenile(), 3600000 + 75000);
-  setInterval(() => turkiyeGundemiGuncelle(), 3600000 + 90000); // Türkiye Güncelleme Döngüsü
+  setInterval(() => turkiyeGundemiGuncelle(), 3600000 + 90000);
 });
 </script>
 </body>
