@@ -199,7 +199,7 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .cr-madde .bolge { font-size: 10px; font-weight: 700; color: var(--kizil); margin-bottom: 5px; text-transform: uppercase;}
 .cr-madde h5 { font-size: 14px; font-weight: 600; color: var(--lacivert); line-height: 1.4; }
 
-/* 3 KOLONLU STANDART GRİDLER (Siyaset, Futbol, Tarih vb.) */
+/* 3 KOLONLU STANDART GRİDLER */
 .uc-kolon-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3.5rem; align-items: stretch;}
 .standart-makale-kart { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; transition: var(--gecis); box-shadow: var(--golge); height: 100%; min-height: 200px;}
 .standart-makale-kart:hover { transform: translateY(-4px); border-color: rgba(200,150,58,0.3); }
@@ -377,7 +377,7 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
 </div>
 
 <header>
-  <div class="gokturk-bg-text">𐱅𐰇𐰼𐰚:𐰓𐰇𐰤𐰘𐰀𐰽𐰃</div>
+  <div class="gokturk-bg-text">𐱅𐰇𐰼𐰚:𐰓𐰇𐰤𐰘𐰀射𐰃</div>
   <div class="header-ic">
     <div class="logo-alan">
       <svg class="logo-sembol" viewBox="0 0 52 52" fill="none">
@@ -436,6 +436,12 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
     <div style="color:white; display:flex; height:100%; align-items:center; justify-content:center;">Manşetler yükleniyor...</div>
   </div>
 
+  <!-- DÜNYA GÜNDEMİ (CANLI) BURAYA TAŞINDI -->
+  <div class="bolum-baslik anim-up">
+    <div class="bolum-sembol">🌐</div><h2>Dünya Gündemi (Canlı Akış)</h2>
+  </div>
+  <div class="dunya-grid" id="canli-haber-alani"></div>
+
   <div class="bolum-baslik anim-up" id="kuresel-bilim">
     <div class="bolum-sembol">🚀</div><h2>Küresel Bilim Gündemi</h2>
   </div>
@@ -461,13 +467,13 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
       <div class="catisma-radar">
         <div class="cr-baslik"><div class="cr-dot"></div>Sıcak Çatışma Radarı</div>
         <div class="cr-madde" onclick="makaleAc('RADAR', 'Kızıldeniz Tedarik Hattı Baskı Altında', 'Ticari gemilerin seyrüsefer sistemlerine yönelik yanıltıcı sinyal müdahaleleri sürüyor.\n\nBölgedeki deniz taşımacılığı şirketleri, güvenlik endişeleri sebebiyle rotalarını Ümit Burnu üzerinden güneye kaydırmak zorunda kalıyor.\n\nUzmanlar, lojistik gecikmelerin kısa vadede küresel konteyner ve navlun fiyatlarında %30 oranında artışa neden olabileceği konusunda uyarıyor.', 'Bölge Raporu')"><div class="bolge">🌐 Kızıldeniz</div><h5>Kızıldeniz Tedarik Hattı Baskı Altında</h5></div>
-        <div class="cr-madde" onclick="makaleAc('RADAR', 'Doğu Avrupa Sınır Hattı Tahkimat Süreci', 'Bölgede lojistik destek ve ikmal yolları üzerindeki insansız hava aracı devriyeleri artırıldı.\n\nSınır hattı boyunca yeni nesil elektronik harp sistemleri ve hava savunma bataryaları aktif konuma getirildi.\n\nKritik enerji altyapısına yönelik potansiyel sabotaj girişimlerine karşı özel güvenlik protokolleri uygulamaya konuldu.', 'Bölge Raporu')"><div class="bolge">🇪🇺 Doğu Avrupa</div><h5>Sınır Hattı Tahkimat Süreci</h5></div>
+        <div class="cr-madde" onclick="makaleAc('RADAR', 'Doğu Avrupa Sınır Hattı Tahkimat Süreci', 'Bölgede lojistik destek ve ikmal yolları üzerindeki insansız hava aracı devriyeleri artırıldı.\n\nSınır hattı boyunca yeni nesil elektronik harp sistemleri ve hava savunma bataryaları aktif konuma getirildi.\n\nKritik energy altyapısına yönelik potansiyel sabotaj girişimlerine karşı özel güvenlik protokolleri uygulamaya konuldu.', 'Bölge Raporu')"><div class="bolge">🇪🇺 Doğu Avrupa</div><h5>Sınır Hattı Tahkimat Süreci</h5></div>
         <div class="cr-madde" style="border-bottom:none;" onclick="makaleAc('RADAR', 'Tayvan Boğazı Askeri Tatbikatları', 'Bölgede gerilim tırmanıyor. Karşılıklı deniz devriyeleri ve hava ihlalleri iddiaları peş peşe geliyor.\n\nStratejik olarak dünyanın en büyük çip üretim tesislerine ev sahipliği yapan bölge, küresel teknoloji tedariğini derinden tehdit etme potansiyeline sahip.', 'Pasifik Güvenlik Ajansı')"><div class="bolge">🌏 Asya-Pasifik</div><h5>Tayvan Boğazı Askeri Tatbikatları</h5></div>
       </div>
     </div>
   </div>
 
-  <!-- YENİ BÖLÜM: TÜRKİYE SİYASETİ (3'LÜ GRİD) -->
+  <!-- TÜRKİYE SİYASETİ (3'LÜ GRİD) -->
   <div class="bolum-baslik anim-up" id="siyaset">
       <div class="bolum-sembol">🏛️</div><h2>Türkiye Siyaseti & Milli Gündem</h2>
   </div>
@@ -496,11 +502,6 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
       <div class="bolum-sembol">🕌</div><h2>Tarih & Kültür Arşivi</h2>
   </div>
   <div class="uc-kolon-grid" id="tarih-grid-alan"></div>
-
-  <div class="bolum-baslik anim-up">
-    <div class="bolum-sembol">🌐</div><h2>Dünya Gündemi (Canlı)</h2>
-  </div>
-  <div class="dunya-grid" id="canli-haber-alani"></div>
 
 </main>
 
@@ -734,7 +735,7 @@ function guvenliMetin(metin) {
     .replace(/<[^>]*>?/gm, '') 
     .replace(/ə/g, 'e').replace(/Ə/g, 'E').replace(/&amp;/g, '&').replace(/&quot;/g, '"').trim();
   
-  return utf8Duzelt(temiz); // Karakter bozukluklarını düzeltip gönderiyoruz
+  return utf8Duzelt(temiz);
 }
 
 function attrGuvenli(str) {
@@ -833,7 +834,6 @@ function makaleAc(kat, bas, met, kay) {
   document.getElementById('modal-kat').textContent = kat;
   document.getElementById('modal-baslik').textContent = guvenliBas;
   
-  // Satır atlamalarını paragrafa çevirme işlemi
   document.getElementById('modal-metin').innerHTML = String(guvenliMetin(met)).split('\n').filter(p=>p.trim()!=='').map(p=>`<p>${p}</p>`).join('');
   
   document.getElementById('modal-tarih').textContent = `${bugunTarihi.getDate()} ${aylar[bugunTarihi.getMonth()]} ${bugunTarihi.getFullYear()}`;
@@ -944,7 +944,7 @@ function hGec(i) {
   sList[aSlide].classList.add('active'); nList[aSlide].classList.add('active');
 }
 
-// SAVAŞ & ÇATIŞMA HABERLERİ (Güncel Askeri Çatışmalara Çevrildi)
+// SAVAŞ & ÇATIŞMA HABERLERİ
 function savasHaberleriOlustur(veriler) {
   const grid = document.getElementById('savas-grid'); if(!grid) return;
   grid.innerHTML = ''; const ag = document.createElement('div'); ag.className = 'sk-alt-grid';
@@ -959,7 +959,6 @@ function savasHaberleriOlustur(veriler) {
 }
 
 async function savasHaberleriniGuncelle() {
-  // Varsayılan askeri çatışma haberleri eklendi
   savasHaberleriOlustur([
       { 
           title: "Orta Doğu'da Çatışma Çemberi Genişliyor: İsrail - Lübnan Sınırında Sıcak Saatler", 
@@ -982,7 +981,7 @@ async function savasHaberleriniGuncelle() {
   if(sH && sH.length >= 2) savasHaberleriOlustur(sH);
 }
 
-// YENİ BÖLÜM: TÜRKİYE SİYASETİ HABERLERİ
+// TÜRKİYE SİYASETİ HABERLERİ
 function siyasetHaberleriOlustur() {
     const grid = document.getElementById('siyaset-grid-alan'); if(!grid) return;
     grid.innerHTML = '';
@@ -990,7 +989,7 @@ function siyasetHaberleriOlustur() {
         { 
             k: "ANKARA KULİSİ", 
             t: "Milli Savunma Stratejisi ve Yeni Teşvik Paketleri", 
-            m: "Ankara kulislerinden gelen bilgilere göre, yerli savunma sanayii ekosisteminin geliştirilmesi ve yarı iletken tedarik güvenliği kabinede masaya yatırıldı.\n\nÖzellikle mikroçip üretiminde dışa bağımlılığın tamamen azaltılması hedeflenen toplantıda, yerli çip üretim tesisleri kuracak holdingler için yeni ve devasa teşvik paketlerinin yolda olduğu vurgulandı.\n\nBunun yanı sıra insansız savaş uçakları Kızılelma ve Anka-3'ün seri üretim aşamalarının hızlandırılması için kamu-özel sektör iş birliklerinin artırılacağı bildirildi. Savunma bütçesindeki bu tarihi artışın, önümüzdeki 5 yılda teknoloji ihracatına müthiş bir ivme kazandırması bekleniyor." 
+            m: "Ankara kulislerinden gelen bilgilere göre, yerli savunma sanayii ekosisteminin geliştirilmesi ve yarı iletken tedarik güvenliği kabinede masaya yatırıldı.\n\nÖzellikle mikroçip üretiminde dışa bağımlılığın tamamen azaltılması hedeflenen toplantıda, yerli çip üretim tesisleri kuracak holdingler için yeni ve devasa teşvik paketlerinin yolda olduğu vurgulandı.\n\nBunun yanı saha insansız savaş uçakları Kızılelma ve Anka-3'ün seri üretim aşamalarının hızlandırılması için kamu-özel sektör iş birliklerinin artırılacağı bildirildi. Savunma bütçesindeki bu tarihi artışın, önümüzdeki 5 yılda teknoloji ihracatına müthiş bir ivme kazandırması bekleniyor." 
         },
         { 
             k: "SİBER GÜVENLİK", 
@@ -1119,7 +1118,7 @@ const tarihteBugunVerileri = {
   "23 Nisan": "23 Nisan 1920 — Türkiye Büyük Millet Meclisi (TBMM) Ankara'da açıldı.\n\nEgemenliğin kayıtsız şartsız millete ait olduğu ilan edilerek, Kurtuluş Savaşı'nın askeri ve sivil karargahı resmen faaliyete geçirildi.",
   "29 Mayıs": "29 Mayıs 1453 — Fatih Sultan Mehmet komutasındaki Osmanlı Ordusu İstanbul'u fethetti. Doğu Roma İmparatorluğu yıkıldı.\n\nOrta Çağ'ı kapatıp Yeni Çağ'ı başlatan bu devasa fetih, topçu ve lojistik teknolojisinin sınırlarının zorlandığı eşsiz bir stratejik askeri dehadır.",
   "26 Ağustos": "26 Ağustos 1071 / 1922 — Sultan Alparslan komutasındaki Selçuklu Ordusu Malazgirt Zaferi'ni kazandı.\n\nAynı gün 1922'de, Gazi Mustafa Kemal önderliğinde Anadolu'nun kesin kurtuluşunu sağlayacak olan Büyük Taarruz başladı.",
-  "30 Ağustos": "30 Ağustos 1922 — Başkomutanlık Meydan Muharebesi (Dumlupınar) zaferle sonuçlandı, Yunan ordusu hezimete uğratıldı.\n\nİşgal güçlerinin Anadolu topraklarından kesin olarak sökülüp atılmasını sağlayan bu mutlak zafer, modern Cumhuriyetin temel taşıdır.",
+  "30 Ağustos": "30 Ağustos 1922 — Başkomutanlık Meydan Muharebesi (Dumlupınar) zaverle sonuçlandı, Yunan ordusu hezimete uğratıldı.\n\nİşgal güçlerinin Anadolu topraklarından kesin olarak sökülüp atılmasını sağlayan bu mutlak zafer, modern Cumhuriyetin temel taşıdır.",
   "29 Ekim": "29 Ekim 1923 — Cumhuriyet ilan edildi. Gazi Mustafa Kemal Atatürk, Türkiye'nin ilk Cumhurbaşkanı seçildi.\n\nÜmmet toplumundan ulus devlete, saltanattan millet egemenliğine geçişin sembolü olan bugün, Türk milletinin en büyük bayramıdır.",
   "10 Kasım": "10 Kasım 1938 — Türkiye Cumhuriyeti'nin kurucusu Gazi Mustafa Kemal Atatürk hayata gözlerini yumdu.\n\nO'nun fikirleri, ilkeleri ve gösterdiği muasır medeniyetler hedefi, Türk gençliğinin yolunu aydınlatmaya sonsuza dek devam edecektir."
 };
@@ -1130,7 +1129,7 @@ const dunyaTarihiVerileri = {
 };
 
 const genelDunyaHavuzu = [
-  "12 Ekim 1492 — Kristof Kolomb Amerika'yı keşfetti ve Yeni Dünya'nın kapılarını araladı.\n\nAvrupa'from yeni kıtaya başlayan bu devasa göç ve ticaret dalgası, küresel ekonomiyi sonsuza dek değiştirdi.",
+  "12 Ekim 1492 — Kristof Kolomb Amerika'yı keşfetti ve Yeni Dünya'nın kapılarını araladı.\n\nAvrupa'dan yeni kıtaya başlayan bu devasa göç ve ticaret dalgası, küresel ekonomiyi sonsuza dek değiştirdi.",
   "20 Temmuz 1969 — Apollo 11 göreviyle Neil Armstrong Ay'a ayak basan ilk insan oldu.\n\n'Benim için küçük, insanlık için dev bir adım' sözüyle tarihe geçen bu olay, Soğuk Savaş uzay yarışının zirve noktasıdır.",
   "9 Kasım 1989 — Soğuk Savaş'ın sembolü olan Berlin Duvarı yıkıldı.\n\nDoğu ve Batı Almanya'nın birleşmesine kapı aralayan bu tarihi gece, Sovyet bloğunun çöküşünün de en belirgin görsel simgesi haline geldi."
 ];
