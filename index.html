@@ -3,12 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<!-- YENİ: Haber sitelerinin resim engellemelerini (403 Forbidden) aşmak için eklendi -->
 <meta name="referrer" content="no-referrer">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Ccircle cx='26' cy='26' r='26' fill='%2314213d'/%3E%3Ccircle cx='26' cy='26' r='24' stroke='%23C8963A' stroke-width='1.5' fill='none'/%3E%3Ccircle cx='26' cy='26' r='16' stroke='%23C8963A' stroke-width='1' fill='none'/%3E%3Ccircle cx='26' cy='26' r='5' fill='%23C8963A'/%3E%3Cline x1='26' y1='6' x2='26' y2='12' stroke='%23C8963A' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='26' y1='40' x2='26' y2='46' stroke='%23C8963A' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='6' y1='26' x2='12' y2='26' stroke='%23C8963A' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='40' y1='26' x2='46' y2='26' stroke='%23C8963A' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
 <title>TuranHaber — Türk Dünyası & Dünya Gündemi</title>
 
-<!-- FOUT (Tema Patlaması) Önleyici -->
 <script>
   if(localStorage.getItem('tema') === 'dark') {
     document.documentElement.setAttribute('data-theme', 'dark');
@@ -540,7 +538,6 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
   </div>
 </footer>
 
-<!-- HABER OKUMA MODALI -->
 <div class="modal-arkaplan" id="makale-modal" onclick="if(event.target===this) modalKapat()">
   <div class="modal-kutu">
     <div class="modal-icerik">
@@ -562,7 +559,6 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
   </div>
 </div>
 
-<!-- TEMA SEÇİCİ MODAL -->
 <div class="tema-secici-arkaplan" id="tema-secici" onclick="if(event.target===this) temaSeciciKapat()">
   <div class="tema-secici-kutu">
     <div class="ts-baslik">
@@ -585,10 +581,17 @@ const aylar = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağus
 const bugunTarihi = new Date(); 
 document.getElementById('tarih-goster').textContent = `${bugunTarihi.getDate()} ${aylar[bugunTarihi.getMonth()]} ${bugunTarihi.getFullYear()}`;
 
+// YENİ GÖRSEL OPTİMİZASYON VE PROXY FONKSİYONU
 function gorselUrlOptimize(url) {
-  if(!url || !url.includes('unsplash.com')) return url;
+  if (!url) return 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=900&q=70';
   const mobil = window.innerWidth < 768;
-  return url.replace(/w=\d+/, mobil ? 'w=600' : 'w=900').replace(/q=\d+/, 'q=70');
+  const w = mobil ? '600' : '900';
+  
+  if (url.includes('unsplash.com')) {
+    return url.replace(/w=\d+/, `w=${w}`).replace(/q=\d+/, 'q=70');
+  }
+  
+  return `${WORKER_URL}/img?url=${encodeURIComponent(url)}&w=${w}`;
 }
 
 // GECE/GÜNDÜZ TEMASI
@@ -889,11 +892,10 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// GÜVENLİ API İSTEĞİ (TIMEOUT GÜNCELLENDİ)
+// GÜVENLİ API İSTEĞİ (TIMEOUT ARTTIRILDI)
 async function apiIstekAt(url) { 
     try { 
       const controller = new AbortController();
-      // YENİ: Gerçek haber resimlerinin yüklenmesi için 12 Saniye süre verildi
       const timeoutId = setTimeout(() => controller.abort(), 12000); 
       const r = await fetch(url, { signal: controller.signal }); 
       clearTimeout(timeoutId);
@@ -916,7 +918,7 @@ function gununMakalesiniYukle() {
    alan.innerHTML = `<div class="gm-resim" style="background-image: url('${gorselUrlOptimize(makale.r)}')"></div><div class="gm-icerik"><span class="gm-etiket">✦ ${makale.e}</span><h3 class="gm-baslik">${makale.t}</h3><p class="gm-metin">${makale.m}</p><div class="gm-okuma-suresi">⏳ 3 dakika okuma süresi</div></div>`;
 }
 
-// OPTIMISTIC UI
+// OPTIMISTIC UI: ÖNCE YEDEK GÖSTER SONRA API
 const yedekManset = [
   {title: "Kuantum Şifreleme Ağlarında İlk Kıtalararası Başarı", description: "Avrupa ve Asya arasındaki fiber optik hatlarda kuantum anahtar dağıtımı (QKD) ile hacklenmesi imkansız ilk veri transferi gerçekleştirildi.", image_url: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e", source_id: "KÜRESEL SİBER RAPOR"},
   {title: "Yarı İletken Savaşında Tayvan Alternatifi", description: "Dev teknoloji şirketleri, tedarik zincirini güvence altına almak için çip üretimini Japonya ve ABD'deki yeni mega fabrikalara kaydırma kararı aldı.", image_url: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0", source_id: "TEKNOLOJİ & EKONOMİ"}
