@@ -199,14 +199,14 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .savas-baslik { display: flex; align-items: center; gap: 15px; margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 15px; }
 .savas-baslik h2 { color: #fff; font-size: 24px; font-weight: 700; }
 
-/* --- SABİTLENMİŞ HARİTA (ASPECT RATIO + BACKGROUND SIZE) --- */
+/* --- SABİTLENMİŞ HARİTA (MİLİMETRİK ORAN VE KOORDİNAT KİLİDİ) --- */
 .jeopolitik-harita-alani { 
   width: 100%; 
-  aspect-ratio: 2 / 1; 
+  aspect-ratio: 2754 / 1398; /* Haritanın tam orijinal SVG oranı, esnemeyi sıfırlar */
   background-color: #0b121c; 
   background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg'); 
-  background-size: 100% 100%; 
-  background-position: center; 
+  background-size: 100% 100%; /* Div'e haritayı milimetrik olarak kilitler */
+  background-position: top left; 
   background-repeat: no-repeat; 
   border-radius: 12px; 
   margin-bottom: 2.5rem; 
@@ -220,7 +220,7 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .sicak-nokta::after { content: ''; position: absolute; top: -6px; left: -6px; right: -6px; bottom: -6px; border: 2px solid var(--kizil); border-radius: 50%; animation: pulse 1.5s infinite; }
 .nokta-bilgi { position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%); background: var(--kart-bg); color: var(--yazi); padding: 8px 14px; font-size: 13px; font-weight: 700; border-radius: 6px; white-space: nowrap; opacity: 0; pointer-events: none; transition: 0.3s; box-shadow: var(--golge); border: 1px solid var(--altin); z-index: 10; }
 .sicak-nokta:hover .nokta-bilgi { opacity: 1; bottom: 30px; }
-[data-theme="dark"] .nokta-bilgi { filter: invert(1) hue-rotate(180deg); } /* Keeps text readable in dark mode inversion */
+[data-theme="dark"] .nokta-bilgi { filter: invert(1) hue-rotate(180deg); }
 
 .savas-grid-2 { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1.5rem; align-items: stretch; }
 .sk-kart { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 2rem; cursor: pointer; transition: var(--gecis); display: flex; flex-direction: column; height: 100%;}
@@ -414,7 +414,7 @@ footer {
   .nav-sag { border-top: 1px solid var(--cizgi); width: 100%; overflow-x: auto; }
   .dunya-grid, .uc-kolon-grid, .bilim-ozel-grid, .ilgili-grid, .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   .ts-grid { grid-template-columns: 1fr; }
-  .hero-slider-alani { height: 400px; margin-bottom: 2.5rem; }
+  .hero-slider-alani { height: auto; margin-bottom: 2.5rem; } /* Mobile fix for locked aspect ratio */
   .hero-slide { padding: 1.5rem; }
   .hero-baslik { font-size: 26px; }
   .hero-ozet { display: -webkit-box; -webkit-line-clamp: 2; font-size: 14px; }
@@ -464,7 +464,7 @@ footer {
     <div class="nav-sol">
         <a href="#" class="nav-link aktif">Ana Sayfa</a>
         <a href="#kuresel-bilim" class="nav-link">🚀 Teknoloji</a>
-        <a href="#savas" class="nav-link">⚔️ Savaş & Çatışma</a>
+        <a href="#savas" class="nav-link">🎯 Savaş & Çatışma</a>
         <a href="#siyaset" class="nav-link">🏛️ Siyaset</a>
         <a href="#futbol" class="nav-link">⚽ Spor</a>
         <a href="#tarih" class="nav-link">🕌 Tarih</a>
@@ -517,16 +517,16 @@ footer {
     </div>
 
     <div class="jeopolitik-harita-alani">
-        <div class="sicak-nokta" style="top: 38%; left: 59%;" onclick="makaleAc('RADAR', 'Orta Doğu Kriz Hattı', 'Bölgedeki sınır çatışmaları ve askeri hareketlilik artıyor.', 'Analiz Masası')">
+        <div class="sicak-nokta" style="top: 36.5%; left: 59.5%;" onclick="makaleAc('RADAR', 'Orta Doğu Kriz Hattı', 'Bölgedeki sınır çatışmaları ve askeri hareketlilik artıyor.', 'Analiz Masası')">
             <span class="nokta-bilgi">İsrail - Lübnan Hattı</span>
         </div>
-        <div class="sicak-nokta" style="top: 24%; left: 56%;" onclick="makaleAc('RADAR', 'Doğu Avrupa Sınır Tahkimatı', 'Sınır hattı boyunca hava devriyeleri yoğunlaştırıldı.', 'Analiz Masası')">
+        <div class="sicak-nokta" style="top: 25.5%; left: 58.5%;" onclick="makaleAc('RADAR', 'Doğu Avrupa Sınır Tahkimatı', 'Sınır hattı boyunca hava devriyeleri yoğunlaştırıldı.', 'Analiz Masası')">
             <span class="nokta-bilgi">Doğu Avrupa Cephesi</span>
         </div>
-        <div class="sicak-nokta" style="top: 42%; left: 83%;" onclick="makaleAc('RADAR', 'Tayvan Boğazı Gerilimi', 'Karşılıklı deniz devriyeleri uluslararası ticareti tehdit ediyor.', 'Analiz Masası')">
+        <div class="sicak-nokta" style="top: 42.5%; left: 83.2%;" onclick="makaleAc('RADAR', 'Tayvan Boğazı Gerilimi', 'Karşılıklı deniz devriyeleri uluslararası ticareti tehdit ediyor.', 'Analiz Masası')">
             <span class="nokta-bilgi">Tayvan Boğazı</span>
         </div>
-        <div class="sicak-nokta" style="top: 46%; left: 60%;" onclick="makaleAc('RADAR', 'Kızıldeniz Ticaret Hattı', 'Ticari gemilere yönelik müdahaleler lojistiği tıkıyor.', 'Analiz Masası')">
+        <div class="sicak-nokta" style="top: 46%; left: 61.5%;" onclick="makaleAc('RADAR', 'Kızıldeniz Ticaret Hattı', 'Ticari gemilere yönelik müdahaleler lojistiği tıkıyor.', 'Analiz Masası')">
             <span class="nokta-bilgi">Kızıldeniz</span>
         </div>
     </div>
