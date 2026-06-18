@@ -23,7 +23,6 @@
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Old+Turkic&display=swap');
 
 :root {
   --kizil: #C0392B; --kizil-koyu: #96281E; 
@@ -84,23 +83,7 @@ html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body { font-family: 'Outfit', sans-serif; background-color: var(--arkaplan); color: var(--yazi); line-height: 1.6; position: relative; transition: background-color 0.4s ease, color 0.4s ease; overflow-x: hidden;}
 
-/* Selçuklu Yıldızı Arka Plan */
-body::before { 
-    content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none; 
-    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0 L50 30 L80 40 L50 50 L40 80 L30 50 L0 40 L30 30 Z' fill='%23C8963A' fill-opacity='0.05'/%3E%3C/svg%3E"); 
-}
-
 @keyframes pulse { 0%,100% { opacity:1; transform:scale(1) } 50% { opacity:.5; transform:scale(1.3) } }
-
-/* Gerçek Göktürkçe Harfler Kullanılarak %E2 Sorunu Giderildi */
-.gokturk-bg-text { 
-    font-family: 'Noto Sans Old Turkic', sans-serif; 
-    color: var(--altin); opacity: 0.12; 
-    font-size: 85px; letter-spacing: 25px; 
-    position: absolute; top: 0; left: 0; width: 100%; 
-    text-align: center; pointer-events: none; user-select: none; 
-    overflow: hidden; white-space: nowrap; 
-}
 
 /* HEADER & BANT */
 .ust-bant { background: var(--koyu); color: rgba(255,255,255,.6); font-size: 13px; padding: 8px 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
@@ -108,11 +91,22 @@ body::before {
 .tema-btn { background: rgba(255,255,255,0.1); border: none; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; transition: var(--gecis); }
 .tema-btn:hover { background: rgba(255,255,255,0.2); }
 
-header { background: linear-gradient(to right, var(--lacivert), var(--koyu)); padding: 2rem; position: relative; overflow: hidden; border-bottom: 3px solid var(--altin); transition: background 0.4s ease; }
+/* Arka plan SVG motifleri doğrudan header CSS'ine gömüldü (Bozulmaz form) */
+header { 
+    background-color: var(--koyu);
+    background-image: 
+        radial-gradient(circle at 100% 100%, rgba(200, 150, 58, 0.15) 0%, transparent 50%),
+        url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0 L50 30 L80 40 L50 50 L40 80 L30 50 L0 40 L30 30 Z' fill='%23C8963A' fill-opacity='0.08'/%3E%3C/svg%3E"); 
+    padding: 2.5rem 2rem; 
+    position: relative; 
+    overflow: hidden; 
+    border-bottom: 3px solid var(--altin); 
+    transition: background 0.4s ease; 
+}
 .header-ic { max-width: 1300px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 2; }
 .logo-alan { display: flex; align-items: center; gap: 15px; }
 .logo-sembol { width: 50px; height: 50px; flex-shrink: 0; }
-.logo-bas { font-size: 34px; font-weight: 800; color: #fff; letter-spacing: -0.5px; line-height: 1; margin: 0;}
+.logo-bas { font-size: 36px; font-weight: 800; color: #fff; letter-spacing: -0.5px; line-height: 1; margin: 0;}
 .logo-bas span { color: var(--altin); }
 .logo-alt { font-size: 12px; color: rgba(255,255,255,0.6); letter-spacing: 1px; margin-top: 3px; font-weight: 400;}
 
@@ -255,7 +249,14 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .oyun-liderlik { background: rgba(200,150,58,0.15); padding: 6px 12px; border-radius: 6px; font-size: 13px; color: var(--altin); border: 1px dashed var(--altin); }
 
 /* FOOTER */
-footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; overflow: hidden; border-top: 4px solid var(--altin);}
+footer { 
+    background-color: var(--koyu); 
+    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0 L50 30 L80 40 L50 50 L40 80 L30 50 L0 40 L30 30 Z' fill='%23C8963A' fill-opacity='0.08'/%3E%3C/svg%3E");
+    padding: 4rem 2rem 2rem; 
+    position: relative; 
+    overflow: hidden; 
+    border-top: 4px solid var(--altin);
+}
 .footer-ic { max-width: 1300px; margin: 0 auto; position: relative; z-index: 2;}
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.05); }
 .footer-logo .logo-bas { font-size: 30px; font-weight: 800; color: #fff; }
@@ -389,8 +390,6 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
 </div>
 
 <header>
-  <!-- BOZUK URL-ENCODED YAZI YERİNE GERÇEK GÖKTÜRKÇE HARFLER EKLENDİ -->
-  <div class="gokturk-bg-text">𐱅𐰇𐰼𐰚 𐰉𐰆𐰑𐰣 𐱅𐰇𐰼𐰚 𐰉𐰆𐰑𐰣 𐱅𐰇𐰼𐰚</div>
   <div class="header-ic">
     <div class="logo-alan">
       <svg class="logo-sembol" viewBox="0 0 52 52" fill="none">
@@ -516,7 +515,6 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
 </main>
 
 <footer>
-  <div class="gokturk-bg-text" style="bottom: 0; top: auto; font-size: 100px; opacity: 0.12;">𐱅𐰇𐰼𐰚 𐰉𐰆𐰑𐰣 𐱅𐰇𐰼𐰚 𐰉𐰆𐰑𐰣 𐱅𐰇𐰼𐰚</div>
   <div class="footer-ic">
     <div class="footer-grid">
       <div class="footer-logo">
@@ -573,7 +571,6 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
 </div>
 
 <script>
-// KÜRESEL DEĞİŞKENLER & OPTİMİZASYON
 const WORKER_URL = "https://turan-cache.yusuferenkaraca5.workers.dev";
 const aylar = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
 const bugunTarihi = new Date(); 
@@ -605,7 +602,6 @@ function haberdenResimCikar(haber) {
   return null;
 }
 
-// GECE/GÜNDÜZ TEMASI
 function temaUygula() {
   const isDark = localStorage.getItem('tema') === 'dark';
   document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
@@ -618,7 +614,6 @@ function temaDegistir() {
 }
 window.addEventListener('DOMContentLoaded', temaUygula);
 
-// MEDENİYET TEMA SİSTEMİ
 const MEDENIYETLER = [
   { id: 'gokturk',     isim: 'Göktürk',     donem: '552 – 744',     emoji: '🐺', renk: '#C17F3B, #8B2500' },
   { id: 'uygur',       isim: 'Uygur',         donem: '744 – 840',     emoji: '📜', renk: '#D4A843, #1B5E8E' },
@@ -701,7 +696,6 @@ function temaSabitlemeKaldir() {
   temaSeciciKapat();
 }
 
-// ANİMASYONLAR
 const animObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if(entry.isIntersecting) {
@@ -721,19 +715,11 @@ window.addEventListener('scroll', () => {
   document.getElementById('ilerleme-cubugu').style.width = ((winScroll / height) * 100) + "%";
 });
 
-// UTF-8 MOJIBAKE (ÇİFT KODLAMA) ONARICI FONKSİYON 
 function utf8Duzelt(metin) {
     if (!metin) return '';
     let t = String(metin);
-    
     t = t.replace(/Ã1\/4/g, 'ü').replace(/Ã1⁄4/g, 'ü').replace(/\xC31\u20444/g, 'ü');
-
-    try {
-        if (/[\xC2-\xC5]/.test(t) || /Ã|Ä|Å/.test(t)) {
-            t = decodeURIComponent(escape(t));
-        }
-    } catch (e) {}
-
+    try { if (/[\xC2-\xC5]/.test(t) || /Ã|Ä|Å/.test(t)) { t = decodeURIComponent(escape(t)); } } catch (e) {}
     return t
         .replace(/\xC3\xA7/g, 'ç').replace(/\xC3\x87/g, 'Ç')
         .replace(/\xC4\x9F/g, 'ğ').replace(/\xC4\x9E/g, 'Ğ')
@@ -744,7 +730,6 @@ function utf8Duzelt(metin) {
         .replace(/\xE2\x80\x99/g, "'").replace(/\xE2\x80\x98/g, "'")
         .replace(/\xE2\x80\x9C/g, '"').replace(/\xE2\x80\x9D/g, '"')
         .replace(/\xE2\x80\x93/g, "-").replace(/\xE2\x80\x94/g, "-")
-        
         .replace(/Ã§/g, 'ç').replace(/Ã‡/g, 'Ç')
         .replace(/ÄŸ/g, 'ğ').replace(/Äž/g, 'Ğ')
         .replace(/Ä±/g, 'ı').replace(/Ä°/g, 'İ')
@@ -755,7 +740,6 @@ function utf8Duzelt(metin) {
         .replace(/â€œ/g, '"').replace(/â€/g, '"');
 }
 
-// GÜVENLİK KORUMALARI
 function guvenliMetin(metin) {
   if(!metin || metin === "null" || metin === "undefined") return '';
   let temiz = String(metin)
@@ -763,7 +747,6 @@ function guvenliMetin(metin) {
     .replace(/on\w+="[^"]*"/g, '').replace(/on\w+='[^']*'/g, '').replace(/on\w+=\w+/g, '')
     .replace(/<[^>]*>?/gm, '') 
     .replace(/ə/g, 'e').replace(/Ə/g, 'E').replace(/&amp;/g, '&').replace(/&quot;/g, '"').trim();
-  
   return utf8Duzelt(temiz);
 }
 
@@ -772,26 +755,48 @@ function attrGuvenli(str) {
     return guvenliMetin(str).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
-function haberFiltrele(res) { 
-  const yasakliKelimeler = ['only available', 'paid plans', 'dizi', 'oyuncu', 'magazin', 'bollywood', 'fragman', 'kimdir', 'sevgili', 'sinema', 'şarkıcı', 'actor', 'actress', 'movie', 'episode', 'season', 'survivor', 'masterchef'];
-  const bozukKarakterler = ['Ã', 'Ä', 'Å', '1⁄4', 'Â', 'â€'];
-  
-  return res ? res.filter(h => {
-    if (!h.title) return false;
-    const baslik = h.title || "";
-    const aciklama = h.description || h.content || "";
-    const kucukMetin = (baslik + " " + aciklama).toLowerCase();
-    const orjMetin = baslik + " " + aciklama;
+// -------------------------------------------------------------
+// ÇOK SIKI FUTBOL VE DÜNYA KUPASI FİLTRESİ
+// -------------------------------------------------------------
+function katiFutbolFiltresi(haberDizisi) {
+    if (!haberDizisi) return [];
     
-    if (yasakliKelimeler.some(y => kucukMetin.includes(y))) return false;
-    if (bozukKarakterler.some(b => orjMetin.includes(b))) return false;
-    if (aciklama.trim().length < 25) return false;
+    // Hem Türkçe hem İngilizce spor terimleri eklendi
+    const yasakliRegex = /dünya kupası|dünya kupasi|world cup|fifa|uefa|euro 20|futbol|şampiyonlar ligi|süper lig|galatasaray|fenerbahçe|beşiktaş|trabzonspor|derbi|maç|turnuva|magazin|survivor/i;
     
-    return true;
-  }) : []; 
+    return haberDizisi.filter(h => {
+        if (!h.title) return false;
+        
+        // Başlık, açıklama, içerik ve kaynağı birleştirip toplu RegEx taraması yapıyoruz
+        const tamMetin = [h.title, h.description || "", h.content || "", h.source_id || ""].join(" ").toLowerCase();
+        
+        // Yasaklı kelimelerden biri varsa bu haberi kesinlikle SİL
+        if (yasakliRegex.test(tamMetin)) {
+            return false; 
+        }
+        
+        // Haberin açıklaması çok kısaysa SİL
+        if ((h.description || "").trim().length < 25) {
+            return false;
+        }
+        
+        return true;
+    });
 }
 
-// ASENKRON GÖRSEL ŞELALE MOTORU
+function haberFiltrele(res) { 
+  // Api isteğinden gelen ilk sonuçları temizliyoruz.
+  const bozukRegex = /Ã|Ä|Å|1⁄4|Â|â€/i;
+  let temizlenen = res ? res.filter(h => {
+    if (!h.title) return false;
+    if (bozukRegex.test(h.title + " " + (h.description || ""))) return false;
+    return true;
+  }) : []; 
+  
+  // Üstüne çok sıkı filtreyi uyguluyoruz.
+  return katiFutbolFiltresi(temizlenen);
+}
+
 function resimArkaPlandaGuncelle(haberLink, haberBaslik, imgElement) {
   if (!imgElement) return;
   fetch(`${WORKER_URL}/ogimage?url=${encodeURIComponent(haberLink)}`)
@@ -816,7 +821,6 @@ function resimArkaPlandaGuncelle(haberLink, haberBaslik, imgElement) {
     .catch(() => {});
 }
 
-// OKUMA LİSTESİ
 let aktifMakaleObjesi = null;
 function okumaListesiniGetir() { return JSON.parse(localStorage.getItem('turanOkumaListesi') || '[]'); }
 function okumaListesiniKaydet(liste) { localStorage.setItem('turanOkumaListesi', JSON.stringify(liste)); }
@@ -973,28 +977,16 @@ function heroSliderOlustur(veriler) {
   }
 }
 
-// MANŞET İÇİN ÇOK SIKI FUTBOL FİLTRESİ
 async function heroSliderGuncelle() {
-  const baslangicVerisi = [
-      {title: "Yapay Zeka Otomobil Sektörünün Oyun Kurallarını Yeniden Yazıyor", description: "Otonom sürüş teknolojileri ve akıllı batarya yönetimi sistemlerinde yapay zekanın hakimiyeti artıyor. Geleneksel markalar rekabette zorlanıyor.\n\nYeni nesil yazılım destekli araçlar artık sadece bir ulaşım aracı değil, aynı zamanda hareketli bir veri merkezine dönüşmüş durumda.", source_id: "TEKNOLOJİ & EKONOMİ"}, 
-      {title: "Kuantum Şifreleme Ağlarında İlk Kıtalararası Başarı", description: "Avrupa ve Asya arasındaki fiber optik hatlarda kuantum anahtar dağıtımı (QKD) ile hacklenmesi imkansız ilk veri transferi gerçekleştirildi.\n\nBu tarihi hamle, siber güvenlikte yeni bir çağın başlangıcı olarak kabul ediliyor.", source_id: "KÜRESEL SİBER RAPOR"}
-  ];
+  let res = await apiIstekAt(`${WORKER_URL}/?kategori=top`);
   
-  heroSliderOlustur(baslangicVerisi);
-  
-  const res = await apiIstekAt(`${WORKER_URL}/?kategori=top`);
   if(res && res.length > 0) {
-      // Futbolu manşetten tamamen temizlemek için oluşturulan liste
-      const futbolTerimleri = ['futbol', 'galatasaray', 'fenerbahçe', 'beşiktaş', 'trabzonspor', 'süper lig', 'şampiyonlar ligi', 'transfer', 'derbi', 'maç', 'gol', 'hakem', 'taraftar', 'dünya kupası', 'fifa', 'uefa'];
-      
-      const temizMansetler = res.filter(h => {
-          const metin = (h.title + " " + (h.description || "")).toLowerCase();
-          return !futbolTerimleri.some(t => metin.includes(t));
-      });
-      
-      if(temizMansetler.length > 0) {
-          heroSliderOlustur(temizMansetler); 
-      }
+      heroSliderOlustur(res); 
+  } else {
+      heroSliderOlustur([
+          {title: "Yapay Zeka Otomobil Sektörünün Oyun Kurallarını Yeniden Yazıyor", description: "Otonom sürüş teknolojileri ve akıllı batarya yönetimi sistemlerinde yapay zekanın hakimiyeti artıyor. Geleneksel markalar rekabette zorlanıyor.\n\nYeni nesil yazılım destekli araçlar artık sadece bir ulaşım aracı değil, aynı zamanda hareketli bir veri merkezine dönüşmüş durumda.", source_id: "TEKNOLOJİ & EKONOMİ"}, 
+          {title: "Kuantum Şifreleme Ağlarında İlk Kıtalararası Başarı", description: "Avrupa ve Asya arasındaki fiber optik hatlarda kuantum anahtar dağıtımı (QKD) ile hacklenmesi imkansız ilk veri transferi gerçekleştirildi.\n\nBu tarihi hamle, siber güvenlikte yeni bir çağın başlangıcı olarak kabul ediliyor.", source_id: "KÜRESEL SİBER RAPOR"}
+      ]);
   }
 }
 
@@ -1021,26 +1013,29 @@ function savasHaberleriOlustur(veriler) {
 }
 
 async function savasHaberleriniGuncelle() {
-  savasHaberleriOlustur([
-      { 
-          title: "Orta Doğu'da Çatışma Çemberi Genişliyor: İsrail - Lübnan Sınırında Sıcak Saatler", 
-          description: "İsrail ordusu (IDF) ile Hizbullah güçleri arasında Lübnan'ın güney sınırında karşılıklı topçu atışları ve hava saldırıları şiddetini artırdı.\n\nİsrail savaş uçakları, Beyrut'un güneyindeki stratejik altyapıları hedef alırken, Hizbullah buna karşılık olarak Kuzey İsrail'deki askeri üslere yoğun roket atışları gerçekleştirdi.\n\nABD Merkez Kuvvetler Komutanlığı (CENTCOM), bölgedeki gerilimin bölgesel bir savaşa evrilmemesi için Doğu Akdeniz'deki donanma unsurlarını teyakkuza geçirdi. Diplomatik kaynaklar, ateşkes görüşmelerinin şu an için durduğunu belirtiyor.", 
-          source_id: "Ortadoğu İstihbarat Ağı" 
-      }, 
-      { 
-          title: "ABD ve İran Arasında Basra Körfezi'nde Stratejik Gerilim", 
-          description: "Basra Körfezi ve Hürmüz Boğazı'nda devriye gezen ABD Donanması'na ait muhripler ile İran Devrim Muhafızları'na ait silahlı hücumbotlar arasında tehlikeli bir yakınlaşma yaşandı.\n\nİran tarafı, ABD'nin bölgedeki askeri varlığını 'kışkırtıcı' olarak nitelendirirken, Pentagon ticari deniz taşımacılığının güvenliğini sağlamak amacıyla rutin devriyelerin süreceğini vurguladı.\n\nKüresel petrol sevkiyatının en kritik dar boğazı olan Hürmüz Boğazı'ndaki bu beklenmedik askeri gerilim, uluslararası piyasalarda petrol varil fiyatlarının %4 oranında artmasına neden oldu.", 
-          source_id: "Küresel Güvenlik Raporu" 
-      }, 
-      { 
-          title: "Kızıldeniz'de Lojistik Kriz: Ticaret Rotaları Vuruluyor", 
-          description: "Yemen'deki Husi güçleri, Kızıldeniz üzerinden geçen ticari gemilere ve batılı savaş gemilerine yönelik kamikaze dron ve balistik füze saldırılarına hız kesmeden devam ediyor.\n\nABD ve İngiliz ortak hava kuvvetleri, Yemen'deki yeraltı sığınaklarına ve füze fırlatma rampalarına önleyici şiddetli saldırılar düzenlediğini duyurdu. Buna rağmen dünyanın en büyük denizcilik şirketleri, Süveyş Kanalı rotasını kullanmayı tamamen durdurma kararı aldı.", 
-          source_id: "Bölgesel Çatışma Analizi" 
-      }
-  ]);
+  let sH = await apiIstekAt(`${WORKER_URL}/?kategori=world&q=${encodeURIComponent("israil OR lübnan OR abd OR iran OR ukrayna OR rusya")}`);
   
-  const sH = await apiIstekAt(`${WORKER_URL}/?kategori=world&q=${encodeURIComponent("israil OR lübnan OR abd OR iran OR ukrayna OR rusya")}`);
-  if(sH && sH.length >= 2) savasHaberleriOlustur(sH);
+  if(sH && sH.length >= 2) {
+      savasHaberleriOlustur(sH);
+  } else {
+      savasHaberleriOlustur([
+          { 
+              title: "Orta Doğu'da Çatışma Çemberi Genişliyor: İsrail - Lübnan Sınırında Sıcak Saatler", 
+              description: "İsrail ordusu (IDF) ile Hizbullah güçleri arasında Lübnan'ın güney sınırında karşılıklı topçu atışları ve hava saldırıları şiddetini artırdı.\n\nİsrail savaş uçakları, Beyrut'un güneyindeki stratejik altyapıları hedef alırken, Hizbullah buna karşılık olarak Kuzey İsrail'deki askeri üslere yoğun roket atışları gerçekleştirdi.\n\nABD Merkez Kuvvetler Komutanlığı (CENTCOM), bölgedeki gerilimin bölgesel bir savaşa evrilmemesi için Doğu Akdeniz'deki donanma unsurlarını teyakkuza geçirdi. Diplomatik kaynaklar, ateşkes görüşmelerinin şu an için durduğunu belirtiyor.", 
+              source_id: "Ortadoğu İstihbarat Ağı" 
+          }, 
+          { 
+              title: "ABD ve İran Arasında Basra Körfezi'nde Stratejik Gerilim", 
+              description: "Basra Körfezi ve Hürmüz Boğazı'nda devriye gezen ABD Donanması'na ait muhripler ile İran Devrim Muhafızları'na ait silahlı hücumbotlar arasında tehlikeli bir yakınlaşma yaşandı.\n\nİran tarafı, ABD'nin bölgedeki askeri varlığını 'kışkırtıcı' olarak nitelendirirken, Pentagon ticari deniz taşımacılığının güvenliğini sağlamak amacıyla rutin devriyelerin süreceğini vurguladı.\n\nKüresel petrol sevkiyatının en kritik dar boğazı olan Hürmüz Boğazı'ndaki bu beklenmedik askeri gerilim, uluslararası piyasalarda petrol varil fiyatlarının %4 oranında artmasına neden oldu.", 
+              source_id: "Küresel Güvenlik Raporu" 
+          }, 
+          { 
+              title: "Kızıldeniz'de Lojistik Kriz: Ticaret Rotaları Vuruluyor", 
+              description: "Yemen'deki Husi güçleri, Kızıldeniz üzerinden geçen ticari gemilere ve batılı savaş gemilerine yönelik kamikaze dron ve balistik füze saldırılarına hız kesmeden devam ediyor.\n\nABD ve İngiliz ortak hava kuvvetleri, Yemen'deki yeraltı sığınaklarına ve füze fırlatma rampalarına önleyici şiddetli saldırılar düzenlediğini duyurdu. Buna rağmen dünyanın en büyük denizcilik şirketleri, Süveyş Kanalı rotasını kullanmayı tamamen durdurma kararı aldı.", 
+              source_id: "Bölgesel Çatışma Analizi" 
+          }
+      ]);
+  }
 }
 
 // TÜRKİYE SİYASETİ HABERLERİ
@@ -1153,12 +1148,16 @@ function canliHaberleriOlustur(veriler) {
 }
 
 async function canliHaberleriCek() {
-  canliHaberleriOlustur([
-      {title:"Küresel İklim ve Enerji Mutabakatı Onaylandı", description:"Yenilenebilir akıllı şebekelere geçişi hızlandıracak dev altyapı fonu birleşmiş milletler nezdinde onaylandı.\n\nKarbon salınımını azaltmayı hedefleyen projeler kapsamında gelişmekte olan ülkelere teknoloji transferi de sağlanacak.\n\nFosil yakıtlara olan devasa bağımlılığı kırmak için dev bütçeler ayrıldı."}, 
-      {title:"Asya-Pasifik Yeni Pakt Anlaşması", description:"Yarı iletken tedarik zincirini güvence altına alan stratejik gümrük anlaşması imzalandı.\n\nTicaret savaşlarının gölgesinde atılan bu imza, bölgesel bloklaşmayı da beraberinde getiriyor.\n\nÜlkeler teknolojik üstünlüğü elinde tutmak adına millileştirme adımlarını hızlandırıyor."}
-  ]);
-  const res = await apiIstekAt(`${WORKER_URL}/?kategori=top`);
-  if(res && res.length > 0) canliHaberleriOlustur(res);
+  let res = await apiIstekAt(`${WORKER_URL}/?kategori=top`);
+  
+  if(res && res.length > 0) {
+      canliHaberleriOlustur(res);
+  } else {
+      canliHaberleriOlustur([
+          {title:"Küresel İklim ve Enerji Mutabakatı Onaylandı", description:"Yenilenebilir akıllı şebekelere geçişi hızlandıracak dev altyapı fonu birleşmiş milletler nezdinde onaylandı.\n\nKarbon salınımını azaltmayı hedefleyen projeler kapsamında gelişmekte olan ülkelere teknoloji transferi de sağlanacak.\n\nFosil yakıtlara olan devasa bağımlılığı kırmak için dev bütçeler ayrıldı."}, 
+          {title:"Asya-Pasifik Yeni Pakt Anlaşması", description:"Yarı iletken tedarik zincirini güvence altına alan stratejik gümrük anlaşması imzalandı.\n\nTicaret savaşlarının gölgesinde atılan bu imza, bölgesel bloklaşmayı da beraberinde getiriyor.\n\nÜlkeler teknolojik üstünlüğü elinde tutmak adına millileştirme adımlarını hızlandırıyor."}
+      ]);
+  }
 }
 
 // SPOR HABERLERİ HAVUZU
@@ -1334,7 +1333,6 @@ function oyunBitir() {
   document.getElementById('oyun-secenekler').innerHTML = `<button class="oyun-secenek" style="max-width:300px" onclick="oyunuBaslat()">↩ Bugünkü Soruları Tekrarla</button>`;
 }
 
-// ASENKRON PARALEL ÇALIŞTIRICI
 window.addEventListener('load', () => {
   const aktifMedeniyet = aktifMedeniyetiGetir();
   medeniyetTemasiUygula(aktifMedeniyet);
