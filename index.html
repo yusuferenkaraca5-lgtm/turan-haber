@@ -377,7 +377,7 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
 </div>
 
 <header>
-  <div class="gokturk-bg-text">𐱅𐰇𐰼𐰚:𐰓𐰇𐰤𐰘𐰀射𐰃</div>
+  <div class="gokturk-bg-text">𐱅𐰇𐰼𐰚:𐰓𐰇𐰤𐰘𐰀𐰽𐰃</div>
   <div class="header-ic">
     <div class="logo-alan">
       <svg class="logo-sembol" viewBox="0 0 52 52" fill="none">
@@ -467,7 +467,7 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
       <div class="catisma-radar">
         <div class="cr-baslik"><div class="cr-dot"></div>Sıcak Çatışma Radarı</div>
         <div class="cr-madde" onclick="makaleAc('RADAR', 'Kızıldeniz Tedarik Hattı Baskı Altında', 'Ticari gemilerin seyrüsefer sistemlerine yönelik yanıltıcı sinyal müdahaleleri sürüyor.\n\nBölgedeki deniz taşımacılığı şirketleri, güvenlik endişeleri sebebiyle rotalarını Ümit Burnu üzerinden güneye kaydırmak zorunda kalıyor.\n\nUzmanlar, lojistik gecikmelerin kısa vadede küresel konteyner ve navlun fiyatlarında %30 oranında artışa neden olabileceği konusunda uyarıyor.', 'Bölge Raporu')"><div class="bolge">🌐 Kızıldeniz</div><h5>Kızıldeniz Tedarik Hattı Baskı Altında</h5></div>
-        <div class="cr-madde" onclick="makaleAc('RADAR', 'Doğu Avrupa Sınır Hattı Tahkimat Süreci', 'Bölgede lojistik destek ve ikmal yolları üzerindeki insansız hava aracı devriyeleri artırıldı.\n\nSınır hattı boyunca yeni nesil elektronik harp sistemleri ve hava savunma bataryaları aktif konuma getirildi.\n\nKritik energy altyapısına yönelik potansiyel sabotaj girişimlerine karşı özel güvenlik protokolleri uygulamaya konuldu.', 'Bölge Raporu')"><div class="bolge">🇪🇺 Doğu Avrupa</div><h5>Sınır Hattı Tahkimat Süreci</h5></div>
+        <div class="cr-madde" onclick="makaleAc('RADAR', 'Doğu Avrupa Sınır Hattı Tahkimat Süreci', 'Bölgede lojistik destek ve ikmal yolları üzerindeki insansız hava aracı devriyeleri artırıldı.\n\nSınır hattı boyunca yeni nesil elektronik harp sistemleri ve hava savunma bataryaları aktif konuma getirildi.\n\nKritik enerji altyapısına yönelik potansiyel sabotaj girişimlerine karşı özel güvenlik protokolleri uygulamaya konuldu.', 'Bölge Raporu')"><div class="bolge">🇪🇺 Doğu Avrupa</div><h5>Sınır Hattı Tahkimat Süreci</h5></div>
         <div class="cr-madde" style="border-bottom:none;" onclick="makaleAc('RADAR', 'Tayvan Boğazı Askeri Tatbikatları', 'Bölgede gerilim tırmanıyor. Karşılıklı deniz devriyeleri ve hava ihlalleri iddiaları peş peşe geliyor.\n\nStratejik olarak dünyanın en büyük çip üretim tesislerine ev sahipliği yapan bölge, küresel teknoloji tedariğini derinden tehdit etme potansiyeline sahip.', 'Pasifik Güvenlik Ajansı')"><div class="bolge">🌏 Asya-Pasifik</div><h5>Tayvan Boğazı Askeri Tatbikatları</h5></div>
       </div>
     </div>
@@ -711,19 +711,44 @@ window.addEventListener('scroll', () => {
   document.getElementById('ilerleme-cubugu').style.width = ((winScroll / height) * 100) + "%";
 });
 
-// UTF-8 MOJIBAKE ONARICI FONKSİYON
+// UTF-8 MOJIBAKE (ÇİFT KODLAMA) ONARICI FONKSİYON 
 function utf8Duzelt(metin) {
     if (!metin) return '';
-    return metin
+    let t = String(metin);
+    
+    // 1. Aşama: Olası "1/4" fraksiyon bozulmalarını önden yakala (Örn: DÃ1⁄4nya)
+    t = t.replace(/Ã1\/4/g, 'ü').replace(/Ã1⁄4/g, 'ü').replace(/\xC31\u20444/g, 'ü');
+
+    // 2. Aşama: Standart çift kodlanmış UTF-8 verisini programatik olarak çözme
+    try {
+        if (/[\xC2-\xC5]/.test(t) || /Ã|Ä|Å/.test(t)) {
+            t = decodeURIComponent(escape(t));
+        }
+    } catch (e) {
+        // Eğer escape işlemi patlarsa (ki bu nadirdir), sorun yok, manuel değiştiricilere devam eder
+    }
+
+    // 3. Aşama: Manuel Hex Unicode Değiştirici (Panodan veya bozuk API'den geçen görünmez karakterler için kesin çözüm)
+    return t
+        .replace(/\xC3\xA7/g, 'ç').replace(/\xC3\x87/g, 'Ç') // ç, Ç
+        .replace(/\xC4\x9F/g, 'ğ').replace(/\xC4\x9E/g, 'Ğ') // ğ, Ğ
+        .replace(/\xC4\xB1/g, 'ı').replace(/\xC4\xB0/g, 'İ') // ı, İ
+        .replace(/\xC3\xB6/g, 'ö').replace(/\xC3\x96/g, 'Ö') // ö, Ö
+        .replace(/\xC5\x9F/g, 'ş').replace(/\xC5\x9E/g, 'Ş') // ş, Ş
+        .replace(/\xC3\xBC/g, 'ü').replace(/\xC3\x9C/g, 'Ü') // ü, Ü
+        .replace(/\xE2\x80\x99/g, "'").replace(/\xE2\x80\x98/g, "'") // ’ ‘
+        .replace(/\xE2\x80\x9C/g, '"').replace(/\xE2\x80\x9D/g, '"') // “ ”
+        .replace(/\xE2\x80\x93/g, "-").replace(/\xE2\x80\x94/g, "-") // Tireler
+        
+        // Garanti Katmanı (Eski stil manuel karakterler)
         .replace(/Ã§/g, 'ç').replace(/Ã‡/g, 'Ç')
         .replace(/ÄŸ/g, 'ğ').replace(/Äž/g, 'Ğ')
         .replace(/Ä±/g, 'ı').replace(/Ä°/g, 'İ')
         .replace(/Ã¶/g, 'ö').replace(/Ã–/g, 'Ö')
         .replace(/ÅŸ/g, 'ş').replace(/Åž/g, 'Ş')
         .replace(/Ã¼/g, 'ü').replace(/Ãœ/g, 'Ü')
-        .replace(/Ã¢/g, 'â').replace(/Ã‚/g, 'Â')
-        .replace(/Ã®/g, 'î').replace(/ÃŽ/g, 'Î')
-        .replace(/Ã»/g, 'û').replace(/Ã›/g, 'Û');
+        .replace(/â€™/g, "'").replace(/â€“/g, "-")
+        .replace(/â€œ/g, '"').replace(/â€/g, '"');
 }
 
 // GÜVENLİK KORUMALARI
@@ -830,11 +855,18 @@ function makaleAc(kat, bas, met, kay) {
   document.getElementById('ilgili-alan').style.display = 'block';
   document.getElementById('modal-metin').innerHTML = ''; 
   const guvenliBas = guvenliMetin(bas);
-  aktifMakaleObjesi = { kat, baslik: guvenliBas, metin: guvenliMetin(met), kaynak: guvenliMetin(kay) };
+  
+  // İçerik tamamen boş geldiğinde gösterilecek varsayılan yedek metin
+  let guvenliMetinIcerik = guvenliMetin(met);
+  if (!guvenliMetinIcerik || guvenliMetinIcerik.includes("veritabanından getiriliyor") || guvenliMetinIcerik.length < 10) {
+      guvenliMetinIcerik = "Bu habere ait detaylı içerik şu an için haber kaynağından çekilemedi veya yalnızca manşet olarak sunulmuş durumda.\n\nDaha fazla detay için kaynak ajansın bültenini takip edebilirsiniz.";
+  }
+
+  aktifMakaleObjesi = { kat, baslik: guvenliBas, metin: guvenliMetinIcerik, kaynak: guvenliMetin(kay) };
   document.getElementById('modal-kat').textContent = kat;
   document.getElementById('modal-baslik').textContent = guvenliBas;
   
-  document.getElementById('modal-metin').innerHTML = String(guvenliMetin(met)).split('\n').filter(p=>p.trim()!=='').map(p=>`<p>${p}</p>`).join('');
+  document.getElementById('modal-metin').innerHTML = String(guvenliMetinIcerik).split('\n').filter(p=>p.trim()!=='').map(p=>`<p>${p}</p>`).join('');
   
   document.getElementById('modal-tarih').textContent = `${bugunTarihi.getDate()} ${aylar[bugunTarihi.getMonth()]} ${bugunTarihi.getFullYear()}`;
   document.getElementById('modal-kaynak').innerHTML = `<strong>Kaynak:</strong> ${guvenliMetin(kay)}`;
@@ -905,7 +937,7 @@ function heroSliderOlustur(veriler) {
         const rawUrl = resimUrl || sahte[i%sahte.length];
         
         sl.style.backgroundImage = `url('${gorselUrlOptimize(rawUrl)}')`;
-        sl.onclick = () => makaleAc('MANŞET', h.title, h.description||'Manşet haberi detayı veritabanından getiriliyor...', h.source_id);
+        sl.onclick = () => makaleAc('MANŞET', h.title, h.description||'', h.source_id);
         sl.innerHTML = `<div class="hero-icerik"><div class="hero-etiket">⚡ ${guvenliMetin(h.source_id)}</div><h2 class="hero-baslik">${guvenliMetin(h.title)}</h2><p class="hero-ozet">${guvenliMetin(h.description)}</p></div>`;
         al.appendChild(sl);
     
@@ -994,7 +1026,7 @@ function siyasetHaberleriOlustur() {
         { 
             k: "SİBER GÜVENLİK", 
             t: "Milli Siber Altyapı: Kuantum Şifreleme Dönemi Başlıyor", 
-            m: "Sağlık, Enerji ve İletişim Bakanlıklarının kritik veri altyapıları, tamamen milli Linux dağıtımı olan Pardus sunucularına ve yeni nesil kuantum şifreleme algoritmalarına taşınıyor.\n\nDevletin en üst düzey siber güvenlik yetkililerinden alınan bilgiye göre, vatandaşların kişisel e-devlet ve sağlık verilerinin korunması amacıyla ana sunucuların tamamı yurtiçindeki yeraltı, EMP korumalı veri merkezlerine taşınıyor.\n\nBu stratejik hamle ile birlikte, yabancı devlet destekli olası siber espiyonaj faaliyetlerinin ve son dönemde artan fidye yazılımı (ransomware) saldırılarının önü kesin olarak kesilmiş olacak." 
+            m: "Sağlık, Enerji ve İletişim Bakanlıklarının kritik veri altyapıları, tamamen milli Linux dağıtımı olan Pardus sunucularına ve yeni nesil kuantum şifreleme algirliğine taşınıyor.\n\nDevletin en üst düzey siber güvenlik yetkililerinden alınan bilgiye göre, vatandaşların kişisel e-devlet ve sağlık verilerinin korunması amacıyla ana sunucuların tamamı yurtiçindeki yeraltı, EMP korumalı veri merkezlerine taşınıyor.\n\nBu stratejik hamle ile birlikte, yabancı devlet destekli olası siber espiyonaj faaliyetlerinin ve son dönemde artan fidye yazılımı (ransomware) saldırılarının önü kesin olarak kesilmiş olacak." 
         },
         { 
             k: "DIŞ POLİTİKA", 
@@ -1118,7 +1150,7 @@ const tarihteBugunVerileri = {
   "23 Nisan": "23 Nisan 1920 — Türkiye Büyük Millet Meclisi (TBMM) Ankara'da açıldı.\n\nEgemenliğin kayıtsız şartsız millete ait olduğu ilan edilerek, Kurtuluş Savaşı'nın askeri ve sivil karargahı resmen faaliyete geçirildi.",
   "29 Mayıs": "29 Mayıs 1453 — Fatih Sultan Mehmet komutasındaki Osmanlı Ordusu İstanbul'u fethetti. Doğu Roma İmparatorluğu yıkıldı.\n\nOrta Çağ'ı kapatıp Yeni Çağ'ı başlatan bu devasa fetih, topçu ve lojistik teknolojisinin sınırlarının zorlandığı eşsiz bir stratejik askeri dehadır.",
   "26 Ağustos": "26 Ağustos 1071 / 1922 — Sultan Alparslan komutasındaki Selçuklu Ordusu Malazgirt Zaferi'ni kazandı.\n\nAynı gün 1922'de, Gazi Mustafa Kemal önderliğinde Anadolu'nun kesin kurtuluşunu sağlayacak olan Büyük Taarruz başladı.",
-  "30 Ağustos": "30 Ağustos 1922 — Başkomutanlık Meydan Muharebesi (Dumlupınar) zaverle sonuçlandı, Yunan ordusu hezimete uğratıldı.\n\nİşgal güçlerinin Anadolu topraklarından kesin olarak sökülüp atılmasını sağlayan bu mutlak zafer, modern Cumhuriyetin temel taşıdır.",
+  "30 Ağustos": "30 Ağustos 1922 — Başkomutanlık Meydan Muharebesi (Dumlupınar) zaferle sonuçlandı, Yunan ordusu hezimete uğratıldı.\n\nİşgal güçlerinin Anadolu topraklarından kesin olarak sökülüp atılmasını sağlayan bu mutlak zafer, modern Cumhuriyetin temel taşıdır.",
   "29 Ekim": "29 Ekim 1923 — Cumhuriyet ilan edildi. Gazi Mustafa Kemal Atatürk, Türkiye'nin ilk Cumhurbaşkanı seçildi.\n\nÜmmet toplumundan ulus devlete, saltanattan millet egemenliğine geçişin sembolü olan bugün, Türk milletinin en büyük bayramıdır.",
   "10 Kasım": "10 Kasım 1938 — Türkiye Cumhuriyeti'nin kurucusu Gazi Mustafa Kemal Atatürk hayata gözlerini yumdu.\n\nO'nun fikirleri, ilkeleri ve gösterdiği muasır medeniyetler hedefi, Türk gençliğinin yolunu aydınlatmaya sonsuza dek devam edecektir."
 };
