@@ -197,10 +197,22 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .savas-baslik { display: flex; align-items: center; gap: 15px; margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 15px; }
 .savas-baslik h2 { color: #fff; font-size: 24px; font-weight: 700; }
 
-/* --- JEOPOLİTİK HARİTA (SVG OVERLAY YAPISI) --- */
-[data-theme="dark"] .jeopolitik-harita-alani img { filter: invert(0.85) hue-rotate(180deg); }
-.harita-nokta text { text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
+/* --- SABİTLENMİŞ HARİTA (TEK BİRLEŞİK SVG YAPISI) --- */
+.jeopolitik-harita-alani { 
+  width: 100%; 
+  background: #0b121c; 
+  border-radius: 12px; 
+  overflow: hidden; 
+  margin-bottom: 2.5rem; 
+  border: 1px solid rgba(255,255,255,0.05); 
+  box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+}
+.harita-nokta text { text-shadow: 0 2px 4px rgba(0,0,0,0.8); transition: 0.3s; }
 .harita-nokta:hover circle[fill="#C0392B"] { fill: #E74C3C; }
+.harita-nokta:hover text { fill: var(--altin); }
+
+/* Dark Mode'da sadece harita görselini ters çevir, overlay renklerini koru */
+[data-theme="dark"] #svg-map-image { filter: invert(0.85) hue-rotate(180deg); }
 
 .savas-grid-2 { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1.5rem; align-items: stretch; }
 .sk-kart { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 2rem; cursor: pointer; transition: var(--gecis); display: flex; flex-direction: column; height: 100%;}
@@ -496,44 +508,45 @@ footer {
       <h2>Jeopolitik Risk Radarı</h2>
     </div>
 
-    <div class="jeopolitik-harita-alani" style="position:relative; width:100%; background:#0b121c; border-radius:12px; overflow:hidden; margin-bottom:2.5rem; border:1px solid rgba(255,255,255,0.05);">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg" style="width:100%; display:block; opacity:0.85;" id="jeopolitik-harita-img" alt="Dünya Haritası">
-      <svg id="harita-overlay" style="position:absolute; top:0; left:0; width:100%; height:100%; overflow:visible;" viewBox="0 0 1000 507" preserveAspectRatio="none">
+    <div class="jeopolitik-harita-alani">
+      <svg id="harita-overlay" style="width:100%; height:auto; display:block;" viewBox="0 0 2754 1398">
+        
+        <image href="https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg" x="0" y="0" width="2754" height="1398" opacity="0.85" id="svg-map-image" />
         
         <g class="harita-nokta" onclick="makaleAc('RADAR','Orta Doğu Kriz Hattı','Bölgedeki sınır çatışmaları ve askeri hareketlilik artıyor.','Analiz Masası')" style="cursor:pointer">
-          <circle cx="598" cy="196" r="7" fill="#C0392B" opacity="0.9"/>
-          <circle cx="598" cy="196" r="13" fill="none" stroke="#C0392B" stroke-width="2" opacity="0.5">
-            <animate attributeName="r" values="7;15;7" dur="1.5s" repeatCount="indefinite"/>
+          <circle cx="1624" cy="531" r="14" fill="#C0392B" opacity="0.9"/>
+          <circle cx="1624" cy="531" r="28" fill="none" stroke="#C0392B" stroke-width="4" opacity="0.5">
+            <animate attributeName="r" values="14;40;14" dur="1.5s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="0.8;0;0.8" dur="1.5s" repeatCount="indefinite"/>
           </circle>
-          <text x="598" y="183" text-anchor="middle" fill="#fff" font-size="11" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">İsrail-Lübnan</text>
+          <text x="1624" y="485" text-anchor="middle" fill="#fff" font-size="34" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">İsrail-Lübnan</text>
         </g>
         
         <g class="harita-nokta" onclick="makaleAc('RADAR','Doğu Avrupa Sınır Tahkimatı','Sınır hattı boyunca hava devriyeleri yoğunlaştırıldı.','Analiz Masası')" style="cursor:pointer">
-          <circle cx="578" cy="155" r="7" fill="#C0392B" opacity="0.9"/>
-          <circle cx="578" cy="155" r="13" fill="none" stroke="#C0392B" stroke-width="2" opacity="0.5">
-            <animate attributeName="r" values="7;15;7" dur="1.5s" repeatCount="indefinite"/>
+          <circle cx="1542" cy="335" r="14" fill="#C0392B" opacity="0.9"/>
+          <circle cx="1542" cy="335" r="28" fill="none" stroke="#C0392B" stroke-width="4" opacity="0.5">
+            <animate attributeName="r" values="14;40;14" dur="1.5s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="0.8;0;0.8" dur="1.5s" repeatCount="indefinite"/>
           </circle>
-          <text x="578" y="142" text-anchor="middle" fill="#fff" font-size="11" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Doğu Avrupa</text>
+          <text x="1542" y="289" text-anchor="middle" fill="#fff" font-size="34" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Doğu Avrupa</text>
         </g>
         
         <g class="harita-nokta" onclick="makaleAc('RADAR','Tayvan Boğazı Gerilimi','Karşılıklı deniz devriyeleri uluslararası ticareti tehdit ediyor.','Analiz Masası')" style="cursor:pointer">
-          <circle cx="836" cy="214" r="7" fill="#C0392B" opacity="0.9"/>
-          <circle cx="836" cy="214" r="13" fill="none" stroke="#C0392B" stroke-width="2" opacity="0.5">
-            <animate attributeName="r" values="7;15;7" dur="1.5s" repeatCount="indefinite"/>
+          <circle cx="2285" cy="587" r="14" fill="#C0392B" opacity="0.9"/>
+          <circle cx="2285" cy="587" r="28" fill="none" stroke="#C0392B" stroke-width="4" opacity="0.5">
+            <animate attributeName="r" values="14;40;14" dur="1.5s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="0.8;0;0.8" dur="1.5s" repeatCount="indefinite"/>
           </circle>
-          <text x="836" y="201" text-anchor="middle" fill="#fff" font-size="11" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Tayvan</text>
+          <text x="2285" y="541" text-anchor="middle" fill="#fff" font-size="34" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Tayvan</text>
         </g>
         
         <g class="harita-nokta" onclick="makaleAc('RADAR','Kızıldeniz Ticaret Hattı','Ticari gemilere yönelik müdahaleler lojistiği tıkıyor.','Analiz Masası')" style="cursor:pointer">
-          <circle cx="617" cy="230" r="7" fill="#C0392B" opacity="0.9"/>
-          <circle cx="617" cy="230" r="13" fill="none" stroke="#C0392B" stroke-width="2" opacity="0.5">
-            <animate attributeName="r" values="7;15;7" dur="1.5s" repeatCount="indefinite"/>
+          <circle cx="1652" cy="643" r="14" fill="#C0392B" opacity="0.9"/>
+          <circle cx="1652" cy="643" r="28" fill="none" stroke="#C0392B" stroke-width="4" opacity="0.5">
+            <animate attributeName="r" values="14;40;14" dur="1.5s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="0.8;0;0.8" dur="1.5s" repeatCount="indefinite"/>
           </circle>
-          <text x="617" y="217" text-anchor="middle" fill="#fff" font-size="11" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Kızıldeniz</text>
+          <text x="1652" y="597" text-anchor="middle" fill="#fff" font-size="34" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Kızıldeniz</text>
         </g>
         
       </svg>
@@ -646,6 +659,15 @@ footer {
 </div>
 
 <script>
+// Herhangi bir noktanın orijinal SVG üzerindeki Pixel koordinatını hesaplamak istersen kullanabileceğin fonksiyon.
+function koordinatHesapla(lat, lon) {
+  const left = ((lon + 180) / 360 * 100).toFixed(2);
+  const latRad = lat * Math.PI / 180;
+  const y = 0.5 - Math.log((1 + Math.sin(latRad)) / (1 - Math.sin(latRad))) / (4 * Math.PI);
+  const top = (y * 100).toFixed(2);
+  return { top, left };
+}
+
 const WORKER_URL = "https://turan-cache.yusuferenkaraca5.workers.dev";
 const aylar = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
 const bugunTarihi = new Date(); 
