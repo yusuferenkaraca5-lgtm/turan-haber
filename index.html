@@ -7,6 +7,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Ccircle cx='26' cy='26' r='26' fill='%2314213d'/%3E%3Ccircle cx='26' cy='26' r='24' stroke='%23C8963A' stroke-width='1.5' fill='none'/%3E%3Ccircle cx='26' cy='26' r='16' stroke='%23C8963A' stroke-width='1' fill='none'/%3E%3Ccircle cx='26' cy='26' r='5' fill='%23C8963A'/%3E%3Cline x1='26' y1='6' x2='26' y2='12' stroke='%23C8963A' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='26' y1='40' x2='26' y2='46' stroke='%23C8963A' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='6' y1='26' x2='12' y2='26' stroke='%23C8963A' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='40' y1='26' x2='46' y2='26' stroke='%23C8963A' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
 <title>TuranHaber — Türk Dünyası & Dünya Gündemi</title>
 
+<!-- FOUT (Tema Patlaması) Önleyici -->
 <script>
   if(localStorage.getItem('tema') === 'dark') {
     document.documentElement.setAttribute('data-theme', 'dark');
@@ -153,7 +154,7 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .tb-detay h4 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--altin); margin-bottom: 8px; }
 .tb-detay p { font-size: 14px; color: #d1d5db; line-height: 1.6; }
 
-/* KÜRESEL BİLİM - Düzenlemeler Yapıldı (Taşma engellendi) */
+/* KÜRESEL BİLİM */
 .bilim-ozel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3.5rem; align-items: stretch; }
 .bilim-ozel-kart { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; padding: 1.8rem; box-shadow: var(--golge); cursor: pointer; display: flex; flex-direction: column; position: relative; overflow: hidden; height: 100%; min-height: 220px;}
 .bilim-ozel-kart::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, #3b82f6, #8b5cf6); }
@@ -171,13 +172,14 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .sk-ajans { display: inline-block; background: rgba(192,57,43,0.2); color: #ff6b6b; font-size: 11px; font-weight: 700; padding: 6px 12px; border-radius: 4px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.1em; align-self: flex-start;}
 .sk-ajans.altin { background: rgba(200,150,58,0.2); color: var(--altin); border-color: rgba(200,150,58,0.3); }
 .sk-kart h3 { color: #fff; font-family: 'Playfair Display', serif; font-size: 24px; margin-bottom: 12px; line-height: 1.3; }
-.sk-kart p { color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.7; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+.sk-kart p { color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.7; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; }
 .sk-alt-grid { display: flex; flex-direction: column; gap: 1.5rem; height: 100%; }
 .sk-mini { padding: 1.5rem; flex: 1; }
 .sk-mini h3 { font-size: 18px; margin-bottom: 8px; }
 
-/* GÜNÜN MAKALESİ */
-.gm-kapsayici { background: var(--kart-bg); border-radius: 16px; overflow: hidden; box-shadow: var(--golge); border: 1px solid var(--cizgi); margin-bottom: 3.5rem; display: flex; cursor: pointer; transition: var(--gecis);}
+/* GÜNÜN MAKALESİ & RADAR (İkili Kolon) */
+.ikili-kolon { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 3.5rem; align-items: stretch;}
+.gm-kapsayici { background: var(--kart-bg); border-radius: 16px; overflow: hidden; box-shadow: var(--golge); border: 1px solid var(--cizgi); display: flex; cursor: pointer; transition: var(--gecis); height: 100%;}
 .gm-kapsayici:hover { border-color: var(--altin); transform: translateY(-4px); }
 .gm-resim { width: 45%; background-position: center; background-size: cover; position: relative;}
 .gm-resim::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 50%, var(--kart-bg) 100%); }
@@ -187,6 +189,27 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .gm-baslik { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--lacivert); margin-bottom: 15px; line-height: 1.3;}
 .gm-metin { font-size: 15px; color: var(--ikincil); line-height: 1.7; margin-bottom: 25px; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;}
 .gm-okuma-suresi { font-size: 12px; font-weight: 600; color: var(--kizil); }
+
+.catisma-radar { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 16px; overflow: hidden; box-shadow: var(--golge); height: 100%; display: flex; flex-direction: column;}
+.cr-baslik { background: rgba(192,57,43,0.1); border-bottom: 1px solid rgba(192,57,43,.15); padding: 15px 1.5rem; font-size: 15px; font-weight: 700; color: #7A1A1A; display: flex; align-items: center; gap: 8px; }
+[data-theme="dark"] .cr-baslik { color: #ff8787; }
+.cr-dot { width: 8px; height: 8px; background: var(--kizil); border-radius: 50%; animation: pulse 1.5s infinite; }
+.cr-madde { padding: 15px 1.5rem; border-bottom: 1px solid var(--cizgi); cursor: pointer; transition: var(--gecis); flex: 1; display: flex; flex-direction: column; justify-content: center;}
+.cr-madde:hover { background: rgba(0,0,0,.02); padding-left: 1.8rem; }
+.cr-madde .bolge { font-size: 10px; font-weight: 700; color: var(--kizil); margin-bottom: 5px; text-transform: uppercase;}
+.cr-madde h5 { font-size: 14px; font-weight: 600; color: var(--lacivert); line-height: 1.4; }
+
+/* 3 KOLONLU STANDART GRİDLER (Siyaset, Futbol, Tarih vb.) */
+.uc-kolon-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3.5rem; align-items: stretch;}
+.standart-makale-kart { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; transition: var(--gecis); box-shadow: var(--golge); height: 100%; min-height: 200px;}
+.standart-makale-kart:hover { transform: translateY(-4px); border-color: rgba(200,150,58,0.3); }
+.smk-serit { height: 4px; background: linear-gradient(90deg, var(--lacivert), var(--altin)); flex-shrink: 0;}
+.smk-serit.spor-renk { background: linear-gradient(90deg, #10b981, #3b82f6); }
+.smk-icerik { padding: 1.5rem; flex: 1; display: flex; flex-direction: column;}
+.smk-badge { align-self: flex-start; font-size: 10px; font-weight: 700; background: var(--altin-acik); color: #9A6A10; padding: 4px 10px; border-radius: 4px; margin-bottom: 12px; text-transform: uppercase;}
+.smk-badge.spor-badge { background: rgba(16, 185, 129, 0.15); color: #059669; }
+.standart-makale-kart h4 { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--lacivert); line-height: 1.4; margin-bottom: 10px; }
+.standart-makale-kart p { font-size: 13px; color: var(--ikincil); line-height: 1.6; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; margin: 0;}
 
 /* DÜNYA GÜNDEMİ KARTLARI */
 .dunya-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 3.5rem; align-items: stretch;}
@@ -200,39 +223,6 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .dk-catisma-yazi { color: var(--kizil); font-size: 11px; font-weight: 700; margin-bottom: 10px; text-transform: uppercase;}
 .dk-icerik h4 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--lacivert); line-height: 1.3; margin-bottom: 12px; }
 .dk-icerik p { font-size: 14px; color: var(--ikincil); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 15px; flex-grow: 1;}
-
-/* İKİLİ KOLON */
-.ikili-kolon { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 3.5rem; align-items: stretch;}
-.haber-bolum { background: var(--kart-bg); border-radius: 12px; border: 1px solid var(--cizgi); overflow: hidden; box-shadow: var(--golge); height: 100%; display: flex; flex-direction: column; justify-content: space-between;}
-.haber-satir { padding: 1.5rem; border-bottom: 1px solid var(--cizgi); cursor: pointer; transition: var(--gecis); flex: 1; display: flex; flex-direction: column; justify-content: center;}
-.haber-satir:hover { background: rgba(0,0,0,0.015); padding-left: 1.8rem; }
-.haber-satir:last-child { border-bottom: none; }
-.etiket { display: inline-block; font-size: 10px; font-weight: 700; margin-bottom: 8px; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; align-self: flex-start;}
-.e-siyaset { background: rgba(139, 92, 246, 0.15); color: #5b21b6; }
-.e-saglik { background: rgba(16, 185, 129, 0.15); color: #065f46; }
-.haber-satir h3 { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--lacivert); line-height: 1.35; margin-bottom: 8px; }
-.haber-satir p { font-size: 13px; color: var(--ikincil); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-
-/* RADAR & FUTBOL & TARİH */
-.catisma-radar { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; overflow: hidden; box-shadow: var(--golge); height: 100%; display: flex; flex-direction: column;}
-.cr-baslik { background: rgba(192,57,43,0.1); border-bottom: 1px solid rgba(192,57,43,.15); padding: 15px 1.5rem; font-size: 15px; font-weight: 700; color: #7A1A1A; display: flex; align-items: center; gap: 8px; }
-[data-theme="dark"] .cr-baslik { color: #ff8787; }
-.cr-dot { width: 8px; height: 8px; background: var(--kizil); border-radius: 50%; animation: pulse 1.5s infinite; }
-.cr-madde { padding: 15px 1.5rem; border-bottom: 1px solid var(--cizgi); cursor: pointer; transition: var(--gecis); flex: 1; display: flex; flex-direction: column; justify-content: center;}
-.cr-madde:hover { background: rgba(0,0,0,.02); padding-left: 1.8rem; }
-.cr-madde .bolge { font-size: 10px; font-weight: 700; color: var(--kizil); margin-bottom: 5px; text-transform: uppercase;}
-.cr-madde h5 { font-size: 14px; font-weight: 600; color: var(--lacivert); line-height: 1.4; }
-
-.uc-kolon-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3.5rem; align-items: stretch;}
-.standart-makale-kart { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; transition: var(--gecis); box-shadow: var(--golge); height: 100%; min-height: 200px;}
-.standart-makale-kart:hover { transform: translateY(-4px); border-color: rgba(200,150,58,0.3); }
-.smk-serit { height: 4px; background: linear-gradient(90deg, var(--lacivert), var(--altin)); flex-shrink: 0;}
-.smk-serit.spor-renk { background: linear-gradient(90deg, #10b981, #3b82f6); }
-.smk-icerik { padding: 1.5rem; flex: 1; display: flex; flex-direction: column;}
-.smk-badge { align-self: flex-start; font-size: 10px; font-weight: 700; background: var(--altin-acik); color: #9A6A10; padding: 4px 10px; border-radius: 4px; margin-bottom: 12px; text-transform: uppercase;}
-.smk-badge.spor-badge { background: rgba(16, 185, 129, 0.15); color: #059669; }
-.standart-makale-kart h4 { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--lacivert); line-height: 1.4; margin-bottom: 10px; }
-.standart-makale-kart p { font-size: 13px; color: var(--ikincil); line-height: 1.6; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; margin: 0;}
 
 /* MİNİ OYUN ALANI */
 .mini-oyun-kapsayici { background: linear-gradient(135deg, var(--lacivert) 0%, #1a2a40 100%); border-radius: 16px; padding: 3rem 2rem; margin-bottom: 3.5rem; position: relative; overflow: hidden; box-shadow: var(--golge); color: #fff; text-align: center; border: 1px solid rgba(200,150,58,0.3);}
@@ -459,33 +449,29 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
     <div class="savas-grid-2" id="savas-grid"></div>
   </div>
 
-  <div class="bolum-baslik anim-up">
-    <div class="bolum-sembol">🧠</div><h2>Günün Odak Noktası</h2>
-  </div>
-  <div class="gm-kapsayici anim-up" id="gunun-makalesi-alani"></div>
-
-  <div class="bolum-baslik anim-up">
-    <div class="bolum-sembol">🌐</div><h2>Dünya Gündemi (Canlı)</h2>
-  </div>
-  <div class="dunya-grid" id="canli-haber-alani"></div>
-
+  <!-- GÜNÜN MAKALESİ VE RADAR (2'Lİ KOLON) -->
   <div class="ikili-kolon">
     <div class="anim-up" style="display: flex; flex-direction: column;">
-      <div class="bolum-baslik" id="siyaset"><div class="bolum-sembol">🏛️</div><h2>Türkiye Siyaseti & Milli Gündem</h2></div>
-      <div class="haber-bolum">
-        <div class="haber-satir" onclick="makaleAc('SİYASET', 'Milli Savunma ve Stratejik Yatırımlar Komisyonu Toplandı', 'Ankara Kulislerinden gelen bilgilere göre, yerli savunma sanayii ekosisteminin finansman ve yarı iletken tedarik güvenliği masaya yatırıldı.\n\nÖzellikle dışa bağımlılığın azaltılması hedeflenen toplantıda, yerli çip üretim tesisleri için yeni teşvik paketlerinin yolda olduğu vurgulandı.\n\nSavunma projelerinin siber güvenliğinin sağlanması adına kamu-özel sektör iş birliklerinin artırılacağı bildirildi.', 'Ankara Mahreci')"><div><span class="etiket e-siyaset">Ankara Kulisi</span><h3>Milli Savunma Stratejisi</h3><p>Ankara Kulislerinden gelen bilgilere göre, yerli savunma sanayii ekosisteminin geliştirilmesi ve yarı iletken tedarik güvenliği masaya yatırıldı...</p></div></div>
-        <div class="haber-satir" onclick="makaleAc('SAĞLIK', 'Milli Siber Sağlık Projesi Entegrasyonu', 'Sağlık Bakanlığı veri altyapısı, kuantum şifreleme ve milli Linux dağıtımı algoritmalarıyla siber taarruzlara karşı koruma kalkanına alındı.\n\nBakanlık yetkililerinden alınan bilgiye göre, hastaların kişisel sağlık verilerinin korunması amacıyla sunucuların tamamı yerli altyapılara taşınıyor.\n\nBu hamle ile birlikte olası küresel veri sızıntılarının ve fidye yazılımı (ransomware) saldırılarının tamamen engellenmesi hedefleniyor.', 'Milli Gündem')"><div><span class="etiket e-saglik">Siber Savunma</span><h3>Milli Siber Sağlık Altyapısı</h3><p>Sağlık Bakanlığı veri altyapısı, kuantum şifreleme ve milli Linux dağıtımı algoritmalarıyla dış müdahalelere karşı korumaya alındı...</p></div></div>
-      </div>
+      <div class="bolum-baslik"><div class="bolum-sembol">🧠</div><h2>Günün Odak Noktası</h2></div>
+      <div class="gm-kapsayici" id="gunun-makalesi-alani" style="margin-bottom: 0;"></div>
     </div>
     
     <div class="anim-up" style="display: flex; flex-direction: column;">
+      <div class="bolum-baslik"><div class="bolum-sembol">📡</div><h2>Sıcak Radar</h2></div>
       <div class="catisma-radar">
         <div class="cr-baslik"><div class="cr-dot"></div>Sıcak Çatışma Radarı</div>
         <div class="cr-madde" onclick="makaleAc('RADAR', 'Kızıldeniz Tedarik Hattı Baskı Altında', 'Ticari gemilerin seyrüsefer sistemlerine yönelik yanıltıcı sinyal müdahaleleri sürüyor.\n\nBölgedeki deniz taşımacılığı şirketleri, güvenlik endişeleri sebebiyle rotalarını Ümit Burnu üzerinden güneye kaydırmak zorunda kalıyor.\n\nUzmanlar, lojistik gecikmelerin kısa vadede küresel konteyner ve navlun fiyatlarında %30 oranında artışa neden olabileceği konusunda uyarıyor.', 'Bölge Raporu')"><div class="bolge">🌐 Kızıldeniz</div><h5>Kızıldeniz Tedarik Hattı Baskı Altında</h5></div>
         <div class="cr-madde" onclick="makaleAc('RADAR', 'Doğu Avrupa Sınır Hattı Tahkimat Süreci', 'Bölgede lojistik destek ve ikmal yolları üzerindeki insansız hava aracı devriyeleri artırıldı.\n\nSınır hattı boyunca yeni nesil elektronik harp sistemleri ve hava savunma bataryaları aktif konuma getirildi.\n\nKritik enerji altyapısına yönelik potansiyel sabotaj girişimlerine karşı özel güvenlik protokolleri uygulamaya konuldu.', 'Bölge Raporu')"><div class="bolge">🇪🇺 Doğu Avrupa</div><h5>Sınır Hattı Tahkimat Süreci</h5></div>
+        <div class="cr-madde" style="border-bottom:none;" onclick="makaleAc('RADAR', 'Tayvan Boğazı Askeri Tatbikatları', 'Bölgede gerilim tırmanıyor. Karşılıklı deniz devriyeleri ve hava ihlalleri iddiaları peş peşe geliyor.\n\nStratejik olarak dünyanın en büyük çip üretim tesislerine ev sahipliği yapan bölge, küresel teknoloji tedariğini derinden tehdit etme potansiyeline sahip.', 'Pasifik Güvenlik Ajansı')"><div class="bolge">🌏 Asya-Pasifik</div><h5>Tayvan Boğazı Askeri Tatbikatları</h5></div>
       </div>
     </div>
   </div>
+
+  <!-- YENİ BÖLÜM: TÜRKİYE SİYASETİ (3'LÜ GRİD) -->
+  <div class="bolum-baslik anim-up" id="siyaset">
+      <div class="bolum-sembol">🏛️</div><h2>Türkiye Siyaseti & Milli Gündem</h2>
+  </div>
+  <div class="uc-kolon-grid" id="siyaset-grid-alan"></div>
 
   <div class="bolum-baslik anim-up" id="futbol">
       <div class="bolum-sembol">⚽</div><h2>Spor & Futbol Gündemi</h2>
@@ -511,6 +497,11 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
   </div>
   <div class="uc-kolon-grid" id="tarih-grid-alan"></div>
 
+  <div class="bolum-baslik anim-up">
+    <div class="bolum-sembol">🌐</div><h2>Dünya Gündemi (Canlı)</h2>
+  </div>
+  <div class="dunya-grid" id="canli-haber-alani"></div>
+
 </main>
 
 <footer>
@@ -532,6 +523,7 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
   </div>
 </footer>
 
+<!-- HABER OKUMA MODALI -->
 <div class="modal-arkaplan" id="makale-modal" onclick="if(event.target===this) modalKapat()">
   <div class="modal-kutu">
     <div class="modal-icerik">
@@ -553,6 +545,7 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
   </div>
 </div>
 
+<!-- TEMA SEÇİCİ MODAL -->
 <div class="tema-secici-arkaplan" id="tema-secici" onclick="if(event.target===this) temaSeciciKapat()">
   <div class="tema-secici-kutu">
     <div class="ts-baslik">
@@ -717,14 +710,31 @@ window.addEventListener('scroll', () => {
   document.getElementById('ilerleme-cubugu').style.width = ((winScroll / height) * 100) + "%";
 });
 
+// UTF-8 MOJIBAKE ONARICI FONKSİYON
+function utf8Duzelt(metin) {
+    if (!metin) return '';
+    return metin
+        .replace(/Ã§/g, 'ç').replace(/Ã‡/g, 'Ç')
+        .replace(/ÄŸ/g, 'ğ').replace(/Äž/g, 'Ğ')
+        .replace(/Ä±/g, 'ı').replace(/Ä°/g, 'İ')
+        .replace(/Ã¶/g, 'ö').replace(/Ã–/g, 'Ö')
+        .replace(/ÅŸ/g, 'ş').replace(/Åž/g, 'Ş')
+        .replace(/Ã¼/g, 'ü').replace(/Ãœ/g, 'Ü')
+        .replace(/Ã¢/g, 'â').replace(/Ã‚/g, 'Â')
+        .replace(/Ã®/g, 'î').replace(/ÃŽ/g, 'Î')
+        .replace(/Ã»/g, 'û').replace(/Ã›/g, 'Û');
+}
+
 // GÜVENLİK KORUMALARI
 function guvenliMetin(metin) {
   if(!metin || metin === "null" || metin === "undefined") return '';
-  return String(metin)
+  let temiz = String(metin)
     .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '') 
     .replace(/on\w+="[^"]*"/g, '').replace(/on\w+='[^']*'/g, '').replace(/on\w+=\w+/g, '')
     .replace(/<[^>]*>?/gm, '') 
     .replace(/ə/g, 'e').replace(/Ə/g, 'E').replace(/&amp;/g, '&').replace(/&quot;/g, '"').trim();
+  
+  return utf8Duzelt(temiz); // Karakter bozukluklarını düzeltip gönderiyoruz
 }
 
 function attrGuvenli(str) {
@@ -823,7 +833,7 @@ function makaleAc(kat, bas, met, kay) {
   document.getElementById('modal-kat').textContent = kat;
   document.getElementById('modal-baslik').textContent = guvenliBas;
   
-  // Paragraf oluşturma mantığı: Satır atlamalarını algılar ve paragraflara böler.
+  // Satır atlamalarını paragrafa çevirme işlemi
   document.getElementById('modal-metin').innerHTML = String(guvenliMetin(met)).split('\n').filter(p=>p.trim()!=='').map(p=>`<p>${p}</p>`).join('');
   
   document.getElementById('modal-tarih').textContent = `${bugunTarihi.getDate()} ${aylar[bugunTarihi.getMonth()]} ${bugunTarihi.getFullYear()}`;
@@ -839,7 +849,7 @@ function makaleAc(kat, bas, met, kay) {
   const ig = document.getElementById('ilgili-haberler-grid'); ig.innerHTML = '';
   [{t:"Tedarik Zincirinde Rota Arayışları", k:"Ekonomi"}, {t:"Yarı İletken Pazarında Rekabet", k:"Teknoloji"}, {t:"Yapay Zeka ve Veri Yasaları", k:"Hukuk"}].sort(()=>0.5-Math.random()).slice(0,3).forEach(ih => {
      const k = document.createElement('div'); k.className = 'ilgili-kart';
-     k.onclick = () => makaleAc(ih.k, ih.t, "Detaylı analiz veritabanından çekiliyor. Bölgesel dinamikler ve uluslararası ticaret yollarındaki değişimler bu süreçte belirleyici olacak.\n\nYeni nesil tedarik zinciri modellerinin önümüzdeki 10 yıl içinde tamamen dijitalleşmesi bekleniyor.", "Arşiv");
+     k.onclick = () => makaleAc(ih.k, ih.t, "Detaylı analiz veritabanından çekiliyor. Bölgesel dinamikler ve uluslararası ticaret yollarındaki değişimler bu süreçte belirleyici olacak.\n\nYeni nesil tedarik zinciri modellerinin önümüzdeki 10 yıl içinde tamamen dijitalleşmesi bekleniyor.\n\nSiyasi aktörlerin kararları doğrudan bu süreci etkileyecek ve pazar paylarında sert dalgalanmalar yaratacaktır.", "Arşiv");
      k.innerHTML = `<span class="i-kaynak">${ih.k}</span><h5>${ih.t}</h5>`;
      ig.appendChild(k);
   });
@@ -865,8 +875,8 @@ async function apiIstekAt(url) {
 }
 
 const gunlukMakaleler = [
-  { t: "Evrenin Sınırlarının Ötesinde Ne Var?", e: "Astrofizik", r: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa", m: "Bilim insanları gözlemlenebilir evrenin 93 milyar ışık yılı genişliğinde olduğunu biliyor. Ancak bu devasa hacmin ötesinde ne olduğu, modern fizikteki en büyük sırlardan biridir.\n\nBazı teorisyenler, kozmik enflasyon modeli uyarınca evrenin sonsuz bir 'çoklu evren' (multiverse) okyanusundaki küçük bir kabarcık olabileceğini savunuyor. Bu kabarcıkların her birinde fizik yasaları bile farklı işleyebilir.\n\nJames Webb Uzay Teleskobu'nun derin alan gözlemleri, her geçen gün Big Bang'in ilk anlarına daha yakından bakmamızı sağlıyor, ancak sınırların ötesini görmek için tamamen yeni bir fizik paradigmasına ihtiyacımız olabilir." },
-  { t: "İnsan Beyni %10'unu mu Kullanıyor?", e: "Nörobilim", r: "https://images.unsplash.com/photo-1507413245164-6160d8298b31", m: "Popüler kültürde yaygın olan 'insan beyni kapasitesinin sadece yüzde onunu kullanır' inancı tamamen bir efsanedir. FMRI taramaları, uyurken bile beynimizin neredeyse tamamının aktif olduğunu gösteriyor.\n\nAncak beynin asıl mucizesi kullanım yüzdesinde değil, nöroplastisite yeteneğindedir. Yani kullanılmayan ya da hasar gören nöron ağlarının görevlerini diğer nöronların devralarak beyni sürekli 'yeniden kablolaması' durumudur.\n\nBu yetenek sayesinde felçli hastalar yeniden hareket yetisi kazanabiliyor veya insanlar çok ileri yaşlarda bile tamamen yeni diller ve beceriler öğrenebiliyorlar." }
+  { t: "Evrenin Sınırlarının Ötesinde Ne Var?", e: "Astrofizik", r: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa", m: "Bilim insanları gözlemlenebilir evrenin 93 milyar ışık yılı genişliğinde olduğunu biliyor. Ancak bu devasa hacmin ötesinde ne olduğu, modern fizikteki en büyük sırlardan biridir.\n\nBazı teorisyenler, kozmik enflasyon modeli uyarınca evrenin sonsuz bir 'çoklu evren' (multiverse) okyanusundaki küçük bir kabarcık olabileceğini savunuyor. Bu kabarcıkların her birinde fizik yasaları bile farklı işleyebilir.\n\nJames Webb Uzay Teleskobu'nun derin alan gözlemleri, her geçen gün Big Bang'in ilk anlarına daha yakından bakmamızı sağlıyor, ancak sınırların ötesini görmek için tamamen yeni bir fizik paradigmasına ihtiyacımız olabilir.\n\nEğer çoklu evren teorisi kanıtlanırsa, insanlık tarihindeki en büyük felsefi ve bilimsel şok dalgalarından biri yaşanacak. Çünkü bu, yaşadığımız evrenin sayısız ihtimalden sadece biri olduğu anlamına gelecek." },
+  { t: "İnsan Beyni %10'unu mu Kullanıyor?", e: "Nörobilim", r: "https://images.unsplash.com/photo-1507413245164-6160d8298b31", m: "Popüler kültürde yaygın olan 'insan beyni kapasitesinin sadece yüzde onunu kullanır' inancı tamamen bir efsanedir. FMRI taramaları, uyurken bile beynimizin neredeyse tamamının aktif olduğunu gösteriyor.\n\nAncak beynin asıl mucizesi kullanım yüzdesinde değil, nöroplastisite yeteneğindedir. Yani kullanılmayan ya da hasar gören nöron ağlarının görevlerini diğer nöronların devralarak beyni sürekli 'yeniden kablolaması' durumudur.\n\nBu yetenek sayesinde felçli hastalar yeniden hareket yetisi kazanabiliyor veya insanlar çok ileri yaşlarda bile tamamen yeni diller ve beceriler öğrenebiliyorlar.\n\nYakın gelecekte Elon Musk'ın Neuralink gibi projeleri, bu nöroplastisite yeteneğini dijital çiplerle destekleyerek insan beyninin bilgi işleme hızını hayal edilemeyecek seviyelere çıkarmayı planlıyor." }
 ];
 
 function gununMakalesiniYukle() {
@@ -918,7 +928,10 @@ function heroSliderOlustur(veriler) {
 }
 
 async function heroSliderGuncelle() {
-  heroSliderOlustur([{title: "Kuantum Şifreleme Ağlarında İlk Kıtalararası Başarı", description: "Avrupa ve Asya arasındaki fiber optik hatlarda kuantum anahtar dağıtımı (QKD) ile hacklenmesi imkansız ilk veri transferi gerçekleştirildi.\n\nBu tarihi hamle, siber güvenlikte yeni bir çağın başlangıcı olarak kabul ediliyor.", source_id: "KÜRESEL SİBER RAPOR"}, {title: "Yarı İletken Savaşında Tayvan Alternatifi", description: "Dev teknoloji şirketleri, tedarik zincirini güvence altına almak için çip üretimini Japonya ve ABD'deki yeni mega fabrikalara kaydırma kararı aldı.\n\nJeopolitik risklerin minimize edilmesi hedefleniyor.", source_id: "TEKNOLOJİ & EKONOMİ"}]);
+  heroSliderOlustur([
+      {title: "Yapay Zeka Otomobil Sektörünün Oyun Kurallarını Yeniden Yazıyor", description: "Otonom sürüş teknolojileri ve akıllı batarya yönetimi sistemlerinde yapay zekanın hakimiyeti artıyor. Geleneksel markalar rekabette zorlanıyor.\n\nYeni nesil yazılım destekli araçlar artık sadece bir ulaşım aracı değil, aynı zamanda hareketli bir veri merkezine dönüşmüş durumda.", source_id: "TEKNOLOJİ & EKONOMİ"}, 
+      {title: "Kuantum Şifreleme Ağlarında İlk Kıtalararası Başarı", description: "Avrupa ve Asya arasındaki fiber optik hatlarda kuantum anahtar dağıtımı (QKD) ile hacklenmesi imkansız ilk veri transferi gerçekleştirildi.\n\nBu tarihi hamle, siber güvenlikte yeni bir çağın başlangıcı olarak kabul ediliyor.", source_id: "KÜRESEL SİBER RAPOR"}
+  ]);
   const res = await apiIstekAt(`${WORKER_URL}/?kategori=top`);
   if(res && res.length > 0) heroSliderOlustur(res); 
 }
@@ -931,23 +944,70 @@ function hGec(i) {
   sList[aSlide].classList.add('active'); nList[aSlide].classList.add('active');
 }
 
+// SAVAŞ & ÇATIŞMA HABERLERİ (Güncel Askeri Çatışmalara Çevrildi)
 function savasHaberleriOlustur(veriler) {
   const grid = document.getElementById('savas-grid'); if(!grid) return;
   grid.innerHTML = ''; const ag = document.createElement('div'); ag.className = 'sk-alt-grid';
   try {
       veriler.slice(0, 3).forEach((h, i) => {
           const c = document.createElement('div'); c.onclick = () => makaleAc('SAVAŞ', h.title, h.description, h.source_id);
-          if(i===0) { c.className = 'sk-kart goster'; c.innerHTML = `<div class="sk-ajans">KRİTİK</div><h3>${guvenliMetin(h.title)}</h3><p>${guvenliMetin(h.description)}</p>`; grid.appendChild(c); } 
-          else { c.className = 'sk-kart sk-mini goster'; c.innerHTML = `<div class="sk-ajans altin">ANALİZ</div><h3>${guvenliMetin(h.title)}</h3><p>${guvenliMetin(h.description)}</p>`; ag.appendChild(c); }
+          if(i===0) { c.className = 'sk-kart goster'; c.innerHTML = `<div class="sk-ajans">KÜRESEL KRİZ</div><h3>${guvenliMetin(h.title)}</h3><p>${guvenliMetin(h.description)}</p>`; grid.appendChild(c); } 
+          else { c.className = 'sk-kart sk-mini goster'; c.innerHTML = `<div class="sk-ajans altin">ÇATIŞMA ANALİZİ</div><h3>${guvenliMetin(h.title)}</h3><p>${guvenliMetin(h.description)}</p>`; ag.appendChild(c); }
       });
       grid.appendChild(ag); 
   } catch (err) { console.error(err); }
 }
 
 async function savasHaberleriniGuncelle() {
-  savasHaberleriOlustur([{ title: "Kuzey Kutbu Lojistik Hatlarında Siber Teyakkuz", description: "Buzulların erimesiyle açılan yeni Arktik ticaret yolları üzerinde askeri ve ticari veri ağlarına yönelik koordineli siber devriyeler başlatıldı.\n\nKutup dairesine kıyısı olan ülkeler, hem askeri denizaltı devriyelerini sıkılaştırdı hem de uydular arası iletişim hatlarını yeni nesil sinyal bozucu teknolojilerle koruma altına aldı.", source_id: "İstihbarat Dairesi" }, { title: "Pasifik Savunma Hattı Otonomlaşıyor", description: "Bölgesel deniz güvenliğini artırmak amacıyla radar kontrollü insansız denizaltı filoları ortak devriye sistemine geçirildi. İnsansız araçlar yapay zeka destekli otonom hedeflendirme yapabiliyor.", source_id: "Strateji Analiz" }, { title: "Dron Sürüsü Teknolojilerinde Yeni Doktrin", description: "Uluslararası savunma platformları, havada birbirleriyle otonom iletişim kurabilen yüzlerce küçük İHA'nın entegre edildiği yeni savaş doktrinini resmi olarak test etmeye başladı.", source_id: "Askeri Arşiv" }]);
-  const sH = await apiIstekAt(`${WORKER_URL}/?kategori=world&q=${encodeURIComponent("savaş OR ordu OR savunma")}`);
+  // Varsayılan askeri çatışma haberleri eklendi
+  savasHaberleriOlustur([
+      { 
+          title: "Orta Doğu'da Çatışma Çemberi Genişliyor: İsrail - Lübnan Sınırında Sıcak Saatler", 
+          description: "İsrail ordusu (IDF) ile Hizbullah güçleri arasında Lübnan'ın güney sınırında karşılıklı topçu atışları ve hava saldırıları şiddetini artırdı.\n\nİsrail savaş uçakları, Beyrut'un güneyindeki stratejik altyapıları hedef alırken, Hizbullah buna karşılık olarak Kuzey İsrail'deki askeri üslere yoğun roket atışları gerçekleştirdi.\n\nABD Merkez Kuvvetler Komutanlığı (CENTCOM), bölgedeki gerilimin bölgesel bir savaşa evrilmemesi için Doğu Akdeniz'deki donanma unsurlarını teyakkuza geçirdi. Diplomatik kaynaklar, ateşkes görüşmelerinin şu an için durduğunu belirtiyor.\n\nSınır köylerinden binlerce sivilin kuzeye ve güneye doğru tahliyesi ise trajik boyutlara ulaşmış durumda.", 
+          source_id: "Ortadoğu İstihbarat Ağı" 
+      }, 
+      { 
+          title: "ABD ve İran Arasında Basra Körfezi'nde Stratejik Gerilim", 
+          description: "Basra Körfezi ve Hürmüz Boğazı'nda devriye gezen ABD Donanması'na ait muhripler ile İran Devrim Muhafızları'na ait silahlı hücumbotlar arasında tehlikeli bir yakınlaşma yaşandı.\n\nİran tarafı, ABD'nin bölgedeki askeri varlığını 'kışkırtıcı' olarak nitelendirirken, Pentagon ticari deniz taşımacılığının güvenliğini sağlamak amacıyla rutin devriyelerin süreceğini vurguladı.\n\nKüresel petrol sevkiyatının en kritik dar boğazı olan Hürmüz Boğazı'ndaki bu beklenmedik askeri gerilim, uluslararası piyasalarda petrol varil fiyatlarının %4 oranında artmasına neden oldu.", 
+          source_id: "Küresel Güvenlik Raporu" 
+      }, 
+      { 
+          title: "Kızıldeniz'de Lojistik Kriz: Ticaret Rotaları Vuruluyor", 
+          description: "Yemen'deki Husi güçleri, Kızıldeniz üzerinden geçen ticari gemilere ve batılı savaş gemilerine yönelik kamikaze dron ve balistik füze saldırılarına hız kesmeden devam ediyor.\n\nABD ve İngiliz ortak hava kuvvetleri, Yemen'deki yeraltı sığınaklarına ve füze fırlatma rampalarına önleyici şiddetli saldırılar düzenlediğini duyurdu. Buna rağmen dünyanın en büyük denizcilik şirketleri, Süveyş Kanalı rotasını kullanmayı tamamen durdurma kararı aldı.\n\nKonteyner gemilerinin Afrika'nın etrafını dolanmak zorunda kalması, Avrupa'daki limanlarda büyük tedarik zinciri krizlerinin yaşanacağının habercisi.", 
+          source_id: "Bölgesel Çatışma Analizi" 
+      }
+  ]);
+  
+  const sH = await apiIstekAt(`${WORKER_URL}/?kategori=world&q=${encodeURIComponent("israil OR lübnan OR abd OR iran OR ukrayna OR rusya")}`);
   if(sH && sH.length >= 2) savasHaberleriOlustur(sH);
+}
+
+// YENİ BÖLÜM: TÜRKİYE SİYASETİ HABERLERİ
+function siyasetHaberleriOlustur() {
+    const grid = document.getElementById('siyaset-grid-alan'); if(!grid) return;
+    grid.innerHTML = '';
+    [
+        { 
+            k: "ANKARA KULİSİ", 
+            t: "Milli Savunma Stratejisi ve Yeni Teşvik Paketleri", 
+            m: "Ankara kulislerinden gelen bilgilere göre, yerli savunma sanayii ekosisteminin geliştirilmesi ve yarı iletken tedarik güvenliği kabinede masaya yatırıldı.\n\nÖzellikle mikroçip üretiminde dışa bağımlılığın tamamen azaltılması hedeflenen toplantıda, yerli çip üretim tesisleri kuracak holdingler için yeni ve devasa teşvik paketlerinin yolda olduğu vurgulandı.\n\nBunun yanı sıra insansız savaş uçakları Kızılelma ve Anka-3'ün seri üretim aşamalarının hızlandırılması için kamu-özel sektör iş birliklerinin artırılacağı bildirildi. Savunma bütçesindeki bu tarihi artışın, önümüzdeki 5 yılda teknoloji ihracatına müthiş bir ivme kazandırması bekleniyor." 
+        },
+        { 
+            k: "SİBER GÜVENLİK", 
+            t: "Milli Siber Altyapı: Kuantum Şifreleme Dönemi Başlıyor", 
+            m: "Sağlık, Enerji ve İletişim Bakanlıklarının kritik veri altyapıları, tamamen milli Linux dağıtımı olan Pardus sunucularına ve yeni nesil kuantum şifreleme algoritmalarına taşınıyor.\n\nDevletin en üst düzey siber güvenlik yetkililerinden alınan bilgiye göre, vatandaşların kişisel e-devlet ve sağlık verilerinin korunması amacıyla ana sunucuların tamamı yurtiçindeki yeraltı, EMP korumalı veri merkezlerine taşınıyor.\n\nBu stratejik hamle ile birlikte, yabancı devlet destekli olası siber espiyonaj faaliyetlerinin ve son dönemde artan fidye yazılımı (ransomware) saldırılarının önü kesin olarak kesilmiş olacak." 
+        },
+        { 
+            k: "DIŞ POLİTİKA", 
+            t: "Doğu Akdeniz'de Yeni Enerji ve Diplomasi Doktrini", 
+            m: "Türkiye'nin Doğu Akdeniz'deki sismik araştırma ve derin deniz sondaj faaliyetleri, bölgedeki yeni diplomatik müzakerelerin gölgesinde stratejik olarak yeniden şekilleniyor.\n\nDışişleri Bakanlığı kaynakları, münhasır ekonomik bölge (MEB) haklarının tartışmasız şekilde korunması şartıyla, kıyıdaş bölge ülkeleriyle ortak enerji transferi projelerine ve boru hatlarına açık olduklarını bir kez daha net bir şekilde dile getirdi.\n\nÖzellikle Avrupa'nın içine düştüğü enerji krizine en güvenilir alternatif olarak sunulan 'Anadolu Gaz Merkezi' projesinin, uluslararası finansman görüşmelerinde büyük hız kazandığı raporlanıyor." 
+        }
+    ].forEach((h, idx) => {
+        const c = document.createElement('div'); c.className = 'standart-makale-kart anim-up goster'; c.style.transitionDelay = `${idx*0.1}s`;
+        c.onclick = () => makaleAc('SİYASET', h.t, h.m, "TuranHaber Ankara Bürosu");
+        c.innerHTML = `<div class="smk-serit" style="background: linear-gradient(90deg, #5b21b6, #8b5cf6);"></div><div class="smk-icerik"><span class="smk-badge" style="background: rgba(139, 92, 246, 0.15); color: #5b21b6;">${h.k}</span><h4>${h.t}</h4><p>${h.m}</p></div>`;
+        grid.appendChild(c);
+    });
 }
 
 function bilimHaberleriOlustur(veriler) {
@@ -965,9 +1025,9 @@ function bilimHaberleriOlustur(veriler) {
 
 async function kureselBilimGuncelle() {
   bilimHaberleriOlustur([
-      {title: "Nöral Arayüz Çipleri İnsan Testine Başladı", description: "Motor korteks sinyallerini direkt dijital veriye dönüştüren biyolojik işlemciler, felçli hastaların bilgisayar kontrolünü sağlamasına önayak oldu.\n\nBu çipler beyindeki ince zarlara entegre edilerek, düşünce hızında komut iletimi sağlıyor. Önümüzdeki 5 yıl içinde klinik denemelerin bitmesi planlanıyor.", source_id: "NöroTıp Enstitüsü"}, 
-      {title: "Yapay Zeka ile Yeni Nesil Protein Sentezi", description: "Biyoteknoloji laboratuvarları, hücreleri doğrudan hedefleyen özelleştirilmiş antikorları 48 saatte üreten yeni bir algoritma geliştirdi.\n\nKlasik yöntemlerle aylar süren ilaç keşif süreçleri, derin öğrenme algoritmalarının protein katlanmasını kusursuz tahmin etmesiyle devrim niteliğinde bir hıza ulaştı.", source_id: "Biyomedikal Arşiv"},
-      {title: "Füzyon Reaktöründe Yeni Plazma Rekoru Kırıldı", description: "Temiz ve sınırsız enerjinin anahtarı olarak görülen nükleer füzyon çalışmalarında, manyetik plazma sıcaklığı Güneş'in çekirdeğinden 10 kat daha sıcak bir seviyede tutulmayı başardı.\n\nSistemin enerjiyi 30 saniye boyunca stabil tutabilmesi, ticari füzyon enerjisi için dev bir adım olarak nitelendirildi.", source_id: "Enerji Bakanlığı"}
+      {title: "Nöral Arayüz Çipleri İnsan Testine Başladı", description: "Motor korteks sinyallerini direkt dijital veriye dönüştüren biyolojik işlemciler, felçli hastaların bilgisayar kontrolünü sağlamasına önayak oldu.\n\nBu çipler beyindeki ince zarlara entegre edilerek, düşünce hızında komut iletimi sağlıyor. Önümüzdeki 5 yıl içinde klinik denemelerin bitmesi planlanıyor.\n\nUzmanlar, bu gelişmenin sadece tıp dünyası için değil, insan-makine birleşmesi (transhümanizm) konusunda da devrim yaratacağını savunuyor.", source_id: "NöroTıp Enstitüsü"}, 
+      {title: "Yapay Zeka ile Yeni Nesil Protein Sentezi", description: "Biyoteknoloji laboratuvarları, hücreleri doğrudan hedefleyen özelleştirilmiş antikorları 48 saatte üreten yeni bir algoritma geliştirdi.\n\nKlasik yöntemlerle aylar süren ilaç keşif süreçleri, derin öğrenme algoritmalarının protein katlanmasını kusursuz tahmin etmesiyle devrim niteliğinde bir hıza ulaştı.\n\nBu teknoloji sayesinde kanser gibi agresif hastalıklara karşı, hastanın kendi DNA profiline özel biyolojik silahlar üretilmesi mümkün olacak.", source_id: "Biyomedikal Arşiv"},
+      {title: "Füzyon Reaktöründe Yeni Plazma Rekoru Kırıldı", description: "Temiz ve sınırsız enerjinin anahtarı olarak görülen nükleer füzyon çalışmalarında, manyetik plazma sıcaklığı Güneş'in çekirdeğinden 10 kat daha sıcak bir seviyede tutulmayı başardı.\n\nSistemin enerjiyi 30 saniye boyunca stabil tutabilmesi, ticari füzyon enerjisi için dev bir adım olarak nitelendirildi.\n\nKarbon emisyonunu sıfıra indirecek olan bu enerji kaynağı, küresel ısınmayı durdurabilecek tek teknolojik çıkış yolu olarak gösteriliyor.", source_id: "Enerji Bakanlığı"}
   ]);
   const bH = await apiIstekAt(`${WORKER_URL}/?kategori=technology&q=${encodeURIComponent('bilim OR yapay zeka OR teknoloji')}`);
   if(bH && bH.length > 0) bilimHaberleriOlustur(bH); 
@@ -1002,27 +1062,26 @@ function canliHaberleriOlustur(veriler) {
 
 async function canliHaberleriCek() {
   canliHaberleriOlustur([
-      {title:"Küresel İklim ve Enerji Mutabakatı Onaylandı", description:"Yenilenebilir akıllı şebekelere geçişi hızlandıracak dev altyapı fonu birleşmiş milletler nezdinde onaylandı.\n\nKarbon salınımını azaltmayı hedefleyen projeler kapsamında gelişmekte olan ülkelere teknoloji transferi de sağlanacak."}, 
-      {title:"Asya-Pasifik Yeni Pakt Anlaşması", description:"Yarı iletken tedarik zincirini güvence altına alan stratejik gümrük anlaşması imzalandı.\n\nTicaret savaşlarının gölgesinde atılan bu imza, bölgesel bloklaşmayı da beraberinde getiriyor."}
+      {title:"Küresel İklim ve Enerji Mutabakatı Onaylandı", description:"Yenilenebilir akıllı şebekelere geçişi hızlandıracak dev altyapı fonu birleşmiş milletler nezdinde onaylandı.\n\nKarbon salınımını azaltmayı hedefleyen projeler kapsamında gelişmekte olan ülkelere teknoloji transferi de sağlanacak.\n\nFosil yakıtlara olan devasa bağımlılığı kırmak için dev bütçeler ayrıldı."}, 
+      {title:"Asya-Pasifik Yeni Pakt Anlaşması", description:"Yarı iletken tedarik zincirini güvence altına alan stratejik gümrük anlaşması imzalandı.\n\nTicaret savaşlarının gölgesinde atılan bu imza, bölgesel bloklaşmayı da beraberinde getiriyor.\n\nÜlkeler teknolojik üstünlüğü elinde tutmak adına millileştirme adımlarını hızlandırıyor."}
   ]);
   const res = await apiIstekAt(`${WORKER_URL}/?kategori=top`);
   if(res && res.length > 0) canliHaberleriOlustur(res);
 }
 
-// SPOR HABERLERİ HAVUZU (Dinamikleştirildi)
+// SPOR HABERLERİ HAVUZU
 const sporHaberleriHavuzu = [
-    { k: "SÜPER LİG", t: "Fenerbahçe'de Yeni Sezon Yapılanması Hız Kazandı", m: "UEFA Şampiyonlar Ligi ön eleme turları öncesinde sarı-lacivertli ekip transfer çalışmalarına hız verdi.\n\nTeknik direktörün özel raporu doğrultusunda merkez orta saha ve sol kanat mevkileri için dünyaca ünlü iki isimle prensip anlaşmasına varıldığı öğrenildi. Yönetim, kamp dönemine kadar eksik bölgeleri tamamen kapatmayı planlıyor.\n\nÖzellikle altyapıdan A takıma yükselen genç yeteneklerin hazırlık maçlarında göstereceği performans taraftarlar tarafından merakla bekleniyor." }, 
-    { k: "AVRUPA ŞAMPİYONASI", t: "A Milli Takım'da Taktik Provalar Sürüyor", m: "Uluslararası turnuva öncesi hazırlık kampını sürdüren Bizim Çocuklar, son taktik antrenmanda geçiş hücumları üzerinde durdu.\n\nTeknik heyet, genç yıldızların dinamizminden tam anlamıyla yararlanmayı hedefliyor. Rakiplerin analizleri doğrultusunda savunma hattında esnek bir üçlü sistem denendiği ve kanat beklerinin hücuma katkısının maksimize edileceği raporlandı." }, 
-    { k: "SPOR EKONOMİSİ", t: "Kulüplerin Dijital Gelirlerinde Rekor Artış", m: "2026 yılı itibarıyla kulüp kartları, dijital taraftar tokenları ve lisanslı e-ticaret satışları Süper Lig ekiplerinin bütçesinde kritik bir paya ulaştı.\n\nKulüpler, stadyum isim haklarının ötesine geçerek tamamen dijital platformlarda global kitlelere ulaşmayı hedefliyor. Yeni nesil yayın gelirleri ve metaverse entegrasyonları sayesinde yıllık bütçe açıklarının büyük ölçüde kapatılması öngörülüyor." },
-    { k: "BASKETBOL", t: "Avrupa Arenasında Kritik Dörtlü Final Eşleşmeleri", m: "THY Avrupa Ligi'nde heyecan dorukta. Temsilcilerimizin de yer aldığı çeyrek final serileri tamamlanmak üzere.\n\nBaşantrenörlerin taktik savaşlarına sahne olan maçlarda savunma sertliği ön plana çıkıyor. Uzmanlar, bu yılki şampiyonun tamamen rotasyon derinliği ve sakatlık krizlerini iyi yöneten ekipler arasından çıkacağı konusunda hemfikir." },
-    { k: "E-SPOR", t: "Küresel E-Spor Turnuvasında Türk Takımı Fırtınası", m: "Dünyanın en büyük uluslararası taktiksel nişancı turnuvasında mücadele eden Türk temsilcisi, grup aşamasını namağlup lider tamamladı.\n\nTakım kaptanının maç sonu yaptığı açıklamada, aylardır süren yoğun kamp döneminin meyvelerini aldıklarını belirtti. Yarı finalde eşleşecekleri Asya temsilcisine karşı özel stratejiler geliştirdikleri konuşuluyor." }
+    { k: "SÜPER LİG", t: "Fenerbahçe'de Yeni Sezon Yapılanması Hız Kazandı", m: "UEFA Şampiyonlar Ligi ön eleme turları öncesinde sarı-lacivertli ekip transfer çalışmalarına hız verdi.\n\nTeknik direktörün özel raporu doğrultusunda merkez orta saha ve sol kanat mevkileri için dünyaca ünlü iki isimle prensip anlaşmasına varıldığı öğrenildi. Yönetim, kamp dönemine kadar eksik bölgeleri tamamen kapatmayı planlıyor.\n\nÖzellikle altyapıdan A takıma yükselen genç yeteneklerin hazırlık maçlarında göstereceği performans taraftarlar tarafından merakla bekleniyor. Samandıra tesislerindeki kondisyon idmanları son derece sert geçiyor." }, 
+    { k: "AVRUPA ŞAMPİYONASI", t: "A Milli Takım'da Taktik Provalar Sürüyor", m: "Uluslararası turnuva öncesi hazırlık kampını sürdüren Bizim Çocuklar, son taktik antrenmanda geçiş hücumları üzerinde durdu.\n\nTeknik heyet, genç yıldızların dinamizminden tam anlamıyla yararlanmayı hedefliyor. Rakiplerin analizleri doğrultusunda savunma hattında esnek bir üçlü sistem denendiği ve kanat beklerinin hücuma katkısının maksimize edileceği raporlandı.\n\nKaptan Hakan Çalhanoğlu, takım içindeki motivasyonun ve uyumun turnuva tarihi boyunca hiç olmadığı kadar yüksek olduğunu belirtti." }, 
+    { k: "SPOR EKONOMİSİ", t: "Kulüplerin Dijital Gelirlerinde Rekor Artış", m: "2026 yılı itibarıyla kulüp kartları, dijital taraftar tokenları ve lisanslı e-ticaret satışları Süper Lig ekiplerinin bütçesinde kritik bir paya ulaştı.\n\nKulüpler, stadyum isim haklarının ötesine geçerek tamamen dijital platformlarda global kitlelere ulaşmayı hedefliyor. Yeni nesil yayın gelirleri ve sanal bilet entegrasyonları sayesinde yıllık bütçe açıklarının büyük ölçüde kapatılması öngörülüyor.\n\nAvrupa'daki büyük kulüpler bu alanda milyarlarca dolar gelir sağlarken, Türk kulüpleri de bu rüzgarı arkasına almaya başladı." },
+    { k: "BASKETBOL", t: "Avrupa Arenasında Kritik Dörtlü Final Eşleşmeleri", m: "THY Avrupa Ligi'nde heyecan dorukta. Temsilcilerimizin de yer aldığı çeyrek final serileri tamamlanmak üzere.\n\nBaşantrenörlerin taktik savaşlarına sahne olan maçlarda savunma sertliği ön plana çıkıyor. Uzmanlar, bu yılki şampiyonun tamamen rotasyon derinliği ve sakatlık krizlerini iyi yöneten ekipler arasından çıkacağı konusunda hemfikir.\n\nFenerbahçe Beko'nun evindeki maçta biletler saniyeler içinde tükenirken, taraftarlar tarihi bir koreografiye hazırlanıyor." },
+    { k: "E-SPOR", t: "Küresel E-Spor Turnuvasında Türk Takımı Fırtınası", m: "Dünyanın en büyük uluslararası taktiksel nişancı turnuvasında mücadele eden Türk temsilcisi, grup aşamasını namağlup lider tamamladı.\n\nTakım kaptanının maç sonu yaptığı açıklamada, aylardır süren yoğun kamp döneminin meyvelerini aldıklarını belirtti. Yarı finalde eşleşecekleri Asya temsilcisine karşı özel stratejiler geliştirdikleri konuşuluyor.\n\nE-sporun Türkiye'de ulaştığı devasa pazar payı, geleneksel spor kulüplerini de bu alana ciddi yatırımlar yapmaya zorlamaya başladı." }
 ];
 
 function futbolHaberleriGuncelle() {
     const grid = document.getElementById('futbol-grid-alan'); if(!grid) return;
     grid.innerHTML = '';
     
-    // Havuzdan rastgele 3 haber seç (Sayfa her yenilendiğinde veya interval çalıştığında farklı içerik gelir)
     let rastgeleHaberler = [...sporHaberleriHavuzu].sort(() => 0.5 - Math.random()).slice(0, 3);
     
     rastgeleHaberler.forEach((h, idx) => {
@@ -1034,12 +1093,12 @@ function futbolHaberleriGuncelle() {
 }
 
 const tHavuz = [
-  { d: "Göktürkler", t: "Orhun Yazıtları'ndaki Stratejik Şifreler", m: "Bilge Kağan ve Kül Tigin adına dikilen yazıtlar, sadece edebi bir metin değil; bir devletin varoluşsal krizlerden nasıl çıkacağını anlatan küresel bir diplomatik manifesto niteliğindedir.\n\nMetinlerde yer alan 'Çin'in ipeğine, tatlı sözüne aldanma' uyarısı, aslında erken dönem bir jeopolitik ambargo ve yumuşak güç (soft power) analizidir. Yazıtlar, milletin bağımsızlığını koruması için kurumsal hafızanın ne kadar önemli olduğunu yüzyıllar öncesinden belgeliyor." },
-  { d: "Babür İmparatorluğu", t: "Ateşli Silahlar ve Hint Altkıtasının Dönüşümü", m: "Babür Şah'ın Panipat Muharebesi'nde Osmanlı taktiklerinden esinlenerek kurduğu topçu arabası ve tüfekli asker düzeni, askeri strateji tarihini kökten değiştirmiştir.\n\nSayıca çok üstün olan düşman ordusunu, tekerlekli siperler ve organize ateş gücü sayesinde mağlup eden Babür Şah, Hindistan'da yüzlerce yıl sürecek görkemli bir Türk-İslam medeniyetinin temellerini atmıştır." },
-  { d: "Selçuklular", t: "Nizamülmülk ve Siyasetname Paradigması", m: "Büyük Selçuklu İmparatorluğu'nun kurumsallaşmasını sağlayan Nizamiye Medreseleri ve istihbarat ağları, döneminin bürokratik yapısına altın çağını yaşatmıştır.\n\nVezir Nizamülmülk'ün kaleme aldığı Siyasetname eseri, sadece devrin hükümdarı Melikşah'a bir öğüt kitabı değil, aynı zamanda devlet aklının, istihbarat teşkilatlanmasının ve liyakatin yazılı anayasası olmuştur." },
-  { d: "Avrasya Tarihi", t: "İpek Yolu Üzerindeki Erken Siber-Lojistik Altyapı", m: "Mete Han döneminden itibaren kervansaraylar ve posta teşkilatları (Ulak sistemi), Asya'nın en hızlı bilgi aktarım ağını oluşturarak askeri ve ticari üstünlük sağladı.\n\nAvrupa'da haberlerin haftalarca sürede ulaştığı bir dönemde, atlı ulaklar sayesinde uç beylerinden başkente bir gecede istihbarat akışı sağlanıyordu. Bu sistem, dönemin siber veri altyapısı olarak kabul edilebilir." },
-  { d: "Yakın Tarih", t: "Enver Paşa ve Kafkas İslam Ordusu Harekatı", m: "1918 yılında Bakü'nün kurtuluşuyla neticelenen harekatın askeri güncel günlükleri, coğrafyadaki jeopolitik dengeleri nasıl etkilediğini açıkça belgeliyor.\n\nNuri Paşa (Killigil) komutasındaki Kafkas İslam Ordusu, çok zorlu lojistik şartlara ve mühimmat eksikliğine rağmen, Türk dünyasının doğu kapısını güvence altına alarak tarihi bir zafere imza atmıştır." },
-  { d: "Dünya Tarihi", t: "Endülüs'te Bilimsel Rönesansın Doğuşu", m: "Kurtuba Kütüphanesi'ndeki matematik ve astronomi çevirileri, Avrupa'nın karanlık çağdan çıkışının asıl tetikleyicisi olmuştu.\n\nSokaklar geceleri aydınlatılırken, optik ve tıp bilimlerinde yazılan devasa ciltli eserler daha sonraları Latinceye çevrilerek bugünkü modern batı üniversitelerinin müfredatlarının çekirdeğini oluşturdu." }
+  { d: "Göktürkler", t: "Orhun Yazıtları'ndaki Stratejik Şifreler", m: "Bilge Kağan ve Kül Tigin adına dikilen yazıtlar, sadece edebi bir metin değil; bir devletin varoluşsal krizlerden nasıl çıkacağını anlatan küresel bir diplomatik manifesto niteliğindedir.\n\nMetinlerde yer alan 'Çin'in ipeğine, tatlı sözüne aldanma' uyarısı, aslında erken dönem bir jeopolitik ambargo ve yumuşak güç (soft power) analizidir. Yazıtlar, milletin bağımsızlığını koruması için kurumsal hafızanın ne kadar önemli olduğunu yüzyıllar öncesinden belgeliyor.\n\nBu taşa kazınmış anayasada, hem millete devlet kurmanın önemi aşılanmakta hem de yöneticilere adil ve akılcı bir siyaset gütmeleri öğütlenmektedir." },
+  { d: "Babür İmparatorluğu", t: "Ateşli Silahlar ve Hint Altkıtasının Dönüşümü", m: "Babür Şah'ın Panipat Muharebesi'nde Osmanlı taktiklerinden esinlenerek kurduğu topçu arabası ve tüfekli asker düzeni, askeri strateji tarihini kökten değiştirmiştir.\n\nSayıca çok üstün olan düşman ordusunu, tekerlekli siperler ve organize ateş gücü sayesinde mağlup eden Babür Şah, Hindistan'da yüzlerce yıl sürecek görkemli bir Türk-İslam medeniyetinin temellerini atmıştır.\n\nFillerle dolu geleneksel Hint ordusunun devasa toplar karşısında bozguna uğraması, teknolojinin savaş alanlarındaki ezici üstünlüğünü kanıtlayan ilk büyük örnektir." },
+  { d: "Selçuklular", t: "Nizamülmülk ve Siyasetname Paradigması", m: "Büyük Selçuklu İmparatorluğu'nun kurumsallaşmasını sağlayan Nizamiye Medreseleri ve istihbarat ağları, döneminin bürokratik yapısına altın çağını yaşatmıştır.\n\nVezir Nizamülmülk'ün kaleme aldığı Siyasetname eseri, sadece devrin hükümdarı Melikşah'a bir öğüt kitabı değil, aynı zamanda devlet aklının, istihbarat teşkilatlanmasının ve liyakatin yazılı anayasası olmuştur.\n\nBu eser, adalet kavramını mülkün temeline oturtarak, çok uluslu devasa imparatorluğun asırlarca bir arada yaşamasını sağlayan sosyolojik sırları içinde barındırır." },
+  { d: "Avrasya Tarihi", t: "İpek Yolu Üzerindeki Erken Siber-Lojistik Altyapı", m: "Mete Han döneminden itibaren kervansaraylar ve posta teşkilatları (Ulak sistemi), Asya'nın en hızlı bilgi aktarım ağını oluşturarak askeri ve ticari üstünlük sağladı.\n\nAvrupa'da haberlerin haftalarca sürede ulaştığı bir dönemde, atlı ulaklar sayesinde uç beylerinden başkente bir gecede istihbarat akışı sağlanıyordu. Bu sistem, dönemin siber veri altyapısı olarak kabul edilebilir.\n\nEkonomik olarak ise bu ticaret yolları, İpek ve Baharat akışını kontrol eden devletlere eşi benzeri görülmemiş bir refah sağlamıştır." },
+  { d: "Yakın Tarih", t: "Enver Paşa ve Kafkas İslam Ordusu Harekatı", m: "1918 yılında Bakü'nün kurtuluşuyla neticelenen harekatın askeri güncel günlükleri, coğrafyadaki jeopolitik dengeleri nasıl etkilediğini açıkça belgeliyor.\n\nNuri Paşa (Killigil) komutasındaki Kafkas İslam Ordusu, çok zorlu lojistik şartlara ve mühimmat eksikliğine rağmen, Türk dünyasının doğu kapısını güvence altına alarak tarihi bir zafere imza atmıştır.\n\nBugün bile Azerbaycan-Türkiye kardeşliğinin temellerini atan ve Bakü'yü Bolşevik ve Ermeni çetelerin işgalinden kurtaran bu destansı yürüyüş, askeri akademilerde okutulmaktadır." },
+  { d: "Dünya Tarihi", t: "Endülüs'te Bilimsel Rönesansın Doğuşu", m: "Kurtuba Kütüphanesi'ndeki matematik ve astronomi çevirileri, Avrupa'nın karanlık çağdan çıkışının asıl tetikleyicisi olmuştu.\n\nSokaklar geceleri aydınlatılırken, optik ve tıp bilimlerinde yazılan devasa ciltli eserler daha sonraları Latinceye çevrilerek bugünkü modern batı üniversitelerinin müfredatlarının çekirdeğini oluşturdu.\n\nİbn Rüşd ve İbn Sina gibi isimlerin eserleri olmasaydı, Avrupa'nın aydınlanma çağına girmesi en az üç yüzyıl daha gecikecekti." }
 ];
 
 function tarihiOlaylariYenile() {
@@ -1071,7 +1130,7 @@ const dunyaTarihiVerileri = {
 };
 
 const genelDunyaHavuzu = [
-  "12 Ekim 1492 — Kristof Kolomb Amerika'yı keşfetti ve Yeni Dünya'nın kapılarını araladı.\n\nAvrupa'dan yeni kıtaya başlayan bu devasa göç ve ticaret dalgası, küresel ekonomiyi sonsuza dek değiştirdi.",
+  "12 Ekim 1492 — Kristof Kolomb Amerika'yı keşfetti ve Yeni Dünya'nın kapılarını araladı.\n\nAvrupa'from yeni kıtaya başlayan bu devasa göç ve ticaret dalgası, küresel ekonomiyi sonsuza dek değiştirdi.",
   "20 Temmuz 1969 — Apollo 11 göreviyle Neil Armstrong Ay'a ayak basan ilk insan oldu.\n\n'Benim için küçük, insanlık için dev bir adım' sözüyle tarihe geçen bu olay, Soğuk Savaş uzay yarışının zirve noktasıdır.",
   "9 Kasım 1989 — Soğuk Savaş'ın sembolü olan Berlin Duvarı yıkıldı.\n\nDoğu ve Batı Almanya'nın birleşmesine kapı aralayan bu tarihi gece, Sovyet bloğunun çöküşünün de en belirgin görsel simgesi haline geldi."
 ];
@@ -1192,9 +1251,9 @@ window.addEventListener('load', () => {
   gununMakalesiniYukle(); 
   futbolHaberleriGuncelle(); 
   tarihiOlaylariYenile();
+  siyasetHaberleriOlustur();
   oyunuBaslat(); 
   
-  // Grid elemanlarına animasyonların işleyebilmesi için gecikme
   setTimeout(animasyonlariBaslat, 300);
 
   heroSliderGuncelle();
@@ -1205,9 +1264,10 @@ window.addEventListener('load', () => {
   setInterval(() => heroSliderGuncelle(), 3600000);
   setInterval(() => savasHaberleriniGuncelle(), 3600000 + 15000); 
   setInterval(() => canliHaberleriCek(), 3600000 + 30000);
-  setInterval(() => futbolHaberleriGuncelle(), 3600000 + 45000); // Spor kısmı artık değişecek
+  setInterval(() => futbolHaberleriGuncelle(), 3600000 + 45000); 
   setInterval(() => kureselBilimGuncelle(), 3600000 + 60000);
   setInterval(() => tarihiOlaylariYenile(), 3600000 + 75000);
+  setInterval(() => siyasetHaberleriOlustur(), 3600000 + 90000);
 });
 </script>
 </body>
