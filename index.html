@@ -13,26 +13,6 @@
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <link rel="canonical" href="https://turanhaber.com">
 
-<!-- Open Graph / Sosyal Medya -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://turanhaber.com/">
-<meta property="og:title" content="TuranHaber — Türk Dünyası & Dünya Gündemi">
-<meta property="og:description" content="TuranHaber ile Türk Dünyası, küresel bilim, teknoloji, sıcak çatışma radarı ve siyaset gündemini anlık olarak takip edin.">
-<meta property="og:image" content="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1200&q=80">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "NewsMediaOrganization",
-  "name": "TuranHaber",
-  "alternateName": "Turan Global Haber",
-  "url": "https://turanhaber.com",
-  "logo": "https://turanhaber.com/logo.png",
-  "description": "Türk Dünyası, küresel bilim-teknoloji ve spor gündemini sunan bağımsız dijital platform."
-}
-</script>
-<!-- SEO BİTİŞİ -->
-
 <script>
   if(localStorage.getItem('tema') === 'dark') {
     document.documentElement.setAttribute('data-theme', 'dark');
@@ -42,7 +22,6 @@
 </script>
 
 <style>
-/* Çok daha modern ve okunaklı "Outfit" fontu eklendi */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Old+Turkic&display=swap');
 
@@ -103,10 +82,9 @@ html { scroll-behavior: smooth; overflow-x: hidden; }
 
 #ilerleme-cubugu { position: fixed; top: 0; left: 0; height: 4px; background: linear-gradient(90deg, var(--kizil), var(--altin)); width: 0%; z-index: 10000; transition: width 0.1s ease; }
 
-/* Font tüm sitede Outfit yapıldı */
 body { font-family: 'Outfit', sans-serif; background-color: var(--arkaplan); color: var(--yazi); line-height: 1.6; position: relative; transition: background-color 0.4s ease, color 0.4s ease; overflow-x: hidden;}
 
-/* Türk Motifleri Geri Getirildi (Selçuklu Yıldızı SVG) */
+/* Selçuklu Yıldızı Arka Plan */
 body::before { 
     content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none; 
     background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0 L50 30 L80 40 L50 50 L40 80 L30 50 L0 40 L30 30 Z' fill='%23C8963A' fill-opacity='0.05'/%3E%3C/svg%3E"); 
@@ -114,11 +92,11 @@ body::before {
 
 @keyframes pulse { 0%,100% { opacity:1; transform:scale(1) } 50% { opacity:.5; transform:scale(1.3) } }
 
-/* Göktürkçe Arka Plan Yazıları Vurgulandı */
+/* Gerçek Göktürkçe Harfler Kullanılarak %E2 Sorunu Giderildi */
 .gokturk-bg-text { 
-    font-family: 'Noto Sans Old Turkic', serif; 
-    color: var(--altin); opacity: 0.08; 
-    font-size: 100px; letter-spacing: 20px; 
+    font-family: 'Noto Sans Old Turkic', sans-serif; 
+    color: var(--altin); opacity: 0.12; 
+    font-size: 85px; letter-spacing: 25px; 
     position: absolute; top: 0; left: 0; width: 100%; 
     text-align: center; pointer-events: none; user-select: none; 
     overflow: hidden; white-space: nowrap; 
@@ -400,7 +378,7 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
 
 <div id="ilerleme-cubugu"></div>
 
-<!-- ÜST BANT: Diller ve gereksiz sistem yazısı tamamen kaldırıldı -->
+<!-- ÜST BANT -->
 <div class="ust-bant">
   <div class="sol-kisim">
     <span class="tarih" id="tarih-goster"></span>
@@ -411,7 +389,8 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
 </div>
 
 <header>
-  <div class="gokturk-bg-text">%E2%82%AE%C3%9C%C3%91%E2%82%AE%C3%9D:%F0%9F%90%BA%C3%9D%C3%91%C3%92%E2%82%AE%C3%98%C3%9D</div>
+  <!-- BOZUK URL-ENCODED YAZI YERİNE GERÇEK GÖKTÜRKÇE HARFLER EKLENDİ -->
+  <div class="gokturk-bg-text">𐱅𐰇𐰼𐰚 𐰉𐰆𐰑𐰣 𐱅𐰇𐰼𐰚 𐰉𐰆𐰑𐰣 𐱅𐰇𐰼𐰚</div>
   <div class="header-ic">
     <div class="logo-alan">
       <svg class="logo-sembol" viewBox="0 0 52 52" fill="none">
@@ -537,7 +516,7 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
 </main>
 
 <footer>
-  <div class="gokturk-bg-text" style="bottom: 0; top: auto; font-size: 120px; opacity: 0.08;">%E2%82%AE%C3%9C%C3%91%E2%82%AE%C3%9D:%F0%9F%90%BA%C3%9D%C3%91%C3%92%E2%82%AE%C3%98%C3%9D</div>
+  <div class="gokturk-bg-text" style="bottom: 0; top: auto; font-size: 100px; opacity: 0.12;">𐱅𐰇𐰼𐰚 𐰉𐰆𐰑𐰣 𐱅𐰇𐰼𐰚 𐰉𐰆𐰑𐰣 𐱅𐰇𐰼𐰚</div>
   <div class="footer-ic">
     <div class="footer-grid">
       <div class="footer-logo">
@@ -793,9 +772,8 @@ function attrGuvenli(str) {
     return guvenliMetin(str).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
-// DÜNYA KUPASI VE GEREKSİZ İÇERİK FİLTRESİ BURADA
 function haberFiltrele(res) { 
-  const yasakliKelimeler = ['dünya kupası', 'world cup', 'fifa', 'only available', 'paid plans', 'dizi', 'oyuncu', 'magazin', 'bollywood', 'fragman', 'kimdir', 'sevgili', 'sinema', 'şarkıcı', 'actor', 'actress', 'movie', 'episode', 'season', 'survivor', 'masterchef'];
+  const yasakliKelimeler = ['only available', 'paid plans', 'dizi', 'oyuncu', 'magazin', 'bollywood', 'fragman', 'kimdir', 'sevgili', 'sinema', 'şarkıcı', 'actor', 'actress', 'movie', 'episode', 'season', 'survivor', 'masterchef'];
   const bozukKarakterler = ['Ã', 'Ä', 'Å', '1⁄4', 'Â', 'â€'];
   
   return res ? res.filter(h => {
@@ -995,13 +973,29 @@ function heroSliderOlustur(veriler) {
   }
 }
 
+// MANŞET İÇİN ÇOK SIKI FUTBOL FİLTRESİ
 async function heroSliderGuncelle() {
-  heroSliderOlustur([
+  const baslangicVerisi = [
       {title: "Yapay Zeka Otomobil Sektörünün Oyun Kurallarını Yeniden Yazıyor", description: "Otonom sürüş teknolojileri ve akıllı batarya yönetimi sistemlerinde yapay zekanın hakimiyeti artıyor. Geleneksel markalar rekabette zorlanıyor.\n\nYeni nesil yazılım destekli araçlar artık sadece bir ulaşım aracı değil, aynı zamanda hareketli bir veri merkezine dönüşmüş durumda.", source_id: "TEKNOLOJİ & EKONOMİ"}, 
       {title: "Kuantum Şifreleme Ağlarında İlk Kıtalararası Başarı", description: "Avrupa ve Asya arasındaki fiber optik hatlarda kuantum anahtar dağıtımı (QKD) ile hacklenmesi imkansız ilk veri transferi gerçekleştirildi.\n\nBu tarihi hamle, siber güvenlikte yeni bir çağın başlangıcı olarak kabul ediliyor.", source_id: "KÜRESEL SİBER RAPOR"}
-  ]);
+  ];
+  
+  heroSliderOlustur(baslangicVerisi);
+  
   const res = await apiIstekAt(`${WORKER_URL}/?kategori=top`);
-  if(res && res.length > 0) heroSliderOlustur(res); 
+  if(res && res.length > 0) {
+      // Futbolu manşetten tamamen temizlemek için oluşturulan liste
+      const futbolTerimleri = ['futbol', 'galatasaray', 'fenerbahçe', 'beşiktaş', 'trabzonspor', 'süper lig', 'şampiyonlar ligi', 'transfer', 'derbi', 'maç', 'gol', 'hakem', 'taraftar', 'dünya kupası', 'fifa', 'uefa'];
+      
+      const temizMansetler = res.filter(h => {
+          const metin = (h.title + " " + (h.description || "")).toLowerCase();
+          return !futbolTerimleri.some(t => metin.includes(t));
+      });
+      
+      if(temizMansetler.length > 0) {
+          heroSliderOlustur(temizMansetler); 
+      }
+  }
 }
 
 function hGec(i) {
