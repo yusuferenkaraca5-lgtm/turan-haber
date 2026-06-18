@@ -372,6 +372,8 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
   .hero-ozet { display: -webkit-box; -webkit-line-clamp: 2; font-size: 13px; }
   .hero-noktalar { bottom: 1rem; right: 1.5rem; }
   .ts-footer { flex-direction: column; gap: 10px; align-items: stretch; text-align: center; }
+  
+  .anim-up { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
 </style>
 </head>
@@ -475,10 +477,11 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
 
   <div class="ikili-kolon">
     <div class="anim-up">
-      <div class="bolum-baslik" id="siyaset"><div class="bolum-sembol">🏛️</div><h2>Dünya Siyaseti & Sağlık</h2></div>
+      <!-- DÜZELTME: TÜRKİYE SİYASETİ VE ANKARA GÜNDEMİ GERİ GELDİ -->
+      <div class="bolum-baslik" id="siyaset"><div class="bolum-sembol">🏛️</div><h2>Türkiye Siyaseti & Milli Gündem</h2></div>
       <div class="haber-bolum">
-        <div class="haber-satir" onclick="makaleAc('SİYASET', 'AB Dijital Pazarlar Kanunu Güncellemesi', 'Avrupa Birliği, kullanıcı verilerinin platformlar arasında kesintisiz aktarımını zorunlu kılan yeni veri egemenliği paketini onayladı.', 'Brüksel Mahreci')"><div><span class="etiket e-siyaset">Avrupa Birliği</span><h3>AB Dijital Pazarlar Kanunu Güncellemesi</h3><p>Avrupa Birliği, kullanıcı verilerinin platformlar arasında kesintisiz aktarımını...</p></div></div>
-        <div class="haber-satir" onclick="makaleAc('SAĞLIK', 'Nöral Implant Sistemleri Geliştirildi', 'İsviçre tabanlı nörotenoloji laboratuvarı, motor korteks sinyallerini eşzamanlı işleyen yeni algoritmasıyla felçli hastalara milimetrik kontrol sağladı.', 'NöroTıp')"><div><span class="etiket e-saglik">Nöroloji</span><h3>Nöral Implant Sistemleri Geliştirildi</h3><p>İsviçre tabanlı nörotenoloji laboratuvarı, motor korteks sinyallerini...</p></div></div>
+        <div class="haber-satir" onclick="makaleAc('SİYASET', 'Milli Savunma ve Stratejik Yatırımlar Komisyonu Toplandı', 'Ankara Kulislerinden gelen bilgilere göre, yerli savunma sanayii ekosisteminin finansman ve yarı iletken tedarik güvenliği masaya yatırıldı.', 'Ankara Mahreci')"><div><span class="etiket e-siyaset">Ankara Kulisi</span><h3>Milli Savunma Stratejisi</h3><p>Ankara Kulislerinden gelen bilgilere göre, yerli savunma sanayii ekosisteminin...</p></div></div>
+        <div class="haber-satir" onclick="makaleAc('SAĞLIK', 'Milli Siber Sağlık Projesi Entegrasyonu', 'Sağlık Bakanlığı veri altyapısı, kuantum şifreleme ve milli Linux dağıtımı algoritmalarıyla siber taarruzlara karşı koruma kalkanına alındı.', 'Milli Gündem')"><div><span class="etiket e-saglik">Siber Savunma</span><h3>Milli Siber Sağlık Altyapısı</h3><p>Sağlık Bakanlığı veri altyapısı, kuantum şifreleme ve milli Linux dağıtımı...</p></div></div>
       </div>
     </div>
     
@@ -582,7 +585,7 @@ const bugunTarihi = new Date();
 document.getElementById('tarih-goster').textContent = `${bugunTarihi.getDate()} ${aylar[bugunTarihi.getMonth()]} ${bugunTarihi.getFullYear()}`;
 
 function gorselUrlOptimize(url) {
-  if (!url) return 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=900&q=70'; // Nötr küresel veri haritası resmi
+  if (!url) return 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=900&q=70'; 
   const mobil = window.innerWidth < 768;
   const w = mobil ? '600' : '900';
   
@@ -594,7 +597,6 @@ function gorselUrlOptimize(url) {
   return `${WORKER_URL}/img?url=${encodeURIComponent(url)}&w=${w}`;
 }
 
-// GENEL DOSYA FORMATLARINA UYGUN RESİM AYRIŞTIRICI
 function haberdenResimCikar(haber) {
   if (haber.image_url) return haber.image_url;
   if (haber.image) return haber.image;
@@ -734,6 +736,7 @@ function guvenliMetin(metin) {
     .replace(/ə/g, 'e').replace(/Ə/g, 'E').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/\n/g, ' ').trim();
 }
 
+// DÜZELTME: HTML Element Kırılmalarını Önlemek İçin Atıf Kalkanı
 function attrGuvenli(str) {
     if (!str) return '';
     return guvenliMetin(str).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
@@ -744,7 +747,7 @@ function haberFiltrele(res) {
   return res ? res.filter(h => h.title && !yasakliKelimeler.some(y => h.title.toLowerCase().includes(y))) : []; 
 }
 
-// ASENKRON GÖRSEL ŞELALE MOTORU
+// ASENKRON GÖRSEL ŞELALE MOTORU (Geliştirildi)
 function resimArkaPlandaGuncelle(haberLink, haberBaslik, imgElement) {
   if (!imgElement) return;
   fetch(`${WORKER_URL}/ogimage?url=${encodeURIComponent(haberLink)}`)
@@ -856,13 +859,6 @@ function modalKapat() {
   document.body.style.overflow = '';
 }
 
-document.addEventListener('keydown', (e) => {
-    if(e.key === 'Escape') {
-        if(document.getElementById('makale-modal').classList.contains('goster')) modalKapat();
-        if(document.getElementById('tema-secici').classList.contains('goster')) temaSeciciKapat();
-    }
-});
-
 async function apiIstekAt(url) { 
     try { 
       const controller = new AbortController();
@@ -929,7 +925,7 @@ function heroSliderOlustur(veriler) {
 }
 
 async function heroSliderGuncelle() {
-  heroSliderOlustur([{title: "Kuantum Şifreleme Ağlarında İlk Kıtalararası Başarı", description: "Avrupa ve Asya arasındaki fiber optik hatlarda kuantum anahtar dağıtımı (QKD) ile hacklenmesi imkansız ilk veri transferi gerçekleştirildi.", source_id: "KÜRESEL SİBER RAPOR"}, {title: "Yarı İletken Savaşında Tayvan Alternatifi", description: "Dev teknoloji şirketleri, tedarik zincirini güvence altına almak için çip üretimini Japonya ve ABD'deki yeni mega fabrikalara kaydırma kararı aldı.", source_id: "TEKNOLOJİ & EKONOMİ"}]);
+  heroSliderOlustur([{title: "Kuantum Şifreleme Ağlarında İlk Kıtalararası Başarı", description: "Avrupa ve Asya arasındaki fiber optik hatlarda kuantum anahtar dağıtımı (QKD) ile hacklenmesi imkansız ilk veri transferi gerçekleştirildi.", source_id: "KÜRESEL SİBER RAPOR"}, {title: "Yarı İletken Savaşında Tayvan Alternatifi", description: "Dev teknoloji şirketleri, tedarik zincirini güvence altına almak için çip üretimini Japonya og-image ve ABD'deki yeni mega fabrikalara kaydırma kararı aldı.", source_id: "TEKNOLOJİ & EKONOMİ"}]);
   const res = await apiIstekAt(`${WORKER_URL}/?kategori=top`);
   if(res && res.length > 0) heroSliderOlustur(res); 
 }
@@ -1018,7 +1014,7 @@ async function canliHaberleriCek() {
 function futbolHaberleriGuncelle() {
     const grid = document.getElementById('futbol-grid-alan'); if(!grid) return;
     grid.innerHTML = '';
-    [{ k: "SÜPER LİG", t: "Fenerbahçe'de Yeni Sezon Yapılanması Hız Kazandı", m: "UEFA Şampiyonlar Ligi ön eleme turları öncesinde sarı-lacivertli ekip transfer çalışmalarına hız verdi. Teknik direktörün özel raporu doğrultusunda merkez orta saha ve sol kanat mevkileri için dünyaca ünlü iki isimle prensip anlaşmasına varıldığı öğrenildi." }, { k: "AVRUPA ŞAMPİYONASI", t: "A Milli Takım'da Taktik Provalar Sürüyor", m: "Uluslararası turnuva öncesi hazırlık kampını sürdüren Bizim Çocuklar, son taktik antrenmanda geçiş hücumları üzerinde durdu. Teknik heyet, genç yıldızların dinamizminden tam anlamıyla yararlanmayı hedefliyor." }, { k: "SPOR EKONOMİSİ", t: "Kulüplerin Dijital Gelirlerinde Rekor Artış", m: "2026 yılı itibarıyla kulüp kartları, dijital taraftar tokenları og-image ve lisanslı e-ticaret satışları Süper Lig ekiplerinin bütçesinde kritik bir paya ulaştı. Fenerbahçe Beko ve futbol şubesi, dijital entegrasyonda liderliği elinde tutuyor." }].forEach((h, idx) => {
+    [{ k: "SÜPER LİG", t: "Fenerbahçe'de Yeni Sezon Yapılanması Hız Kazandı", m: "UEFA Şampiyonlar Ligi ön eleme turları öncesinde sarı-lacivertli ekip transfer çalışmalarına hız verdi. Teknik direktörün özel raporu doğrultusunda merkez orta saha ve sol kanat mevkileri için dünyaca ünlü iki isimle prensip anlaşmasına varıldığı öğrenildi." }, { k: "AVRUPA ŞAMPİYONASI", t: "A Milli Takım'da Taktik Provalar Sürüyor", m: "Uluslararası turnuva öncesi hazırlık kampını sürdüren Bizim Çocuklar, son taktik antrenmanda geçiş hücumları üzerinde durdu. Teknik heyet, genç yıldızların dinamizminden tam anlamıyla yararlanmayı hedefliyor." }, { k: "SPOR EKONOMİSİ", t: "Kulüplerin Dijital Gelirlerinde Rekor Artış", m: "2026 yılı itibarıyla kulüp kartları, dijital taraftar tokenları ve lisanslı e-ticaret satışları Süper Lig ekiplerinin bütçesinde kritik bir paya ulaştı. Fenerbahçe Beko og-image ve futbol şubesi, dijital entegrasyonda liderliği elinde tutuyor." }].forEach((h, idx) => {
         const c = document.createElement('div'); c.className = 'standart-makale-kart anim-up'; c.style.transitionDelay = `${idx*0.1}s`;
         c.onclick = () => makaleAc('FUTBOL', h.t, h.m, "TuranHaber Spor Departmanı");
         c.innerHTML = `<div class="smk-serit spor-renk"></div><div class="smk-icerik"><span class="smk-badge spor-badge">${h.k}</span><h4>${h.t}</h4><p>${h.m}</p></div>`;
@@ -1030,8 +1026,8 @@ function futbolHaberleriGuncelle() {
 const tHavuz = [
   { d: "Göktürkler", t: "Orhun Yazıtları'ndaki Stratejik Şifreler", m: "Bilge Kağan ve Kül Tigin adına dikilen yazıtlar, sadece edebi bir metin değil; bir devletin varoluşsal krizlerden nasıl çıkacağını anlatan küresel bir diplomatik manifesto niteliğindedir." },
   { d: "Babür İmparatorluğu", t: "Ateşli Silahlar ve Hint Altkıtasının Dönüşümü", m: "Babür Şah'ın Panipat Muharebesi'nde Osmanlı taktiklerinden esinlenerek kurduğu topçu arabası ve tüfekli asker düzeni, askeri strateji tarihini kökten değiştirmiştir." },
-  { d: "Selçuklular", t: "Nizamülmülk ve Siyasetname Paradigması", m: "Büyük Selçuklu İmparatorluğu'nun kurumsallaşmasını sağlayan Nizamiye Medreseleri ve istihbarat ağları, döneminin bürokratik yapısına altın çağını yaşatmıştır." },
-  { d: "Avrasya Tarihi", t: "İpek Yolu Üzerindeki Erken Siber-Lojistik Altyapı", m: "Mete Han döneminden itibaren kervansaraylar ve posta teşkilatları (Ulak sistemi), Asya'nın en hızlı bilgi aktarım ağını oluşturarak askeri ve ticari üstünlük sağladı." },
+  { d: "Selçuklular", t: "Nizamülmülk ve Siyasetname Paradigması", m: "Büyük Selçuklu İmparatorluğu'nun kurumsallaşmasını sağlayan Nizamiye Medreseleri og-image ve istihbarat ağları, döneminin bürokratik yapısına altın çağını yaşatmıştır." },
+  { d: "Avrasya Tarihi", t: "İpek Yolu Üzerindeki Erken Siber-Lojistik Altyapı", m: "Mete Han döneminden itibaren kervansaraylar ve posta teşkilatları (Ulak sistemi), Asya'nın en hızlı bilgi aktarım ağını oluşturarak askeri og-image ve ticari üstünlük sağladı." },
   { d: "Yakın Tarih", t: "Enver Paşa ve Kafkas İslam Ordusu Harekatı", m: "1918 yılında Bakü'nün kurtuluşuyla neticelenen harekatın askeri güncel günlükleri, coğrafyadaki jeopolitik dengeleri nasıl etkilediğini açıkça belgeliyor." },
   { d: "Dünya Tarihi", t: "Endülüs'te Bilimsel Rönesansın Doğuşu", m: "Kurtuba Kütüphanesi'ndeki matematik ve astronomi çevirileri, Avrupa'nın karanlık çağdan çıkışının asıl tetikleyicisi olmuştu." }
 ];
@@ -1063,7 +1059,7 @@ const tarihteBugunVerileri = {
   "17 Haziran": "17 Haziran 1462 — Fatih Sultan Mehmet, Eflak Prensi Kont Drakula'ya (Kazıklı Voyvoda) karşı ünlü gece baskınını düzenledi.",
   "18 Haziran": "18 Haziran 1936 — Dünyanın ilk kadın savaş pilotu Sabiha Gökçen, ilk uçuşunu gerçekleştirdi.",
   "20 Temmuz": "20 Temmuz 1974 — Türk Silahlı Kuvvetleri, adadaki Türklere yönelik saldırıları durdurmak için Kıbrıs Barış Harekâtı'nı başlattı.",
-  "24 Temmuz": "24 Temmuz 1923 — Lozan Barış Antlaşması imzalandı. Modern Türkiye'nin sınırları ve bağımsızlığı uluslararası alanda tescillendi.",
+  "24 Temmuz": "24 Temmuz 1923 — Lozan Barış Antlaşması imzalandı. Modern Türkiye'nin sınırları og-image ve bağımsızlığı uluslararası alanda tescillendi.",
   "26 Ağustos": "26 Ağustos 1071 / 1922 — Sultan Alparslan komutasındaki Selçuklu Ordusu Malazgirt Zaferi'ni kazandı. Aynı gün 1922'de Büyük Taarruz başladı.",
   "30 Ağustos": "30 Ağustos 1922 — Başkomutanlık Meydan Muharebesi (Dumlupınar) zaferle sonuçlandı, Yunan ordusu hezimete uğratıldı.",
   "9 Eylül": "9 Eylül 1922 — Türk süvarileri İzmir'e girdi, Anadolu'daki Yunan işgali fiilen sona erdi.",
@@ -1126,9 +1122,9 @@ const devSoruHavuzu = [
     { soru: "İlişkisel veritabanı sistemlerini yönetmek için geliştirilen, günümüzde yazılım dünyasının temeli olan sorgu dili hangisidir?", secenekler: ["HTML", "Python", "SQL", "Java"], dogru: 2 },
     { soru: "Futbolda 'Kıtalararası Derbi' olarak bilinen Fenerbahçe - Galatasaray rekabetindeki ilk maç hangi yıl oynanmıştır?", secenekler: ["1905", "1907", "1909", "1911"], dogru: 2 },
     { soru: "Türk devlet felsefesinin taşa kazınmış ilk belgeleri olan Orhun Yazıtları hangi devlete aittir?", secenekler: ["Uygurlar", "Göktürkler", "Karahanlılar", "Hunlar"], dogru: 1 },
-    { soru: "Avrupa bilim dünyasına yön veren ünlü yıldız haritalarını hazırlayan Timurlu astronom ve devlet adamı kimdir?", secenekler: ["Ali Kuşçu", "Uluğ Bey", "Harezmi", "Biruni"], dogru: 1 },
+    { soru: "Avrupa bilim dünyasına yön veren ünlü yıldız haritalarını hazırlayan Timurlu astronom og-image ve devlet adamı kimdir?", secenekler: ["Ali Kuşçu", "Uluğ Bey", "Harezmi", "Biruni"], dogru: 1 },
     { soru: "1453 İstanbul'un Fethi'nde surları yıkmak için kullanılan 'Şahi' isimli dev topların tasarımcılarından kimdir?", secenekler: ["Mimar Sinan", "Urban", "Lagari Hasan", "Davud Ağa"], dogru: 1 },
-    { soru: "Bilgisayar biliminin temeli sayılan 'algoritma' kavramını kuran ve cebirin atası kabul edilen İslam alimi kimdir?", secenekler: ["Harezmi", "Farabi", "İbn Sina", "Kindi"], dogru: 0 },
+    { soru: "Bilgisayar biliminin temeli sayılan 'algoritma' kavramını kuran og-image ve cebirin atası kabul edilen İslam alimi kimdir?", secenekler: ["Harezmi", "Farabi", "İbn Sina", "Kindi"], dogru: 0 },
     { soru: "1915 Çanakkale Cephesi'nde Nusret Mayın Gemisi'nin döşediği mayınlarla batan ünlü İngiliz zırhlısı hangisidir?", secenekler: ["HMS Queen Elizabeth", "HMS Agamemnon", "HMS Ocean", "HMS Irresistible"], dogru: 2 },
     { soru: "Şampiyonlar Ligi'nde grupların kaldırılarak tek lig usulüne geçilen yeni sistemin adı nedir?", secenekler: ["Eleme Modeli", "Süper Lig Modeli", "İsviçre Modeli", "Karma Model"], dogru: 2 },
     { soru: "Linux çekirdeği üzerine kurulan ve TÜBİTAK tarafından geliştirilen milli işletim sistemimizin adı nedir?", secenekler: ["Pardus", "Kızılelma", "Ulus", "Bora"], dogru: 0 },
@@ -1198,7 +1194,7 @@ function oyunBitir() {
   document.getElementById('oyun-secenekler').innerHTML = `<button class="oyun-secenek" style="max-width:300px" onclick="oyunuBaslat()">↩ Bugünkü Soruları Tekrarla</button>`;
 }
 
-// KADEMELİ YÜKLEME (AWAIT KALDIRILDI - ASENKRON ÇALIŞTIRMA)
+// ASENKRON PARALEL ÇALIŞTIRICI (DÜZELTME: KİLİTLENMEYİ ÖNLER)
 window.addEventListener('load', () => {
   const aktifMedeniyet = aktifMedeniyetiGetir();
   medeniyetTemasiUygula(aktifMedeniyet);
@@ -1211,6 +1207,7 @@ window.addEventListener('load', () => {
   
   setTimeout(animasyonlariBaslat, 300);
 
+  // Paralel tetikleme ile sayfa yüklenme blokajı kırıldı
   heroSliderGuncelle();
   kureselBilimGuncelle();
   savasHaberleriniGuncelle();
