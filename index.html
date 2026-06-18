@@ -518,42 +518,42 @@ footer {
         
         <!-- İsrail - Lübnan Hattı -->
         <g class="harita-nokta" onclick="makaleAc('RADAR','Orta Doğu Kriz Hattı','Bölgedeki sınır çatışmaları ve askeri hareketlilik artıyor.','Analiz Masası')" style="cursor:pointer">
-          <circle cx="1644" cy="442" r="14" fill="#C0392B" opacity="0.9"/>
-          <circle cx="1644" cy="442" r="28" fill="none" stroke="#C0392B" stroke-width="4" opacity="0.5">
+          <circle cx="1534" cy="425" r="14" fill="#C0392B" opacity="0.9"/>
+          <circle cx="1534" cy="425" r="28" fill="none" stroke="#C0392B" stroke-width="4" opacity="0.5">
             <animate attributeName="r" values="14;40;14" dur="1.5s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="0.8;0;0.8" dur="1.5s" repeatCount="indefinite"/>
           </circle>
-          <text x="1644" y="396" text-anchor="middle" fill="#fff" font-size="34" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">İsrail-Lübnan</text>
+          <text x="1534" y="395" text-anchor="middle" fill="#fff" font-size="34" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">İsrail-Lübnan</text>
         </g>
         
         <!-- Doğu Avrupa -->
         <g class="harita-nokta" onclick="makaleAc('RADAR','Doğu Avrupa Sınır Tahkimatı','Sınır hattı boyunca hava devriyeleri yoğunlaştırıldı.','Analiz Masası')" style="cursor:pointer">
-          <circle cx="1621" cy="318" r="14" fill="#C0392B" opacity="0.9"/>
-          <circle cx="1621" cy="318" r="28" fill="none" stroke="#C0392B" stroke-width="4" opacity="0.5">
+          <circle cx="1520" cy="290" r="14" fill="#C0392B" opacity="0.9"/>
+          <circle cx="1520" cy="290" r="28" fill="none" stroke="#C0392B" stroke-width="4" opacity="0.5">
             <animate attributeName="r" values="14;40;14" dur="1.5s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="0.8;0;0.8" dur="1.5s" repeatCount="indefinite"/>
           </circle>
-          <text x="1621" y="272" text-anchor="middle" fill="#fff" font-size="34" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Doğu Avrupa</text>
+          <text x="1520" y="260" text-anchor="middle" fill="#fff" font-size="34" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Doğu Avrupa</text>
         </g>
         
         <!-- Tayvan Boğazı -->
         <g class="harita-nokta" onclick="makaleAc('RADAR','Tayvan Boğazı Gerilimi','Karşılıklı deniz devriyeleri uluslararası ticareti tehdit ediyor.','Analiz Masası')" style="cursor:pointer">
-          <circle cx="2302" cy="516" r="14" fill="#C0392B" opacity="0.9"/>
-          <circle cx="2302" cy="516" r="28" fill="none" stroke="#C0392B" stroke-width="4" opacity="0.5">
+          <circle cx="2185" cy="490" r="14" fill="#C0392B" opacity="0.9"/>
+          <circle cx="2185" cy="490" r="28" fill="none" stroke="#C0392B" stroke-width="4" opacity="0.5">
             <animate attributeName="r" values="14;40;14" dur="1.5s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="0.8;0;0.8" dur="1.5s" repeatCount="indefinite"/>
           </circle>
-          <text x="2302" y="470" text-anchor="middle" fill="#fff" font-size="34" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Tayvan</text>
+          <text x="2185" y="460" text-anchor="middle" fill="#fff" font-size="34" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Tayvan</text>
         </g>
         
         <!-- Kızıldeniz -->
         <g class="harita-nokta" onclick="makaleAc('RADAR','Kızıldeniz Ticaret Hattı','Ticari gemilere yönelik müdahaleler lojistiği tıkıyor.','Analiz Masası')" style="cursor:pointer">
-          <circle cx="1667" cy="543" r="14" fill="#C0392B" opacity="0.9"/>
-          <circle cx="1667" cy="543" r="28" fill="none" stroke="#C0392B" stroke-width="4" opacity="0.5">
+          <circle cx="1545" cy="510" r="14" fill="#C0392B" opacity="0.9"/>
+          <circle cx="1545" cy="510" r="28" fill="none" stroke="#C0392B" stroke-width="4" opacity="0.5">
             <animate attributeName="r" values="14;40;14" dur="1.5s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="0.8;0;0.8" dur="1.5s" repeatCount="indefinite"/>
           </circle>
-          <text x="1667" y="497" text-anchor="middle" fill="#fff" font-size="34" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Kızıldeniz</text>
+          <text x="1545" y="480" text-anchor="middle" fill="#fff" font-size="34" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Kızıldeniz</text>
         </g>
         
       </svg>
@@ -669,13 +669,6 @@ footer {
 </div>
 
 <script>
-// Gelecekte yeni bir ülke eklersen tam Equirectangular koordinat hesaplayan formül:
-function koordinatHesapla(lat, lon) {
-  const cx = Math.round(((lon + 180) / 360) * 2754);
-  const cy = Math.round(((90 - lat) / 180) * 1398);
-  return { cx, cy };
-}
-
 const WORKER_URL = "https://turan-cache.yusuferenkaraca5.workers.dev";
 const aylar = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
 const bugunTarihi = new Date(); 
