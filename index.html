@@ -6,6 +6,7 @@
 <meta name="referrer" content="no-referrer">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Ccircle cx='26' cy='26' r='26' fill='%2314213d'/%3E%3Ccircle cx='26' cy='26' r='24' stroke='%23C8963A' stroke-width='1.5' fill='none'/%3E%3Ccircle cx='26' cy='26' r='16' stroke='%23C8963A' stroke-width='1' fill='none'/%3E%3Ccircle cx='26' cy='26' r='5' fill='%23C8963A'/%3E%3Cline x1='26' y1='6' x2='26' y2='12' stroke='%23C8963A' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='26' y1='40' x2='26' y2='46' stroke='%23C8963A' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='6' y1='26' x2='12' y2='26' stroke='%23C8963A' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='40' y1='26' x2='46' y2='26' stroke='%23C8963A' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
 
+<!-- SEO BAŞLANGICI -->
 <title>TuranHaber — Türk Dünyası, Siyaset, Teknoloji ve Dünya Gündemi</title>
 <meta name="description" content="TuranHaber ile Türk Dünyası, küresel bilim, teknoloji, jeopolitik risk radarı, Türkiye siyaseti ve spor gündemini kesintisiz, bağımsız ve anlık olarak takip edin.">
 <meta name="keywords" content="haber, türk dünyası, dünya gündemi, son dakika haberleri, teknoloji haberleri, savaş radarı, siyaset, turan haber">
@@ -199,20 +200,20 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 
 /* --- SABİTLENMİŞ HARİTA (TEK BİRLEŞİK SVG YAPISI) --- */
 .jeopolitik-harita-alani { 
+  position: relative; 
   width: 100%; 
   background: #0b121c; 
   border-radius: 12px; 
   overflow: hidden; 
   margin-bottom: 2.5rem; 
   border: 1px solid rgba(255,255,255,0.05); 
-  box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
 }
 .harita-nokta text { text-shadow: 0 2px 4px rgba(0,0,0,0.8); transition: 0.3s; }
 .harita-nokta:hover circle[fill="#C0392B"] { fill: #E74C3C; }
 .harita-nokta:hover text { fill: var(--altin); }
 
 /* Dark Mode'da sadece harita görselini ters çevir, overlay renklerini koru */
-[data-theme="dark"] #svg-map-image { filter: invert(0.85) hue-rotate(180deg); }
+[data-theme="dark"] #jeopolitik-harita-img { filter: invert(0.85) hue-rotate(180deg); }
 
 .savas-grid-2 { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1.5rem; align-items: stretch; }
 .sk-kart { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 2rem; cursor: pointer; transition: var(--gecis); display: flex; flex-direction: column; height: 100%;}
@@ -406,7 +407,6 @@ footer {
   .nav-sag { border-top: 1px solid var(--cizgi); width: 100%; overflow-x: auto; }
   .dunya-grid, .uc-kolon-grid, .bilim-ozel-grid, .ilgili-grid, .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   .ts-grid { grid-template-columns: 1fr; }
-  .hero-slider-alani { height: auto; margin-bottom: 2.5rem; } 
   .hero-slide { padding: 1.5rem; }
   .hero-baslik { font-size: 26px; }
   .hero-ozet { display: -webkit-box; -webkit-line-clamp: 2; font-size: 14px; }
@@ -421,6 +421,7 @@ footer {
 
 <div id="ilerleme-cubugu"></div>
 
+<!-- ÜST BANT -->
 <div class="ust-bant">
   <div class="sol-kisim">
     <span class="tarih" id="tarih-goster"></span>
@@ -431,6 +432,7 @@ footer {
 </div>
 
 <header>
+  <!-- SADECE METİN OLARAK GÖKTÜRKÇE DAMGALAR -->
   <div class="gokturk-bg-text">𐱅𐰇𐰼𐰚 : 𐰉𐰆𐰑𐰣 : 𐱅𐰇𐰼𐰚 : 𐰉𐰆𐰑𐰣 : 𐱅𐰇𐰼𐰚</div>
   <div class="header-ic">
     <div class="logo-alan">
@@ -475,6 +477,7 @@ footer {
 
 <main>
 
+  <!-- HAVA DURUMU ALANI -->
   <div class="hava-durumu-kapsayici anim-up" id="hava-durumu-alani"></div>
 
   <div class="tarihte-bugun-kart anim-up" id="tarihte-bugun-paneli">
@@ -508,50 +511,55 @@ footer {
       <h2>Jeopolitik Risk Radarı</h2>
     </div>
 
-    <div class="jeopolitik-harita-alani">
-      <svg id="harita-overlay" style="width:100%; height:auto; display:block;" viewBox="0 0 2754 1398">
+    <!-- MİLİMETRİK KİLİTLİ SVG HARİTA YAPISI -->
+    <div class="jeopolitik-harita-alani" style="position:relative; width:100%; background:#0b121c; border-radius:12px; overflow:hidden; margin-bottom:2.5rem; border:1px solid rgba(255,255,255,0.05);">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg" style="width:100%; display:block; opacity:0.85;" id="jeopolitik-harita-img" alt="Dünya Haritası">
+      <svg id="harita-overlay" style="position:absolute; top:0; left:0; width:100%; height:100%; overflow:visible;" viewBox="0 0 2754 1398" preserveAspectRatio="none">
         
-        <image href="https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg" x="0" y="0" width="2754" height="1398" opacity="0.85" id="svg-map-image" />
-        
+        <!-- İsrail - Lübnan Hattı -->
         <g class="harita-nokta" onclick="makaleAc('RADAR','Orta Doğu Kriz Hattı','Bölgedeki sınır çatışmaları ve askeri hareketlilik artıyor.','Analiz Masası')" style="cursor:pointer">
-          <circle cx="1624" cy="531" r="14" fill="#C0392B" opacity="0.9"/>
-          <circle cx="1624" cy="531" r="28" fill="none" stroke="#C0392B" stroke-width="4" opacity="0.5">
+          <circle cx="1644" cy="442" r="14" fill="#C0392B" opacity="0.9"/>
+          <circle cx="1644" cy="442" r="28" fill="none" stroke="#C0392B" stroke-width="4" opacity="0.5">
             <animate attributeName="r" values="14;40;14" dur="1.5s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="0.8;0;0.8" dur="1.5s" repeatCount="indefinite"/>
           </circle>
-          <text x="1624" y="485" text-anchor="middle" fill="#fff" font-size="34" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">İsrail-Lübnan</text>
+          <text x="1644" y="396" text-anchor="middle" fill="#fff" font-size="34" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">İsrail-Lübnan</text>
         </g>
         
+        <!-- Doğu Avrupa -->
         <g class="harita-nokta" onclick="makaleAc('RADAR','Doğu Avrupa Sınır Tahkimatı','Sınır hattı boyunca hava devriyeleri yoğunlaştırıldı.','Analiz Masası')" style="cursor:pointer">
-          <circle cx="1542" cy="335" r="14" fill="#C0392B" opacity="0.9"/>
-          <circle cx="1542" cy="335" r="28" fill="none" stroke="#C0392B" stroke-width="4" opacity="0.5">
+          <circle cx="1621" cy="318" r="14" fill="#C0392B" opacity="0.9"/>
+          <circle cx="1621" cy="318" r="28" fill="none" stroke="#C0392B" stroke-width="4" opacity="0.5">
             <animate attributeName="r" values="14;40;14" dur="1.5s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="0.8;0;0.8" dur="1.5s" repeatCount="indefinite"/>
           </circle>
-          <text x="1542" y="289" text-anchor="middle" fill="#fff" font-size="34" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Doğu Avrupa</text>
+          <text x="1621" y="272" text-anchor="middle" fill="#fff" font-size="34" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Doğu Avrupa</text>
         </g>
         
+        <!-- Tayvan Boğazı -->
         <g class="harita-nokta" onclick="makaleAc('RADAR','Tayvan Boğazı Gerilimi','Karşılıklı deniz devriyeleri uluslararası ticareti tehdit ediyor.','Analiz Masası')" style="cursor:pointer">
-          <circle cx="2285" cy="587" r="14" fill="#C0392B" opacity="0.9"/>
-          <circle cx="2285" cy="587" r="28" fill="none" stroke="#C0392B" stroke-width="4" opacity="0.5">
+          <circle cx="2302" cy="516" r="14" fill="#C0392B" opacity="0.9"/>
+          <circle cx="2302" cy="516" r="28" fill="none" stroke="#C0392B" stroke-width="4" opacity="0.5">
             <animate attributeName="r" values="14;40;14" dur="1.5s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="0.8;0;0.8" dur="1.5s" repeatCount="indefinite"/>
           </circle>
-          <text x="2285" y="541" text-anchor="middle" fill="#fff" font-size="34" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Tayvan</text>
+          <text x="2302" y="470" text-anchor="middle" fill="#fff" font-size="34" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Tayvan</text>
         </g>
         
+        <!-- Kızıldeniz -->
         <g class="harita-nokta" onclick="makaleAc('RADAR','Kızıldeniz Ticaret Hattı','Ticari gemilere yönelik müdahaleler lojistiği tıkıyor.','Analiz Masası')" style="cursor:pointer">
-          <circle cx="1652" cy="643" r="14" fill="#C0392B" opacity="0.9"/>
-          <circle cx="1652" cy="643" r="28" fill="none" stroke="#C0392B" stroke-width="4" opacity="0.5">
+          <circle cx="1667" cy="543" r="14" fill="#C0392B" opacity="0.9"/>
+          <circle cx="1667" cy="543" r="28" fill="none" stroke="#C0392B" stroke-width="4" opacity="0.5">
             <animate attributeName="r" values="14;40;14" dur="1.5s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="0.8;0;0.8" dur="1.5s" repeatCount="indefinite"/>
           </circle>
-          <text x="1652" y="597" text-anchor="middle" fill="#fff" font-size="34" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Kızıldeniz</text>
+          <text x="1667" y="497" text-anchor="middle" fill="#fff" font-size="34" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Kızıldeniz</text>
         </g>
         
       </svg>
     </div>
 
+    <!-- ALT BİLGİ KARTLARI -->
     <div class="savas-grid-2" id="savas-grid"></div>
   </div>
 
@@ -622,6 +630,7 @@ footer {
   </div>
 </footer>
 
+<!-- HABER OKUMA MODALI -->
 <div class="modal-arkaplan" id="makale-modal" onclick="if(event.target===this) modalKapat()">
   <div class="modal-kutu">
     <div class="modal-icerik">
@@ -643,6 +652,7 @@ footer {
   </div>
 </div>
 
+<!-- TEMA SEÇİCİ MODAL -->
 <div class="tema-secici-arkaplan" id="tema-secici" onclick="if(event.target===this) temaSeciciKapat()">
   <div class="tema-secici-kutu">
     <div class="ts-baslik">
@@ -659,13 +669,11 @@ footer {
 </div>
 
 <script>
-// Herhangi bir noktanın orijinal SVG üzerindeki Pixel koordinatını hesaplamak istersen kullanabileceğin fonksiyon.
+// Gelecekte yeni bir ülke eklersen tam Equirectangular koordinat hesaplayan formül:
 function koordinatHesapla(lat, lon) {
-  const left = ((lon + 180) / 360 * 100).toFixed(2);
-  const latRad = lat * Math.PI / 180;
-  const y = 0.5 - Math.log((1 + Math.sin(latRad)) / (1 - Math.sin(latRad))) / (4 * Math.PI);
-  const top = (y * 100).toFixed(2);
-  return { top, left };
+  const cx = Math.round(((lon + 180) / 360) * 2754);
+  const cy = Math.round(((90 - lat) / 180) * 1398);
+  return { cx, cy };
 }
 
 const WORKER_URL = "https://turan-cache.yusuferenkaraca5.workers.dev";
