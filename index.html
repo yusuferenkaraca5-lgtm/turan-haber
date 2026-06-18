@@ -436,7 +436,7 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
     <div style="color:white; display:flex; height:100%; align-items:center; justify-content:center;">Manşetler yükleniyor...</div>
   </div>
 
-  <!-- DÜNYA GÜNDEMİ (CANLI) BURAYA TAŞINDI -->
+  <!-- DÜNYA GÜNDEMİ (CANLI) -->
   <div class="bolum-baslik anim-up">
     <div class="bolum-sembol">🌐</div><h2>Dünya Gündemi (Canlı Akış)</h2>
   </div>
@@ -711,47 +711,7 @@ window.addEventListener('scroll', () => {
   document.getElementById('ilerleme-cubugu').style.width = ((winScroll / height) * 100) + "%";
 });
 
-// UTF-8 MOJIBAKE (ÇİFT KODLAMA) ONARICI FONKSİYON 
-function utf8Duzelt(metin) {
-    if (!metin) return '';
-    let t = String(metin);
-    
-    // 1. Aşama: Olası "1/4" fraksiyon bozulmalarını önden yakala (Örn: DÃ1⁄4nya)
-    t = t.replace(/Ã1\/4/g, 'ü').replace(/Ã1⁄4/g, 'ü').replace(/\xC31\u20444/g, 'ü');
-
-    // 2. Aşama: Standart çift kodlanmış UTF-8 verisini programatik olarak çözme
-    try {
-        if (/[\xC2-\xC5]/.test(t) || /Ã|Ä|Å/.test(t)) {
-            t = decodeURIComponent(escape(t));
-        }
-    } catch (e) {
-        // Eğer escape işlemi patlarsa (ki bu nadirdir), sorun yok, manuel değiştiricilere devam eder
-    }
-
-    // 3. Aşama: Manuel Hex Unicode Değiştirici (Panodan veya bozuk API'den geçen görünmez karakterler için kesin çözüm)
-    return t
-        .replace(/\xC3\xA7/g, 'ç').replace(/\xC3\x87/g, 'Ç') // ç, Ç
-        .replace(/\xC4\x9F/g, 'ğ').replace(/\xC4\x9E/g, 'Ğ') // ğ, Ğ
-        .replace(/\xC4\xB1/g, 'ı').replace(/\xC4\xB0/g, 'İ') // ı, İ
-        .replace(/\xC3\xB6/g, 'ö').replace(/\xC3\x96/g, 'Ö') // ö, Ö
-        .replace(/\xC5\x9F/g, 'ş').replace(/\xC5\x9E/g, 'Ş') // ş, Ş
-        .replace(/\xC3\xBC/g, 'ü').replace(/\xC3\x9C/g, 'Ü') // ü, Ü
-        .replace(/\xE2\x80\x99/g, "'").replace(/\xE2\x80\x98/g, "'") // ’ ‘
-        .replace(/\xE2\x80\x9C/g, '"').replace(/\xE2\x80\x9D/g, '"') // “ ”
-        .replace(/\xE2\x80\x93/g, "-").replace(/\xE2\x80\x94/g, "-") // Tireler
-        
-        // Garanti Katmanı (Eski stil manuel karakterler)
-        .replace(/Ã§/g, 'ç').replace(/Ã‡/g, 'Ç')
-        .replace(/ÄŸ/g, 'ğ').replace(/Äž/g, 'Ğ')
-        .replace(/Ä±/g, 'ı').replace(/Ä°/g, 'İ')
-        .replace(/Ã¶/g, 'ö').replace(/Ã–/g, 'Ö')
-        .replace(/ÅŸ/g, 'ş').replace(/Åž/g, 'Ş')
-        .replace(/Ã¼/g, 'ü').replace(/Ãœ/g, 'Ü')
-        .replace(/â€™/g, "'").replace(/â€“/g, "-")
-        .replace(/â€œ/g, '"').replace(/â€/g, '"');
-}
-
-// GÜVENLİK KORUMALARI
+// GÜVENLİK KORUMASI VE TEMİZLEYİCİ
 function guvenliMetin(metin) {
   if(!metin || metin === "null" || metin === "undefined") return '';
   let temiz = String(metin)
@@ -760,7 +720,7 @@ function guvenliMetin(metin) {
     .replace(/<[^>]*>?/gm, '') 
     .replace(/ə/g, 'e').replace(/Ə/g, 'E').replace(/&amp;/g, '&').replace(/&quot;/g, '"').trim();
   
-  return utf8Duzelt(temiz);
+  return temiz;
 }
 
 function attrGuvenli(str) {
@@ -768,9 +728,33 @@ function attrGuvenli(str) {
     return guvenliMetin(str).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
+// KÖKTEN ÇÖZÜM: BOZUK (MOJİBAKE) VE BOŞ HABERLERİ SİSTEME SOKMAMA FİLTRESİ
 function haberFiltrele(res) { 
   const yasakliKelimeler = ['only available', 'paid plans', 'dizi', 'oyuncu', 'magazin', 'bollywood', 'fragman', 'kimdir', 'sevgili', 'sinema', 'şarkıcı', 'actor', 'actress', 'movie', 'episode', 'season', 'survivor', 'masterchef'];
-  return res ? res.filter(h => h.title && !yasakliKelimeler.some(y => h.title.toLowerCase().includes(y))) : []; 
+  
+  // API'den gelen bozuk UTF-8 kodlarını yakalayan işaretçiler
+  const bozukKarakterler = ['Ã', 'Ä', 'Å', '1⁄4', 'Â', 'â€'];
+  
+  return res ? res.filter(h => {
+    if (!h.title) return false;
+    
+    const baslik = h.title || "";
+    const aciklama = h.description || h.content || "";
+    
+    const kucukMetin = (baslik + " " + aciklama).toLowerCase();
+    const orjMetin = baslik + " " + aciklama;
+    
+    // 1. Yasaklı kelime varsa ele
+    if (yasakliKelimeler.some(y => kucukMetin.includes(y))) return false;
+    
+    // 2. Bozuk/Kırık karakter (Mojibake) barındırıyorsa ele
+    if (bozukKarakterler.some(b => orjMetin.includes(b))) return false;
+    
+    // 3. İçerik ve açıklama çok kısaysa veya boşsa ekrana çıkarma (Min 25 karakter)
+    if (aciklama.trim().length < 25) return false;
+    
+    return true;
+  }) : []; 
 }
 
 // ASENKRON GÖRSEL ŞELALE MOTORU
@@ -854,13 +838,9 @@ function makaleAc(kat, bas, met, kay) {
   document.getElementById('modal-kaydet-btn').style.display = 'flex';
   document.getElementById('ilgili-alan').style.display = 'block';
   document.getElementById('modal-metin').innerHTML = ''; 
-  const guvenliBas = guvenliMetin(bas);
   
-  // İçerik tamamen boş geldiğinde gösterilecek varsayılan yedek metin
-  let guvenliMetinIcerik = guvenliMetin(met);
-  if (!guvenliMetinIcerik || guvenliMetinIcerik.includes("veritabanından getiriliyor") || guvenliMetinIcerik.length < 10) {
-      guvenliMetinIcerik = "Bu habere ait detaylı içerik şu an için haber kaynağından çekilemedi veya yalnızca manşet olarak sunulmuş durumda.\n\nDaha fazla detay için kaynak ajansın bültenini takip edebilirsiniz.";
-  }
+  const guvenliBas = guvenliMetin(bas);
+  const guvenliMetinIcerik = guvenliMetin(met);
 
   aktifMakaleObjesi = { kat, baslik: guvenliBas, metin: guvenliMetinIcerik, kaynak: guvenliMetin(kay) };
   document.getElementById('modal-kat').textContent = kat;
@@ -881,7 +861,7 @@ function makaleAc(kat, bas, met, kay) {
   const ig = document.getElementById('ilgili-haberler-grid'); ig.innerHTML = '';
   [{t:"Tedarik Zincirinde Rota Arayışları", k:"Ekonomi"}, {t:"Yarı İletken Pazarında Rekabet", k:"Teknoloji"}, {t:"Yapay Zeka ve Veri Yasaları", k:"Hukuk"}].sort(()=>0.5-Math.random()).slice(0,3).forEach(ih => {
      const k = document.createElement('div'); k.className = 'ilgili-kart';
-     k.onclick = () => makaleAc(ih.k, ih.t, "Detaylı analiz veritabanından çekiliyor. Bölgesel dinamikler ve uluslararası ticaret yollarındaki değişimler bu süreçte belirleyici olacak.\n\nYeni nesil tedarik zinciri modellerinin önümüzdeki 10 yıl içinde tamamen dijitalleşmesi bekleniyor.\n\nSiyasi aktörlerin kararları doğrudan bu süreci etkileyecek ve pazar paylarında sert dalgalanmalar yaratacaktır.", "Arşiv");
+     k.onclick = () => makaleAc(ih.k, ih.t, "Detaylı analiz veritabanından çekiliyor. Bölgesel dinamikler ve uluslararası ticaret yollarındaki değişimler bu süreçte belirleyici olacak.\n\nYeni nesil tedarik zinciri modellerinin önümüzdeki 10 yıl içinde tamamen dijitalleşmesi bekleniyor.", "Arşiv");
      k.innerHTML = `<span class="i-kaynak">${ih.k}</span><h5>${ih.t}</h5>`;
      ig.appendChild(k);
   });
@@ -907,8 +887,8 @@ async function apiIstekAt(url) {
 }
 
 const gunlukMakaleler = [
-  { t: "Evrenin Sınırlarının Ötesinde Ne Var?", e: "Astrofizik", r: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa", m: "Bilim insanları gözlemlenebilir evrenin 93 milyar ışık yılı genişliğinde olduğunu biliyor. Ancak bu devasa hacmin ötesinde ne olduğu, modern fizikteki en büyük sırlardan biridir.\n\nBazı teorisyenler, kozmik enflasyon modeli uyarınca evrenin sonsuz bir 'çoklu evren' (multiverse) okyanusundaki küçük bir kabarcık olabileceğini savunuyor. Bu kabarcıkların her birinde fizik yasaları bile farklı işleyebilir.\n\nJames Webb Uzay Teleskobu'nun derin alan gözlemleri, her geçen gün Big Bang'in ilk anlarına daha yakından bakmamızı sağlıyor, ancak sınırların ötesini görmek için tamamen yeni bir fizik paradigmasına ihtiyacımız olabilir.\n\nEğer çoklu evren teorisi kanıtlanırsa, insanlık tarihindeki en büyük felsefi ve bilimsel şok dalgalarından biri yaşanacak. Çünkü bu, yaşadığımız evrenin sayısız ihtimalden sadece biri olduğu anlamına gelecek." },
-  { t: "İnsan Beyni %10'unu mu Kullanıyor?", e: "Nörobilim", r: "https://images.unsplash.com/photo-1507413245164-6160d8298b31", m: "Popüler kültürde yaygın olan 'insan beyni kapasitesinin sadece yüzde onunu kullanır' inancı tamamen bir efsanedir. FMRI taramaları, uyurken bile beynimizin neredeyse tamamının aktif olduğunu gösteriyor.\n\nAncak beynin asıl mucizesi kullanım yüzdesinde değil, nöroplastisite yeteneğindedir. Yani kullanılmayan ya da hasar gören nöron ağlarının görevlerini diğer nöronların devralarak beyni sürekli 'yeniden kablolaması' durumudur.\n\nBu yetenek sayesinde felçli hastalar yeniden hareket yetisi kazanabiliyor veya insanlar çok ileri yaşlarda bile tamamen yeni diller ve beceriler öğrenebiliyorlar.\n\nYakın gelecekte Elon Musk'ın Neuralink gibi projeleri, bu nöroplastisite yeteneğini dijital çiplerle destekleyerek insan beyninin bilgi işleme hızını hayal edilemeyecek seviyelere çıkarmayı planlıyor." }
+  { t: "Evrenin Sınırlarının Ötesinde Ne Var?", e: "Astrofizik", r: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa", m: "Bilim insanları gözlemlenebilir evrenin 93 milyar ışık yılı genişliğinde olduğunu biliyor. Ancak bu devasa hacmin ötesinde ne olduğu, modern fizikteki en büyük sırlardan biridir.\n\nBazı teorisyenler, kozmik enflasyon modeli uyarınca evrenin sonsuz bir 'çoklu evren' (multiverse) okyanusundaki küçük bir kabarcık olabileceğini savunuyor. Bu kabarcıkların her birinde fizik yasaları bile farklı işleyebilir.\n\nJames Webb Uzay Teleskobu'nun derin alan gözlemleri, her geçen gün Big Bang'in ilk anlarına daha yakından bakmamızı sağlıyor, ancak sınırların ötesini görmek için tamamen yeni bir fizik paradigmasına ihtiyacımız olabilir." },
+  { t: "İnsan Beyni %10'unu mu Kullanıyor?", e: "Nörobilim", r: "https://images.unsplash.com/photo-1507413245164-6160d8298b31", m: "Popüler kültürde yaygın olan 'insan beyni kapasitesinin sadece yüzde onunu kullanır' inancı tamamen bir efsanedir. FMRI taramaları, uyurken bile beynimizin neredeyse tamamının aktif olduğunu gösteriyor.\n\nAncak beynin asıl mucizesi kullanım yüzdesinde değil, nöroplastisite yeteneğindedir. Yani kullanılmayan ya da hasar gören nöron ağlarının görevlerini diğer nöronların devralarak beyni sürekli 'yeniden kablolaması' durumudur.\n\nBu yetenek sayesinde felçli hastalar yeniden hareket yetisi kazanabiliyor veya insanlar çok ileri yaşlarda bile tamamen yeni diller ve beceriler öğrenebiliyorlar." }
 ];
 
 function gununMakalesiniYukle() {
@@ -994,7 +974,7 @@ async function savasHaberleriniGuncelle() {
   savasHaberleriOlustur([
       { 
           title: "Orta Doğu'da Çatışma Çemberi Genişliyor: İsrail - Lübnan Sınırında Sıcak Saatler", 
-          description: "İsrail ordusu (IDF) ile Hizbullah güçleri arasında Lübnan'ın güney sınırında karşılıklı topçu atışları ve hava saldırıları şiddetini artırdı.\n\nİsrail savaş uçakları, Beyrut'un güneyindeki stratejik altyapıları hedef alırken, Hizbullah buna karşılık olarak Kuzey İsrail'deki askeri üslere yoğun roket atışları gerçekleştirdi.\n\nABD Merkez Kuvvetler Komutanlığı (CENTCOM), bölgedeki gerilimin bölgesel bir savaşa evrilmemesi için Doğu Akdeniz'deki donanma unsurlarını teyakkuza geçirdi. Diplomatik kaynaklar, ateşkes görüşmelerinin şu an için durduğunu belirtiyor.\n\nSınır köylerinden binlerce sivilin kuzeye ve güneye doğru tahliyesi ise trajik boyutlara ulaşmış durumda.", 
+          description: "İsrail ordusu (IDF) ile Hizbullah güçleri arasında Lübnan'ın güney sınırında karşılıklı topçu atışları ve hava saldırıları şiddetini artırdı.\n\nİsrail savaş uçakları, Beyrut'un güneyindeki stratejik altyapıları hedef alırken, Hizbullah buna karşılık olarak Kuzey İsrail'deki askeri üslere yoğun roket atışları gerçekleştirdi.\n\nABD Merkez Kuvvetler Komutanlığı (CENTCOM), bölgedeki gerilimin bölgesel bir savaşa evrilmemesi için Doğu Akdeniz'deki donanma unsurlarını teyakkuza geçirdi. Diplomatik kaynaklar, ateşkes görüşmelerinin şu an için durduğunu belirtiyor.", 
           source_id: "Ortadoğu İstihbarat Ağı" 
       }, 
       { 
@@ -1004,7 +984,7 @@ async function savasHaberleriniGuncelle() {
       }, 
       { 
           title: "Kızıldeniz'de Lojistik Kriz: Ticaret Rotaları Vuruluyor", 
-          description: "Yemen'deki Husi güçleri, Kızıldeniz üzerinden geçen ticari gemilere ve batılı savaş gemilerine yönelik kamikaze dron ve balistik füze saldırılarına hız kesmeden devam ediyor.\n\nABD ve İngiliz ortak hava kuvvetleri, Yemen'deki yeraltı sığınaklarına ve füze fırlatma rampalarına önleyici şiddetli saldırılar düzenlediğini duyurdu. Buna rağmen dünyanın en büyük denizcilik şirketleri, Süveyş Kanalı rotasını kullanmayı tamamen durdurma kararı aldı.\n\nKonteyner gemilerinin Afrika'nın etrafını dolanmak zorunda kalması, Avrupa'daki limanlarda büyük tedarik zinciri krizlerinin yaşanacağının habercisi.", 
+          description: "Yemen'deki Husi güçleri, Kızıldeniz üzerinden geçen ticari gemilere ve batılı savaş gemilerine yönelik kamikaze dron ve balistik füze saldırılarına hız kesmeden devam ediyor.\n\nABD ve İngiliz ortak hava kuvvetleri, Yemen'deki yeraltı sığınaklarına ve füze fırlatma rampalarına önleyici şiddetli saldırılar düzenlediğini duyurdu. Buna rağmen dünyanın en büyük denizcilik şirketleri, Süveyş Kanalı rotasını kullanmayı tamamen durdurma kararı aldı.", 
           source_id: "Bölgesel Çatışma Analizi" 
       }
   ]);
@@ -1021,12 +1001,12 @@ function siyasetHaberleriOlustur() {
         { 
             k: "ANKARA KULİSİ", 
             t: "Milli Savunma Stratejisi ve Yeni Teşvik Paketleri", 
-            m: "Ankara kulislerinden gelen bilgilere göre, yerli savunma sanayii ekosisteminin geliştirilmesi ve yarı iletken tedarik güvenliği kabinede masaya yatırıldı.\n\nÖzellikle mikroçip üretiminde dışa bağımlılığın tamamen azaltılması hedeflenen toplantıda, yerli çip üretim tesisleri kuracak holdingler için yeni ve devasa teşvik paketlerinin yolda olduğu vurgulandı.\n\nBunun yanı saha insansız savaş uçakları Kızılelma ve Anka-3'ün seri üretim aşamalarının hızlandırılması için kamu-özel sektör iş birliklerinin artırılacağı bildirildi. Savunma bütçesindeki bu tarihi artışın, önümüzdeki 5 yılda teknoloji ihracatına müthiş bir ivme kazandırması bekleniyor." 
+            m: "Ankara kulislerinden gelen bilgilere göre, yerli savunma sanayii ekosisteminin geliştirilmesi ve yarı iletken tedarik güvenliği kabinede masaya yatırıldı.\n\nÖzellikle mikroçip üretiminde dışa bağımlılığın tamamen azaltılması hedeflenen toplantıda, yerli çip üretim tesisleri kuracak holdingler için yeni ve devasa teşvik paketlerinin yolda olduğu vurgulandı.\n\nBunun yanı sıra insansız savaş uçakları Kızılelma ve Anka-3'ün seri üretim aşamalarının hızlandırılması için kamu-özel sektör iş birliklerinin artırılacağı bildirildi." 
         },
         { 
             k: "SİBER GÜVENLİK", 
             t: "Milli Siber Altyapı: Kuantum Şifreleme Dönemi Başlıyor", 
-            m: "Sağlık, Enerji ve İletişim Bakanlıklarının kritik veri altyapıları, tamamen milli Linux dağıtımı olan Pardus sunucularına ve yeni nesil kuantum şifreleme algirliğine taşınıyor.\n\nDevletin en üst düzey siber güvenlik yetkililerinden alınan bilgiye göre, vatandaşların kişisel e-devlet ve sağlık verilerinin korunması amacıyla ana sunucuların tamamı yurtiçindeki yeraltı, EMP korumalı veri merkezlerine taşınıyor.\n\nBu stratejik hamle ile birlikte, yabancı devlet destekli olası siber espiyonaj faaliyetlerinin ve son dönemde artan fidye yazılımı (ransomware) saldırılarının önü kesin olarak kesilmiş olacak." 
+            m: "Sağlık, Enerji ve İletişim Bakanlıklarının kritik veri altyapıları, tamamen milli Linux dağıtımı olan Pardus sunucularına ve yeni nesil kuantum şifreleme algoritmalarına taşınıyor.\n\nDevletin en üst düzey siber güvenlik yetkililerinden alınan bilgiye göre, vatandaşların kişisel e-devlet ve sağlık verilerinin korunması amacıyla ana sunucuların tamamı yurtiçindeki yeraltı, EMP korumalı veri merkezlerine taşınıyor.\n\nBu stratejik hamle ile birlikte, yabancı devlet destekli olası siber espiyonaj faaliyetlerinin ve son dönemde artan fidye yazılımı (ransomware) saldırılarının önü kesin olarak kesilmiş olacak." 
         },
         { 
             k: "DIŞ POLİTİKA", 
@@ -1056,9 +1036,9 @@ function bilimHaberleriOlustur(veriler) {
 
 async function kureselBilimGuncelle() {
   bilimHaberleriOlustur([
-      {title: "Nöral Arayüz Çipleri İnsan Testine Başladı", description: "Motor korteks sinyallerini direkt dijital veriye dönüştüren biyolojik işlemciler, felçli hastaların bilgisayar kontrolünü sağlamasına önayak oldu.\n\nBu çipler beyindeki ince zarlara entegre edilerek, düşünce hızında komut iletimi sağlıyor. Önümüzdeki 5 yıl içinde klinik denemelerin bitmesi planlanıyor.\n\nUzmanlar, bu gelişmenin sadece tıp dünyası için değil, insan-makine birleşmesi (transhümanizm) konusunda da devrim yaratacağını savunuyor.", source_id: "NöroTıp Enstitüsü"}, 
-      {title: "Yapay Zeka ile Yeni Nesil Protein Sentezi", description: "Biyoteknoloji laboratuvarları, hücreleri doğrudan hedefleyen özelleştirilmiş antikorları 48 saatte üreten yeni bir algoritma geliştirdi.\n\nKlasik yöntemlerle aylar süren ilaç keşif süreçleri, derin öğrenme algoritmalarının protein katlanmasını kusursuz tahmin etmesiyle devrim niteliğinde bir hıza ulaştı.\n\nBu teknoloji sayesinde kanser gibi agresif hastalıklara karşı, hastanın kendi DNA profiline özel biyolojik silahlar üretilmesi mümkün olacak.", source_id: "Biyomedikal Arşiv"},
-      {title: "Füzyon Reaktöründe Yeni Plazma Rekoru Kırıldı", description: "Temiz ve sınırsız enerjinin anahtarı olarak görülen nükleer füzyon çalışmalarında, manyetik plazma sıcaklığı Güneş'in çekirdeğinden 10 kat daha sıcak bir seviyede tutulmayı başardı.\n\nSistemin enerjiyi 30 saniye boyunca stabil tutabilmesi, ticari füzyon enerjisi için dev bir adım olarak nitelendirildi.\n\nKarbon emisyonunu sıfıra indirecek olan bu enerji kaynağı, küresel ısınmayı durdurabilecek tek teknolojik çıkış yolu olarak gösteriliyor.", source_id: "Enerji Bakanlığı"}
+      {title: "Nöral Arayüz Çipleri İnsan Testine Başladı", description: "Motor korteks sinyallerini direkt dijital veriye dönüştüren biyolojik işlemciler, felçli hastaların bilgisayar kontrolünü sağlamasına önayak oldu.\n\nBu çipler beyindeki ince zarlara entegre edilerek, düşünce hızında komut iletimi sağlıyor. Önümüzdeki 5 yıl içinde klinik denemelerin bitmesi planlanıyor.", source_id: "NöroTıp Enstitüsü"}, 
+      {title: "Yapay Zeka ile Yeni Nesil Protein Sentezi", description: "Biyoteknoloji laboratuvarları, hücreleri doğrudan hedefleyen özelleştirilmiş antikorları 48 saatte üreten yeni bir algoritma geliştirdi.\n\nKlasik yöntemlerle aylar süren ilaç keşif süreçleri, derin öğrenme algoritmalarının protein katlanmasını kusursuz tahmin etmesiyle devrim niteliğinde bir hıza ulaştı.", source_id: "Biyomedikal Arşiv"},
+      {title: "Füzyon Reaktöründe Yeni Plazma Rekoru Kırıldı", description: "Temiz ve sınırsız enerjinin anahtarı olarak görülen nükleer füzyon çalışmalarında, manyetik plazma sıcaklığı Güneş'in çekirdeğinden 10 kat daha sıcak bir seviyede tutulmayı başardı.\n\nSistemin enerjiyi 30 saniye boyunca stabil tutabilmesi, ticari füzyon enerjisi için dev bir adım olarak nitelendirildi.", source_id: "Enerji Bakanlığı"}
   ]);
   const bH = await apiIstekAt(`${WORKER_URL}/?kategori=technology&q=${encodeURIComponent('bilim OR yapay zeka OR teknoloji')}`);
   if(bH && bH.length > 0) bilimHaberleriOlustur(bH); 
