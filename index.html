@@ -30,6 +30,7 @@
   --gecis: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* MEDENİYET TEMALARI */
 :root[data-medeniyet="gokturk"] {  
   --altin: #C17F3B;  --lacivert: #2C1810;  --koyu: #1A0F08;  --kizil: #8B2500;  
   --arkaplan: #F5ECD7;  --kart-bg: #FDF6E8;  --cizgi: rgba(0,0,0,0.08);
@@ -152,27 +153,27 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .tb-detay h4 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--altin); margin-bottom: 8px; }
 .tb-detay p { font-size: 14px; color: #d1d5db; line-height: 1.6; }
 
-/* KÜRESEL BİLİM */
-.bilim-ozel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3.5rem; }
-.bilim-ozel-kart { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; padding: 1.8rem; box-shadow: var(--golge); cursor: pointer; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+/* KÜRESEL BİLİM - Düzenlemeler Yapıldı (Taşma engellendi) */
+.bilim-ozel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3.5rem; align-items: stretch; }
+.bilim-ozel-kart { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; padding: 1.8rem; box-shadow: var(--golge); cursor: pointer; display: flex; flex-direction: column; position: relative; overflow: hidden; height: 100%; min-height: 220px;}
 .bilim-ozel-kart::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, #3b82f6, #8b5cf6); }
 .bo-ulke { font-size: 10px; font-weight: 700; color: #fff; background: #1e3a8a; display: inline-block; padding: 4px 10px; border-radius: 4px; margin-bottom: 12px; align-self: flex-start;}
 .bilim-ozel-kart h4 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--lacivert); line-height: 1.4; margin-bottom: 10px; }
-.bilim-ozel-kart p { font-size: 13px; color: var(--ikincil); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.bilim-ozel-kart p { font-size: 13px; color: var(--ikincil); line-height: 1.6; display: flex; flex-direction: column; flex-grow: 1; margin: 0; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; }
 
 /* SAVAŞ KORİDORU */
 .savas-koridoru { background: var(--koyu); border-radius: 16px; padding: 2.5rem; margin-bottom: 3.5rem; position: relative; border-left: 5px solid var(--kizil); box-shadow: 0 15px 40px rgba(0,0,0,0.15); overflow: hidden;}
 .savas-baslik { display: flex; align-items: center; gap: 15px; margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 15px; }
 .savas-baslik h2 { color: #fff; font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; }
-.savas-grid-2 { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1.5rem; }
-.sk-kart { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 2rem; cursor: pointer; transition: var(--gecis); }
+.savas-grid-2 { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1.5rem; align-items: stretch; }
+.sk-kart { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 2rem; cursor: pointer; transition: var(--gecis); display: flex; flex-direction: column; height: 100%;}
 .sk-kart:hover { border-color: var(--kizil); transform: translateY(-4px); }
-.sk-ajans { display: inline-block; background: rgba(192,57,43,0.2); color: #ff6b6b; font-size: 11px; font-weight: 700; padding: 6px 12px; border-radius: 4px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.1em;}
+.sk-ajans { display: inline-block; background: rgba(192,57,43,0.2); color: #ff6b6b; font-size: 11px; font-weight: 700; padding: 6px 12px; border-radius: 4px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.1em; align-self: flex-start;}
 .sk-ajans.altin { background: rgba(200,150,58,0.2); color: var(--altin); border-color: rgba(200,150,58,0.3); }
 .sk-kart h3 { color: #fff; font-family: 'Playfair Display', serif; font-size: 24px; margin-bottom: 12px; line-height: 1.3; }
-.sk-kart p { color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.7; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
-.sk-alt-grid { display: flex; flex-direction: column; gap: 1.5rem; }
-.sk-mini { padding: 1.5rem; }
+.sk-kart p { color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.7; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+.sk-alt-grid { display: flex; flex-direction: column; gap: 1.5rem; height: 100%; }
+.sk-mini { padding: 1.5rem; flex: 1; }
 .sk-mini h3 { font-size: 18px; margin-bottom: 8px; }
 
 /* GÜNÜN MAKALESİ */
@@ -188,8 +189,8 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .gm-okuma-suresi { font-size: 12px; font-weight: 600; color: var(--kizil); }
 
 /* DÜNYA GÜNDEMİ KARTLARI */
-.dunya-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 3.5rem; }
-.dunya-kart { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; overflow: hidden; cursor: pointer; transition: var(--gecis); display: flex; flex-direction: column; box-shadow: var(--golge);}
+.dunya-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 3.5rem; align-items: stretch;}
+.dunya-kart { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; overflow: hidden; cursor: pointer; transition: var(--gecis); display: flex; flex-direction: column; box-shadow: var(--golge); height: 100%;}
 .dunya-kart:hover { transform: translateY(-5px); border-color: rgba(200,150,58,0.3); }
 .dk-resim { width: 100%; height: 220px; object-fit: cover; transition: transform 0.5s ease;}
 .dunya-kart:hover .dk-resim { transform: scale(1.03); }
@@ -198,40 +199,40 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .dk-icerik { padding: 1.8rem; flex: 1; display: flex; flex-direction: column;}
 .dk-catisma-yazi { color: var(--kizil); font-size: 11px; font-weight: 700; margin-bottom: 10px; text-transform: uppercase;}
 .dk-icerik h4 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--lacivert); line-height: 1.3; margin-bottom: 12px; }
-.dk-icerik p { font-size: 14px; color: var(--ikincil); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 15px; flex: 1;}
+.dk-icerik p { font-size: 14px; color: var(--ikincil); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 15px; flex-grow: 1;}
 
 /* İKİLİ KOLON */
-.ikili-kolon { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 3.5rem; }
-.haber-bolum { background: var(--kart-bg); border-radius: 12px; border: 1px solid var(--cizgi); overflow: hidden; box-shadow: var(--golge);}
-.haber-satir { padding: 1.5rem; border-bottom: 1px solid var(--cizgi); cursor: pointer; transition: var(--gecis); }
+.ikili-kolon { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 3.5rem; align-items: stretch;}
+.haber-bolum { background: var(--kart-bg); border-radius: 12px; border: 1px solid var(--cizgi); overflow: hidden; box-shadow: var(--golge); height: 100%; display: flex; flex-direction: column; justify-content: space-between;}
+.haber-satir { padding: 1.5rem; border-bottom: 1px solid var(--cizgi); cursor: pointer; transition: var(--gecis); flex: 1; display: flex; flex-direction: column; justify-content: center;}
 .haber-satir:hover { background: rgba(0,0,0,0.015); padding-left: 1.8rem; }
 .haber-satir:last-child { border-bottom: none; }
-.etiket { display: inline-block; font-size: 10px; font-weight: 700; margin-bottom: 8px; padding: 4px 10px; border-radius: 4px; text-transform: uppercase;}
+.etiket { display: inline-block; font-size: 10px; font-weight: 700; margin-bottom: 8px; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; align-self: flex-start;}
 .e-siyaset { background: rgba(139, 92, 246, 0.15); color: #5b21b6; }
 .e-saglik { background: rgba(16, 185, 129, 0.15); color: #065f46; }
 .haber-satir h3 { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--lacivert); line-height: 1.35; margin-bottom: 8px; }
 .haber-satir p { font-size: 13px; color: var(--ikincil); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
 /* RADAR & FUTBOL & TARİH */
-.catisma-radar { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; overflow: hidden; box-shadow: var(--golge); height: 100%; }
+.catisma-radar { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; overflow: hidden; box-shadow: var(--golge); height: 100%; display: flex; flex-direction: column;}
 .cr-baslik { background: rgba(192,57,43,0.1); border-bottom: 1px solid rgba(192,57,43,.15); padding: 15px 1.5rem; font-size: 15px; font-weight: 700; color: #7A1A1A; display: flex; align-items: center; gap: 8px; }
 [data-theme="dark"] .cr-baslik { color: #ff8787; }
 .cr-dot { width: 8px; height: 8px; background: var(--kizil); border-radius: 50%; animation: pulse 1.5s infinite; }
-.cr-madde { padding: 15px 1.5rem; border-bottom: 1px solid var(--cizgi); cursor: pointer; transition: var(--gecis);}
+.cr-madde { padding: 15px 1.5rem; border-bottom: 1px solid var(--cizgi); cursor: pointer; transition: var(--gecis); flex: 1; display: flex; flex-direction: column; justify-content: center;}
 .cr-madde:hover { background: rgba(0,0,0,.02); padding-left: 1.8rem; }
 .cr-madde .bolge { font-size: 10px; font-weight: 700; color: var(--kizil); margin-bottom: 5px; text-transform: uppercase;}
 .cr-madde h5 { font-size: 14px; font-weight: 600; color: var(--lacivert); line-height: 1.4; }
 
-.uc-kolon-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3.5rem; }
-.standart-makale-kart { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; transition: var(--gecis); box-shadow: var(--golge);}
+.uc-kolon-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3.5rem; align-items: stretch;}
+.standart-makale-kart { background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; transition: var(--gecis); box-shadow: var(--golge); height: 100%; min-height: 200px;}
 .standart-makale-kart:hover { transform: translateY(-4px); border-color: rgba(200,150,58,0.3); }
-.smk-serit { height: 4px; background: linear-gradient(90deg, var(--lacivert), var(--altin)); }
+.smk-serit { height: 4px; background: linear-gradient(90deg, var(--lacivert), var(--altin)); flex-shrink: 0;}
 .smk-serit.spor-renk { background: linear-gradient(90deg, #10b981, #3b82f6); }
 .smk-icerik { padding: 1.5rem; flex: 1; display: flex; flex-direction: column;}
 .smk-badge { align-self: flex-start; font-size: 10px; font-weight: 700; background: var(--altin-acik); color: #9A6A10; padding: 4px 10px; border-radius: 4px; margin-bottom: 12px; text-transform: uppercase;}
 .smk-badge.spor-badge { background: rgba(16, 185, 129, 0.15); color: #059669; }
 .standart-makale-kart h4 { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--lacivert); line-height: 1.4; margin-bottom: 10px; }
-.standart-makale-kart p { font-size: 13px; color: var(--ikincil); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; flex: 1;}
+.standart-makale-kart p { font-size: 13px; color: var(--ikincil); line-height: 1.6; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; margin: 0;}
 
 /* MİNİ OYUN ALANI */
 .mini-oyun-kapsayici { background: linear-gradient(135deg, var(--lacivert) 0%, #1a2a40 100%); border-radius: 16px; padding: 3rem 2rem; margin-bottom: 3.5rem; position: relative; overflow: hidden; box-shadow: var(--golge); color: #fff; text-align: center; border: 1px solid rgba(200,150,58,0.3);}
@@ -278,7 +279,7 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
 .modal-baslik { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 700; color: var(--lacivert); line-height: 1.3; margin-bottom: 15px; }
 .modal-meta { display: flex; flex-wrap: wrap; gap: 15px; font-size: 13px; color: var(--ucuncul); font-weight: 500; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid var(--cizgi); }
 .modal-metin { font-size: 16px; color: var(--yazi); line-height: 1.8; }
-.modal-metin p { margin-bottom: 1.5rem; }
+.modal-metin p { margin-bottom: 1.5rem; text-align: justify; }
 
 /* İLGİLİ HABERLER GRİDİ */
 .ilgili-haberler-alani { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--cizgi); }
@@ -365,6 +366,7 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
   .hero-ozet { display: -webkit-box; -webkit-line-clamp: 2; font-size: 13px; }
   .hero-noktalar { bottom: 1rem; right: 1.5rem; }
   .ts-footer { flex-direction: column; gap: 10px; align-items: stretch; text-align: center; }
+  
   .anim-up { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
 </style>
@@ -449,7 +451,6 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
   </div>
   <div class="bilim-ozel-grid" id="bilim-ozel-alani"></div>
 
-  <!-- SAVAŞ VE ÇATIŞMA ALANI -->
   <div class="savas-koridoru anim-up" id="savas">
     <div class="savas-baslik">
       <div class="bolum-sembol" style="background:var(--kizil); color:#fff; border:none;">⚔️</div>
@@ -463,36 +464,33 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
   </div>
   <div class="gm-kapsayici anim-up" id="gunun-makalesi-alani"></div>
 
-  <!-- DÜNYA GÜNDEMİ -->
   <div class="bolum-baslik anim-up">
     <div class="bolum-sembol">🌐</div><h2>Dünya Gündemi (Canlı)</h2>
   </div>
   <div class="dunya-grid" id="canli-haber-alani"></div>
 
-  <!-- TÜRKİYE SİYASETİ VE ÇATIŞMA RADARI -->
   <div class="ikili-kolon">
-    <div class="anim-up">
+    <div class="anim-up" style="display: flex; flex-direction: column;">
       <div class="bolum-baslik" id="siyaset"><div class="bolum-sembol">🏛️</div><h2>Türkiye Siyaseti & Milli Gündem</h2></div>
-      <div class="haber-bolum" id="siyaset-grid">
-         <!-- Siyaset Haberleri Dinamik Yüklenecek -->
+      <div class="haber-bolum">
+        <div class="haber-satir" onclick="makaleAc('SİYASET', 'Milli Savunma ve Stratejik Yatırımlar Komisyonu Toplandı', 'Ankara Kulislerinden gelen bilgilere göre, yerli savunma sanayii ekosisteminin finansman ve yarı iletken tedarik güvenliği masaya yatırıldı.\n\nÖzellikle dışa bağımlılığın azaltılması hedeflenen toplantıda, yerli çip üretim tesisleri için yeni teşvik paketlerinin yolda olduğu vurgulandı.\n\nSavunma projelerinin siber güvenliğinin sağlanması adına kamu-özel sektör iş birliklerinin artırılacağı bildirildi.', 'Ankara Mahreci')"><div><span class="etiket e-siyaset">Ankara Kulisi</span><h3>Milli Savunma Stratejisi</h3><p>Ankara Kulislerinden gelen bilgilere göre, yerli savunma sanayii ekosisteminin geliştirilmesi ve yarı iletken tedarik güvenliği masaya yatırıldı...</p></div></div>
+        <div class="haber-satir" onclick="makaleAc('SAĞLIK', 'Milli Siber Sağlık Projesi Entegrasyonu', 'Sağlık Bakanlığı veri altyapısı, kuantum şifreleme ve milli Linux dağıtımı algoritmalarıyla siber taarruzlara karşı koruma kalkanına alındı.\n\nBakanlık yetkililerinden alınan bilgiye göre, hastaların kişisel sağlık verilerinin korunması amacıyla sunucuların tamamı yerli altyapılara taşınıyor.\n\nBu hamle ile birlikte olası küresel veri sızıntılarının ve fidye yazılımı (ransomware) saldırılarının tamamen engellenmesi hedefleniyor.', 'Milli Gündem')"><div><span class="etiket e-saglik">Siber Savunma</span><h3>Milli Siber Sağlık Altyapısı</h3><p>Sağlık Bakanlığı veri altyapısı, kuantum şifreleme ve milli Linux dağıtımı algoritmalarıyla dış müdahalelere karşı korumaya alındı...</p></div></div>
       </div>
     </div>
     
-    <div class="anim-up">
+    <div class="anim-up" style="display: flex; flex-direction: column;">
       <div class="catisma-radar">
         <div class="cr-baslik"><div class="cr-dot"></div>Sıcak Çatışma Radarı</div>
-        <div id="radar-grid">
-           <!-- Radar Haberleri Dinamik Yüklenecek -->
-        </div>
+        <div class="cr-madde" onclick="makaleAc('RADAR', 'Kızıldeniz Tedarik Hattı Baskı Altında', 'Ticari gemilerin seyrüsefer sistemlerine yönelik yanıltıcı sinyal müdahaleleri sürüyor.\n\nBölgedeki deniz taşımacılığı şirketleri, güvenlik endişeleri sebebiyle rotalarını Ümit Burnu üzerinden güneye kaydırmak zorunda kalıyor.\n\nUzmanlar, lojistik gecikmelerin kısa vadede küresel konteyner ve navlun fiyatlarında %30 oranında artışa neden olabileceği konusunda uyarıyor.', 'Bölge Raporu')"><div class="bolge">🌐 Kızıldeniz</div><h5>Kızıldeniz Tedarik Hattı Baskı Altında</h5></div>
+        <div class="cr-madde" onclick="makaleAc('RADAR', 'Doğu Avrupa Sınır Hattı Tahkimat Süreci', 'Bölgede lojistik destek ve ikmal yolları üzerindeki insansız hava aracı devriyeleri artırıldı.\n\nSınır hattı boyunca yeni nesil elektronik harp sistemleri ve hava savunma bataryaları aktif konuma getirildi.\n\nKritik enerji altyapısına yönelik potansiyel sabotaj girişimlerine karşı özel güvenlik protokolleri uygulamaya konuldu.', 'Bölge Raporu')"><div class="bolge">🇪🇺 Doğu Avrupa</div><h5>Sınır Hattı Tahkimat Süreci</h5></div>
       </div>
     </div>
   </div>
 
-  <!-- SPOR GÜNDEMİ -->
   <div class="bolum-baslik anim-up" id="futbol">
       <div class="bolum-sembol">⚽</div><h2>Spor & Futbol Gündemi</h2>
   </div>
-  <div class="uc-kolon-grid anim-up" id="futbol-grid-alan"></div>
+  <div class="uc-kolon-grid" id="futbol-grid-alan"></div>
 
   <div class="mini-oyun-kapsayici anim-up" id="oyun">
       <div class="oyun-baslik-alan">
@@ -511,7 +509,7 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
   <div class="bolum-baslik anim-up" id="tarih">
       <div class="bolum-sembol">🕌</div><h2>Tarih & Kültür Arşivi</h2>
   </div>
-  <div class="uc-kolon-grid anim-up" id="tarih-grid-alan"></div>
+  <div class="uc-kolon-grid" id="tarih-grid-alan"></div>
 
 </main>
 
@@ -534,7 +532,6 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
   </div>
 </footer>
 
-<!-- HABER OKUMA MODALI -->
 <div class="modal-arkaplan" id="makale-modal" onclick="if(event.target===this) modalKapat()">
   <div class="modal-kutu">
     <div class="modal-icerik">
@@ -556,7 +553,6 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
   </div>
 </div>
 
-<!-- TEMA SEÇİCİ MODAL -->
 <div class="tema-secici-arkaplan" id="tema-secici" onclick="if(event.target===this) temaSeciciKapat()">
   <div class="tema-secici-kutu">
     <div class="ts-baslik">
@@ -579,34 +575,16 @@ const aylar = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağus
 const bugunTarihi = new Date(); 
 document.getElementById('tarih-goster').textContent = `${bugunTarihi.getDate()} ${aylar[bugunTarihi.getMonth()]} ${bugunTarihi.getFullYear()}`;
 
-// RASTGELE GÖRSEL HAVUZU (Çeşitlilik İçin Genişletildi)
-const yedekGorselHavuzu = [
-    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=900&q=70", // Dünya Ağ
-    "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&q=70", // Dijital Devre
-    "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=900&q=70", // Finans/Borsa
-    "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=900&q=70", // Siber Güvenlik
-    "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=900&q=70", // Çip/Teknoloji
-    "https://images.unsplash.com/photo-1525373698358-041e3a460346?w=900&q=70", // Modern Mimari/Ankara
-    "https://images.unsplash.com/photo-1508004680771-708b02aabdc0?w=900&q=70", // Uydu/Uzay
-    "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=900&q=70", // Drone/İHA
-    "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=900&q=70", // Teknoloji Ar-Ge
-    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=70", // İş dünyası/Toplantı
-    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=70", // Veri Analizi
-    "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=900&q=70"  // Ekonomi/Büyüme
-];
-
-function rastgeleGorselAl() {
-    return yedekGorselHavuzu[Math.floor(Math.random() * yedekGorselHavuzu.length)];
-}
-
 function gorselUrlOptimize(url) {
-  if (!url) return rastgeleGorselAl();
+  if (!url) return 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=900&q=70'; 
   const mobil = window.innerWidth < 768;
   const w = mobil ? '600' : '900';
+  
   if (url.includes('unsplash.com')) {
     if(url.includes('w=')) return url.replace(/w=\d+/, `w=${w}`).replace(/q=\d+/, 'q=70');
     return `${url}?w=${w}&q=70`;
   }
+  
   return `${WORKER_URL}/img?url=${encodeURIComponent(url)}&w=${w}`;
 }
 
@@ -638,8 +616,8 @@ window.addEventListener('DOMContentLoaded', temaUygula);
 
 // MEDENİYET TEMA SİSTEMİ
 const MEDENIYETLER = [
-  { id: 'gokturk',     isim: 'Göktürk',     donem: '552 – 744',    emoji: '🐺', renk: '#C17F3B, #8B2500' },
-  { id: 'uygur',       isim: 'Uygur',        donem: '744 – 840',    emoji: '📜', renk: '#D4A843, #1B5E8E' },
+  { id: 'gokturk',     isim: 'Göktürk',     donem: '552 – 744',     emoji: '🐺', renk: '#C17F3B, #8B2500' },
+  { id: 'uygur',       isim: 'Uygur',         donem: '744 – 840',     emoji: '📜', renk: '#D4A843, #1B5E8E' },
   { id: 'selcuklu',    isim: 'Selçuklu',     donem: '1037 – 1194',  emoji: '🕌', renk: '#C8963A, #0A3D3D' },
   { id: 'osmanli',     isim: 'Osmanlı',      donem: '1299 – 1922',  emoji: '⚔️', renk: '#C8963A, #C0392B' },
   { id: 'cumhuriyet',  isim: 'Cumhuriyet',   donem: '1923 – Günümüz', emoji: '🏛️', renk: '#E8C547, #E74C3C' },
@@ -746,7 +724,7 @@ function guvenliMetin(metin) {
     .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '') 
     .replace(/on\w+="[^"]*"/g, '').replace(/on\w+='[^']*'/g, '').replace(/on\w+=\w+/g, '')
     .replace(/<[^>]*>?/gm, '') 
-    .replace(/ə/g, 'e').replace(/Ə/g, 'E').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/\n/g, ' ').trim();
+    .replace(/ə/g, 'e').replace(/Ə/g, 'E').replace(/&amp;/g, '&').replace(/&quot;/g, '"').trim();
 }
 
 function attrGuvenli(str) {
@@ -781,23 +759,7 @@ function resimArkaPlandaGuncelle(haberLink, haberBaslik, imgElement) {
           });
       }
     })
-    .catch(() => {
-        // Her şey patlarsa havuzdan rastgele bir yedek görsel çak
-        const optUrl = gorselUrlOptimize(rastgeleGorselAl());
-        if (imgElement.tagName === 'IMG') imgElement.src = optUrl;
-        else imgElement.style.backgroundImage = `url('${optUrl}')`;
-    });
-}
-
-// DİZİ KARIŞTIRICI (Shuffle)
-function diziyiKaristir(array) {
-  let currentIndex = array.length, randomIndex;
-  while (currentIndex !== 0) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
-  }
-  return array;
+    .catch(() => {});
 }
 
 // OKUMA LİSTESİ
@@ -860,7 +822,10 @@ function makaleAc(kat, bas, met, kay) {
   aktifMakaleObjesi = { kat, baslik: guvenliBas, metin: guvenliMetin(met), kaynak: guvenliMetin(kay) };
   document.getElementById('modal-kat').textContent = kat;
   document.getElementById('modal-baslik').textContent = guvenliBas;
+  
+  // Paragraf oluşturma mantığı: Satır atlamalarını algılar ve paragraflara böler.
   document.getElementById('modal-metin').innerHTML = String(guvenliMetin(met)).split('\n').filter(p=>p.trim()!=='').map(p=>`<p>${p}</p>`).join('');
+  
   document.getElementById('modal-tarih').textContent = `${bugunTarihi.getDate()} ${aylar[bugunTarihi.getMonth()]} ${bugunTarihi.getFullYear()}`;
   document.getElementById('modal-kaynak').innerHTML = `<strong>Kaynak:</strong> ${guvenliMetin(kay)}`;
   
@@ -874,7 +839,7 @@ function makaleAc(kat, bas, met, kay) {
   const ig = document.getElementById('ilgili-haberler-grid'); ig.innerHTML = '';
   [{t:"Tedarik Zincirinde Rota Arayışları", k:"Ekonomi"}, {t:"Yarı İletken Pazarında Rekabet", k:"Teknoloji"}, {t:"Yapay Zeka ve Veri Yasaları", k:"Hukuk"}].sort(()=>0.5-Math.random()).slice(0,3).forEach(ih => {
      const k = document.createElement('div'); k.className = 'ilgili-kart';
-     k.onclick = () => makaleAc(ih.k, ih.t, "Detaylı analiz veritabanından çekiliyor...", "Arşiv");
+     k.onclick = () => makaleAc(ih.k, ih.t, "Detaylı analiz veritabanından çekiliyor. Bölgesel dinamikler ve uluslararası ticaret yollarındaki değişimler bu süreçte belirleyici olacak.\n\nYeni nesil tedarik zinciri modellerinin önümüzdeki 10 yıl içinde tamamen dijitalleşmesi bekleniyor.", "Arşiv");
      k.innerHTML = `<span class="i-kaynak">${ih.k}</span><h5>${ih.t}</h5>`;
      ig.appendChild(k);
   });
@@ -887,14 +852,6 @@ function modalKapat() {
   document.body.style.overflow = '';
 }
 
-document.addEventListener('keydown', (e) => {
-    if(e.key === 'Escape') {
-        if(document.getElementById('makale-modal').classList.contains('goster')) modalKapat();
-        if(document.getElementById('tema-secici').classList.contains('goster')) temaSeciciKapat();
-    }
-});
-
-// API İSTEK FONKSİYONU
 async function apiIstekAt(url) { 
     try { 
       const controller = new AbortController();
@@ -907,44 +864,61 @@ async function apiIstekAt(url) {
     } catch (e) { return null; }
 }
 
-// ----------------------------------------------------
-// VERİ HAVUZLARI VE GÜNCELLEME FONKSİYONLARI
-// ----------------------------------------------------
-
-// 1. MANŞET (HERO SLIDER) - API: 'top'
-const yedekManset = [
-  {title: "Kuantum Şifreleme Ağlarında İlk Kıtalararası Başarı", description: "Avrupa ve Asya arasındaki fiber optik hatlarda kuantum anahtar dağıtımı (QKD) ile hacklenmesi imkansız ilk veri transferi gerçekleştirildi. Siber güvenlik mimarisinde yeni bir dönem başlıyor.", source_id: "KÜRESEL SİBER RAPOR"},
-  {title: "Yarı İletken Savaşında Tayvan Alternatifi", description: "Dev teknoloji şirketleri, tedarik zincirini güvence altına almak için çip üretimini Japonya ve ABD'deki yeni mega fabrikalara kaydırma kararı aldı. Çin'in bölgedeki tatbikatları piyasaları tedirgin ediyor.", source_id: "TEKNOLOJİ & EKONOMİ"}
+const gunlukMakaleler = [
+  { t: "Evrenin Sınırlarının Ötesinde Ne Var?", e: "Astrofizik", r: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa", m: "Bilim insanları gözlemlenebilir evrenin 93 milyar ışık yılı genişliğinde olduğunu biliyor. Ancak bu devasa hacmin ötesinde ne olduğu, modern fizikteki en büyük sırlardan biridir.\n\nBazı teorisyenler, kozmik enflasyon modeli uyarınca evrenin sonsuz bir 'çoklu evren' (multiverse) okyanusundaki küçük bir kabarcık olabileceğini savunuyor. Bu kabarcıkların her birinde fizik yasaları bile farklı işleyebilir.\n\nJames Webb Uzay Teleskobu'nun derin alan gözlemleri, her geçen gün Big Bang'in ilk anlarına daha yakından bakmamızı sağlıyor, ancak sınırların ötesini görmek için tamamen yeni bir fizik paradigmasına ihtiyacımız olabilir." },
+  { t: "İnsan Beyni %10'unu mu Kullanıyor?", e: "Nörobilim", r: "https://images.unsplash.com/photo-1507413245164-6160d8298b31", m: "Popüler kültürde yaygın olan 'insan beyni kapasitesinin sadece yüzde onunu kullanır' inancı tamamen bir efsanedir. FMRI taramaları, uyurken bile beynimizin neredeyse tamamının aktif olduğunu gösteriyor.\n\nAncak beynin asıl mucizesi kullanım yüzdesinde değil, nöroplastisite yeteneğindedir. Yani kullanılmayan ya da hasar gören nöron ağlarının görevlerini diğer nöronların devralarak beyni sürekli 'yeniden kablolaması' durumudur.\n\nBu yetenek sayesinde felçli hastalar yeniden hareket yetisi kazanabiliyor veya insanlar çok ileri yaşlarda bile tamamen yeni diller ve beceriler öğrenebiliyorlar." }
 ];
 
+function gununMakalesiniYukle() {
+   const alan = document.getElementById('gunun-makalesi-alani');
+   if(!alan) return;
+   const makale = gunlukMakaleler[bugunTarihi.getDate() % gunlukMakaleler.length];
+   alan.onclick = () => makaleAc('GÜNÜN MAKALESİ', makale.t, makale.m, 'TuranHaber Bilim Arşivi');
+   alan.innerHTML = `<div class="gm-resim" style="background-image: url('${gorselUrlOptimize(makale.r)}')"></div><div class="gm-icerik"><span class="gm-etiket">✦ ${makale.e}</span><h3 class="gm-baslik">${makale.t}</h3><p class="gm-metin">${makale.m.substring(0, 150)}...</p><div class="gm-okuma-suresi">⏳ 4 dakika okuma süresi</div></div>`;
+}
+
+// SLIDER MOTORU
 let hSlider, aSlide = 0;
 function heroSliderOlustur(veriler) {
   const al = document.getElementById('hero-slider'); if(!al) return;
   if(hSlider) { clearInterval(hSlider); hSlider = null; }
   aSlide = 0;
+  
   al.innerHTML = ''; const mH = veriler.slice(0, 5);
+  const sahte = ["https://images.unsplash.com/photo-1451187580459-43490279c0fa", "https://images.unsplash.com/photo-1516321318423-f06f85e504b3"];
   const nk = document.createElement('div'); nk.className = 'hero-noktalar';
   
-  mH.forEach((h, i) => {
-    const sl = document.createElement('div'); sl.className = `hero-slide ${i===0?'active':''}`;
-    const resimUrl = haberdenResimCikar(h);
-    const rawUrl = resimUrl || rastgeleGorselAl();
+  try {
+      mH.forEach((h, i) => {
+        const sl = document.createElement('div'); sl.className = `hero-slide ${i===0?'active':''}`;
+        const resimUrl = haberdenResimCikar(h);
+        const rawUrl = resimUrl || sahte[i%sahte.length];
+        
+        sl.style.backgroundImage = `url('${gorselUrlOptimize(rawUrl)}')`;
+        sl.onclick = () => makaleAc('MANŞET', h.title, h.description||'Manşet haberi detayı veritabanından getiriliyor...', h.source_id);
+        sl.innerHTML = `<div class="hero-icerik"><div class="hero-etiket">⚡ ${guvenliMetin(h.source_id)}</div><h2 class="hero-baslik">${guvenliMetin(h.title)}</h2><p class="hero-ozet">${guvenliMetin(h.description)}</p></div>`;
+        al.appendChild(sl);
     
-    sl.style.backgroundImage = `url('${gorselUrlOptimize(rawUrl)}')`;
-    sl.onclick = () => makaleAc('MANŞET', h.title, h.description||'Manşet haberi detayı veritabanından getiriliyor...', h.source_id);
-    sl.innerHTML = `<div class="hero-icerik"><div class="hero-etiket">⚡ ${guvenliMetin(h.source_id)}</div><h2 class="hero-baslik">${guvenliMetin(h.title)}</h2><p class="hero-ozet">${guvenliMetin(h.description)}</p></div>`;
-    al.appendChild(sl);
+        if (resimUrl) {
+           const dummyImg = new Image();
+           dummyImg.onerror = () => { sl.style.backgroundImage = `url('${resimUrl}')`; };
+           dummyImg.src = gorselUrlOptimize(resimUrl);
+        }
+        
+        if (!resimUrl && h.link) resimArkaPlandaGuncelle(h.link, h.title, sl);
     
-    if (!resimUrl && h.link) resimArkaPlandaGuncelle(h.link, h.title, sl);
-    const n = document.createElement('div'); n.className = `hero-nokta ${i===0?'active':''}`;
-    n.onclick = (e) => { e.stopPropagation(); hGec(i); }; nk.appendChild(n);
-  });
-  al.appendChild(nk); 
-  hSlider = setInterval(()=>hGec(aSlide+1), 6000);
+        const n = document.createElement('div'); n.className = `hero-nokta ${i===0?'active':''}`;
+        n.onclick = (e) => { e.stopPropagation(); hGec(i); }; nk.appendChild(n);
+      });
+      al.appendChild(nk); 
+      hSlider = setInterval(()=>hGec(aSlide+1), 6000);
+  } catch (err) {
+      console.error("Slider Render Error:", err);
+  }
 }
 
 async function heroSliderGuncelle() {
-  heroSliderOlustur(yedekManset);
+  heroSliderOlustur([{title: "Kuantum Şifreleme Ağlarında İlk Kıtalararası Başarı", description: "Avrupa ve Asya arasındaki fiber optik hatlarda kuantum anahtar dağıtımı (QKD) ile hacklenmesi imkansız ilk veri transferi gerçekleştirildi.\n\nBu tarihi hamle, siber güvenlikte yeni bir çağın başlangıcı olarak kabul ediliyor.", source_id: "KÜRESEL SİBER RAPOR"}, {title: "Yarı İletken Savaşında Tayvan Alternatifi", description: "Dev teknoloji şirketleri, tedarik zincirini güvence altına almak için çip üretimini Japonya ve ABD'deki yeni mega fabrikalara kaydırma kararı aldı.\n\nJeopolitik risklerin minimize edilmesi hedefleniyor.", source_id: "TEKNOLOJİ & EKONOMİ"}]);
   const res = await apiIstekAt(`${WORKER_URL}/?kategori=top`);
   if(res && res.length > 0) heroSliderOlustur(res); 
 }
@@ -957,195 +931,283 @@ function hGec(i) {
   sList[aSlide].classList.add('active'); nList[aSlide].classList.add('active');
 }
 
-// 2. KÜRESEL BİLİM - API: 'technology'
-const yedekBilim = [
-  {title: "Nöral Arayüz Çipleri İnsan Testine Başladı", description: "Motor korteks sinyallerini direkt dijital veriye dönüştüren biyolojik işlemciler, felçli hastaların bilgisayar kontrolünü sağlamasına önayak oldu. Elon Musk'ın Neuralink projesi rakipleriyle yarışıyor.", source_id: "NöroTıp Enstitüsü"}, 
-  {title: "Yapay Zeka ile Yeni Nesil Protein Sentezi", description: "Biyoteknoloji laboratuvarları, hücreleri doğrudan hedefleyen özelleştirilmiş antikorları 48 saatte üreten yeni bir yapay zeka algoritması geliştirdi. Kanser tedavisinde maliyetlerin düşmesi bekleniyor.", source_id: "Biyomedikal Arşiv"},
-  {title: "Mars'ta Kalıcı Koloni İçin Su Çıkartma Tesisleri", description: "NASA ve ESA ortaklığında geliştirilen roverlar, Mars toprağının altındaki buz katmanlarını buharlaştırarak içilebilir su elde etme testlerini başarıyla tamamladı.", source_id: "Astrofizik"}
-];
+function savasHaberleriOlustur(veriler) {
+  const grid = document.getElementById('savas-grid'); if(!grid) return;
+  grid.innerHTML = ''; const ag = document.createElement('div'); ag.className = 'sk-alt-grid';
+  try {
+      veriler.slice(0, 3).forEach((h, i) => {
+          const c = document.createElement('div'); c.onclick = () => makaleAc('SAVAŞ', h.title, h.description, h.source_id);
+          if(i===0) { c.className = 'sk-kart goster'; c.innerHTML = `<div class="sk-ajans">KRİTİK</div><h3>${guvenliMetin(h.title)}</h3><p>${guvenliMetin(h.description)}</p>`; grid.appendChild(c); } 
+          else { c.className = 'sk-kart sk-mini goster'; c.innerHTML = `<div class="sk-ajans altin">ANALİZ</div><h3>${guvenliMetin(h.title)}</h3><p>${guvenliMetin(h.description)}</p>`; ag.appendChild(c); }
+      });
+      grid.appendChild(ag); 
+  } catch (err) { console.error(err); }
+}
+
+async function savasHaberleriniGuncelle() {
+  savasHaberleriOlustur([{ title: "Kuzey Kutbu Lojistik Hatlarında Siber Teyakkuz", description: "Buzulların erimesiyle açılan yeni Arktik ticaret yolları üzerinde askeri ve ticari veri ağlarına yönelik koordineli siber devriyeler başlatıldı.\n\nKutup dairesine kıyısı olan ülkeler, hem askeri denizaltı devriyelerini sıkılaştırdı hem de uydular arası iletişim hatlarını yeni nesil sinyal bozucu teknolojilerle koruma altına aldı.", source_id: "İstihbarat Dairesi" }, { title: "Pasifik Savunma Hattı Otonomlaşıyor", description: "Bölgesel deniz güvenliğini artırmak amacıyla radar kontrollü insansız denizaltı filoları ortak devriye sistemine geçirildi. İnsansız araçlar yapay zeka destekli otonom hedeflendirme yapabiliyor.", source_id: "Strateji Analiz" }, { title: "Dron Sürüsü Teknolojilerinde Yeni Doktrin", description: "Uluslararası savunma platformları, havada birbirleriyle otonom iletişim kurabilen yüzlerce küçük İHA'nın entegre edildiği yeni savaş doktrinini resmi olarak test etmeye başladı.", source_id: "Askeri Arşiv" }]);
+  const sH = await apiIstekAt(`${WORKER_URL}/?kategori=world&q=${encodeURIComponent("savaş OR ordu OR savunma")}`);
+  if(sH && sH.length >= 2) savasHaberleriOlustur(sH);
+}
+
 function bilimHaberleriOlustur(veriler) {
   const grid = document.getElementById('bilim-ozel-alani'); if(!grid) return;
   grid.innerHTML = '';
-  veriler.slice(0, 3).forEach((h, idx) => {
-     const c = document.createElement('div'); c.className = `bilim-ozel-kart anim-up`; c.style.transitionDelay = `${idx*0.1}s`;
-     c.onclick = () => makaleAc('BİLİM', h.title, h.description, h.source_id);
-     c.innerHTML = `<div class="bo-ulke">🔬 KÜRESEL BİLİM RAPORU</div><h4>${guvenliMetin(h.title)}</h4><p>${guvenliMetin(h.description)}</p>`;
-     grid.appendChild(c);
-  });
-  animasyonlariBaslat(); 
+  try {
+      veriler.slice(0, 3).forEach((h, idx) => {
+         const c = document.createElement('div'); c.className = `bilim-ozel-kart anim-up goster`; c.style.transitionDelay = `${idx*0.1}s`;
+         c.onclick = () => makaleAc('BİLİM', h.title, h.description, h.source_id);
+         c.innerHTML = `<div class="bo-ulke">🔬 KÜRESEL BİLİM RAPORU</div><h4>${guvenliMetin(h.title)}</h4><p>${guvenliMetin(h.description)}</p>`;
+         grid.appendChild(c);
+      });
+  } catch(err) { console.error(err); }
 }
+
 async function kureselBilimGuncelle() {
-  bilimHaberleriOlustur(yedekBilim);
+  bilimHaberleriOlustur([
+      {title: "Nöral Arayüz Çipleri İnsan Testine Başladı", description: "Motor korteks sinyallerini direkt dijital veriye dönüştüren biyolojik işlemciler, felçli hastaların bilgisayar kontrolünü sağlamasına önayak oldu.\n\nBu çipler beyindeki ince zarlara entegre edilerek, düşünce hızında komut iletimi sağlıyor. Önümüzdeki 5 yıl içinde klinik denemelerin bitmesi planlanıyor.", source_id: "NöroTıp Enstitüsü"}, 
+      {title: "Yapay Zeka ile Yeni Nesil Protein Sentezi", description: "Biyoteknoloji laboratuvarları, hücreleri doğrudan hedefleyen özelleştirilmiş antikorları 48 saatte üreten yeni bir algoritma geliştirdi.\n\nKlasik yöntemlerle aylar süren ilaç keşif süreçleri, derin öğrenme algoritmalarının protein katlanmasını kusursuz tahmin etmesiyle devrim niteliğinde bir hıza ulaştı.", source_id: "Biyomedikal Arşiv"},
+      {title: "Füzyon Reaktöründe Yeni Plazma Rekoru Kırıldı", description: "Temiz ve sınırsız enerjinin anahtarı olarak görülen nükleer füzyon çalışmalarında, manyetik plazma sıcaklığı Güneş'in çekirdeğinden 10 kat daha sıcak bir seviyede tutulmayı başardı.\n\nSistemin enerjiyi 30 saniye boyunca stabil tutabilmesi, ticari füzyon enerjisi için dev bir adım olarak nitelendirildi.", source_id: "Enerji Bakanlığı"}
+  ]);
   const bH = await apiIstekAt(`${WORKER_URL}/?kategori=technology&q=${encodeURIComponent('bilim OR yapay zeka OR teknoloji')}`);
   if(bH && bH.length > 0) bilimHaberleriOlustur(bH); 
 }
 
-// 3. SAVAŞ & ÇATIŞMA - API: 'world' (filtered)
-const yedekSavas = [
-  { title: "Kuzey Kutbu Lojistik Hatlarında Siber Teyakkuz", description: "Buzulların erimesiyle açılan yeni Arktik ticaret yolları üzerinde askeri ve ticari veri ağlarına yönelik koordineli siber devriyeler başlatıldı. Bölgedeki donanma hareketliliği uydu görüntüleriyle teyit edildi.", source_id: "İstihbarat Dairesi" }, 
-  { title: "Pasifik Savunma Hattı Otonomlaşıyor", description: "Bölgesel deniz güvenliğini artırmak amacıyla radar kontrollü insansız denizaltı filoları ortak devriye sistemine geçirildi. İttifak güçleri yapay zeka destekli taarruz sistemlerini test ediyor.", source_id: "Strateji Analiz" },
-  { title: "Orta Doğu'da Enerji Koridorları Alarmda", description: "Petrol ve doğalgaz boru hatlarına yönelik sabotaj istihbaratlarının artması üzerine, kilit boğazlarda deniz piyadeleri ve drone'lar 24 saat aralıksız nöbet tutmaya başladı.", source_id: "Savunma" }
-];
-function savasHaberleriOlustur(veriler) {
-  const grid = document.getElementById('savas-grid'); if(!grid) return;
-  grid.innerHTML = ''; const ag = document.createElement('div'); ag.className = 'sk-alt-grid';
-  veriler.slice(0, 3).forEach((h, i) => {
-      const c = document.createElement('div'); c.onclick = () => makaleAc('SAVAŞ', h.title, h.description, h.source_id);
-      if(i===0) { c.className = 'sk-kart'; c.innerHTML = `<div class="sk-ajans">KRİTİK</div><h3>${guvenliMetin(h.title)}</h3><p>${guvenliMetin(h.description).substring(0,180)}...</p>`; grid.appendChild(c); } 
-      else { c.className = 'sk-kart sk-mini'; c.innerHTML = `<div class="sk-ajans altin">ANALİZ</div><h3>${guvenliMetin(h.title)}</h3><p>${guvenliMetin(h.description).substring(0,80)}...</p>`; ag.appendChild(c); }
-  });
-  grid.appendChild(ag); animasyonlariBaslat(); 
-}
-async function savasHaberleriniGuncelle() {
-  savasHaberleriOlustur(yedekSavas);
-  const sH = await apiIstekAt(`${WORKER_URL}/?kategori=world&q=${encodeURIComponent("savaş OR ordu OR savunma OR çatışma")}`);
-  if(sH && sH.length >= 2) savasHaberleriOlustur(sH);
-}
-
-// 4. CANLI DÜNYA GÜNDEMİ - API: 'world'
-const yedekDunya = [
-    {title:"Küresel İklim ve Enerji Mutabakatı Onaylandı", description:"Yenilenebilir akıllı şebekelere geçişi hızlandıracak dev altyapı fonu birleşmiş milletler nezdinde onaylandı.", source_id: "Dünya"}, 
-    {title:"Asya-Pasifik Yeni Pakt Anlaşması", description:"Yarı iletken tedarik zincirini güvence altına alan stratejik gümrük anlaşması imzalandı.", source_id: "Uluslararası"},
-    {title:"G7 Ülkelerinden Merkez Bankası Kararı", description:"Enflasyonist baskıları azaltmak amacıyla faiz oranlarında eşgüdümlü indirim süreci başladı.", source_id: "Ekonomi"},
-    {title:"Avrupa Parlamentosu Veri Güvenliği", description:"Büyük teknoloji şirketlerini doğrudan bağlayacak olan yeni veri egemenliği paketi yürürlüğe girdi.", source_id: "Dünya"}
-];
+// CANLI HABERLER
 function canliHaberleriOlustur(veriler) {
   const alan = document.getElementById('canli-haber-alani'); if(!alan) return;
   alan.innerHTML = ''; 
-  veriler.slice(0, 4).forEach((h, idx) => {
-    const resimUrl = haberdenResimCikar(h);
-    const proxyUrl = resimUrl ? gorselUrlOptimize(resimUrl) : gorselUrlOptimize(rastgeleGorselAl());
-    const fallbackSrc = resimUrl ? resimUrl : rastgeleGorselAl();
-    const onerrorKodu = `this.onerror=null; this.src='${attrGuvenli(fallbackSrc)}'`;
-
-    const c = document.createElement('div'); c.className = 'dunya-kart anim-up'; c.style.transitionDelay = `${idx*0.1}s`;
-    c.onclick = () => makaleAc('DÜNYA', h.title, h.description, h.source_id);
-    c.innerHTML = `<div class="dk-resim-wrapper"><img src="${proxyUrl}" class="dk-resim" alt="${attrGuvenli(h.title)}" onerror="${onerrorKodu}"></div><div class="dk-serit"></div><div class="dk-icerik"><div class="dk-catisma-yazi">🌐 KÜRESEL AKIŞ</div><h4>${guvenliMetin(h.title)}</h4><p>${guvenliMetin(h.description).substring(0,100)}...</p></div>`;
-    alan.appendChild(c);
-
-    if (!resimUrl && h.link) resimArkaPlandaGuncelle(h.link, h.title, c.querySelector('.dk-resim'));
-  });
-  animasyonlariBaslat();
+  const sahte = ["https://images.unsplash.com/photo-1451187580459-43490279c0fa", "https://images.unsplash.com/photo-1504711434969-e33886168f5c"];
+  
+  try {
+      veriler.slice(0, 4).forEach((h, idx) => {
+        const resimUrl = haberdenResimCikar(h);
+        const proxyUrl = resimUrl ? gorselUrlOptimize(resimUrl) : gorselUrlOptimize(sahte[idx%2]);
+        const fallbackSrc = resimUrl ? resimUrl : sahte[idx%2];
+        const safeFallback = attrGuvenli(fallbackSrc);
+        const onerrorKodu = `this.onerror=null; this.src='${safeFallback}'`;
+    
+        const c = document.createElement('div'); c.className = 'dunya-kart anim-up goster'; c.style.transitionDelay = `${idx*0.1}s`;
+        c.onclick = () => makaleAc('DÜNYA', h.title, h.description, h.source_id);
+        c.innerHTML = `<div class="dk-resim-wrapper"><img src="${proxyUrl}" class="dk-resim" alt="${attrGuvenli(h.title)}" onerror="${onerrorKodu}"></div><div class="dk-serit"></div><div class="dk-icerik"><div class="dk-catisma-yazi">🌐 KÜRESEL AKIŞ</div><h4>${guvenliMetin(h.title)}</h4><p>${guvenliMetin(h.description)}</p></div>`;
+        alan.appendChild(c);
+    
+        if (!resimUrl && h.link) {
+          const img = c.querySelector('.dk-resim');
+          resimArkaPlandaGuncelle(h.link, h.title, img);
+        }
+      });
+  } catch(err) { console.error(err); }
 }
+
 async function canliHaberleriCek() {
-  canliHaberleriOlustur(yedekDunya);
-  const res = await apiIstekAt(`${WORKER_URL}/?kategori=world`); // Kategorisi world olarak ayrıldı
+  canliHaberleriOlustur([
+      {title:"Küresel İklim ve Enerji Mutabakatı Onaylandı", description:"Yenilenebilir akıllı şebekelere geçişi hızlandıracak dev altyapı fonu birleşmiş milletler nezdinde onaylandı.\n\nKarbon salınımını azaltmayı hedefleyen projeler kapsamında gelişmekte olan ülkelere teknoloji transferi de sağlanacak."}, 
+      {title:"Asya-Pasifik Yeni Pakt Anlaşması", description:"Yarı iletken tedarik zincirini güvence altına alan stratejik gümrük anlaşması imzalandı.\n\nTicaret savaşlarının gölgesinde atılan bu imza, bölgesel bloklaşmayı da beraberinde getiriyor."}
+  ]);
+  const res = await apiIstekAt(`${WORKER_URL}/?kategori=top`);
   if(res && res.length > 0) canliHaberleriOlustur(res);
 }
 
-// 5. TÜRKİYE SİYASETİ VE MİLLİ GÜNDEM (Dinamik Havuz)
-const siyasetHavuzu = [
-    { baslik: "Milli Savunma ve Stratejik Yatırımlar Komisyonu Toplandı", metin: "Ankara Kulislerinden gelen bilgilere göre, yerli savunma sanayii ekosisteminin finansmanı ve yarı iletken tedarik güvenliği masaya yatırıldı. TUSAŞ ve Baykar'ın katılımıyla gerçekleşen toplantıda yeni nesil İHA projeleri detaylandırıldı.", etiket: "Ankara Kulisi", renk: "e-siyaset" },
-    { baslik: "Milli Siber Sağlık Altyapısı Entegrasyonu Başladı", metin: "Sağlık Bakanlığı veri altyapısı, kuantum şifreleme ve yerli Linux dağıtımı (Pardus) tabanlı algoritmalarıyla siber taarruzlara karşı koruma kalkanına alındı. Veri egemenliği yasası kapsamında hasta verileri tamamen yerelleştirildi.", etiket: "Siber Savunma", renk: "e-saglik" },
-    { baslik: "TBMM'de Yapay Zeka Regülasyonu Kanun Teklifi", metin: "Meclis genel kuruluna sunulan yeni kanun teklifi, otonom sistemlerin denetimi ve yapay zekanın veri madenciliği haklarını yeniden düzenliyor. Bilişim hukuku komisyonu taslağa son şeklini veriyor.", etiket: "Meclis", renk: "e-siyaset" },
-    { baslik: "Merkez Bankası'ndan Dijital Türk Lirası Açıklaması", metin: "Türkiye Cumhuriyet Merkez Bankası (TCMB), blokzincir altyapılı Dijital Türk Lirası'nın 2. faz pilot testlerinin başarıyla tamamlandığını duyurdu. Bankalar arası mutabakat ağları sorunsuz çalışıyor.", etiket: "Ekonomi", renk: "e-saglik" },
-    { baslik: "Dışişleri'nden Türk Devletleri Teşkilatı Hamlesi", metin: "Bakanlık kaynakları, Orta Asya'daki stratejik ticaret yollarının genişletilmesi ve ortak gümrük bilişim ağlarının kurulması için Türk Devletleri Teşkilatı bünyesinde yeni bir sekreterya oluşturulduğunu aktardı.", etiket: "Diplomasi", renk: "e-siyaset" }
-];
-
-function siyasetGuncelle() {
-    const grid = document.getElementById('siyaset-grid'); if(!grid) return;
-    grid.innerHTML = '';
-    diziyiKaristir(siyasetHavuzu).slice(0, 2).forEach((h) => {
-        const c = document.createElement('div'); c.className = 'haber-satir';
-        c.onclick = () => makaleAc('MİLLİ GÜNDEM', h.baslik, h.metin, 'TuranHaber Ankara');
-        c.innerHTML = `<div><span class="etiket ${h.renk}">${h.etiket}</span><h3>${h.baslik}</h3><p>${h.metin}</p></div>`;
-        grid.appendChild(c);
-    });
-}
-
-// 6. ÇATIŞMA RADARI (Dinamik Havuz)
-const radarHavuzu = [
-    { bolge: "🌐 Kızıldeniz", baslik: "Kızıldeniz Tedarik Hattı Baskı Altında", metin: "Ticari gemilerin seyrüsefer sistemlerine yönelik yanıltıcı sinyal müdahaleleri sürüyor. Konteyner fiyatlarında ve sigorta primlerinde ciddi artış kapıda." },
-    { bolge: "🇪🇺 Doğu Avrupa", baslik: "Sınır Hattı Tahkimat Süreci Hızlandı", metin: "Bölgede lojistik destek ve ikmal yolları üzerindeki insansız hava aracı devriyeleri artırıldı. Elektronik harp birimleri karşılıklı radar köreltme taktikleri uyguluyor." },
-    { bolge: "🌊 Pasifik", baslik: "Pasifik Donanma Tatbikatı Piyasaları Gerdi", metin: "Bölgesel ittifak güçlerinin eş zamanlı başlattığı ada savunma tatbikatları, uluslararası tedarik zincirlerinde alarm seviyesinin turuncuya çıkarılmasına neden oldu." },
-    { bolge: "🦅 Kafkaslar", baslik: "Kafkasya Koridorunda Diplomatik Hareketlilik", metin: "Zengezur koridorunun açılmasına yönelik teknik ve hukuki altyapı çalışmaları hızlandı. Bölgesel aktörlerin gümrük otomasyon sistemleri senkronize ediliyor." }
-];
-
-function radarGuncelle() {
-    const grid = document.getElementById('radar-grid'); if(!grid) return;
-    grid.innerHTML = '';
-    diziyiKaristir(radarHavuzu).slice(0, 2).forEach((h) => {
-        const c = document.createElement('div'); c.className = 'cr-madde';
-        c.onclick = () => makaleAc('RADAR', h.baslik, h.metin, 'TuranHaber Strateji Merkezi');
-        c.innerHTML = `<div class="bolge">${h.bolge}</div><h5>${h.baslik}</h5>`;
-        grid.appendChild(c);
-    });
-}
-
-// 7. SPOR & FUTBOL (Dinamik ve Genişletilmiş Havuz)
-const futbolHavuzu = [
-    { k: "SÜPER LİG", t: "Fenerbahçe'de Yeni Sezon Yapılanması Hız Kazandı", m: "UEFA Şampiyonlar Ligi ön eleme turları öncesinde sarı-lacivertli ekip transfer çalışmalarına hız verdi. Teknik direktörün özel raporu doğrultusunda merkez orta saha ve sol kanat mevkileri için dünyaca ünlü iki isimle prensip anlaşmasına varıldığı öğrenildi. Taraftarların kombine yenileme süreçleri rekor seviyeye ulaştı." },
-    { k: "SÜPER LİG", t: "Galatasaray'dan Florya'da Kritik Taktik Zirvesi", m: "Şampiyonluk hedefiyle sezona giren sarı-kırmızılı ekipte teknik heyet, hücum varyasyonlarını çeşitlendirmek için özel bir idman programı hazırladı. Yeni transferlerin kampa katılmasıyla birlikte sistem tamamen oturtulacak. Yönetim ise stat isim sponsorluğu için dev masada." },
-    { k: "SÜPER LİG", t: "Beşiktaş Genç Yıldızlarına Güveniyor", m: "Siyah-beyazlı kulübün altyapı akademisinden A takıma yükselen 3 genç yetenek, hazırlık maçlarındaki performanslarıyla göz doldurdu. Teknik direktör, yeni sezonda dinamik ve yüksek pres gücüne sahip bir kadro kurmayı planladıklarını belirtti." },
-    { k: "AVRUPA ŞAMPİYONASI", t: "A Milli Takım'da Taktik Provalar Sürüyor", m: "Uluslararası turnuva öncesi hazırlık kampını sürdüren Bizim Çocuklar, son taktik antrenmanda geçiş hücumları üzerinde durdu. Teknik heyet, genç yıldızların dinamizminden tam anlamıyla yararlanmayı hedefliyor. Kaptan, takımın moral motivasyonunun zirvede olduğunu açıkladı." },
-    { k: "ŞAMPİYONLAR LİGİ", t: "Devler Ligi'nde Yeni 'İsviçre Modeli' Fikstürü Çekildi", m: "UEFA'nın yeni formatı bu sezon uygulanmaya başlanıyor. Grupların yerini alan lig usulü sistemle birlikte büyük takımların kendi aralarında oynayacağı maç sayısı arttı. Bilgisayar destekli kura çekiminde yapay zeka algoritmaları kullanıldı." },
-    { k: "BASKETBOL", t: "EuroLeague Arenasında Fenerbahçe Beko Ateşi", m: "Fenerbahçe Beko, zorlu geçecek Final Four yolculuğu öncesi rotasyonunu güçlendirdi. Başantrenörün savunma odaklı stratejisi sayesinde rakiplerine sahayı dar eden sarı-lacivertliler, yeni salon projesiyle de basketbol ekonomisini büyütüyor." },
-    { k: "SPOR EKONOMİSİ", t: "Kulüplerin Dijital Gelirlerinde Rekor Artış", m: "2026 yılı itibarıyla kulüp kartları, dijital taraftar tokenları ve lisanslı e-ticaret satışları Süper Lig ekiplerinin bütçesinde kritik bir paya ulaştı. Yapay zeka destekli bilet satış sistemleri, karaborsa riskini sıfıra indirirken gelirleri doğrudan kulüp kasasına yansıtıyor." },
-    { k: "TEKNOLOJİ & SPOR", t: "VAR Sistemine Yarı Otomatik Ofsayt Güncellemesi", m: "Süper Lig'de tartışmaları sonlandırmak amacıyla, yapay zeka ve çoklu kamera destekli yarı otomatik ofsayt sistemi tamamen entegre edildi. Saniyeler içinde milimetrik karar veren sistem, futbolun akıcılığını artırmayı hedefliyor." },
-    { k: "VOLEYBOL", t: "Filenin Sultanları Zirveyi Bırakmıyor", m: "A Milli Kadın Voleybol Takımımız, Milletler Ligi'ndeki üstün performansını sürdürerek dünya sıralamasındaki birinciliğini korudu. Takımın mükemmel blok savunması ve pasör çaprazlarının etkili hücumları rakiplerin çözemediği bir düğüm olmaya devam ediyor." },
-    { k: "FORMULA 1", t: "İstanbul Park'ın F1 Takvimine Dönüş İhtimali", m: "Uluslararası Otomobil Federasyonu (FIA) yetkililerinin İstanbul Park'ta yaptığı son güvenlik ve altyapı incelemeleri olumlu sonuçlandı. Pistin yüksek hızlı yapısı ve meşhur 8. virajı, pilotların ve takımların en çok özlediği detaylar arasında gösteriliyor." }
+// SPOR HABERLERİ HAVUZU (Dinamikleştirildi)
+const sporHaberleriHavuzu = [
+    { k: "SÜPER LİG", t: "Fenerbahçe'de Yeni Sezon Yapılanması Hız Kazandı", m: "UEFA Şampiyonlar Ligi ön eleme turları öncesinde sarı-lacivertli ekip transfer çalışmalarına hız verdi.\n\nTeknik direktörün özel raporu doğrultusunda merkez orta saha ve sol kanat mevkileri için dünyaca ünlü iki isimle prensip anlaşmasına varıldığı öğrenildi. Yönetim, kamp dönemine kadar eksik bölgeleri tamamen kapatmayı planlıyor.\n\nÖzellikle altyapıdan A takıma yükselen genç yeteneklerin hazırlık maçlarında göstereceği performans taraftarlar tarafından merakla bekleniyor." }, 
+    { k: "AVRUPA ŞAMPİYONASI", t: "A Milli Takım'da Taktik Provalar Sürüyor", m: "Uluslararası turnuva öncesi hazırlık kampını sürdüren Bizim Çocuklar, son taktik antrenmanda geçiş hücumları üzerinde durdu.\n\nTeknik heyet, genç yıldızların dinamizminden tam anlamıyla yararlanmayı hedefliyor. Rakiplerin analizleri doğrultusunda savunma hattında esnek bir üçlü sistem denendiği ve kanat beklerinin hücuma katkısının maksimize edileceği raporlandı." }, 
+    { k: "SPOR EKONOMİSİ", t: "Kulüplerin Dijital Gelirlerinde Rekor Artış", m: "2026 yılı itibarıyla kulüp kartları, dijital taraftar tokenları ve lisanslı e-ticaret satışları Süper Lig ekiplerinin bütçesinde kritik bir paya ulaştı.\n\nKulüpler, stadyum isim haklarının ötesine geçerek tamamen dijital platformlarda global kitlelere ulaşmayı hedefliyor. Yeni nesil yayın gelirleri ve metaverse entegrasyonları sayesinde yıllık bütçe açıklarının büyük ölçüde kapatılması öngörülüyor." },
+    { k: "BASKETBOL", t: "Avrupa Arenasında Kritik Dörtlü Final Eşleşmeleri", m: "THY Avrupa Ligi'nde heyecan dorukta. Temsilcilerimizin de yer aldığı çeyrek final serileri tamamlanmak üzere.\n\nBaşantrenörlerin taktik savaşlarına sahne olan maçlarda savunma sertliği ön plana çıkıyor. Uzmanlar, bu yılki şampiyonun tamamen rotasyon derinliği ve sakatlık krizlerini iyi yöneten ekipler arasından çıkacağı konusunda hemfikir." },
+    { k: "E-SPOR", t: "Küresel E-Spor Turnuvasında Türk Takımı Fırtınası", m: "Dünyanın en büyük uluslararası taktiksel nişancı turnuvasında mücadele eden Türk temsilcisi, grup aşamasını namağlup lider tamamladı.\n\nTakım kaptanının maç sonu yaptığı açıklamada, aylardır süren yoğun kamp döneminin meyvelerini aldıklarını belirtti. Yarı finalde eşleşecekleri Asya temsilcisine karşı özel stratejiler geliştirdikleri konuşuluyor." }
 ];
 
 function futbolHaberleriGuncelle() {
     const grid = document.getElementById('futbol-grid-alan'); if(!grid) return;
     grid.innerHTML = '';
-    diziyiKaristir(futbolHavuzu).slice(0, 3).forEach((h, idx) => {
-        const c = document.createElement('div'); c.className = 'standart-makale-kart anim-up'; c.style.transitionDelay = `${idx*0.1}s`;
+    
+    // Havuzdan rastgele 3 haber seç (Sayfa her yenilendiğinde veya interval çalıştığında farklı içerik gelir)
+    let rastgeleHaberler = [...sporHaberleriHavuzu].sort(() => 0.5 - Math.random()).slice(0, 3);
+    
+    rastgeleHaberler.forEach((h, idx) => {
+        const c = document.createElement('div'); c.className = 'standart-makale-kart anim-up goster'; c.style.transitionDelay = `${idx*0.1}s`;
         c.onclick = () => makaleAc('FUTBOL', h.t, h.m, "TuranHaber Spor Departmanı");
         c.innerHTML = `<div class="smk-serit spor-renk"></div><div class="smk-icerik"><span class="smk-badge spor-badge">${h.k}</span><h4>${h.t}</h4><p>${h.m}</p></div>`;
         grid.appendChild(c);
     });
-    animasyonlariBaslat();
 }
 
-// ==========================================
-// GÜNÜN MAKALESİ (ODAK NOKTASI)
-// ==========================================
-const gunlukMakaleler = [
-  { t: "Evrenin Sınırlarının Ötesinde Ne Var?", e: "Astrofizik", r: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa", m: "Bilim insanları gözlemlenebilir evrenin 93 milyar ışık yılı genişliğinde olduğunu biliyor. Ancak bu sınırın ötesinde ne olduğu fizikteki en büyük sırlardan biridir. Çoklu evren teorileri mi, yoksa sonsuz bir boşluk mu var?" },
-  { t: "İnsan Beyni %10'unu mu Kullanıyor?", e: "Nörobilim", r: "https://images.unsplash.com/photo-1507413245164-6160d8298b31", m: "Bu popüler efsanenin aksine, fMRI taramaları uyurken bile beynimizin büyük bir kısmının aktif olduğunu kanıtlamıştır. Ancak beynin asıl mucizesi nöroplastisitedir; yani yeni şeyler öğrendikçe fiziksel olarak kendini yeniden kablolayabilmesidir." },
-  { t: "Yapay Zekanın Algoritma Kutusu", e: "Bilgisayar Bilimi", r: "https://images.unsplash.com/photo-1551288049-bebda4e38f71", m: "Modern yapay zeka modelleri, terabaytlarca veriyi işleyip milyarlarca parametre oluşturuyor. Ancak bu modellerin nasıl 'karar' verdiğini izlemek, bir kara kutunun içini görmeye çalışmak gibidir. Açıklanabilir AI (XAI) araştırmaları bu yüzden hayati önem taşıyor." }
+const tHavuz = [
+  { d: "Göktürkler", t: "Orhun Yazıtları'ndaki Stratejik Şifreler", m: "Bilge Kağan ve Kül Tigin adına dikilen yazıtlar, sadece edebi bir metin değil; bir devletin varoluşsal krizlerden nasıl çıkacağını anlatan küresel bir diplomatik manifesto niteliğindedir.\n\nMetinlerde yer alan 'Çin'in ipeğine, tatlı sözüne aldanma' uyarısı, aslında erken dönem bir jeopolitik ambargo ve yumuşak güç (soft power) analizidir. Yazıtlar, milletin bağımsızlığını koruması için kurumsal hafızanın ne kadar önemli olduğunu yüzyıllar öncesinden belgeliyor." },
+  { d: "Babür İmparatorluğu", t: "Ateşli Silahlar ve Hint Altkıtasının Dönüşümü", m: "Babür Şah'ın Panipat Muharebesi'nde Osmanlı taktiklerinden esinlenerek kurduğu topçu arabası ve tüfekli asker düzeni, askeri strateji tarihini kökten değiştirmiştir.\n\nSayıca çok üstün olan düşman ordusunu, tekerlekli siperler ve organize ateş gücü sayesinde mağlup eden Babür Şah, Hindistan'da yüzlerce yıl sürecek görkemli bir Türk-İslam medeniyetinin temellerini atmıştır." },
+  { d: "Selçuklular", t: "Nizamülmülk ve Siyasetname Paradigması", m: "Büyük Selçuklu İmparatorluğu'nun kurumsallaşmasını sağlayan Nizamiye Medreseleri ve istihbarat ağları, döneminin bürokratik yapısına altın çağını yaşatmıştır.\n\nVezir Nizamülmülk'ün kaleme aldığı Siyasetname eseri, sadece devrin hükümdarı Melikşah'a bir öğüt kitabı değil, aynı zamanda devlet aklının, istihbarat teşkilatlanmasının ve liyakatin yazılı anayasası olmuştur." },
+  { d: "Avrasya Tarihi", t: "İpek Yolu Üzerindeki Erken Siber-Lojistik Altyapı", m: "Mete Han döneminden itibaren kervansaraylar ve posta teşkilatları (Ulak sistemi), Asya'nın en hızlı bilgi aktarım ağını oluşturarak askeri ve ticari üstünlük sağladı.\n\nAvrupa'da haberlerin haftalarca sürede ulaştığı bir dönemde, atlı ulaklar sayesinde uç beylerinden başkente bir gecede istihbarat akışı sağlanıyordu. Bu sistem, dönemin siber veri altyapısı olarak kabul edilebilir." },
+  { d: "Yakın Tarih", t: "Enver Paşa ve Kafkas İslam Ordusu Harekatı", m: "1918 yılında Bakü'nün kurtuluşuyla neticelenen harekatın askeri güncel günlükleri, coğrafyadaki jeopolitik dengeleri nasıl etkilediğini açıkça belgeliyor.\n\nNuri Paşa (Killigil) komutasındaki Kafkas İslam Ordusu, çok zorlu lojistik şartlara ve mühimmat eksikliğine rağmen, Türk dünyasının doğu kapısını güvence altına alarak tarihi bir zafere imza atmıştır." },
+  { d: "Dünya Tarihi", t: "Endülüs'te Bilimsel Rönesansın Doğuşu", m: "Kurtuba Kütüphanesi'ndeki matematik ve astronomi çevirileri, Avrupa'nın karanlık çağdan çıkışının asıl tetikleyicisi olmuştu.\n\nSokaklar geceleri aydınlatılırken, optik ve tıp bilimlerinde yazılan devasa ciltli eserler daha sonraları Latinceye çevrilerek bugünkü modern batı üniversitelerinin müfredatlarının çekirdeğini oluşturdu." }
 ];
 
-function gununMakalesiniYukle() {
-   const alan = document.getElementById('gunun-makalesi-alani'); if(!alan) return;
-   const makale = gunlukMakaleler[bugunTarihi.getDate() % gunlukMakaleler.length];
-   alan.onclick = () => makaleAc('GÜNÜN MAKALESİ', makale.t, makale.m, 'TuranHaber Bilim & Ar-Ge Arşivi');
-   alan.innerHTML = `<div class="gm-resim" style="background-image: url('${gorselUrlOptimize(makale.r)}')"></div><div class="gm-icerik"><span class="gm-etiket">✦ ${makale.e}</span><h3 class="gm-baslik">${makale.t}</h3><p class="gm-metin">${makale.m}</p><div class="gm-okuma-suresi">⏳ 3 dakika okuma süresi</div></div>`;
+function tarihiOlaylariYenile() {
+    const grid = document.getElementById('tarih-grid-alan'); if(!grid) return;
+    grid.innerHTML = '';
+    [...tHavuz].sort(()=>0.5-Math.random()).slice(0,3).forEach((o, idx) => {
+        const c = document.createElement('div'); c.className = 'standart-makale-kart anim-up goster'; c.style.transitionDelay = `${idx*0.1}s`;
+        c.onclick = () => makaleAc('TARİH', o.t, o.m, "Tarih & Kültür Araştırmaları Merkezi");
+        c.innerHTML = `<div class="smk-serit"></div><div class="smk-icerik"><span class="smk-badge">${o.d}</span><h4>${o.t}</h4><p>${o.m}</p></div>`;
+        grid.appendChild(c);
+    });
 }
 
-// ASENKRON PARALEL ÇALIŞTIRICI (Sayfa Yüklenince)
+const tarihteBugunVerileri = {
+  "1 Ocak": "1 Ocak 1923 — Türkiye Futbol Federasyonu (TFF) Yusuf Ziya Öniş başkanlığında kuruldu.\n\nBu adım, Türk sporunun kurumsallaşması ve uluslararası arenada temsil edilebilmesi adına atılan en büyük adımlardan biriydi.",
+  "11 Ocak": "11 Ocak 1055 — Tuğrul Bey komutasındaki Büyük Selçuklu Ordusu Bağdat'a girdi.\n\nBu harekat, İslam dünyasında Abbasi halifeliğinin siyasi koruyuculuğunu Türklerin devralması anlamına geliyordu.",
+  "18 Mart": "18 Mart 1915 — Çanakkale Deniz Zaferi. Nusret Mayın Gemisi ve topçu birlikleri İtilaf donanmasına geçit vermedi.\n\n'Çanakkale Geçilmez' sözünün tarihe altın harflerle yazıldığı bu eşsiz zafer, sadece bir milletin değil, dünyanın seyrini değiştirmiştir.",
+  "23 Nisan": "23 Nisan 1920 — Türkiye Büyük Millet Meclisi (TBMM) Ankara'da açıldı.\n\nEgemenliğin kayıtsız şartsız millete ait olduğu ilan edilerek, Kurtuluş Savaşı'nın askeri ve sivil karargahı resmen faaliyete geçirildi.",
+  "29 Mayıs": "29 Mayıs 1453 — Fatih Sultan Mehmet komutasındaki Osmanlı Ordusu İstanbul'u fethetti. Doğu Roma İmparatorluğu yıkıldı.\n\nOrta Çağ'ı kapatıp Yeni Çağ'ı başlatan bu devasa fetih, topçu ve lojistik teknolojisinin sınırlarının zorlandığı eşsiz bir stratejik askeri dehadır.",
+  "26 Ağustos": "26 Ağustos 1071 / 1922 — Sultan Alparslan komutasındaki Selçuklu Ordusu Malazgirt Zaferi'ni kazandı.\n\nAynı gün 1922'de, Gazi Mustafa Kemal önderliğinde Anadolu'nun kesin kurtuluşunu sağlayacak olan Büyük Taarruz başladı.",
+  "30 Ağustos": "30 Ağustos 1922 — Başkomutanlık Meydan Muharebesi (Dumlupınar) zaferle sonuçlandı, Yunan ordusu hezimete uğratıldı.\n\nİşgal güçlerinin Anadolu topraklarından kesin olarak sökülüp atılmasını sağlayan bu mutlak zafer, modern Cumhuriyetin temel taşıdır.",
+  "29 Ekim": "29 Ekim 1923 — Cumhuriyet ilan edildi. Gazi Mustafa Kemal Atatürk, Türkiye'nin ilk Cumhurbaşkanı seçildi.\n\nÜmmet toplumundan ulus devlete, saltanattan millet egemenliğine geçişin sembolü olan bugün, Türk milletinin en büyük bayramıdır.",
+  "10 Kasım": "10 Kasım 1938 — Türkiye Cumhuriyeti'nin kurucusu Gazi Mustafa Kemal Atatürk hayata gözlerini yumdu.\n\nO'nun fikirleri, ilkeleri ve gösterdiği muasır medeniyetler hedefi, Türk gençliğinin yolunu aydınlatmaya sonsuza dek devam edecektir."
+};
+
+const dunyaTarihiVerileri = {
+  "18 Haziran": "18 Haziran 1815 — Waterloo Muharebesi'nde Napolyon Bonapart kesin bir yenilgiye uğradı.\n\nFransız imparatorluk ordusunun hezimetiyle sonuçlanan bu savaş, Avrupa haritasının yeniden çizilmesine ve uzun soluklu bir barış döneminin başlamasına yol açmıştır.",
+  "28 Haziran": "28 Haziran 1914 — Avusturya Arşidükü Franz Ferdinand Saraybosna'da suikasta uğradı.\n\nBirinci Dünya Savaşı'nın fitilini ateşleyen bu suikast zincirleme anlaşmalar silsilesini tetiklemiş ve milyonlarca insanın hayatını kaybedeceği küresel bir yıkımı başlatmıştır."
+};
+
+const genelDunyaHavuzu = [
+  "12 Ekim 1492 — Kristof Kolomb Amerika'yı keşfetti ve Yeni Dünya'nın kapılarını araladı.\n\nAvrupa'dan yeni kıtaya başlayan bu devasa göç ve ticaret dalgası, küresel ekonomiyi sonsuza dek değiştirdi.",
+  "20 Temmuz 1969 — Apollo 11 göreviyle Neil Armstrong Ay'a ayak basan ilk insan oldu.\n\n'Benim için küçük, insanlık için dev bir adım' sözüyle tarihe geçen bu olay, Soğuk Savaş uzay yarışının zirve noktasıdır.",
+  "9 Kasım 1989 — Soğuk Savaş'ın sembolü olan Berlin Duvarı yıkıldı.\n\nDoğu ve Batı Almanya'nın birleşmesine kapı aralayan bu tarihi gece, Sovyet bloğunun çöküşünün de en belirgin görsel simgesi haline geldi."
+];
+
+function tarihteBugunYukle() {
+  const gun = bugunTarihi.getDate();
+  const ayIsmi = aylar[bugunTarihi.getMonth()];
+  const anahtar = `${gun} ${ayIsmi}`;
+  
+  document.getElementById('tb-gun').textContent = gun;
+  document.getElementById('tb-ay').textContent = ayIsmi;
+  
+  let olayMetni = "";
+  let etiket = "";
+
+  if (tarihteBugunVerileri[anahtar]) {
+      etiket = `<span style="color:var(--altin); font-size:11px; font-weight:700; border:1px solid var(--altin); padding:2px 6px; border-radius:4px; margin-right:8px; vertical-align:middle; display:inline-block; margin-bottom: 5px;">TÜRK TARİHİ</span><br>`;
+      olayMetni = tarihteBugunVerileri[anahtar];
+  } else if (dunyaTarihiVerileri[anahtar]) {
+      etiket = `<span style="color:#60a5fa; font-size:11px; font-weight:700; border:1px solid #60a5fa; padding:2px 6px; border-radius:4px; margin-right:8px; vertical-align:middle; display:inline-block; margin-bottom: 5px;">DÜNYA TARİHİ</span><br>`;
+      olayMetni = dunyaTarihiVerileri[anahtar];
+  } else {
+      let seed = bugunTarihi.getFullYear() * 100 + bugunTarihi.getMonth() * 10 + gun;
+      let secilenOlay = genelDunyaHavuzu[seed % genelDunyaHavuzu.length];
+      etiket = `<span style="color:#60a5fa; font-size:11px; font-weight:700; border:1px solid #60a5fa; padding:2px 6px; border-radius:4px; margin-right:8px; vertical-align:middle; display:inline-block; margin-bottom: 5px;">DÜNYA TARİHİNDEN</span><br>`;
+      olayMetni = secilenOlay;
+  }
+  
+  const pTags = olayMetni.split('\n').filter(x => x.trim() !== '').map(p => `<span style="display:block; margin-top:5px;">${p}</span>`).join('');
+  document.getElementById('tb-olay-metni').innerHTML = `${etiket} ${pTags}`;
+}
+
+const devSoruHavuzu = [
+    { soru: "Hint altkıtasında Babür İmparatorluğu'nu kurarak askeri strateji tarihine geçen figür kimdir?", secenekler: ["Timur", "Babür Şah", "Cengiz Han", "Nadir Şah"], dogru: 1 },
+    { soru: "I. Dünya Savaşı'nda Turan ideali ile Orta Asya'da askeri harekatlar yöneten tarihi kişilik kimdir?", secenekler: ["Kâzım Karabekir", "Mustafa Kemal", "Enver Paşa", "Cemal Paşa"], dogru: 2 },
+    { soru: "Günümüzde dünyanın en değerli teknoloji şirketlerinin üretiminde rekabet ettiği temel donanım bileşeni hangisidir?", secenekler: ["Grafik İşlemci (GPU/Çip)", "Fiber Optik Kablo", "Lityum İyon Batarya", "Sensör Ağları"], dogru: 0 },
+    { soru: "İlişkisel veritabanı sistemlerini yönetmek için geliştirilen, günümüzde yazılım dünyasının temeli olan sorgu dili hangisidir?", secenekler: ["HTML", "Python", "SQL", "Java"], dogru: 2 },
+    { soru: "Futbolda 'Kıtalararası Derbi' olarak bilinen Fenerbahçe - Galatasaray rekabetindeki ilk maç hangi yıl oynanmıştır?", secenekler: ["1905", "1907", "1909", "1911"], dogru: 2 },
+    { soru: "Türk devlet felsefesinin taşa kazınmış ilk belgeleri olan Orhun Yazıtları hangi devlete aittir?", secenekler: ["Uygurlar", "Göktürkler", "Karahanlılar", "Hunlar"], dogru: 1 },
+    { soru: "Avrupa bilim dünyasına yön veren ünlü yıldız haritalarını hazırlayan Timurlu astronom ve devlet adamı kimdir?", secenekler: ["Ali Kuşçu", "Uluğ Bey", "Harezmi", "Biruni"], dogru: 1 },
+    { soru: "1453 İstanbul'un Fethi'nde surları yıkmak için kullanılan 'Şahi' isimli dev topların tasarımcılarından kimdir?", secenekler: ["Mimar Sinan", "Urban", "Lagari Hasan", "Davud Ağa"], dogru: 1 },
+    { soru: "Bilgisayar biliminin temeli sayılan 'algoritma' kavramını kuran ve cebirin atası kabul edilen İslam alimi kimdir?", secenekler: ["Harezmi", "Farabi", "İbn Sina", "Kindi"], dogru: 0 },
+    { soru: "1915 Çanakkale Cephesi'nde Nusret Mayın Gemisi'nin döşediği mayınlarla batan ünlü İngiliz zırhlısı hangisidir?", secenekler: ["HMS Queen Elizabeth", "HMS Agamemnon", "HMS Ocean", "HMS Irresistible"], dogru: 2 },
+    { soru: "Şampiyonlar Ligi'nde grupların kaldırılarak tek lig usulüne geçilen yeni sistemin adı nedir?", secenekler: ["Eleme Modeli", "Süper Lig Modeli", "İsviçre Modeli", "Karma Model"], dogru: 2 },
+    { soru: "Linux çekirdeği üzerine kurulan ve TÜBİTAK tarafından geliştirilen milli işletim sistemimizin adı nedir?", secenekler: ["Pardus", "Kızılelma", "Ulus", "Bora"], dogru: 0 },
+    { soru: "Tarihte ilk düzenli posta (ulak) ve istihbarat teşkilatını Asya steplerinde kuran devlet adamı kimdir?", secenekler: ["Mete Han", "Attila", "Cengiz Han", "Teoman"], dogru: 0 }
+];
+
+function gununSorulariniGetir(havuz, adet) {
+    let seed = bugunTarihi.getFullYear() * 10000 + (bugunTarihi.getMonth() + 1) * 100 + bugunTarihi.getDate();
+    let random = () => { let x = Math.sin(seed++) * 10000; return x - Math.floor(x); };
+    let kopyaHavuz = [...havuz];
+    for (let i = kopyaHavuz.length - 1; i > 0; i--) {
+        const j = Math.floor(random() * (i + 1));
+        [kopyaHavuz[i], kopyaHavuz[j]] = [kopyaHavuz[j], kopyaHavuz[i]];
+    }
+    return kopyaHavuz.slice(0, adet);
+}
+
+let mevcutSoruIndeksi = 0, oyunSkoru = 0, oyunBittiMi = false, gunlukSorular = [];
+
+function oyunuBaslat() {
+    gunlukSorular = gununSorulariniGetir(devSoruHavuzu, 5); 
+    mevcutSoruIndeksi = 0; oyunSkoru = 0; oyunBittiMi = false;
+    document.getElementById('oyun-skor').textContent = oyunSkoru;
+    document.getElementById('oyun-toplam-soru').textContent = gunlukSorular.length;
+    document.getElementById('en-yuksek-skor').textContent = `🏆 Liderlik Tablosu: ${localStorage.getItem('turanHaberEnYuksekSkor') || 0}`;
+    soruGoster();
+}
+
+function soruGoster() {
+    if(oyunBittiMi) return;
+    const sObj = gunlukSorular[mevcutSoruIndeksi];
+    document.getElementById('oyun-soru-metni').textContent = sObj.soru;
+    document.getElementById('oyun-mevcut-soru').textContent = mevcutSoruIndeksi + 1;
+    const seceneklerAlan = document.getElementById('oyun-secenekler');
+    seceneklerAlan.innerHTML = '';
+    sObj.secenekler.forEach((secenek, i) => {
+        const btn = document.createElement('button'); btn.className = 'oyun-secenek'; btn.textContent = secenek;
+        btn.onclick = () => cevapKontrol(btn, i, sObj.dogru);
+        seceneklerAlan.appendChild(btn);
+    });
+}
+
+function cevapKontrol(btn, secilenSecenek, dogruSecenek) {
+    if(oyunBittiMi) return;
+    const butonlar = document.querySelectorAll('.oyun-secenek');
+    butonlar.forEach(b => b.disabled = true);
+    if(secilenSecenek === dogruSecenek) {
+        btn.classList.add('dogru'); oyunSkoru += 100; document.getElementById('oyun-skor').textContent = oyunSkoru;
+    } else {
+        btn.classList.add('yanlis'); butonlar[dogruSecenek].classList.add('dogru');
+    }
+    setTimeout(() => {
+        mevcutSoruIndeksi++;
+        if(mevcutSoruIndeksi < gunlukSorular.length) soruGoster(); else oyunBitir();
+    }, 1500);
+}
+
+function oyunBitir() {
+  oyunBittiMi = true;
+  let mevcutEnYuksek = parseInt(localStorage.getItem('turanHaberEnYuksekSkor') || '0'), tebrikMesaji = "";
+  if(oyunSkoru > mevcutEnYuksek) {
+      localStorage.setItem('turanHaberEnYuksekSkor', oyunSkoru);
+      tebrikMesaji = "<br><span style='color:var(--altin)'>🎯 Yeni Liderlik Rekoru Kırdınız!</span>";
+      document.getElementById('en-yuksek-skor').textContent = `🏆 Liderlik Tablosu: ${oyunSkoru}`;
+  }
+  document.getElementById('oyun-soru-metni').innerHTML = `Günün Strateji Testi Tamamlandı!<br>İstihbarat Puanınız: <strong>${oyunSkoru}</strong>${tebrikMesaji}`;
+  document.getElementById('oyun-secenekler').innerHTML = `<button class="oyun-secenek" style="max-width:300px" onclick="oyunuBaslat()">↩ Bugünkü Soruları Tekrarla</button>`;
+}
+
+// ASENKRON PARALEL ÇALIŞTIRICI
 window.addEventListener('load', () => {
-  // Statik Temalar ve Anında Yüklenen Bölümler
   const aktifMedeniyet = aktifMedeniyetiGetir();
   medeniyetTemasiUygula(aktifMedeniyet);
+  
   tarihteBugunYukle();
   gununMakalesiniYukle(); 
-  
-  // Yeni Dinamik Fonksiyonları Çağır
-  siyasetGuncelle();
-  radarGuncelle();
   futbolHaberleriGuncelle(); 
   tarihiOlaylariYenile();
   oyunuBaslat(); 
   
+  // Grid elemanlarına animasyonların işleyebilmesi için gecikme
   setTimeout(animasyonlariBaslat, 300);
 
-  // Paralel tetikleme ile API İstekleri
   heroSliderGuncelle();
   kureselBilimGuncelle();
   savasHaberleriniGuncelle();
   canliHaberleriCek();
 
-  // Saatlik Yenileme Döngüleri (Kademeli Arayla)
   setInterval(() => heroSliderGuncelle(), 3600000);
-  setInterval(() => savasHaberleriniGuncelle(), 3600000 + 10000); 
-  setInterval(() => canliHaberleriCek(), 3600000 + 20000);
-  setInterval(() => kureselBilimGuncelle(), 3600000 + 30000);
-  setInterval(() => futbolHaberleriGuncelle(), 3600000 + 40000);
-  setInterval(() => siyasetGuncelle(), 3600000 + 50000);
-  setInterval(() => radarGuncelle(), 3600000 + 60000);
-  setInterval(() => tarihiOlaylariYenile(), 3600000 + 70000);
+  setInterval(() => savasHaberleriniGuncelle(), 3600000 + 15000); 
+  setInterval(() => canliHaberleriCek(), 3600000 + 30000);
+  setInterval(() => futbolHaberleriGuncelle(), 3600000 + 45000); // Spor kısmı artık değişecek
+  setInterval(() => kureselBilimGuncelle(), 3600000 + 60000);
+  setInterval(() => tarihiOlaylariYenile(), 3600000 + 75000);
 });
 </script>
 </body>
