@@ -372,8 +372,6 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
   .hero-ozet { display: -webkit-box; -webkit-line-clamp: 2; font-size: 13px; }
   .hero-noktalar { bottom: 1rem; right: 1.5rem; }
   .ts-footer { flex-direction: column; gap: 10px; align-items: stretch; text-align: center; }
-  
-  .anim-up { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
 </style>
 </head>
@@ -525,7 +523,7 @@ footer { background: var(--koyu); padding: 4rem 2rem 2rem; position: relative; o
     <div class="footer-grid">
       <div class="footer-logo">
         <div class="logo-bas">TURAN<span style="color:var(--altin)">HABER</span></div>
-        <p class="aciklama">Türk Dünyası, küresel bilim-teknoloji og-image ve spor gündemini sunan bağımsız dijital platform.</p>
+        <p class="aciklama">Türk Dünyası, küresel bilim-teknoloji ve spor gündemini sunan bağımsız dijital platform.</p>
         <div class="footer-isim"><strong>İmtiyaz Sahibi:</strong> Yusuf Eren Karaca</div>
       </div>
       <div class="footer-kolon"><h5>Kategoriler</h5><a href="#">Küresel Teknoloji</a><a href="#">Savaş Radarı</a><a href="#">Futbol</a></div>
@@ -583,7 +581,6 @@ const aylar = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağus
 const bugunTarihi = new Date(); 
 document.getElementById('tarih-goster').textContent = `${bugunTarihi.getDate()} ${aylar[bugunTarihi.getMonth()]} ${bugunTarihi.getFullYear()}`;
 
-// PROXY VE ERİŞİM DESTEKLİ OPTİMİZASYON FONKSİYONU
 function gorselUrlOptimize(url) {
   if (!url) return 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=900&q=70'; // Nötr küresel veri haritası resmi
   const mobil = window.innerWidth < 768;
@@ -718,7 +715,7 @@ const animObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.05, rootMargin: '100px' }); 
 
 function animasyonlariBaslat() {
-  if(window.innerWidth > 600) document.querySelectorAll('.anim-up:not(.goster)').forEach(el => animObserver.observe(el));
+  document.querySelectorAll('.anim-up:not(.goster)').forEach(el => animObserver.observe(el));
 }
 
 window.addEventListener('scroll', () => {
@@ -727,6 +724,7 @@ window.addEventListener('scroll', () => {
   document.getElementById('ilerleme-cubugu').style.width = ((winScroll / height) * 100) + "%";
 });
 
+// GÜVENLİK KORUMALARI
 function guvenliMetin(metin) {
   if(!metin || metin === "null" || metin === "undefined") return '';
   return String(metin)
@@ -734,6 +732,11 @@ function guvenliMetin(metin) {
     .replace(/on\w+="[^"]*"/g, '').replace(/on\w+='[^']*'/g, '').replace(/on\w+=\w+/g, '')
     .replace(/<[^>]*>?/gm, '') 
     .replace(/ə/g, 'e').replace(/Ə/g, 'E').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/\n/g, ' ').trim();
+}
+
+function attrGuvenli(str) {
+    if (!str) return '';
+    return guvenliMetin(str).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
 function haberFiltrele(res) { 
@@ -853,6 +856,13 @@ function modalKapat() {
   document.body.style.overflow = '';
 }
 
+document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape') {
+        if(document.getElementById('makale-modal').classList.contains('goster')) modalKapat();
+        if(document.getElementById('tema-secici').classList.contains('goster')) temaSeciciKapat();
+    }
+});
+
 async function apiIstekAt(url) { 
     try { 
       const controller = new AbortController();
@@ -889,29 +899,33 @@ function heroSliderOlustur(veriler) {
   const sahte = ["https://images.unsplash.com/photo-1451187580459-43490279c0fa", "https://images.unsplash.com/photo-1516321318423-f06f85e504b3"];
   const nk = document.createElement('div'); nk.className = 'hero-noktalar';
   
-  mH.forEach((h, i) => {
-    const sl = document.createElement('div'); sl.className = `hero-slide ${i===0?'active':''}`;
-    const resimUrl = haberdenResimCikar(h);
-    const rawUrl = resimUrl || sahte[i%sahte.length];
+  try {
+      mH.forEach((h, i) => {
+        const sl = document.createElement('div'); sl.className = `hero-slide ${i===0?'active':''}`;
+        const resimUrl = haberdenResimCikar(h);
+        const rawUrl = resimUrl || sahte[i%sahte.length];
+        
+        sl.style.backgroundImage = `url('${gorselUrlOptimize(rawUrl)}')`;
+        sl.onclick = () => makaleAc('MANŞET', h.title, h.description||'Manşet haberi detayı veritabanından getiriliyor...', h.source_id);
+        sl.innerHTML = `<div class="hero-icerik"><div class="hero-etiket">⚡ ${guvenliMetin(h.source_id)}</div><h2 class="hero-baslik">${guvenliMetin(h.title)}</h2><p class="hero-ozet">${guvenliMetin(h.description)}</p></div>`;
+        al.appendChild(sl);
     
-    sl.style.backgroundImage = `url('${gorselUrlOptimize(rawUrl)}')`;
-    sl.onclick = () => makaleAc('MANŞET', h.title, h.description||'Manşet haberi detayı veritabanından getiriliyor...', h.source_id);
-    sl.innerHTML = `<div class="hero-icerik"><div class="hero-etiket">⚡ ${guvenliMetin(h.source_id)}</div><h2 class="hero-baslik">${guvenliMetin(h.title)}</h2><p class="hero-ozet">${guvenliMetin(h.description)}</p></div>`;
-    al.appendChild(sl);
-
-    if (resimUrl) {
-       const dummyImg = new Image();
-       dummyImg.onerror = () => { sl.style.backgroundImage = `url('${resimUrl}')`; };
-       dummyImg.src = gorselUrlOptimize(resimUrl);
-    }
+        if (resimUrl) {
+           const dummyImg = new Image();
+           dummyImg.onerror = () => { sl.style.backgroundImage = `url('${resimUrl}')`; };
+           dummyImg.src = gorselUrlOptimize(resimUrl);
+        }
+        
+        if (!resimUrl && h.link) resimArkaPlandaGuncelle(h.link, h.title, sl);
     
-    if (!resimUrl && h.link) resimArkaPlandaGuncelle(h.link, h.title, sl);
-
-    const n = document.createElement('div'); n.className = `hero-nokta ${i===0?'active':''}`;
-    n.onclick = (e) => { e.stopPropagation(); hGec(i); }; nk.appendChild(n);
-  });
-  al.appendChild(nk); 
-  hSlider = setInterval(()=>hGec(aSlide+1), 6000);
+        const n = document.createElement('div'); n.className = `hero-nokta ${i===0?'active':''}`;
+        n.onclick = (e) => { e.stopPropagation(); hGec(i); }; nk.appendChild(n);
+      });
+      al.appendChild(nk); 
+      hSlider = setInterval(()=>hGec(aSlide+1), 6000);
+  } catch (err) {
+      console.error("Slider Render Error:", err);
+  }
 }
 
 async function heroSliderGuncelle() {
@@ -931,12 +945,14 @@ function hGec(i) {
 function savasHaberleriOlustur(veriler) {
   const grid = document.getElementById('savas-grid'); if(!grid) return;
   grid.innerHTML = ''; const ag = document.createElement('div'); ag.className = 'sk-alt-grid';
-  veriler.slice(0, 3).forEach((h, i) => {
-      const c = document.createElement('div'); c.onclick = () => makaleAc('SAVAŞ', h.title, h.description, h.source_id);
-      if(i===0) { c.className = 'sk-kart'; c.innerHTML = `<div class="sk-ajans">KRİTİK</div><h3>${guvenliMetin(h.title)}</h3><p>${guvenliMetin(h.description).substring(0,150)}...</p>`; grid.appendChild(c); } 
-      else { c.className = 'sk-kart sk-mini'; c.innerHTML = `<div class="sk-ajans altin">ANALİZ</div><h3>${guvenliMetin(h.title)}</h3><p>${guvenliMetin(h.description).substring(0,80)}...</p>`; ag.appendChild(c); }
-  });
-  grid.appendChild(ag); animasyonlariBaslat(); 
+  try {
+      veriler.slice(0, 3).forEach((h, i) => {
+          const c = document.createElement('div'); c.onclick = () => makaleAc('SAVAŞ', h.title, h.description, h.source_id);
+          if(i===0) { c.className = 'sk-kart'; c.innerHTML = `<div class="sk-ajans">KRİTİK</div><h3>${guvenliMetin(h.title)}</h3><p>${guvenliMetin(h.description).substring(0,150)}...</p>`; grid.appendChild(c); } 
+          else { c.className = 'sk-kart sk-mini'; c.innerHTML = `<div class="sk-ajans altin">ANALİZ</div><h3>${guvenliMetin(h.title)}</h3><p>${guvenliMetin(h.description).substring(0,80)}...</p>`; ag.appendChild(c); }
+      });
+      grid.appendChild(ag); animasyonlariBaslat(); 
+  } catch (err) { console.error(err); }
 }
 
 async function savasHaberleriniGuncelle() {
@@ -948,13 +964,15 @@ async function savasHaberleriniGuncelle() {
 function bilimHaberleriOlustur(veriler) {
   const grid = document.getElementById('bilim-ozel-alani'); if(!grid) return;
   grid.innerHTML = '';
-  veriler.slice(0, 3).forEach((h, idx) => {
-     const c = document.createElement('div'); c.className = `bilim-ozel-kart anim-up`; c.style.transitionDelay = `${idx*0.1}s`;
-     c.onclick = () => makaleAc('BİLİM', h.title, h.description, h.source_id);
-     c.innerHTML = `<div class="bo-ulke">🔬 KÜRESEL BİLİM RAPORU</div><h4>${guvenliMetin(h.title)}</h4><p>${guvenliMetin(h.description)}</p>`;
-     grid.appendChild(c);
-  });
-  animasyonlariBaslat(); 
+  try {
+      veriler.slice(0, 3).forEach((h, idx) => {
+         const c = document.createElement('div'); c.className = `bilim-ozel-kart anim-up`; c.style.transitionDelay = `${idx*0.1}s`;
+         c.onclick = () => makaleAc('BİLİM', h.title, h.description, h.source_id);
+         c.innerHTML = `<div class="bo-ulke">🔬 KÜRESEL BİLİM RAPORU</div><h4>${guvenliMetin(h.title)}</h4><p>${guvenliMetin(h.description)}</p>`;
+         grid.appendChild(c);
+      });
+      animasyonlariBaslat(); 
+  } catch(err) { console.error(err); }
 }
 
 async function kureselBilimGuncelle() {
@@ -969,23 +987,26 @@ function canliHaberleriOlustur(veriler) {
   alan.innerHTML = ''; 
   const sahte = ["https://images.unsplash.com/photo-1451187580459-43490279c0fa", "https://images.unsplash.com/photo-1504711434969-e33886168f5c"];
   
-  veriler.slice(0, 4).forEach((h, idx) => {
-    const resimUrl = haberdenResimCikar(h);
-    const proxyUrl = resimUrl ? gorselUrlOptimize(resimUrl) : gorselUrlOptimize(sahte[idx%2]);
-    const fallbackSrc = resimUrl ? resimUrl : sahte[idx%2];
-    const onerrorKodu = `this.onerror=null; this.src='${fallbackSrc}'`;
-
-    const c = document.createElement('div'); c.className = 'dunya-kart anim-up'; c.style.transitionDelay = `${idx*0.1}s`;
-    c.onclick = () => makaleAc('DÜNYA', h.title, h.description, h.source_id);
-    c.innerHTML = `<div class="dk-resim-wrapper"><img src="${proxyUrl}" class="dk-resim" alt="${guvenliMetin(h.title)}" onerror="${onerrorKodu}"></div><div class="dk-serit"></div><div class="dk-icerik"><div class="dk-catisma-yazi">🌐 KÜRESEL AKIŞ</div><h4>${guvenliMetin(h.title)}</h4><p>${guvenliMetin(h.description).substring(0,100)}...</p></div>`;
-    alan.appendChild(c);
-
-    if (!resimUrl && h.link) {
-      const img = c.querySelector('.dk-resim');
-      resimArkaPlandaGuncelle(h.link, h.title, img);
-    }
-  });
-  animasyonlariBaslat();
+  try {
+      veriler.slice(0, 4).forEach((h, idx) => {
+        const resimUrl = haberdenResimCikar(h);
+        const proxyUrl = resimUrl ? gorselUrlOptimize(resimUrl) : gorselUrlOptimize(sahte[idx%2]);
+        const fallbackSrc = resimUrl ? resimUrl : sahte[idx%2];
+        const safeFallback = attrGuvenli(fallbackSrc);
+        const onerrorKodu = `this.onerror=null; this.src='${safeFallback}'`;
+    
+        const c = document.createElement('div'); c.className = 'dunya-kart anim-up'; c.style.transitionDelay = `${idx*0.1}s`;
+        c.onclick = () => makaleAc('DÜNYA', h.title, h.description, h.source_id);
+        c.innerHTML = `<div class="dk-resim-wrapper"><img src="${proxyUrl}" class="dk-resim" alt="${attrGuvenli(h.title)}" onerror="${onerrorKodu}"></div><div class="dk-serit"></div><div class="dk-icerik"><div class="dk-catisma-yazi">🌐 KÜRESEL AKIŞ</div><h4>${guvenliMetin(h.title)}</h4><p>${guvenliMetin(h.description).substring(0,100)}...</p></div>`;
+        alan.appendChild(c);
+    
+        if (!resimUrl && h.link) {
+          const img = c.querySelector('.dk-resim');
+          resimArkaPlandaGuncelle(h.link, h.title, img);
+        }
+      });
+      animasyonlariBaslat();
+  } catch(err) { console.error(err); }
 }
 
 async function canliHaberleriCek() {
@@ -1006,6 +1027,27 @@ function futbolHaberleriGuncelle() {
     animasyonlariBaslat();
 }
 
+const tHavuz = [
+  { d: "Göktürkler", t: "Orhun Yazıtları'ndaki Stratejik Şifreler", m: "Bilge Kağan ve Kül Tigin adına dikilen yazıtlar, sadece edebi bir metin değil; bir devletin varoluşsal krizlerden nasıl çıkacağını anlatan küresel bir diplomatik manifesto niteliğindedir." },
+  { d: "Babür İmparatorluğu", t: "Ateşli Silahlar ve Hint Altkıtasının Dönüşümü", m: "Babür Şah'ın Panipat Muharebesi'nde Osmanlı taktiklerinden esinlenerek kurduğu topçu arabası ve tüfekli asker düzeni, askeri strateji tarihini kökten değiştirmiştir." },
+  { d: "Selçuklular", t: "Nizamülmülk ve Siyasetname Paradigması", m: "Büyük Selçuklu İmparatorluğu'nun kurumsallaşmasını sağlayan Nizamiye Medreseleri ve istihbarat ağları, döneminin bürokratik yapısına altın çağını yaşatmıştır." },
+  { d: "Avrasya Tarihi", t: "İpek Yolu Üzerindeki Erken Siber-Lojistik Altyapı", m: "Mete Han döneminden itibaren kervansaraylar ve posta teşkilatları (Ulak sistemi), Asya'nın en hızlı bilgi aktarım ağını oluşturarak askeri ve ticari üstünlük sağladı." },
+  { d: "Yakın Tarih", t: "Enver Paşa ve Kafkas İslam Ordusu Harekatı", m: "1918 yılında Bakü'nün kurtuluşuyla neticelenen harekatın askeri güncel günlükleri, coğrafyadaki jeopolitik dengeleri nasıl etkilediğini açıkça belgeliyor." },
+  { d: "Dünya Tarihi", t: "Endülüs'te Bilimsel Rönesansın Doğuşu", m: "Kurtuba Kütüphanesi'ndeki matematik ve astronomi çevirileri, Avrupa'nın karanlık çağdan çıkışının asıl tetikleyicisi olmuştu." }
+];
+
+function tarihiOlaylariYenile() {
+    const grid = document.getElementById('tarih-grid-alan'); if(!grid) return;
+    grid.innerHTML = '';
+    [...tHavuz].sort(()=>0.5-Math.random()).slice(0,3).forEach((o, idx) => {
+        const c = document.createElement('div'); c.className = 'standart-makale-kart anim-up'; c.style.transitionDelay = `${idx*0.1}s`;
+        c.onclick = () => makaleAc('TARİH', o.t, o.m, "Tarih & Kültür Araştırmaları Merkezi");
+        c.innerHTML = `<div class="smk-serit"></div><div class="smk-icerik"><span class="smk-badge">${o.d}</span><h4>${o.t}</h4><p>${o.m}</p></div>`;
+        grid.appendChild(c);
+    });
+    animasyonlariBaslat();
+}
+
 const tarihteBugunVerileri = {
   "1 Ocak": "1 Ocak 1923 — Türkiye Futbol Federasyonu (TFF) Yusuf Ziya Öniş başkanlığında kuruldu.",
   "11 Ocak": "11 Ocak 1055 — Tuğrul Bey komutasındaki Büyük Selçuklu Ordusu Bağdat'a girdi.",
@@ -1019,7 +1061,8 @@ const tarihteBugunVerileri = {
   "29 Mayıs": "29 Mayıs 1453 — Fatih Sultan Mehmet komutasındaki Osmanlı Ordusu İstanbul'u fethetti. Doğu Roma İmparatorluğu yıkıldı.",
   "15 Haziran": "15 Haziran 1920 — Doğu Cephesi Komutanlığı'na Kâzım Karabekir Paşa tayin edildi.",
   "17 Haziran": "17 Haziran 1462 — Fatih Sultan Mehmet, Eflak Prensi Kont Drakula'ya (Kazıklı Voyvoda) karşı ünlü gece baskınını düzenledi.",
-  "20 Temmuz": "20 Temmuz 1974 — Türk Silahlı Kuvvetleri, adadaki Türklere yönelik saldırıları durvastırmak için Kıbrıs Barış Harekâtı'nı başlattı.",
+  "18 Haziran": "18 Haziran 1936 — Dünyanın ilk kadın savaş pilotu Sabiha Gökçen, ilk uçuşunu gerçekleştirdi.",
+  "20 Temmuz": "20 Temmuz 1974 — Türk Silahlı Kuvvetleri, adadaki Türklere yönelik saldırıları durdurmak için Kıbrıs Barış Harekâtı'nı başlattı.",
   "24 Temmuz": "24 Temmuz 1923 — Lozan Barış Antlaşması imzalandı. Modern Türkiye'nin sınırları ve bağımsızlığı uluslararası alanda tescillendi.",
   "26 Ağustos": "26 Ağustos 1071 / 1922 — Sultan Alparslan komutasındaki Selçuklu Ordusu Malazgirt Zaferi'ni kazandı. Aynı gün 1922'de Büyük Taarruz başladı.",
   "30 Ağustos": "30 Ağustos 1922 — Başkomutanlık Meydan Muharebesi (Dumlupınar) zaferle sonuçlandı, Yunan ordusu hezimete uğratıldı.",
@@ -1046,7 +1089,7 @@ const genelDunyaHavuzu = [
   "14 Temmuz 1789 — Fransız Devrimi'nin sembolü olan Bastille Hapishanesi baskını gerçekleşti.",
   "24 Ekim 1945 — Birleşmiş Milletler (BM) uluslararası barışı korumak amacıyla resmen kuruldu.",
   "2 Eylül 1945 — Japonya'nın teslim belgesini imzalamasıyla II. Dünya Savaşı resmen sona erdi.",
-  "10 Dokument 1948 — Birleşmiş Milletler tarafından İnsan Hakları Evrensel Bildirgesi kabul edildi."
+  "10 Aralık 1948 — Birleşmiş Milletler tarafından İnsan Hakları Evrensel Bildirgesi kabul edildi."
 ];
 
 function tarihteBugunYukle() {
@@ -1074,18 +1117,6 @@ function tarihteBugunYukle() {
   }
 
   document.getElementById('tb-olay-metni').innerHTML = `${etiket} ${olayMetni}`;
-}
-
-function tarihiOlaylariYenile() {
-    const grid = document.getElementById('tarih-grid-alan'); if(!grid) return;
-    grid.innerHTML = '';
-    [...tHavuz].sort(()=>0.5-Math.random()).slice(0,3).forEach((o, idx) => {
-        const c = document.createElement('div'); c.className = 'standart-makale-kart anim-up'; c.style.transitionDelay = `${idx*0.1}s`;
-        c.onclick = () => makaleAc('TARİH', o.t, o.m, "Tarih & Kültür Araştırmaları Merkezi");
-        c.innerHTML = `<div class="smk-serit"></div><div class="smk-icerik"><span class="smk-badge">${o.d}</span><h4>${o.t}</h4><p>${o.m}</p></div>`;
-        grid.appendChild(c);
-    });
-    animasyonlariBaslat();
 }
 
 const devSoruHavuzu = [
@@ -1167,8 +1198,8 @@ function oyunBitir() {
   document.getElementById('oyun-secenekler').innerHTML = `<button class="oyun-secenek" style="max-width:300px" onclick="oyunuBaslat()">↩ Bugünkü Soruları Tekrarla</button>`;
 }
 
-// KADEMELİ YÜKLEME
-window.addEventListener('load', async () => {
+// KADEMELİ YÜKLEME (AWAIT KALDIRILDI - ASENKRON ÇALIŞTIRMA)
+window.addEventListener('load', () => {
   const aktifMedeniyet = aktifMedeniyetiGetir();
   medeniyetTemasiUygula(aktifMedeniyet);
   
@@ -1180,10 +1211,10 @@ window.addEventListener('load', async () => {
   
   setTimeout(animasyonlariBaslat, 300);
 
-  await heroSliderGuncelle();
-  await kureselBilimGuncelle();
-  await savasHaberleriniGuncelle();
-  await canliHaberleriCek();
+  heroSliderGuncelle();
+  kureselBilimGuncelle();
+  savasHaberleriniGuncelle();
+  canliHaberleriCek();
 
   setInterval(() => heroSliderGuncelle(), 3600000);
   setInterval(() => savasHaberleriniGuncelle(), 3600000 + 15000); 
