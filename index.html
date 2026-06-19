@@ -84,6 +84,8 @@ html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body { font-family: 'Outfit', sans-serif; background-color: var(--arkaplan); color: var(--yazi); line-height: 1.6; position: relative; transition: background-color 0.4s ease, color 0.4s ease; overflow-x: hidden;}
 
+@keyframes pulse { 0%,100% { opacity:1; transform:scale(1) } 50% { opacity:.5; transform:scale(1.3) } }
+
 /* GERÇEK GÖKTÜRKÇE DAMGALAR */
 .gokturk-bg-text { 
     font-family: 'Noto Sans Old Turkic', sans-serif; 
@@ -289,6 +291,29 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .skor-vurgu { color: var(--altin); font-size: 20px; }
 .oyun-liderlik { background: rgba(200,150,58,0.15); padding: 6px 12px; border-radius: 6px; font-size: 13px; color: var(--altin); border: 1px dashed var(--altin); }
 
+/* --- SİYASET VİTRİNİ ÖZEL TASARIMI --- */
+.siyaset-kompleks-alan { display: grid; grid-template-columns: 1.5fr 1fr; gap: 2rem; margin-bottom: 3.5rem; }
+.siyaset-ana-kart { position: relative; border-radius: 16px; overflow: hidden; box-shadow: var(--golge); cursor: pointer; display: flex; align-items: flex-end; min-height: 420px; background-color: var(--koyu); }
+.siyaset-ana-kart::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,17,26,0.95) 0%, rgba(10,17,26,0.3) 60%, transparent 100%); z-index: 1; transition: var(--gecis); }
+.siyaset-ana-kart:hover::before { background: linear-gradient(to top, rgba(10,17,26,0.95) 0%, rgba(10,17,26,0.7) 60%, rgba(200,150,58,0.2) 100%); }
+.sa-resim { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.7s ease; }
+.siyaset-ana-kart:hover .sa-resim { transform: scale(1.05); }
+.sa-icerik { position: relative; z-index: 2; padding: 2.5rem; color: #fff; width: 100%; }
+.sa-etiket { display: inline-block; background: var(--kizil); color: #fff; font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 4px; margin-bottom: 15px; letter-spacing: 1px; }
+.sa-icerik h3 { font-size: 28px; font-weight: 700; margin-bottom: 12px; line-height: 1.3; text-shadow: 0 2px 5px rgba(0,0,0,0.6); }
+.sa-icerik p { font-size: 15px; color: rgba(255,255,255,0.85); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.6; }
+
+.siyaset-yan-liste { display: flex; flex-direction: column; justify-content: space-between; gap: 1.2rem; }
+.siyaset-yan-kart { display: flex; background: var(--kart-bg); border: 1px solid var(--cizgi); border-radius: 12px; overflow: hidden; box-shadow: var(--golge); cursor: pointer; transition: var(--gecis); height: calc((420px - 2.4rem) / 3); }
+.siyaset-yan-kart:hover { border-color: var(--altin); transform: translateX(-5px); }
+.sy-resim { width: 140px; background-size: cover; background-position: center; flex-shrink: 0; position: relative; }
+.sy-resim::after { content: ''; position: absolute; inset: 0; border-right: 1px solid var(--cizgi); }
+[data-theme="dark"] .sy-resim::after { border-color: rgba(255,255,255,0.1); }
+.sy-icerik { padding: 0.8rem 1.2rem; display: flex; flex-direction: column; justify-content: center; overflow: hidden; flex: 1; }
+.sy-etiket { font-size: 11px; font-weight: 700; color: var(--altin); text-transform: uppercase; margin-bottom: 6px; }
+.sy-icerik h4 { font-size: 15px; font-weight: 700; color: var(--lacivert); line-height: 1.3; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.sy-icerik p { font-size: 13px; color: var(--ikincil); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0; }
+
 /* FOOTER */
 footer { 
     background-color: var(--koyu); 
@@ -383,6 +408,9 @@ footer {
 
 /* RESPONSIVE */
 @media(max-width: 960px){
+  .siyaset-kompleks-alan { grid-template-columns: 1fr; }
+  .siyaset-ana-kart { min-height: 350px; }
+  .siyaset-yan-kart { height: 130px; }
   .ikili-kolon, .savas-grid-2 { grid-template-columns: 1fr; }
   .dunya-grid, .uc-kolon-grid, .bilim-ozel-grid, .ilgili-grid, .ts-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -397,6 +425,9 @@ footer {
   .sehir-kart { min-width: 140px; }
 }
 @media(max-width: 600px){
+  .siyaset-yan-kart { height: auto; flex-direction: column; }
+  .sy-resim { width: 100%; height: 160px; }
+  .sy-resim::after { border-right: none; border-bottom: 1px solid var(--cizgi); }
   .ust-bant { flex-direction: row; justify-content: space-between; padding: 12px; }
   header { padding: 1.5rem 1rem; }
   .logo-alan { flex-direction: column; text-align: center; width: 100%; }
@@ -583,9 +614,11 @@ footer {
   </div>
 
   <div class="bolum-baslik anim-up" id="siyaset">
-      <div class="bolum-sembol">🏛️</div><h2>Türkiye Siyaseti & Milli Gündem</h2>
+      <div class="bolum-sembol">🏛️</div><h2>Türkiye Siyaseti & Ankara Kulisleri</h2>
   </div>
-  <div class="uc-kolon-grid" id="siyaset-grid-alan"></div>
+  <div class="siyaset-kompleks-alan anim-up" id="siyaset-vitrin">
+      <!-- Siyaset haberleri buraya JS ile yüklenecek -->
+  </div>
 
   <div class="bolum-baslik anim-up" id="futbol">
       <div class="bolum-sembol">⚽</div><h2>Spor & Futbol Gündemi</h2>
@@ -860,10 +893,8 @@ function attrGuvenli(str) {
 }
 
 // ----------------------------------------------------------------------
-// YAPAY ZEKA DESTEKLİ KALİTE VE KOPYA İÇERİK FİLTRESİ (DEDUPLICATION)
+// YAPAY ZEKA DESTEKLİ KALİTE VE KOPYA İÇERİK FİLTRESİ
 // ----------------------------------------------------------------------
-
-// İki metnin ne kadar benzediğini hesaplayan oran fonksiyonu (0 ile 1 arası)
 function metinBenzerligi(metin1, metin2) {
     const kelimeler1 = metin1.toLowerCase().split(/\W+/).filter(k => k.length > 3);
     const kelimeler2 = metin2.toLowerCase().split(/\W+/).filter(k => k.length > 3);
@@ -887,7 +918,6 @@ function haberFiltrele(res) {
 
   const bozukRegex = /Ã|Ä|Å|1⁄4|Â|â€/i;
   
-  // 1. ADIM: Kalitesiz ve Yasaklı İçerikleri Sil
   let kaliteliHaberler = res.filter(h => {
     if (!h.title) return false;
     
@@ -896,21 +926,17 @@ function haberFiltrele(res) {
     let kaynak = guvenliMetin(h.source_id || "").toLowerCase();
     let tamMetin = baslik + " " + aciklama + " " + kaynak;
     
-    // Bozuk karakter veya yasaklı kelime varsa
     if (bozukRegex.test(tamMetin)) return false;
     if (yasakliKelimeler.some(kelime => tamMetin.includes(kelime))) return false;
     
-    // Haberin açıklaması çok kısaysa veya sadece başlığı tekrar ediyorsa at
     if (aciklama.length < 120) return false; 
     if (aciklama === baslik || (aciklama.includes(baslik) && aciklama.length < baslik.length + 30)) return false;
     
     return true;
   });
 
-  // 2. ADIM: Aynı Haberleri Engelle (En detaylı olan kalsın)
   let tekilHaberler = [];
   
-  // Önce açıklaması en uzun olanları başa alıyoruz ki en kalitelisi seçilsin
   kaliteliHaberler.sort((a, b) => {
       let aUzunluk = (a.description || a.content || "").length;
       let bUzunluk = (b.description || b.content || "").length;
@@ -919,7 +945,6 @@ function haberFiltrele(res) {
 
   for (let haber of kaliteliHaberler) {
       let temizBaslik = guvenliMetin(haber.title);
-      // Havuzda bu başlığa %45'ten fazla benzeyen bir haber eklenmiş mi?
       let kopyaVarMi = tekilHaberler.some(eklenen => metinBenzerligi(temizBaslik, guvenliMetin(eklenen.title)) > 0.45);
       
       if (!kopyaVarMi) {
@@ -1106,7 +1131,7 @@ async function havaDurumuGetir() {
 }
 
 // ----------------------------------------------------------------------
-// GÜNÜN ODAK NOKTASI HAVUZU (Asla aynı gün tekrarlanmaz)
+// GÜNÜN ODAK NOKTASI HAVUZU (TAM OTONOM SİSTEM)
 // ----------------------------------------------------------------------
 const gunlukMakaleler = [
   { t: "Evrenin Sınırlarının Ötesinde Ne Var?", e: "Astrofizik", r: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa", m: "Bilim insanları gözlemlenebilir evrenin 93 milyar ışık yılı genişliğinde olduğunu biliyor. Ancak bu devasa hacmin ötesinde ne olduğu, modern fizikteki en büyük sırlardan biridir.\n\nBazı teorisyenler, kozmik enflasyon modeli uyarınca evrenin sonsuz bir 'çoklu evren' (multiverse) okyanusundaki küçük bir kabarcık olabileceğini savunuyor. Bu kabarcıkların her birinde fizik yasaları bile farklı işleyebilir.\n\nJames Webb Uzay Teleskobu'nun derin alan gözlemleri, her geçen gün Big Bang'in ilk anlarına daha yakından bakmamızı sağlıyor, ancak sınırların ötesini görmek için tamamen yeni bir fizik paradigmasına ihtiyacımız olabilir." },
@@ -1119,15 +1144,34 @@ const gunlukMakaleler = [
   { t: "CRISPR ile İnsan Genomunu Yeniden Yazmak", e: "Genetik", r: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28", m: "CRISPR-Cas9 teknolojisi, genetik biliminde bir devrim yaratarak bilim insanlarının DNA kodunda tıpkı bir metin belgesinde olduğu gibi kes, kopyala ve yapıştır yapmasına olanak tanıdı.\n\nBu yöntemle genetik hastalıkların embriyo aşamasında düzeltilmesi, tarımda yüksek verimli ürünler elde edilmesi ve hatta soyu tükenmiş canlıların geri getirilmesi teorik olarak mümkün hale geldi.\n\nAncak bu gücün etik sınırları büyük tartışma konusu. 'Tasarım bebekler' dönemi insanlığın doğal evrim sürecine yapılmış en tehlikeli müdahale olabilir mi?" }
 ];
 
-function gununMakalesiniYukle() {
+async function gununMakalesiniYukle() {
    const alan = document.getElementById('gunun-makalesi-alani');
    if(!alan) return;
-   
-   // Mutlak gün indeksi ile sırayla çeker, ay bazlı başa sarmayı engeller
-   const makale = gunlukMakaleler[mutlakGunIndeksi % gunlukMakaleler.length];
-   
-   alan.onclick = () => makaleAc('GÜNÜN MAKALESİ', makale.t, makale.m, 'TuranHaber Bilim Arşivi');
-   alan.innerHTML = `<div class="gm-resim" style="background-image: url('${gorselUrlOptimize(makale.r)}')"></div><div class="gm-icerik"><span class="gm-etiket">✦ ${makale.e}</span><h3 class="gm-baslik">${makale.t}</h3><p class="gm-metin">${makale.m.substring(0, 150)}...</p><div class="gm-okuma-suresi">⏳ Detaylı Analiz</div></div>`;
+
+   if (mutlakGunIndeksi < gunlukMakaleler.length) {
+       const makale = gunlukMakaleler[mutlakGunIndeksi];
+       alan.onclick = () => makaleAc('GÜNÜN MAKALESİ', makale.t, makale.m, 'TuranHaber Bilim Arşivi');
+       alan.innerHTML = `<div class="gm-resim" style="background-image: url('${gorselUrlOptimize(makale.r)}')"></div><div class="gm-icerik"><span class="gm-etiket">✦ ${makale.e}</span><h3 class="gm-baslik">${makale.t}</h3><p class="gm-metin">${makale.m.substring(0, 150)}...</p><div class="gm-okuma-suresi">⏳ Detaylı Analiz</div></div>`;
+   } else {
+       try {
+           let res = await apiIstekAt(`${WORKER_URL}/?kategori=science`);
+           
+           if (res && res.length > 0) {
+               res.sort((a,b) => (b.description || "").length - (a.description || "").length);
+               let yepyeniMakale = res[0]; 
+               let resimUrl = haberdenResimCikar(yepyeniMakale) || "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa";
+               
+               alan.onclick = () => makaleAc('GÜNÜN MAKALESİ', yepyeniMakale.title, yepyeniMakale.description, yepyeniMakale.source_id);
+               alan.innerHTML = `<div class="gm-resim" style="background-image: url('${gorselUrlOptimize(resimUrl)}')"></div><div class="gm-icerik"><span class="gm-etiket">✦ KÜRESEL GÜNDEM</span><h3 class="gm-baslik">${guvenliMetin(yepyeniMakale.title)}</h3><p class="gm-metin">${guvenliMetin(yepyeniMakale.description).substring(0, 150)}...</p><div class="gm-okuma-suresi">⏳ Dinamik Analiz</div></div>`;
+           } else {
+               throw new Error("API boş döndü.");
+           }
+       } catch(err) {
+           const yedekMakale = gunlukMakaleler[mutlakGunIndeksi % gunlukMakaleler.length];
+           alan.onclick = () => makaleAc('GÜNÜN MAKALESİ', yedekMakale.t, yedekMakale.m, 'TuranHaber Arşivi');
+           alan.innerHTML = `<div class="gm-resim" style="background-image: url('${gorselUrlOptimize(yedekMakale.r)}')"></div><div class="gm-icerik"><span class="gm-etiket">✦ ${yedekMakale.e}</span><h3 class="gm-baslik">${yedekMakale.t}</h3><p class="gm-metin">${yedekMakale.m.substring(0, 150)}...</p><div class="gm-okuma-suresi">⏳ Arşiv Analizi</div></div>`;
+       }
+   }
 }
 
 // SLIDER MOTORU
@@ -1231,32 +1275,86 @@ async function savasHaberleriniGuncelle() {
   }
 }
 
-// TÜRKİYE SİYASETİ HABERLERİ
-function siyasetHaberleriOlustur() {
-    const grid = document.getElementById('siyaset-grid-alan'); if(!grid) return;
-    grid.innerHTML = '';
-    [
-        { 
-            k: "ANKARA KULİSİ", 
-            t: "Milli Savunma Stratejisi ve Yeni Teşvik Paketleri", 
-            m: "Ankara kulislerinden gelen bilgilere göre, yerli savunma sanayii ekosisteminin geliştirilmesi ve yarı iletken tedarik güvenliği kabinede masaya yatırıldı.\n\nÖzellikle mikroçip üretiminde dışa bağımlılığın tamamen azaltılması hedeflenen toplantıda, yerli çip üretim tesisleri kuracak holdingler için yeni ve devasa teşvik paketlerinin yolda olduğu vurgulandı.\n\nBunun yanı sıra insansız savaş uçakları Kızılelma ve Anka-3'ün seri üretim aşamalarının hızlandırılması için kamu-özel sektör iş birliklerinin artırılacağı bildirildi." 
-        },
-        { 
-            k: "SİBER GÜVENLİK", 
-            t: "Milli Siber Altyapı: Kuantum Şifreleme Dönemi Başlıyor", 
-            m: "Sağlık, Enerji ve İletişim Bakanlıklarının kritik veri altyapıları, tamamen milli Linux dağıtımı olan Pardus sunucularına ve yeni nesil kuantum şifreleme algoritmalarına taşınıyor.\n\nDevletin en üst düzey siber güvenlik yetkililerinden alınan bilgiye göre, vatandaşların kişisel e-devlet ve sağlık verilerinin korunması amacıyla ana sunucuların tamamı yurtiçindeki yeraltı, EMP korumalı veri merkezlerine taşınıyor.\n\nBu stratejik hamle ile birlikte, yabancı devlet destekli olası siber espiyonaj faaliyetlerinin ve son dönemde artan fidye yazılımı (ransomware) saldırılarının önü kesin olarak kesilmiş olacak." 
-        },
-        { 
-            k: "DIŞ POLİTİKA", 
-            t: "Doğu Akdeniz'de Yeni Enerji ve Diplomasi Doktrini", 
-            m: "Türkiye'nin Doğu Akdeniz'deki sismik araştırma ve derin deniz sondaj faaliyetleri, bölgedeki yeni diplomatik müzakerelerin gölgesinde stratejik olarak yeniden şekilleniyor.\n\nDışişleri Bakanlığı kaynakları, münhasır ekonomik bölge (MEB) haklarının tartışmasız şekilde korunması şartıyla, kıyıdaş bölge ülkeleriyle ortak enerji transferi projelerine ve boru hatlarına açık olduklarını bir kez daha net bir şekilde dile getirdi.\n\nÖzellikle Avrupa'nın içine düştüğü enerji krizine en güvenilir alternatif olarak sunulan 'Anadolu Gaz Merkezi' projesinin, uluslararası finansman görüşmelerinde büyük hız kazandığı raporlanıyor." 
+// TÜRKİYE SİYASETİ HABERLERİ (VİTRİN TASARIMI)
+const siyasetYedekHavuz = [
+    { 
+        k: "ANKARA KULİSİ", t: "Milli Savunma Stratejisi ve Yeni Teşvik Paketleri", 
+        m: "Ankara kulislerinden gelen bilgilere göre, yerli savunma sanayii ekosisteminin geliştirilmesi ve yarı iletken tedarik güvenliği kabinede masaya yatırıldı. Özellikle mikroçip üretiminde dışa bağımlılığın tamamen azaltılması hedeflenen toplantıda, yerli çip üretim tesisleri kuracak holdingler için devasa teşvik paketlerinin yolda olduğu vurgulandı.", 
+        r: "https://images.unsplash.com/photo-1541887089-8b204df86b02" 
+    },
+    { 
+        k: "SİBER GÜVENLİK", t: "Milli Siber Altyapı: Kuantum Şifreleme Dönemi Başlıyor", 
+        m: "Sağlık, Enerji ve İletişim Bakanlıklarının kritik veri altyapıları, tamamen milli Linux dağıtımı olan Pardus sunucularına ve yeni nesil kuantum şifreleme algoritmalarına taşınıyor. Yabancı devlet destekli siber espiyonaj faaliyetlerinin önü kesin olarak kesilecek.", 
+        r: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b" 
+    },
+    { 
+        k: "DIŞ POLİTİKA", t: "Doğu Akdeniz'de Yeni Enerji ve Diplomasi Doktrini", 
+        m: "Türkiye'nin Doğu Akdeniz'deki sismik araştırma ve derin deniz sondaj faaliyetleri, bölgedeki yeni diplomatik müzakerelerin gölgesinde stratejik olarak yeniden şekilleniyor. 'Anadolu Gaz Merkezi' projesinin, uluslararası finansman görüşmelerinde büyük hız kazandığı raporlanıyor.", 
+        r: "https://images.unsplash.com/photo-1572004245648-522f7902146e" 
+    },
+    { 
+        k: "MECLİS GÜNDEMİ", t: "Yapay Zeka Etik Yasası Komisyondan Geçti", 
+        m: "Bilişim ve Teknoloji Komisyonu'nda haftalardır tartışılan ulusal yapay zeka denetim yasası oy birliğiyle kabul edildi. Veri mahremiyeti ve otonom sistemlerin hukuki sorumluluğu artık devlet güvencesinde.", 
+        r: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73" 
+    }
+];
+
+async function siyasetHaberleriOlustur() {
+    const alan = document.getElementById('siyaset-vitrin'); 
+    if(!alan) return;
+
+    let siyasetVerileri = [];
+    
+    try {
+        let apiHaberleri = await apiIstekAt(`${WORKER_URL}/?kategori=politics&country=tr`);
+        
+        if (apiHaberleri && apiHaberleri.length >= 4) {
+            siyasetVerileri = apiHaberleri.slice(0, 4).map(h => ({
+                k: guvenliMetin(h.source_id),
+                t: guvenliMetin(h.title),
+                m: guvenliMetin(h.description || ""),
+                r: haberdenResimCikar(h) || "https://images.unsplash.com/photo-1541887089-8b204df86b02",
+                orijinal: h
+            }));
+        } else {
+            throw new Error("Yeterli siyasi haber bulunamadı");
         }
-    ].forEach((h, idx) => {
-        const c = document.createElement('div'); c.className = 'standart-makale-kart anim-up goster'; c.style.transitionDelay = `${idx*0.1}s`;
-        c.onclick = () => makaleAc('SİYASET', h.t, h.m, "TuranHaber Ankara Bürosu");
-        c.innerHTML = `<div class="smk-serit" style="background: linear-gradient(90deg, #5b21b6, #8b5cf6);"></div><div class="smk-icerik"><span class="smk-badge" style="background: rgba(139, 92, 246, 0.15); color: #5b21b6;">${h.k}</span><h4>${h.t}</h4><p>${h.m}</p></div>`;
-        grid.appendChild(c);
+    } catch(e) {
+        siyasetVerileri = [...siyasetYedekHavuz];
+    }
+
+    const anaHaber = siyasetVerileri[0];
+    const yanHaberler = siyasetVerileri.slice(1, 4);
+
+    let html = `
+        <!-- Sol Taraf: Büyük Manşet -->
+        <div class="siyaset-ana-kart" onclick="makaleAc('SİYASET', '${attrGuvenli(anaHaber.t)}', '${attrGuvenli(anaHaber.m)}', '${attrGuvenli(anaHaber.k)}')">
+            <div class="sa-resim" style="background-image: url('${gorselUrlOptimize(anaHaber.r)}')"></div>
+            <div class="sa-icerik">
+                <span class="sa-etiket">⚡ ${anaHaber.k}</span>
+                <h3>${anaHaber.t}</h3>
+                <p>${anaHaber.m}</p>
+            </div>
+        </div>
+        <!-- Sağ Taraf: Alt Haberler Listesi -->
+        <div class="siyaset-yan-liste">
+    `;
+
+    yanHaberler.forEach(h => {
+        html += `
+            <div class="siyaset-yan-kart" onclick="makaleAc('SİYASET', '${attrGuvenli(h.t)}', '${attrGuvenli(h.m)}', '${attrGuvenli(h.k)}')">
+                <div class="sy-resim" style="background-image: url('${gorselUrlOptimize(h.r)}')"></div>
+                <div class="sy-icerik">
+                    <span class="sy-etiket">${h.k}</span>
+                    <h4>${h.t}</h4>
+                    <p>${h.m}</p>
+                </div>
+            </div>
+        `;
     });
+
+    html += `</div>`;
+    alan.innerHTML = html;
 }
 
 // BİLİM HABERLERİ YEDEK HAVUZU
@@ -1447,11 +1545,7 @@ function tarihteBugunYukle() {
   document.getElementById('tb-olay-metni').innerHTML = `${etiket} ${pTags}`;
 }
 
-// ----------------------------------------------------------------------
-// SORU HAVUZU VE "CHUNKING" (Asla tekrar etmez) MANTIĞI
-// ----------------------------------------------------------------------
 const devSoruHavuzu = [
-    // Tarih & Strateji
     { soru: "Hint altkıtasında Babür İmparatorluğu'nu kurarak askeri strateji tarihine geçen figür kimdir?", secenekler: ["Timur", "Babür Şah", "Cengiz Han", "Nadir Şah"], dogru: 1 },
     { soru: "I. Dünya Savaşı'nda Turan ideali ile Orta Asya'da askeri harekatlar yöneten tarihi kişilik kimdir?", secenekler: ["Kâzım Karabekir", "Mustafa Kemal", "Enver Paşa", "Cemal Paşa"], dogru: 2 },
     { soru: "Türk devlet felsefesinin taşa kazınmış ilk belgeleri olan Orhun Yazıtları hangi devlete aittir?", secenekler: ["Uygurlar", "Göktürkler", "Karahanlılar", "Hunlar"], dogru: 1 },
@@ -1465,64 +1559,58 @@ const devSoruHavuzu = [
     { soru: "1514 Çaldıran Muharebesi'nde Şah İsmail'i mağlup ederek Doğu Anadolu'yu Osmanlı topraklarına katan padişah kimdir?", secenekler: ["Yavuz Sultan Selim", "Kanuni Sultan Süleyman", "Fatih Sultan Mehmet", "II. Bayezid"], dogru: 0 },
     { soru: "Soğuk Savaş'ın sembolü olan Berlin Duvarı hangi yıl yıkılmıştır?", secenekler: ["1987", "1989", "1991", "1993"], dogru: 1 },
     { soru: "Tarihte bilinen ilk yazılı antlaşma olan Kadeş Antlaşması, Mısır ile hangi devlet arasında imzalanmıştır?", secenekler: ["Sümerler", "Hititler", "Akadlar", "Babiller"], dogru: 1 },
-    { soru: "Cumhuriyetin ilanıyla birlikte Türkiye'nin ilk Diyanet İşleri Başkanı kim olmuştur?", secenekler: ["Elmalılı Hamdi Yazır", "Rıfat Börekçi", "Mehmet Akif Ersoy", "Ömer Nasuhi Bilmen"], dogru: 1 },
-
-    // Teknoloji & Bilim
     { soru: "Günümüzde dünyanın en değerli teknoloji şirketlerinin üretiminde rekabet ettiği temel donanım bileşeni hangisidir?", secenekler: ["Grafik İşlemci (GPU/Çip)", "Fiber Optik Kablo", "Lityum İyon Batarya", "Sensör Ağları"], dogru: 0 },
     { soru: "İlişkisel veritabanı sistemlerini yönetmek için geliştirilen, günümüzde yazılım dünyasının temeli olan sorgu dili hangisidir?", secenekler: ["HTML", "Python", "SQL", "Java"], dogru: 2 },
     { soru: "Bilgisayar biliminin temeli sayılan 'algoritma' kavramını kuran ve cebirin atası kabul edilen İslam alimi kimdir?", secenekler: ["Harezmi", "Farabi", "İbn Sina", "Kindi"], dogru: 0 },
     { soru: "Linux çekirdeği üzerine kurulan ve TÜBİTAK tarafından geliştirilen milli işletim sistemimizin adı nedir?", secenekler: ["Pardus", "Kızılelma", "Ulus", "Bora"], dogru: 0 },
     { soru: "Modern yapay zeka modellerinin eğitilmesinde insan beynindeki nöronları taklit eden sistemlere ne ad verilir?", secenekler: ["Blockchain", "Sinir Ağları", "Bulut Bilişim", "Kuantum Şifreleme"], dogru: 1 },
-    { soru: "İnternette cihazların birbirini bulmasını sağlayan sayısal adresleme sisteminin (örn: 192.168.1.1) kısaltması nedir?", secenekler: ["MAC", "DNS", "IP", "FTP"], dogru: 2 },
-    { soru: "Güneş sistemindeki en büyük kanyon olan Valles Marineris hangi gezegende bulunur?", secenekler: ["Venüs", "Mars", "Jüpiter", "Satürn"], dogru: 1 },
     { soru: "Maddenin en küçük yapı taşlarından olan ve 'Tanrı Parçacığı' olarak da bilinen bozonun bilimsel adı nedir?", secenekler: ["Foton", "Gluon", "Higgs Bozonu", "Nötrino"], dogru: 2 },
-    { soru: "DNA molekülünün çift sarmallı yapısını X-ışını kırınımı ile ilk kez net olarak fotoğraflayan bilim insanı kimdir?", secenekler: ["Marie Curie", "Rosalind Franklin", "Ada Lovelace", "Lise Meitner"], dogru: 1 },
-    { soru: "Günümüzde web sayfalarına dinamik özellikler kazandıran ve tarayıcıda çalışan en yaygın programlama dili hangisidir?", secenekler: ["PHP", "JavaScript", "C++", "Ruby"], dogru: 1 },
     { soru: "Türkiye'nin ilk yerli ve milli yüksek çözünürlüklü yer gözlem uydusunun adı nedir?", secenekler: ["Göktürk-2", "Rasat", "İmece", "Türksat 4A"], dogru: 2 },
     { soru: "Kripto paraların arkasındaki merkeziyetsiz ve değiştirilemez kayıt defteri teknolojisine ne ad verilir?", secenekler: ["Büyük Veri", "Blockchain", "Nesnelerin İnterneti", "Derin Öğrenme"], dogru: 1 },
-    
-    // Coğrafya & Jeopolitik
     { soru: "Dünya ticaretinin yaklaşık %12'sinin geçtiği ve Mısır'da bulunan kritik su yolunun adı nedir?", secenekler: ["Panama Kanalı", "Hürmüz Boğazı", "Süveyş Kanalı", "Cebelitarık"], dogru: 2 },
     { soru: "Küresel çip üretiminin (yarı iletken dökümhaneleri) tartışmasız başkenti olan Asya ülkesi/bölgesi hangisidir?", secenekler: ["Güney Kore", "Tayvan", "Singapur", "Japonya"], dogru: 1 },
     { soru: "Petrol taşımacılığında Basra Körfezi'ni dünyaya bağlayan ve jeopolitik olarak en riskli dar boğaz neresidir?", secenekler: ["Malakka Boğazı", "Hürmüz Boğazı", "Babülmendep", "Bering Boğazı"], dogru: 1 },
-    { soru: "Avrupa kıtasının en uzun nehri hangisidir?", secenekler: ["Tuna", "Ren", "Volga", "Dinyeper"], dogru: 2 },
-    { soru: "Asya ile Amerika kıtalarını birbirine çok yaklaştıran ancak okyanusla ayıran boğazın adı nedir?", secenekler: ["Macellan", "Bering", "Drake", "Cook"], dogru: 1 },
     { soru: "Türkiye'nin en doğusundaki komşusu ile olan sınırını hangi dağ silsilesi belirler?", secenekler: ["Amanos Dağları", "Zağros Dağları", "Kafkas Dağları", "Ağrı (Ararat) Dağı bölgesi"], dogru: 3 },
-    { soru: "Hem Ekvator'un hem de Başlangıç Meridyeni'nin (Greenwich) geçtiği tek kıta hangisidir?", secenekler: ["Asya", "Güney Amerika", "Afrika", "Avrupa"], dogru: 2 },
-
-    // Spor & Genel Kültür
     { soru: "Futbolda 'Kıtalararası Derbi' olarak bilinen Fenerbahçe - Galatasaray rekabetindeki ilk maç hangi yıl oynanmıştır?", secenekler: ["1905", "1907", "1909", "1911"], dogru: 2 },
     { soru: "Şampiyonlar Ligi'nde grupların kaldırılarak tek lig usulüne geçilen yeni sistemin (2024-25 itibarıyla) adı nedir?", secenekler: ["Eleme Modeli", "Süper Lig Modeli", "İsviçre Modeli", "Karma Model"], dogru: 2 },
     { soru: "Türk basketbol tarihinde Avrupa Ligi'ni (EuroLeague) kazanan ilk Türk takımı hangisidir?", secenekler: ["Anadolu Efes", "Fenerbahçe Beko", "Galatasaray", "Beşiktaş"], dogru: 1 },
-    { soru: "Olimpiyat oyunlarının amblemindeki 5 halka neyi temsil eder?", secenekler: ["5 Kıtanın Kardeşliğini", "5 Temel Spor Dalını", "5 Okyanusu", "Kurucu 5 Ülkeyi"], dogru: 0 },
     { soru: "Satranç oyununda başlangıç dizilişinde her iki oyuncunun toplam kaç adet piyonu bulunur?", secenekler: ["8", "12", "16", "20"], dogru: 2 },
-    { soru: "Teniste rakibin şahını (şah mat) doğrudan tehdit ederek oyunu bitirme potansiyeli en yüksek taş hangisidir?", secenekler: ["Kale", "Vezir", "At", "Fil"], dogru: 1 },
     { soru: "Fenerbahçe Spor Kulübü'nün efsanevi başkanı ve aynı zamanda Şükrü Saracoğlu stadyumuna adını veren devlet adamı hangi görevi yapmıştır?", secenekler: ["Cumhurbaşkanı", "Başbakan", "Genelkurmay Başkanı", "Milli Eğitim Bakanı"], dogru: 1 },
     { soru: "NBA tarihinde bir maçta 100 sayı atarak kırılamaz bir rekora imza atan efsanevi basketbolcu kimdir?", secenekler: ["Michael Jordan", "Kobe Bryant", "LeBron James", "Wilt Chamberlain"], dogru: 3 },
-
-    // Ekonomi & Hukuk
     { soru: "Bir ülkenin para biriminin, yabancı para birimleri karşısında değerinin devlet kararıyla düşürülmesine ne ad verilir?", secenekler: ["Enflasyon", "Revalüasyon", "Devalüasyon", "Stagflasyon"], dogru: 2 },
-    { soru: "Uluslararası ticarette malların fiziksel teslimatını değil, gelecekteki bir fiyattan alım-satım sözleşmesini ifade eden piyasa hangisidir?", secenekler: ["Spot Piyasa", "Vadeli (Futures) Piyasa", "Tahvil Piyasası", "Döviz Kuru Piyasası"], dogru: 1 },
     { soru: "Bir şirketin hisse senetlerini ilk kez halka arz ederek borsada işlem görmeye başlaması işlemine kısaca ne denir?", secenekler: ["CEO", "B2B", "IPO", "Ar-Ge"], dogru: 2 },
     { soru: "Ekonomide büyümenin durması (durgunluk) ile birlikte yüksek enflasyonun aynı anda yaşanması krizine ne ad verilir?", secenekler: ["Resesyon", "Stagflasyon", "Deflasyon", "Depresyon"], dogru: 1 },
     { soru: "Uluslararası hukukta devletlerin deniz kıyısından itibaren ekonomik hak iddia edebildikleri 200 deniz millik alana ne denir?", secenekler: ["Karasuları", "Münhasır Ekonomik Bölge (MEB)", "Uluslararası Sular", "Kıta Sahanlığı"], dogru: 1 },
-    { soru: "Türkiye Cumhuriyeti Merkez Bankası'nın (TCMB) temel kuruluş amacı ve yasayla belirlenmiş en önemli görevi nedir?", secenekler: ["Fiyat istikrarını sağlamak", "Büyümeyi artırmak", "İşsizliği düşürmek", "Döviz kurunu sabitlemek"], dogru: 0 },
-    { soru: "Bir devletin borçlarını ödeyemeyeceğini ve iflas ettiğini uluslararası piyasalara resmen ilan etmesine ne ad verilir?", secenekler: ["Moratoryum", "Konsolidasyon", "Amortisman", "Emisyon"], dogru: 0 },
-    { soru: "1944 yılında küresel para sistemini dolara endeksleyen ve IMF'nin kurulmasına yol açan tarihi anlaşmanın adı nedir?", secenekler: ["Versay", "Bretton Woods", "Yalta", "Maastricht"], dogru: 1 },
-    { soru: "Küresel piyasalarda en yaygın kullanılan petrol fiyatlandırma standardı (kriteri) hangisidir?", secenekler: ["WTI (Batı Teksas)", "Brent Petrol", "OPEC Sepeti", "Dubai Ham Petrolü"], dogru: 1 }
+    { soru: "1944 yılında küresel para sistemini dolara endeksleyen ve IMF'nin kurulmasına yol açan tarihi anlaşmanın adı nedir?", secenekler: ["Versay", "Bretton Woods", "Yalta", "Maastricht"], dogru: 1 }
 ];
 
-let mevcutSoruIndeksi = 0, oyunSkoru = 0, oyunBittiMi = false, gunlukSorular = [];
-
-function oyunuBaslat() {
-    // "Dilimleme" Mantığı: Toplam gün sayısına göre sıradaki 5 soruyu alır. 
-    // Aynı gün içinde site yenilense bile sorular hep o güne ait seçilen 5 soru olur.
-    // Havuz bitene kadar asla aynı soru ekrana gelmez.
-    const gunlukBaslangicIndeksi = (mutlakGunIndeksi * 5) % devSoruHavuzu.length;
+async function oyunuBaslat() {
+    const gunlukBaslangicIndeksi = mutlakGunIndeksi * 5;
     
-    gunlukSorular = [];
-    for(let i = 0; i < 5; i++) {
-        gunlukSorular.push(devSoruHavuzu[(gunlukBaslangicIndeksi + i) % devSoruHavuzu.length]);
+    if (gunlukBaslangicIndeksi + 5 <= devSoruHavuzu.length) {
+        gunlukSorular = devSoruHavuzu.slice(gunlukBaslangicIndeksi, gunlukBaslangicIndeksi + 5);
+    } 
+    else {
+        try {
+            let res = await fetch(`${WORKER_URL}/sorular`); 
+            if (res.ok) {
+                let data = await res.json();
+                gunlukSorular = data.sorular; 
+            } else {
+                throw new Error("Soru API'si henüz aktif değil.");
+            }
+        } catch(e) {
+            let seed = mutlakGunIndeksi;
+            let random = () => { let x = Math.sin(seed++) * 10000; return x - Math.floor(x); };
+            let kopyaHavuz = [...devSoruHavuzu];
+            
+            for (let i = kopyaHavuz.length - 1; i > 0; i--) {
+                const j = Math.floor(random() * (i + 1));
+                [kopyaHavuz[i], kopyaHavuz[j]] = [kopyaHavuz[j], kopyaHavuz[i]];
+            }
+            
+            gunlukSorular = kopyaHavuz.slice(0, 5); 
+        }
     }
 
     mevcutSoruIndeksi = 0; oyunSkoru = 0; oyunBittiMi = false;
