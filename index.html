@@ -512,48 +512,50 @@ footer {
     </div>
 
     <!-- MİLİMETRİK KİLİTLİ SVG HARİTA YAPISI -->
-    <div class="jeopolitik-harita-alani" style="position:relative; width:100%; background:#0b121c; border-radius:12px; overflow:hidden; margin-bottom:2.5rem; border:1px solid rgba(255,255,255,0.05);">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg" style="width:100%; display:block; opacity:0.85;" id="jeopolitik-harita-img" alt="Dünya Haritası">
-      <svg id="harita-overlay" style="position:absolute; top:0; left:0; width:100%; height:100%; overflow:visible;" viewBox="0 0 2754 1398" preserveAspectRatio="none">
+    <div class="jeopolitik-harita-alani">
+      <svg id="harita-overlay" style="position:absolute; top:0; left:0; width:100%; height:100%; overflow:visible;" viewBox="0 0 1000 507" preserveAspectRatio="none">
+        
+        <!-- Harita Görseli -->
+        <image href="https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg" x="0" y="0" width="1000" height="507" opacity="0.85" id="jeopolitik-harita-img" />
         
         <!-- İsrail - Lübnan Hattı -->
         <g class="harita-nokta" onclick="makaleAc('RADAR','Orta Doğu Kriz Hattı','Bölgedeki sınır çatışmaları ve askeri hareketlilik artıyor.','Analiz Masası')" style="cursor:pointer">
-          <circle cx="1534" cy="425" r="14" fill="#C0392B" opacity="0.9"/>
-          <circle cx="1534" cy="425" r="28" fill="none" stroke="#C0392B" stroke-width="4" opacity="0.5">
-            <animate attributeName="r" values="14;40;14" dur="1.5s" repeatCount="indefinite"/>
+          <circle cx="583" cy="180" r="6" fill="#C0392B" opacity="0.9"/>
+          <circle cx="583" cy="180" r="11" fill="none" stroke="#C0392B" stroke-width="2" opacity="0.5">
+            <animate attributeName="r" values="6;16;6" dur="1.5s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="0.8;0;0.8" dur="1.5s" repeatCount="indefinite"/>
           </circle>
-          <text x="1534" y="395" text-anchor="middle" fill="#fff" font-size="34" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">İsrail-Lübnan</text>
+          <text x="583" y="165" text-anchor="middle" fill="#fff" font-size="11" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">İsrail-Lübnan</text>
         </g>
         
         <!-- Doğu Avrupa -->
         <g class="harita-nokta" onclick="makaleAc('RADAR','Doğu Avrupa Sınır Tahkimatı','Sınır hattı boyunca hava devriyeleri yoğunlaştırıldı.','Analiz Masası')" style="cursor:pointer">
-          <circle cx="1520" cy="290" r="14" fill="#C0392B" opacity="0.9"/>
-          <circle cx="1520" cy="290" r="28" fill="none" stroke="#C0392B" stroke-width="4" opacity="0.5">
-            <animate attributeName="r" values="14;40;14" dur="1.5s" repeatCount="indefinite"/>
+          <circle cx="560" cy="120" r="6" fill="#C0392B" opacity="0.9"/>
+          <circle cx="560" cy="120" r="11" fill="none" stroke="#C0392B" stroke-width="2" opacity="0.5">
+            <animate attributeName="r" values="6;16;6" dur="1.5s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="0.8;0;0.8" dur="1.5s" repeatCount="indefinite"/>
           </circle>
-          <text x="1520" y="260" text-anchor="middle" fill="#fff" font-size="34" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Doğu Avrupa</text>
+          <text x="560" y="105" text-anchor="middle" fill="#fff" font-size="11" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Doğu Avrupa</text>
         </g>
         
         <!-- Tayvan Boğazı -->
         <g class="harita-nokta" onclick="makaleAc('RADAR','Tayvan Boğazı Gerilimi','Karşılıklı deniz devriyeleri uluslararası ticareti tehdit ediyor.','Analiz Masası')" style="cursor:pointer">
-          <circle cx="2185" cy="490" r="14" fill="#C0392B" opacity="0.9"/>
-          <circle cx="2185" cy="490" r="28" fill="none" stroke="#C0392B" stroke-width="4" opacity="0.5">
-            <animate attributeName="r" values="14;40;14" dur="1.5s" repeatCount="indefinite"/>
+          <circle cx="833" cy="214" r="6" fill="#C0392B" opacity="0.9"/>
+          <circle cx="833" cy="214" r="11" fill="none" stroke="#C0392B" stroke-width="2" opacity="0.5">
+            <animate attributeName="r" values="6;16;6" dur="1.5s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="0.8;0;0.8" dur="1.5s" repeatCount="indefinite"/>
           </circle>
-          <text x="2185" y="460" text-anchor="middle" fill="#fff" font-size="34" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Tayvan</text>
+          <text x="833" y="199" text-anchor="middle" fill="#fff" font-size="11" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Tayvan</text>
         </g>
         
         <!-- Kızıldeniz -->
         <g class="harita-nokta" onclick="makaleAc('RADAR','Kızıldeniz Ticaret Hattı','Ticari gemilere yönelik müdahaleler lojistiği tıkıyor.','Analiz Masası')" style="cursor:pointer">
-          <circle cx="1545" cy="510" r="14" fill="#C0392B" opacity="0.9"/>
-          <circle cx="1545" cy="510" r="28" fill="none" stroke="#C0392B" stroke-width="4" opacity="0.5">
-            <animate attributeName="r" values="14;40;14" dur="1.5s" repeatCount="indefinite"/>
+          <circle cx="597" cy="225" r="6" fill="#C0392B" opacity="0.9"/>
+          <circle cx="597" cy="225" r="11" fill="none" stroke="#C0392B" stroke-width="2" opacity="0.5">
+            <animate attributeName="r" values="6;16;6" dur="1.5s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="0.8;0;0.8" dur="1.5s" repeatCount="indefinite"/>
           </circle>
-          <text x="1545" y="480" text-anchor="middle" fill="#fff" font-size="34" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Kızıldeniz</text>
+          <text x="597" y="210" text-anchor="middle" fill="#fff" font-size="11" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Kızıldeniz</text>
         </g>
         
       </svg>
@@ -673,6 +675,10 @@ const WORKER_URL = "https://turan-cache.yusuferenkaraca5.workers.dev";
 const aylar = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
 const bugunTarihi = new Date(); 
 document.getElementById('tarih-goster').textContent = `${bugunTarihi.getDate()} ${aylar[bugunTarihi.getMonth()]} ${bugunTarihi.getFullYear()}`;
+
+// Günün Mutlak İndeksi (Her gün 1 artar, soru ve makale değişimini sağlar)
+const referansTarihi = new Date(2024, 0, 1);
+const mutlakGunIndeksi = Math.floor((bugunTarihi - referansTarihi) / (1000 * 60 * 60 * 24));
 
 function gorselUrlOptimize(url) {
   if (!url) return 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=900&q=70'; 
@@ -854,12 +860,23 @@ function attrGuvenli(str) {
 }
 
 // ----------------------------------------------------------------------
-// KESİN VE KATI FUTBOL FİLTRESİ
+// YAPAY ZEKA DESTEKLİ KALİTE VE KOPYA İÇERİK FİLTRESİ (DEDUPLICATION)
 // ----------------------------------------------------------------------
+
+// İki metnin ne kadar benzediğini hesaplayan oran fonksiyonu (0 ile 1 arası)
+function metinBenzerligi(metin1, metin2) {
+    const kelimeler1 = metin1.toLowerCase().split(/\W+/).filter(k => k.length > 3);
+    const kelimeler2 = metin2.toLowerCase().split(/\W+/).filter(k => k.length > 3);
+    if(kelimeler1.length === 0 || kelimeler2.length === 0) return 0;
+    
+    let kesisim = 0;
+    kelimeler1.forEach(k => { if(kelimeler2.includes(k)) kesisim++; });
+    return kesisim / Math.max(kelimeler1.length, kelimeler2.length);
+}
+
 function haberFiltrele(res) { 
   if(!res) return [];
   
-  // Yasaklı kelimeleri barındıran tam liste
   const yasakliKelimeler = [
     'dünya kupası', 'dunya kupasi', 'world cup', 'fifa', 'uefa', 'futbol', 
     'şampiyonlar ligi', 'süper lig', 'derbi', 'maç', 'canlı skor', 'skor', 
@@ -870,30 +887,47 @@ function haberFiltrele(res) {
 
   const bozukRegex = /Ã|Ä|Å|1⁄4|Â|â€/i;
   
-  return res.filter(h => {
+  // 1. ADIM: Kalitesiz ve Yasaklı İçerikleri Sil
+  let kaliteliHaberler = res.filter(h => {
     if (!h.title) return false;
     
-    // Gelen veriyi önce güvenli metne çeviriyoruz (Tüm HTML, noktalama ve yabancı diller temizlenir)
     let baslik = guvenliMetin(h.title).toLowerCase();
     let aciklama = guvenliMetin(h.description || h.content || "").toLowerCase();
     let kaynak = guvenliMetin(h.source_id || "").toLowerCase();
-    
-    // Tarama yapılacak dev blok oluşturulur
     let tamMetin = baslik + " " + aciklama + " " + kaynak;
     
-    // Eğer bozuk karakter varsa direk sil
+    // Bozuk karakter veya yasaklı kelime varsa
     if (bozukRegex.test(tamMetin)) return false;
+    if (yasakliKelimeler.some(kelime => tamMetin.includes(kelime))) return false;
     
-    // Herhangi bir yasaklı kelime varsa direk sil
-    if (yasakliKelimeler.some(kelime => tamMetin.includes(kelime))) {
-        return false; 
-    }
-    
-    // Boş veya çok kısa haberler silinsin
-    if (aciklama.trim().length < 25) return false;
+    // Haberin açıklaması çok kısaysa veya sadece başlığı tekrar ediyorsa at
+    if (aciklama.length < 120) return false; 
+    if (aciklama === baslik || (aciklama.includes(baslik) && aciklama.length < baslik.length + 30)) return false;
     
     return true;
   });
+
+  // 2. ADIM: Aynı Haberleri Engelle (En detaylı olan kalsın)
+  let tekilHaberler = [];
+  
+  // Önce açıklaması en uzun olanları başa alıyoruz ki en kalitelisi seçilsin
+  kaliteliHaberler.sort((a, b) => {
+      let aUzunluk = (a.description || a.content || "").length;
+      let bUzunluk = (b.description || b.content || "").length;
+      return bUzunluk - aUzunluk;
+  });
+
+  for (let haber of kaliteliHaberler) {
+      let temizBaslik = guvenliMetin(haber.title);
+      // Havuzda bu başlığa %45'ten fazla benzeyen bir haber eklenmiş mi?
+      let kopyaVarMi = tekilHaberler.some(eklenen => metinBenzerligi(temizBaslik, guvenliMetin(eklenen.title)) > 0.45);
+      
+      if (!kopyaVarMi) {
+          tekilHaberler.push(haber);
+      }
+  }
+
+  return tekilHaberler;
 }
 
 function resimArkaPlandaGuncelle(haberLink, haberBaslik, imgElement) {
@@ -1071,17 +1105,29 @@ async function havaDurumuGetir() {
   }
 }
 
+// ----------------------------------------------------------------------
+// GÜNÜN ODAK NOKTASI HAVUZU (Asla aynı gün tekrarlanmaz)
+// ----------------------------------------------------------------------
 const gunlukMakaleler = [
   { t: "Evrenin Sınırlarının Ötesinde Ne Var?", e: "Astrofizik", r: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa", m: "Bilim insanları gözlemlenebilir evrenin 93 milyar ışık yılı genişliğinde olduğunu biliyor. Ancak bu devasa hacmin ötesinde ne olduğu, modern fizikteki en büyük sırlardan biridir.\n\nBazı teorisyenler, kozmik enflasyon modeli uyarınca evrenin sonsuz bir 'çoklu evren' (multiverse) okyanusundaki küçük bir kabarcık olabileceğini savunuyor. Bu kabarcıkların her birinde fizik yasaları bile farklı işleyebilir.\n\nJames Webb Uzay Teleskobu'nun derin alan gözlemleri, her geçen gün Big Bang'in ilk anlarına daha yakından bakmamızı sağlıyor, ancak sınırların ötesini görmek için tamamen yeni bir fizik paradigmasına ihtiyacımız olabilir." },
-  { t: "İnsan Beyni %10'unu mu Kullanıyor?", e: "Nörobilim", r: "https://images.unsplash.com/photo-1507413245164-6160d8298b31", m: "Popüler kültürde yaygın olan 'insan beyni kapasitesinin sadece yüzde onunu kullanır' inancı tamamen bir efsanedir. FMRI taramaları, uyurken bile beynimizin neredeyse tamamının aktif olduğunu gösteriyor.\n\nAncak beynin asıl mucizesi kullanım yüzdesinde değil, nöroplastisite yeteneğindedir. Yani kullanılmayan ya da hasar gören nöron ağlarının görevlerini diğer nöronların devralarak beyni sürekli 'yeniden kablolaması' durumudur.\n\nBu yetenek sayesinde felçli hastalar yeniden hareket yetisi kazanabiliyor veya insanlar çok ileri yaşlarda bile tamamen yeni diller ve beceriler öğrenebiliyorlar." }
+  { t: "İnsan Beyni %10'unu mu Kullanıyor?", e: "Nörobilim", r: "https://images.unsplash.com/photo-1507413245164-6160d8298b31", m: "Popüler kültürde yaygın olan 'insan beyni kapasitesinin sadece yüzde onunu kullanır' inancı tamamen bir efsanedir. FMRI taramaları, uyurken bile beynimizin neredeyse tamamının aktif olduğunu gösteriyor.\n\nAncak beynin asıl mucizesi kullanım yüzdesinde değil, nöroplastisite yeteneğindedir. Yani kullanılmayan ya da hasar gören nöron ağlarının görevlerini diğer nöronların devralarak beyni sürekli 'yeniden kablolaması' durumudur.\n\nBu yetenek sayesinde felçli hastalar yeniden hareket yetisi kazanabiliyor veya insanlar çok ileri yaşlarda bile tamamen yeni diller ve beceriler öğrenebiliyorlar." },
+  { t: "Yarı İletken Savaşları: Çipler Neden Dünyayı Yönetiyor?", e: "Jeopolitik", r: "https://images.unsplash.com/photo-1518770660439-4636190af475", m: "Modern dünyanın petrolü artık fosil yakıtlar değil, silikon vadilerinden ve Tayvan'daki devasa dökümhanelerden çıkan yarı iletkenlerdir.\n\nNeredeyse mikroskobik boyutlardaki bu çipler, akıllı telefonlardan nükleer füzelere kadar her şeyin beynini oluşturuyor. Çin'in Asya Pasifik'teki hamleleri ve ABD'nin uyguladığı ihracat ambargoları, tarihin gördüğü en büyük teknolojik soğuk savaşı tetiklemiş durumda.\n\nTSMC gibi devlerin ürettiği 3 nanometrelik çiplerin tedariği kesilirse, küresel ekonomi aylar içinde tamamen durma noktasına gelebilir." },
+  { t: "Kuantum Bilgisayarlar Kriptografiyi Nasıl Çökertecek?", e: "Siber Güvenlik", r: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb", m: "Mevcut bankacılık sistemleri, devlet sırları ve blockchain ağları 'RSA' adı verilen bir şifreleme algoritması ile korunur. Bu sistem, devasa asal sayıları çarpanlarına ayırmanın standart bilgisayarlar için binlerce yıl süreceği varsayımına dayanır.\n\nAncak kuantum bilgisayarlar 'Shor Algoritması' kullanarak aynı işlemi saniyeler içinde çözebilir. Bu durum 'Q-Day' (Kuantum Günü) olarak adlandırılıyor ve siber güvenlik uzmanları, o gün geldiğinde dünyadaki hiçbir dijital verinin güvende olmayacağını belirtiyor.\n\nDevletler şimdiden 'post-kuantum' şifreleme yöntemlerine devasa bütçeler ayırmaya başladı." },
+  { t: "Roma İmparatorluğu Neden Gerçekte Çökmedi?", e: "Tarih", r: "https://images.unsplash.com/photo-1552832230-c0197dd311b5", m: "Okullarda öğretilenin aksine, Roma İmparatorluğu 476 yılında MS aniden yok olmadı. Sadece Batı kanadı barbar istilaları ve iç isyanlarla yönetimi devretti.\n\nDoğu kanadı, başkenti Konstantinopolis (İstanbul) olan Bizans İmparatorluğu olarak tam bin yıl daha, 1453'e kadar medeniyetin, ticaretin ve Roma hukukunun meşalesini taşımaya devam etti.\n\nHatta Fatih Sultan Mehmet, İstanbul'u fethettikten sonra kendine 'Kayser-i Rum' (Roma İmparatoru) unvanını alarak, Roma'nın meşru varisi olduğunu tüm Avrupa'ya ilan etmiştir." },
+  { t: "Yapay Zekanın Kara Kutusu: Model Kendi Kendine Karar Verirse Ne Olur?", e: "Yapay Zeka", r: "https://images.unsplash.com/photo-1620712948343-0008ce8a285b", m: "Büyük dil modellerinin ve sinir ağlarının en büyük sorunu bir 'kara kutu' (black box) olmalarıdır. Bir AI modeline girdi verdiğinizde size muazzam bir çıktı sunar, ancak mühendisler bile modelin o çıktıya ulaşırken trilyonlarca parametre arasında hangi mantıksal yolu izlediğini tam olarak haritalandıramaz.\n\nYapay zeka askeri stratejilere, adalet sistemlerine ve tıbbi teşhislere entegre edildikçe bu durum büyük bir etik sorun yaratıyor.\n\n'Açıklanabilir Yapay Zeka' (XAI) şu an Silikon Vadisi'nin en çok para harcadığı araştırma alanı konumunda. İnsanlık, kontrol edemediği bir zekaya güvenmenin sınırlarını test ediyor." },
+  { t: "Karanlık Madde ve Evrenin Görünmez İskeleti", e: "Kozmoloji", r: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564", m: "Teleskoplarla görebildiğimiz galaksiler, yıldızlar, gezegenler ve biz insanlar; evrendeki toplam kütle ve enerjinin yalnızca yüzde 5'ini oluşturuyoruz. Geriye kalan muazzam boşluğun karanlık madde ve karanlık enerji ile dolu olduğu hesaplanıyor.\n\nKaranlık madde ışıkla etkileşime girmez, onu göremeyiz. Ancak devasa kütleçekim kuvveti sayesinde galaksilerin dağılmasını önleyen görünmez bir iskelet görevi görür.\n\nBilim insanları yerin metrelerce altındaki devasa laboratuvarlarda bu hayalet parçacıkları tespit etmeye çalışırken, fizik dünyası tarihin en büyük gizemlerinden birini çözmenin eşiğinde bekliyor." },
+  { t: "CRISPR ile İnsan Genomunu Yeniden Yazmak", e: "Genetik", r: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28", m: "CRISPR-Cas9 teknolojisi, genetik biliminde bir devrim yaratarak bilim insanlarının DNA kodunda tıpkı bir metin belgesinde olduğu gibi kes, kopyala ve yapıştır yapmasına olanak tanıdı.\n\nBu yöntemle genetik hastalıkların embriyo aşamasında düzeltilmesi, tarımda yüksek verimli ürünler elde edilmesi ve hatta soyu tükenmiş canlıların geri getirilmesi teorik olarak mümkün hale geldi.\n\nAncak bu gücün etik sınırları büyük tartışma konusu. 'Tasarım bebekler' dönemi insanlığın doğal evrim sürecine yapılmış en tehlikeli müdahale olabilir mi?" }
 ];
 
 function gununMakalesiniYukle() {
    const alan = document.getElementById('gunun-makalesi-alani');
    if(!alan) return;
-   const makale = gunlukMakaleler[bugunTarihi.getDate() % gunlukMakaleler.length];
+   
+   // Mutlak gün indeksi ile sırayla çeker, ay bazlı başa sarmayı engeller
+   const makale = gunlukMakaleler[mutlakGunIndeksi % gunlukMakaleler.length];
+   
    alan.onclick = () => makaleAc('GÜNÜN MAKALESİ', makale.t, makale.m, 'TuranHaber Bilim Arşivi');
-   alan.innerHTML = `<div class="gm-resim" style="background-image: url('${gorselUrlOptimize(makale.r)}')"></div><div class="gm-icerik"><span class="gm-etiket">✦ ${makale.e}</span><h3 class="gm-baslik">${makale.t}</h3><p class="gm-metin">${makale.m.substring(0, 150)}...</p><div class="gm-okuma-suresi">⏳ 4 dakika okuma süresi</div></div>`;
+   alan.innerHTML = `<div class="gm-resim" style="background-image: url('${gorselUrlOptimize(makale.r)}')"></div><div class="gm-icerik"><span class="gm-etiket">✦ ${makale.e}</span><h3 class="gm-baslik">${makale.t}</h3><p class="gm-metin">${makale.m.substring(0, 150)}...</p><div class="gm-okuma-suresi">⏳ Detaylı Analiz</div></div>`;
 }
 
 // SLIDER MOTORU
@@ -1401,37 +1447,84 @@ function tarihteBugunYukle() {
   document.getElementById('tb-olay-metni').innerHTML = `${etiket} ${pTags}`;
 }
 
+// ----------------------------------------------------------------------
+// SORU HAVUZU VE "CHUNKING" (Asla tekrar etmez) MANTIĞI
+// ----------------------------------------------------------------------
 const devSoruHavuzu = [
+    // Tarih & Strateji
     { soru: "Hint altkıtasında Babür İmparatorluğu'nu kurarak askeri strateji tarihine geçen figür kimdir?", secenekler: ["Timur", "Babür Şah", "Cengiz Han", "Nadir Şah"], dogru: 1 },
     { soru: "I. Dünya Savaşı'nda Turan ideali ile Orta Asya'da askeri harekatlar yöneten tarihi kişilik kimdir?", secenekler: ["Kâzım Karabekir", "Mustafa Kemal", "Enver Paşa", "Cemal Paşa"], dogru: 2 },
+    { soru: "Türk devlet felsefesinin taşa kazınmış ilk belgeleri olan Orhun Yazıtları hangi devlete aittir?", secenekler: ["Uygurlar", "Göktürkler", "Karahanlılar", "Hunlar"], dogru: 1 },
+    { soru: "Tarihte ilk düzenli posta (ulak) ve istihbarat teşkilatını Asya steplerinde kuran devlet adamı kimdir?", secenekler: ["Mete Han", "Attila", "Cengiz Han", "Teoman"], dogru: 2 },
+    { soru: "1453 İstanbul'un Fethi'nde surları yıkmak için kullanılan 'Şahi' isimli dev topların tasarımcılarından kimdir?", secenekler: ["Mimar Sinan", "Urban", "Lagari Hasan", "Davud Ağa"], dogru: 1 },
+    { soru: "Selçuklu İmparatorluğu'nda istihbarat ağını ve devlet kurumlarını tanzim eden 'Siyasetname'nin yazarı kimdir?", secenekler: ["Nizamülmülk", "Gazali", "Farabi", "İbn-i Haldun"], dogru: 0 },
+    { soru: "Avrupa bilim dünyasına yön veren ünlü yıldız haritalarını hazırlayan Timurlu astronom ve devlet adamı kimdir?", secenekler: ["Ali Kuşçu", "Uluğ Bey", "Harezmi", "Biruni"], dogru: 1 },
+    { soru: "1915 Çanakkale Cephesi'nde Nusret Mayın Gemisi'nin döşediği mayınlarla batan ünlü İngiliz zırhlısı hangisidir?", secenekler: ["HMS Queen Elizabeth", "HMS Agamemnon", "HMS Ocean", "HMS Irresistible"], dogru: 2 },
+    { soru: "Kafkas İslam Ordusu kumandanı olarak 1918'de Bakü'yü düşman işgalinden kurtaran paşa kimdir?", secenekler: ["Fahrettin Paşa", "Nuri Paşa", "Enver Paşa", "Cevat Paşa"], dogru: 1 },
+    { soru: "Anadolu'nun kapılarını Türklere kesin olarak açan 1071 Malazgirt Meydan Muharebesi'nde Selçuklu ordusunun komutanı kimdir?", secenekler: ["Tuğrul Bey", "Melikşah", "Alparslan", "Kılıç Arslan"], dogru: 2 },
+    { soru: "1514 Çaldıran Muharebesi'nde Şah İsmail'i mağlup ederek Doğu Anadolu'yu Osmanlı topraklarına katan padişah kimdir?", secenekler: ["Yavuz Sultan Selim", "Kanuni Sultan Süleyman", "Fatih Sultan Mehmet", "II. Bayezid"], dogru: 0 },
+    { soru: "Soğuk Savaş'ın sembolü olan Berlin Duvarı hangi yıl yıkılmıştır?", secenekler: ["1987", "1989", "1991", "1993"], dogru: 1 },
+    { soru: "Tarihte bilinen ilk yazılı antlaşma olan Kadeş Antlaşması, Mısır ile hangi devlet arasında imzalanmıştır?", secenekler: ["Sümerler", "Hititler", "Akadlar", "Babiller"], dogru: 1 },
+    { soru: "Cumhuriyetin ilanıyla birlikte Türkiye'nin ilk Diyanet İşleri Başkanı kim olmuştur?", secenekler: ["Elmalılı Hamdi Yazır", "Rıfat Börekçi", "Mehmet Akif Ersoy", "Ömer Nasuhi Bilmen"], dogru: 1 },
+
+    // Teknoloji & Bilim
     { soru: "Günümüzde dünyanın en değerli teknoloji şirketlerinin üretiminde rekabet ettiği temel donanım bileşeni hangisidir?", secenekler: ["Grafik İşlemci (GPU/Çip)", "Fiber Optik Kablo", "Lityum İyon Batarya", "Sensör Ağları"], dogru: 0 },
     { soru: "İlişkisel veritabanı sistemlerini yönetmek için geliştirilen, günümüzde yazılım dünyasının temeli olan sorgu dili hangisidir?", secenekler: ["HTML", "Python", "SQL", "Java"], dogru: 2 },
-    { soru: "Futbolda 'Kıtalararası Derbi' olarak bilinen Fenerbahçe - Galatasaray rekabetindeki ilk maç hangi yıl oynanmıştır?", secenekler: ["1905", "1907", "1909", "1911"], dogru: 2 },
-    { soru: "Türk devlet felsefesinin taşa kazınmış ilk belgeleri olan Orhun Yazıtları hangi devlete aittir?", secenekler: ["Uygurlar", "Göktürkler", "Karahanlılar", "Hunlar"], dogru: 1 },
-    { soru: "Avrupa bilim dünyasına yön veren ünlü yıldız haritalarını hazırlayan Timurlu astronom ve devlet adamı kimdir?", secenekler: ["Ali Kuşçu", "Uluğ Bey", "Harezmi", "Biruni"], dogru: 1 },
-    { soru: "1453 İstanbul'un Fethi'nde surları yıkmak için kullanılan 'Şahi' isimli dev topların tasarımcılarından kimdir?", secenekler: ["Mimar Sinan", "Urban", "Lagari Hasan", "Davud Ağa"], dogru: 1 },
     { soru: "Bilgisayar biliminin temeli sayılan 'algoritma' kavramını kuran ve cebirin atası kabul edilen İslam alimi kimdir?", secenekler: ["Harezmi", "Farabi", "İbn Sina", "Kindi"], dogru: 0 },
-    { soru: "1915 Çanakkale Cephesi'nde Nusret Mayın Gemisi'nin döşediği mayınlarla batan ünlü İngiliz zırhlısı hangisidir?", secenekler: ["HMS Queen Elizabeth", "HMS Agamemnon", "HMS Ocean", "HMS Irresistible"], dogru: 2 },
-    { soru: "Şampiyonlar Ligi'nde grupların kaldırılarak tek lig usulüne geçilen yeni sistemin adı nedir?", secenekler: ["Eleme Modeli", "Süper Lig Modeli", "İsviçre Modeli", "Karma Model"], dogru: 2 },
     { soru: "Linux çekirdeği üzerine kurulan ve TÜBİTAK tarafından geliştirilen milli işletim sistemimizin adı nedir?", secenekler: ["Pardus", "Kızılelma", "Ulus", "Bora"], dogru: 0 },
-    { soru: "Tarihte ilk düzenli posta (ulak) ve istihbarat teşkilatını Asya steplerinde kuran devlet adamı kimdir?", secenekler: ["Mete Han", "Attila", "Cengiz Han", "Teoman"], dogru: 0 }
-];
+    { soru: "Modern yapay zeka modellerinin eğitilmesinde insan beynindeki nöronları taklit eden sistemlere ne ad verilir?", secenekler: ["Blockchain", "Sinir Ağları", "Bulut Bilişim", "Kuantum Şifreleme"], dogru: 1 },
+    { soru: "İnternette cihazların birbirini bulmasını sağlayan sayısal adresleme sisteminin (örn: 192.168.1.1) kısaltması nedir?", secenekler: ["MAC", "DNS", "IP", "FTP"], dogru: 2 },
+    { soru: "Güneş sistemindeki en büyük kanyon olan Valles Marineris hangi gezegende bulunur?", secenekler: ["Venüs", "Mars", "Jüpiter", "Satürn"], dogru: 1 },
+    { soru: "Maddenin en küçük yapı taşlarından olan ve 'Tanrı Parçacığı' olarak da bilinen bozonun bilimsel adı nedir?", secenekler: ["Foton", "Gluon", "Higgs Bozonu", "Nötrino"], dogru: 2 },
+    { soru: "DNA molekülünün çift sarmallı yapısını X-ışını kırınımı ile ilk kez net olarak fotoğraflayan bilim insanı kimdir?", secenekler: ["Marie Curie", "Rosalind Franklin", "Ada Lovelace", "Lise Meitner"], dogru: 1 },
+    { soru: "Günümüzde web sayfalarına dinamik özellikler kazandıran ve tarayıcıda çalışan en yaygın programlama dili hangisidir?", secenekler: ["PHP", "JavaScript", "C++", "Ruby"], dogru: 1 },
+    { soru: "Türkiye'nin ilk yerli ve milli yüksek çözünürlüklü yer gözlem uydusunun adı nedir?", secenekler: ["Göktürk-2", "Rasat", "İmece", "Türksat 4A"], dogru: 2 },
+    { soru: "Kripto paraların arkasındaki merkeziyetsiz ve değiştirilemez kayıt defteri teknolojisine ne ad verilir?", secenekler: ["Büyük Veri", "Blockchain", "Nesnelerin İnterneti", "Derin Öğrenme"], dogru: 1 },
+    
+    // Coğrafya & Jeopolitik
+    { soru: "Dünya ticaretinin yaklaşık %12'sinin geçtiği ve Mısır'da bulunan kritik su yolunun adı nedir?", secenekler: ["Panama Kanalı", "Hürmüz Boğazı", "Süveyş Kanalı", "Cebelitarık"], dogru: 2 },
+    { soru: "Küresel çip üretiminin (yarı iletken dökümhaneleri) tartışmasız başkenti olan Asya ülkesi/bölgesi hangisidir?", secenekler: ["Güney Kore", "Tayvan", "Singapur", "Japonya"], dogru: 1 },
+    { soru: "Petrol taşımacılığında Basra Körfezi'ni dünyaya bağlayan ve jeopolitik olarak en riskli dar boğaz neresidir?", secenekler: ["Malakka Boğazı", "Hürmüz Boğazı", "Babülmendep", "Bering Boğazı"], dogru: 1 },
+    { soru: "Avrupa kıtasının en uzun nehri hangisidir?", secenekler: ["Tuna", "Ren", "Volga", "Dinyeper"], dogru: 2 },
+    { soru: "Asya ile Amerika kıtalarını birbirine çok yaklaştıran ancak okyanusla ayıran boğazın adı nedir?", secenekler: ["Macellan", "Bering", "Drake", "Cook"], dogru: 1 },
+    { soru: "Türkiye'nin en doğusundaki komşusu ile olan sınırını hangi dağ silsilesi belirler?", secenekler: ["Amanos Dağları", "Zağros Dağları", "Kafkas Dağları", "Ağrı (Ararat) Dağı bölgesi"], dogru: 3 },
+    { soru: "Hem Ekvator'un hem de Başlangıç Meridyeni'nin (Greenwich) geçtiği tek kıta hangisidir?", secenekler: ["Asya", "Güney Amerika", "Afrika", "Avrupa"], dogru: 2 },
 
-function gununSorulariniGetir(havuz, adet) {
-    let seed = bugunTarihi.getFullYear() * 10000 + (bugunTarihi.getMonth() + 1) * 100 + bugunTarihi.getDate();
-    let random = () => { let x = Math.sin(seed++) * 10000; return x - Math.floor(x); };
-    let kopyaHavuz = [...havuz];
-    for (let i = kopyaHavuz.length - 1; i > 0; i--) {
-        const j = Math.floor(random() * (i + 1));
-        [kopyaHavuz[i], kopyaHavuz[j]] = [kopyaHavuz[j], kopyaHavuz[i]];
-    }
-    return kopyaHavuz.slice(0, adet);
-}
+    // Spor & Genel Kültür
+    { soru: "Futbolda 'Kıtalararası Derbi' olarak bilinen Fenerbahçe - Galatasaray rekabetindeki ilk maç hangi yıl oynanmıştır?", secenekler: ["1905", "1907", "1909", "1911"], dogru: 2 },
+    { soru: "Şampiyonlar Ligi'nde grupların kaldırılarak tek lig usulüne geçilen yeni sistemin (2024-25 itibarıyla) adı nedir?", secenekler: ["Eleme Modeli", "Süper Lig Modeli", "İsviçre Modeli", "Karma Model"], dogru: 2 },
+    { soru: "Türk basketbol tarihinde Avrupa Ligi'ni (EuroLeague) kazanan ilk Türk takımı hangisidir?", secenekler: ["Anadolu Efes", "Fenerbahçe Beko", "Galatasaray", "Beşiktaş"], dogru: 1 },
+    { soru: "Olimpiyat oyunlarının amblemindeki 5 halka neyi temsil eder?", secenekler: ["5 Kıtanın Kardeşliğini", "5 Temel Spor Dalını", "5 Okyanusu", "Kurucu 5 Ülkeyi"], dogru: 0 },
+    { soru: "Satranç oyununda başlangıç dizilişinde her iki oyuncunun toplam kaç adet piyonu bulunur?", secenekler: ["8", "12", "16", "20"], dogru: 2 },
+    { soru: "Teniste rakibin şahını (şah mat) doğrudan tehdit ederek oyunu bitirme potansiyeli en yüksek taş hangisidir?", secenekler: ["Kale", "Vezir", "At", "Fil"], dogru: 1 },
+    { soru: "Fenerbahçe Spor Kulübü'nün efsanevi başkanı ve aynı zamanda Şükrü Saracoğlu stadyumuna adını veren devlet adamı hangi görevi yapmıştır?", secenekler: ["Cumhurbaşkanı", "Başbakan", "Genelkurmay Başkanı", "Milli Eğitim Bakanı"], dogru: 1 },
+    { soru: "NBA tarihinde bir maçta 100 sayı atarak kırılamaz bir rekora imza atan efsanevi basketbolcu kimdir?", secenekler: ["Michael Jordan", "Kobe Bryant", "LeBron James", "Wilt Chamberlain"], dogru: 3 },
+
+    // Ekonomi & Hukuk
+    { soru: "Bir ülkenin para biriminin, yabancı para birimleri karşısında değerinin devlet kararıyla düşürülmesine ne ad verilir?", secenekler: ["Enflasyon", "Revalüasyon", "Devalüasyon", "Stagflasyon"], dogru: 2 },
+    { soru: "Uluslararası ticarette malların fiziksel teslimatını değil, gelecekteki bir fiyattan alım-satım sözleşmesini ifade eden piyasa hangisidir?", secenekler: ["Spot Piyasa", "Vadeli (Futures) Piyasa", "Tahvil Piyasası", "Döviz Kuru Piyasası"], dogru: 1 },
+    { soru: "Bir şirketin hisse senetlerini ilk kez halka arz ederek borsada işlem görmeye başlaması işlemine kısaca ne denir?", secenekler: ["CEO", "B2B", "IPO", "Ar-Ge"], dogru: 2 },
+    { soru: "Ekonomide büyümenin durması (durgunluk) ile birlikte yüksek enflasyonun aynı anda yaşanması krizine ne ad verilir?", secenekler: ["Resesyon", "Stagflasyon", "Deflasyon", "Depresyon"], dogru: 1 },
+    { soru: "Uluslararası hukukta devletlerin deniz kıyısından itibaren ekonomik hak iddia edebildikleri 200 deniz millik alana ne denir?", secenekler: ["Karasuları", "Münhasır Ekonomik Bölge (MEB)", "Uluslararası Sular", "Kıta Sahanlığı"], dogru: 1 },
+    { soru: "Türkiye Cumhuriyeti Merkez Bankası'nın (TCMB) temel kuruluş amacı ve yasayla belirlenmiş en önemli görevi nedir?", secenekler: ["Fiyat istikrarını sağlamak", "Büyümeyi artırmak", "İşsizliği düşürmek", "Döviz kurunu sabitlemek"], dogru: 0 },
+    { soru: "Bir devletin borçlarını ödeyemeyeceğini ve iflas ettiğini uluslararası piyasalara resmen ilan etmesine ne ad verilir?", secenekler: ["Moratoryum", "Konsolidasyon", "Amortisman", "Emisyon"], dogru: 0 },
+    { soru: "1944 yılında küresel para sistemini dolara endeksleyen ve IMF'nin kurulmasına yol açan tarihi anlaşmanın adı nedir?", secenekler: ["Versay", "Bretton Woods", "Yalta", "Maastricht"], dogru: 1 },
+    { soru: "Küresel piyasalarda en yaygın kullanılan petrol fiyatlandırma standardı (kriteri) hangisidir?", secenekler: ["WTI (Batı Teksas)", "Brent Petrol", "OPEC Sepeti", "Dubai Ham Petrolü"], dogru: 1 }
+];
 
 let mevcutSoruIndeksi = 0, oyunSkoru = 0, oyunBittiMi = false, gunlukSorular = [];
 
 function oyunuBaslat() {
-    gunlukSorular = gununSorulariniGetir(devSoruHavuzu, 5); 
+    // "Dilimleme" Mantığı: Toplam gün sayısına göre sıradaki 5 soruyu alır. 
+    // Aynı gün içinde site yenilense bile sorular hep o güne ait seçilen 5 soru olur.
+    // Havuz bitene kadar asla aynı soru ekrana gelmez.
+    const gunlukBaslangicIndeksi = (mutlakGunIndeksi * 5) % devSoruHavuzu.length;
+    
+    gunlukSorular = [];
+    for(let i = 0; i < 5; i++) {
+        gunlukSorular.push(devSoruHavuzu[(gunlukBaslangicIndeksi + i) % devSoruHavuzu.length]);
+    }
+
     mevcutSoruIndeksi = 0; oyunSkoru = 0; oyunBittiMi = false;
     document.getElementById('oyun-skor').textContent = oyunSkoru;
     document.getElementById('oyun-toplam-soru').textContent = gunlukSorular.length;
