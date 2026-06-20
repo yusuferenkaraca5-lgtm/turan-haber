@@ -657,6 +657,7 @@ footer {
       <div class="modal-header-kisim">
          <div class="modal-kategori" id="modal-kat">KATEGORİ</div>
          <div style="display:flex; gap: 10px;">
+             <button class="kaydet-btn" id="modal-link-btn" style="display:none;">Habere Git ↗</button>
              <button class="kaydet-btn" id="modal-kaydet-btn" onclick="haberiKaydetToggle()">Formatör Kalkanı Aktif</button>
              <button class="modal-kapat" onclick="modalKapat()">✖</button>
          </div>
@@ -889,53 +890,40 @@ function metinBenzerligi(metin1, metin2) {
     return kesisim / Math.max(kelimeler1.length, kelimeler2.length);
 }
 
-function haberFiltrele(res) { 
+function haberFiltrele(res, sporModu = false) { 
   if(!res) return [];
-  
-  const yasakliKelimeler = [
-    'dünya kupası', 'dunya kupasi', 'world cup', 'fifa', 'uefa', 'futbol', 
-    'şampiyonlar ligi', 'süper lig', 'derbi', 'maç', 'canlı skor', 'skor', 
-    'karşı karşıya', 'gol', 'hakem', 'taraftar', 'kupa', 'kupası', 
+  const temelYasakli = [
     'magazin', 'survivor', 'masterchef', 'dizi', 'fragman', 'oyuncu', 'sinema',
     'özbekistan', 'kolombiya', 'şarkıcı', 'konser', 'sevgili', 'aldattı', 'ünlü', 'fenomen', 'instagram', 'tiktok', 'gündem oldu'
   ];
-
+  const sporYasakli = [
+    'dünya kupası', 'dunya kupasi', 'world cup', 'fifa', 'uefa', 'futbol', 
+    'şampiyonlar ligi', 'süper lig', 'derbi', 'maç', 'canlı skor', 'skor', 
+    'karşı karşıya', 'gol', 'hakem', 'taraftar', 'kupa', 'kupası'
+  ];
+  const yasakliKelimeler = sporModu ? temelYasakli : [...temelYasakli, ...sporYasakli];
   const bozukRegex = /Ã|Ä|Å|1⁄4|Â|â€/i;
   
   let kaliteliHaberler = res.filter(h => {
     if (!h.title) return false;
-    
     let baslik = guvenliMetin(h.title).toLowerCase();
     let aciklama = guvenliMetin(h.description || h.content || "").toLowerCase();
     let kaynak = guvenliMetin(h.source_id || "").toLowerCase();
     let tamMetin = baslik + " " + aciklama + " " + kaynak;
-    
     if (bozukRegex.test(tamMetin)) return false;
     if (yasakliKelimeler.some(kelime => tamMetin.includes(kelime))) return false;
-    
     if (aciklama.length < 120) return false; 
     if (aciklama === baslik || (aciklama.includes(baslik) && aciklama.length < baslik.length + 30)) return false;
-    
     return true;
   });
 
   let tekilHaberler = [];
-  
-  kaliteliHaberler.sort((a, b) => {
-      let aUzunluk = (a.description || a.content || "").length;
-      let bUzunluk = (b.description || b.content || "").length;
-      return bUzunluk - aUzunluk;
-  });
-
+  kaliteliHaberler.sort((a, b) => (b.description||a.content||"").length - (a.description||a.content||"").length);
   for (let haber of kaliteliHaberler) {
       let temizBaslik = guvenliMetin(haber.title);
       let kopyaVarMi = tekilHaberler.some(eklenen => metinBenzerligi(temizBaslik, guvenliMetin(eklenen.title)) > 0.45);
-      
-      if (!kopyaVarMi) {
-          tekilHaberler.push(haber);
-      }
+      if (!kopyaVarMi) tekilHaberler.push(haber);
   }
-
   return tekilHaberler;
 }
 
@@ -989,6 +977,7 @@ function okumaListesiniAc() {
     document.getElementById('modal-tarih').textContent = "";
     document.getElementById('modal-kaynak').textContent = "";
     document.getElementById('modal-kaydet-btn').style.display = 'none';
+    document.getElementById('modal-link-btn').style.display = 'none';
     document.getElementById('ilgili-alan').style.display = 'none';
     const metinAlan = document.getElementById('modal-metin');
     metinAlan.innerHTML = ''; 
@@ -999,7 +988,7 @@ function okumaListesiniAc() {
         liste.forEach((m) => {
             const div = document.createElement('div'); div.className = 'okuma-listesi-kart';
             const h5 = document.createElement('h5'); h5.textContent = m.baslik;
-            h5.addEventListener('click', () => makaleAc(m.kat, m.baslik, m.metin, m.kaynak));
+            h5.addEventListener('click', () => makaleAc(m.kat, m.baslik, m.metin, m.kaynak, m.link));
             const silBtn = document.createElement('button'); silBtn.className = 'okuma-sil-btn'; silBtn.textContent = '✖';
             silBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -1013,16 +1002,24 @@ function okumaListesiniAc() {
     document.body.style.overflow = 'hidden';
 }
 
-function makaleAc(kat, bas, met, kay) {
+function makaleAc(kat, bas, met, kay, link) {
   if (!bas) return; 
   document.getElementById('modal-kaydet-btn').style.display = 'flex';
   document.getElementById('ilgili-alan').style.display = 'block';
   document.getElementById('modal-metin').innerHTML = ''; 
   
+  const habereGitAlan = document.getElementById('modal-link-btn');
+  if (link) {
+    habereGitAlan.style.display = 'inline-flex';
+    habereGitAlan.onclick = () => window.open(link, '_blank');
+  } else {
+    habereGitAlan.style.display = 'none';
+  }
+
   const guvenliBas = guvenliMetin(bas);
   const guvenliMetinIcerik = guvenliMetin(met);
 
-  aktifMakaleObjesi = { kat, baslik: guvenliBas, metin: guvenliMetinIcerik, kaynak: guvenliMetin(kay) };
+  aktifMakaleObjesi = { kat, baslik: guvenliBas, metin: guvenliMetinIcerik, kaynak: guvenliMetin(kay), link: link };
   document.getElementById('modal-kat').textContent = kat;
   document.getElementById('modal-baslik').textContent = guvenliBas;
   
@@ -1041,7 +1038,7 @@ function makaleAc(kat, bas, met, kay) {
   const ig = document.getElementById('ilgili-haberler-grid'); ig.innerHTML = '';
   [{t:"Tedarik Zincirinde Rota Arayışları", k:"Ekonomi"}, {t:"Yarı İletken Pazarında Rekabet", k:"Teknoloji"}, {t:"Yapay Zeka ve Veri Yasaları", k:"Hukuk"}].sort(()=>0.5-Math.random()).slice(0,3).forEach(ih => {
      const k = document.createElement('div'); k.className = 'ilgili-kart';
-     k.onclick = () => makaleAc(ih.k, ih.t, "Detaylı analiz veritabanından çekiliyor. Bölgesel dinamikler ve uluslararası ticaret yollarındaki değişimler bu süreçte belirleyici olacak.\n\nYeni nesil tedarik zinciri modellerinin önümüzdeki 10 yıl içinde tamamen dijitalleşmesi bekleniyor.", "Arşiv");
+     k.onclick = () => makaleAc(ih.k, ih.t, "Detaylı analiz veritabanından çekiliyor. Bölgesel dinamikler ve uluslararası ticaret yollarındaki değişimler bu süreçte belirleyici olacak.\n\nYeni nesil tedarik zinciri modellerinin önümüzdeki 10 yıl içinde tamamen dijitalleşmesi bekleniyor.", "Arşiv", null);
      k.innerHTML = `<span class="i-kaynak">${ih.k}</span><h5>${ih.t}</h5>`;
      ig.appendChild(k);
   });
@@ -1054,7 +1051,7 @@ function modalKapat() {
   document.body.style.overflow = '';
 }
 
-async function apiIstekAt(url) { 
+async function apiIstekAt(url, sporModu = false) { 
     try { 
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 12000); 
@@ -1062,7 +1059,7 @@ async function apiIstekAt(url) {
       clearTimeout(timeoutId);
       if (!r.ok) return null; 
       const d = await r.json(); 
-      return d.status==="success" ? haberFiltrele(d.results) : null; 
+      return d.status==="success" ? haberFiltrele(d.results, sporModu) : null; 
     } catch (e) { return null; }
 }
 
@@ -1134,7 +1131,7 @@ async function gununMakalesiniYukle() {
 
    if (mutlakGunIndeksi < gunlukMakaleler.length) {
        const makale = gunlukMakaleler[mutlakGunIndeksi];
-       alan.onclick = () => makaleAc('GÜNÜN MAKALESİ', makale.t, makale.m, 'TuranHaber Bilim Arşivi');
+       alan.onclick = () => makaleAc('GÜNÜN MAKALESİ', makale.t, makale.m, 'TuranHaber Bilim Arşivi', null);
        alan.innerHTML = `<div class="gm-resim" style="background-image: url('${gorselUrlOptimize(makale.r)}')"></div><div class="gm-icerik"><span class="gm-etiket">✦ ${makale.e}</span><h3 class="gm-baslik">${makale.t}</h3><p class="gm-metin">${makale.m.substring(0, 150)}...</p><div class="gm-okuma-suresi">⏳ Detaylı Analiz</div></div>`;
    } else {
        try {
@@ -1145,14 +1142,14 @@ async function gununMakalesiniYukle() {
                let yepyeniMakale = res[0]; 
                let resimUrl = haberdenResimCikar(yepyeniMakale) || "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa";
                
-               alan.onclick = () => makaleAc('GÜNÜN MAKALESİ', yepyeniMakale.title, yepyeniMakale.description, yepyeniMakale.source_id);
+               alan.onclick = () => makaleAc('GÜNÜN MAKALESİ', yepyeniMakale.title, yepyeniMakale.description, yepyeniMakale.source_id, yepyeniMakale.link);
                alan.innerHTML = `<div class="gm-resim" style="background-image: url('${gorselUrlOptimize(resimUrl)}')"></div><div class="gm-icerik"><span class="gm-etiket">✦ KÜRESEL GÜNDEM</span><h3 class="gm-baslik">${guvenliMetin(yepyeniMakale.title)}</h3><p class="gm-metin">${guvenliMetin(yepyeniMakale.description).substring(0, 150)}...</p><div class="gm-okuma-suresi">⏳ Dinamik Analiz</div></div>`;
            } else {
                throw new Error("API boş döndü.");
            }
        } catch(err) {
            const yedekMakale = gunlukMakaleler[mutlakGunIndeksi % gunlukMakaleler.length];
-           alan.onclick = () => makaleAc('GÜNÜN MAKALESİ', yedekMakale.t, yedekMakale.m, 'TuranHaber Arşivi');
+           alan.onclick = () => makaleAc('GÜNÜN MAKALESİ', yedekMakale.t, yedekMakale.m, 'TuranHaber Arşivi', null);
            alan.innerHTML = `<div class="gm-resim" style="background-image: url('${gorselUrlOptimize(yedekMakale.r)}')"></div><div class="gm-icerik"><span class="gm-etiket">✦ ${yedekMakale.e}</span><h3 class="gm-baslik">${yedekMakale.t}</h3><p class="gm-metin">${yedekMakale.m.substring(0, 150)}...</p><div class="gm-okuma-suresi">⏳ Arşiv Analizi</div></div>`;
        }
    }
@@ -1176,7 +1173,7 @@ function heroSliderOlustur(veriler) {
         const rawUrl = resimUrl || sahte[i%sahte.length];
         
         sl.style.backgroundImage = `url('${gorselUrlOptimize(rawUrl)}')`;
-        sl.onclick = () => makaleAc('MANŞET', h.title, h.description||'', h.source_id);
+        sl.onclick = () => makaleAc('MANŞET', h.title, h.description||'', h.source_id, h.link);
         sl.innerHTML = `<div class="hero-icerik"><div class="hero-etiket">⚡ ${guvenliMetin(h.source_id)}</div><h2 class="hero-baslik">${guvenliMetin(h.title)}</h2><p class="hero-ozet">${guvenliMetin(h.description)}</p></div>`;
         al.appendChild(sl);
     
@@ -1205,8 +1202,8 @@ async function heroSliderGuncelle() {
       heroSliderOlustur(res); 
   } else {
       heroSliderOlustur([
-          {title: "Yapay Zeka Otomobil Sektörünün Oyun Kurallarını Yeniden Yazıyor", description: "Otonom sürüş teknolojileri ve akıllı batarya yönetimi sistemlerinde yapay zekanın hakimiyeti artıyor. Geleneksel markalar rekabette zorlanıyor.\n\nYeni nesil yazılım destekli araçlar artık sadece bir ulaşım aracı değil, aynı zamanda hareketli bir veri merkezine dönüşmüş durumda.", source_id: "TEKNOLOJİ & EKONOMİ"}, 
-          {title: "Kuantum Şifreleme Ağlarında İlk Kıtalararası Başarı", description: "Avrupa ve Asya arasındaki fiber optik hatlarda kuantum anahtar dağıtımı (QKD) ile hacklenmesi imkansız ilk veri transferi gerçekleştirildi.\n\nBu tarihi hamle, siber güvenlikte yeni bir çağın başlangıcı olarak kabul ediliyor.", source_id: "KÜRESEL SİBER RAPOR"}
+          {title: "Yapay Zeka Otomobil Sektörünün Oyun Kurallarını Yeniden Yazıyor", description: "Otonom sürüş teknolojileri ve akıllı batarya yönetimi sistemlerinde yapay zekanın hakimiyeti artıyor. Geleneksel markalar rekabette zorlanıyor.\n\nYeni nesil yazılım destekli araçlar artık sadece bir ulaşım aracı değil, aynı zamanda hareketli bir veri merkezine dönüşmüş durumda.", source_id: "TEKNOLOJİ & EKONOMİ", link: null}, 
+          {title: "Kuantum Şifreleme Ağlarında İlk Kıtalararası Başarı", description: "Avrupa ve Asya arasındaki fiber optik hatlarda kuantum anahtar dağıtımı (QKD) ile hacklenmesi imkansız ilk veri transferi gerçekleştirildi.\n\nBu tarihi hamle, siber güvenlikte yeni bir çağın başlangıcı olarak kabul ediliyor.", source_id: "KÜRESEL SİBER RAPOR", link: null}
       ]);
   }
 }
@@ -1225,7 +1222,7 @@ function savasHaberleriOlustur(veriler) {
   grid.innerHTML = ''; const ag = document.createElement('div'); ag.className = 'sk-alt-grid';
   try {
       veriler.slice(0, 3).forEach((h, i) => {
-          const c = document.createElement('div'); c.onclick = () => makaleAc('SAVAŞ', h.title, h.description, h.source_id);
+          const c = document.createElement('div'); c.onclick = () => makaleAc('SAVAŞ', h.title, h.description, h.source_id, h.link);
           if(i===0) { c.className = 'sk-kart goster'; c.innerHTML = `<div class="sk-ajans">KÜRESEL KRİZ</div><h3>${guvenliMetin(h.title)}</h3><p>${guvenliMetin(h.description)}</p>`; grid.appendChild(c); } 
           else { c.className = 'sk-kart sk-mini goster'; c.innerHTML = `<div class="sk-ajans altin">ÇATIŞMA ANALİZİ</div><h3>${guvenliMetin(h.title)}</h3><p>${guvenliMetin(h.description)}</p>`; ag.appendChild(c); }
       });
@@ -1243,17 +1240,17 @@ async function savasHaberleriniGuncelle() {
           { 
               title: "Orta Doğu'da Çatışma Çemberi Genişliyor: İsrail - Lübnan Sınırında Sıcak Saatler", 
               description: "İsrail ordusu (IDF) ile Hizbullah güçleri arasında Lübnan'ın güney sınırında karşılıklı topçu atışları ve hava saldırıları şiddetini artırdı.\n\nİsrail savaş uçakları, Beyrut'un güneyindeki stratejik altyapıları hedef alırken, Hizbullah buna karşılık olarak Kuzey İsrail'deki askeri üslere yoğun roket atışları gerçekleştirdi.\n\nABD Merkez Kuvvetler Komutanlığı (CENTCOM), bölgedeki gerilimin bölgesel bir savaşa evrilmemesi için Doğu Akdeniz'deki donanma unsurlarını teyakkuza geçirdi. Diplomatik kaynaklar, ateşkes görüşmelerinin şu an için durduğunu belirtiyor.", 
-              source_id: "Ortadoğu İstihbarat Ağı" 
+              source_id: "Ortadoğu İstihbarat Ağı", link: null
           }, 
           { 
               title: "ABD ve İran Arasında Basra Körfezi'nde Stratejik Gerilim", 
               description: "Basra Körfezi ve Hürmüz Boğazı'nda devriye gezen ABD Donanması'na ait muhripler ile İran Devrim Muhafızları'na ait silahlı hücumbotlar arasında tehlikeli bir yakınlaşma yaşandı.\n\nİran tarafı, ABD'nin bölgedeki askeri varlığını 'kışkırtıcı' olarak nitelendirirken, Pentagon ticari deniz taşımacılığının güvenliğini sağlamak amacıyla rutin devriyelerin süreceğini vurguladı.\n\nKüresel petrol sevkiyatının en kritik dar boğazı olan Hürmüz Boğazı'ndaki bu beklenmedik askeri gerilim, uluslararası piyasalarda petrol varil fiyatlarının %4 oranında artmasına neden oldu.", 
-              source_id: "Küresel Güvenlik Raporu" 
+              source_id: "Küresel Güvenlik Raporu", link: null
           }, 
           { 
               title: "Kızıldeniz'de Lojistik Kriz: Ticaret Rotaları Vuruluyor", 
               description: "Yemen'deki Husi güçleri, Kızıldeniz üzerinden geçen ticari gemilere ve batılı savaş gemilerine yönelik kamikaze dron ve balistik füze saldırılarına hız kesmeden devam ediyor.\n\nABD ve İngiliz ortak hava kuvvetleri, Yemen'deki yeraltı sığınaklarına ve füze fırlatma rampalarına önleyici şiddetli saldırılar düzenlediğini duyurdu. Buna rağmen dünyanın en büyük denizcilik şirketleri, Süveyş Kanalı rotasını kullanmayı tamamen durdurma kararı aldı.", 
-              source_id: "Bölgesel Çatışma Analizi" 
+              source_id: "Bölgesel Çatışma Analizi", link: null
           }
       ]);
   }
@@ -1291,27 +1288,26 @@ async function siyasetHaberleriOlustur() {
     
     try {
         let apiHaberleri = await apiIstekAt(`${WORKER_URL}/?kategori=politics&country=tr`);
-        
         if (apiHaberleri && apiHaberleri.length > 0) {
-            
-            // SİYASETE ÖZEL BEYAZ LİSTE (WHITELIST) FİLTRESİ
             const siyasiKelimeler = ['meclis', 'bakan', 'parti', 'ankara', 'başkan', 'milletvekili', 'hükümet', 'muhalefet', 'seçim', 'chp', 'ak parti', 'akp', 'mhp', 'iyi parti', 'dem parti', 'diplomasi', 'tbmm', 'kabine', 'politika', 'genel kurul', 'anayasa', 'yargıtay', 'cumhurbaşkanı', 'erdoğan', 'özgür özel'];
             
-            let gercekSiyasetHaberleri = apiHaberleri.filter(h => {
-                let metin = (h.title + " " + (h.description || "")).toLowerCase();
-                return siyasiKelimeler.some(sk => metin.includes(sk));
+            // eşleşenleri öne sırala, ama API'den geleni eleme
+            let siralanmis = [...apiHaberleri].sort((a, b) => {
+                let aE = siyasiKelimeler.some(sk => (a.title+" "+(a.description||"")).toLowerCase().includes(sk)) ? 1 : 0;
+                let bE = siyasiKelimeler.some(sk => (b.title+" "+(b.description||"")).toLowerCase().includes(sk)) ? 1 : 0;
+                return bE - aE;
             });
-
-            if (gercekSiyasetHaberleri.length >= 4) {
-                siyasetVerileri = gercekSiyasetHaberleri.slice(0, 4).map(h => ({
-                    k: guvenliMetin(h.source_id),
-                    t: guvenliMetin(h.title),
-                    m: guvenliMetin(h.description || ""),
-                    r: haberdenResimCikar(h) || "https://images.unsplash.com/photo-1541887089-8b204df86b02",
-                    orijinal: h
-                }));
-            } else {
-                throw new Error("Yeterli KESİN siyasi haber bulunamadı");
+            siyasetVerileri = siralanmis.slice(0, 4).map(h => ({
+                k: guvenliMetin(h.source_id),
+                t: guvenliMetin(h.title),
+                m: guvenliMetin(h.description || ""),
+                r: haberdenResimCikar(h) || "https://images.unsplash.com/photo-1541887089-8b204df86b02",
+                orijinal: h
+            }));
+            
+            if (siyasetVerileri.length < 4) {
+                const eksik = 4 - siyasetVerileri.length;
+                siyasetVerileri = [...siyasetVerileri, ...siyasetYedekHavuz.slice(0, eksik)];
             }
         } else {
             throw new Error("API'den siyasi haber gelmedi");
@@ -1324,7 +1320,7 @@ async function siyasetHaberleriOlustur() {
     const yanHaberler = siyasetVerileri.slice(1, 4);
 
     let html = `
-        <div class="siyaset-ana-kart" onclick="makaleAc('SİYASET', '${attrGuvenli(anaHaber.t)}', '${attrGuvenli(anaHaber.m)}', '${attrGuvenli(anaHaber.k)}')">
+        <div class="siyaset-ana-kart" onclick="makaleAc('SİYASET', '${attrGuvenli(anaHaber.t)}', '${attrGuvenli(anaHaber.m)}', '${attrGuvenli(anaHaber.k)}', '${anaHaber.orijinal && anaHaber.orijinal.link ? attrGuvenli(anaHaber.orijinal.link) : ''}')">
             <div class="sa-resim" style="background-image: url('${gorselUrlOptimize(anaHaber.r)}')"></div>
             <div class="sa-icerik">
                 <span class="sa-etiket">⚡ ${anaHaber.k}</span>
@@ -1337,7 +1333,7 @@ async function siyasetHaberleriOlustur() {
 
     yanHaberler.forEach(h => {
         html += `
-            <div class="siyaset-yan-kart" onclick="makaleAc('SİYASET', '${attrGuvenli(h.t)}', '${attrGuvenli(h.m)}', '${attrGuvenli(h.k)}')">
+            <div class="siyaset-yan-kart" onclick="makaleAc('SİYASET', '${attrGuvenli(h.t)}', '${attrGuvenli(h.m)}', '${attrGuvenli(h.k)}', '${h.orijinal && h.orijinal.link ? attrGuvenli(h.orijinal.link) : ''}')">
                 <div class="sy-resim" style="background-image: url('${gorselUrlOptimize(h.r)}')"></div>
                 <div class="sy-icerik">
                     <span class="sy-etiket">${h.k}</span>
@@ -1361,7 +1357,7 @@ const bilimHaberleriHavuzu = [
     },
     {
         title: "Oda Sıcaklığında Çalışabilen İlk Ticari Kuantum İşlemci Tanıtıldı",
-        description: "Kuantum hesaplama dünyasındaki en büyük mühendislik engeli nihayet aşıldı. Laboratuvarlar, mutlak sıfır (-273°C) soğutma sistemlerine ihtiyaç duymayan, elmas tabanlı azot-boşluk (NV) merkezleri kullanan oda sıcaklığı kuantum işlemcisini piyasaya sürdü.\n\n128 kübitlik bu yeni işlemci, moleküler simülasyonları ve siber güvenlik algoritmalarını mevcut süper bilgisayarlardan milyonlarca kat hızlı işleyebiliyor. Küresel finans ve lojistik devleri şimdiden bulut entegrasyonu için sıraya girdi.",
+        description: "Kuantum hesaplama dünyasındaki en büyük mühendislik engeli nihayet aşıldı. Laboratuvarlar, mutlak sıfır (-273°C) soğutma systemslerine ihtiyaç duymayan, elmas tabanlı azot-boşluk (NV) merkezleri kullanan oda sıcaklığı kuantum işlemcisini piyasaya sürdü.\n\n128 kübitlik bu yeni işlemci, moleküler simülasyonları ve siber güvenlik algoritmalarını mevcut süper bilgisayarlardan milyonlarca kat hızlı işleyebiliyor. Küresel finans ve lojistik devleri şimdiden bulut entegrasyonu için sıraya girdi.",
         source_id: "Kuantum Teknolojileri Enstitüsü"
     },
     {
@@ -1378,7 +1374,7 @@ function bilimHaberleriOlustur(veriler) {
   try {
       veriler.slice(0, 3).forEach((h, idx) => {
          const c = document.createElement('div'); c.className = `bilim-ozel-kart anim-up goster`; c.style.transitionDelay = `${idx*0.1}s`;
-         c.onclick = () => makaleAc('BİLİM', h.title, h.description, h.source_id);
+         c.onclick = () => makaleAc('BİLİM', h.title, h.description, h.source_id, h.link);
          c.innerHTML = `<div class="bo-ulke">🔬 KÜRESEL BİLİM RAPORU</div><h4>${guvenliMetin(h.title)}</h4><p>${guvenliMetin(h.description)}</p>`;
          grid.appendChild(c);
       });
@@ -1389,13 +1385,15 @@ async function kureselBilimGuncelle() {
   const bH = await apiIstekAt(`${WORKER_URL}/?kategori=science&q=${encodeURIComponent('uzay OR astrofizik OR kuantum OR genetik OR nörobilim')}`);
   
   let temizBilimHaberleri = [];
-  
   if (bH && bH.length > 0) {
-      const siyasiKelimeler = ['erdoğan', 'cumhurbaşkanı', 'siyaset', 'devlet', 'cumhuriyet', 'parti', 'bakan', 'zirve', 'bürokrasi', 'milletvekili', 'chp', 'akp', 'belediye'];
+      const yerelKelimeler = [
+        'erdoğan', 'cumhurbaşkanı', 'siyaset', 'devlet', 'cumhuriyet', 'parti', 'bakan', 'zirve', 'bürokrasi', 'milletvekili', 'chp', 'akp', 'belediye',
+        'türkiye', 'türk bilim', 'tübitak', 'ankara', 'istanbul', 'izmir', 'milli', 'yerli', 'üniversitesi', 'bakanlığı', 'tbmm'
+      ];
       
       temizBilimHaberleri = bH.filter(h => {
           const metin = (h.title + " " + (h.description || "")).toLowerCase();
-          return !siyasiKelimeler.some(sk => metin.includes(sk));
+          return !yerelKelimeler.some(sk => metin.includes(sk));
       });
   }
 
@@ -1421,7 +1419,7 @@ function canliHaberleriOlustur(veriler) {
         const onerrorKodu = `this.onerror=null; this.src='${safeFallback}'`;
     
         const c = document.createElement('div'); c.className = 'dunya-kart anim-up goster'; c.style.transitionDelay = `${idx*0.1}s`;
-        c.onclick = () => makaleAc('DÜNYA', h.title, h.description, h.source_id);
+        c.onclick = () => makaleAc('DÜNYA', h.title, h.description, h.source_id, h.link);
         c.innerHTML = `<div class="dk-resim-wrapper"><img src="${proxyUrl}" class="dk-resim" alt="${attrGuvenli(h.title)}" onerror="${onerrorKodu}"></div><div class="dk-serit"></div><div class="dk-icerik"><div class="dk-catisma-yazi">🌐 KÜRESEL AKIŞ</div><h4>${guvenliMetin(h.title)}</h4><p>${guvenliMetin(h.description)}</p></div>`;
         alan.appendChild(c);
     
@@ -1440,8 +1438,8 @@ async function canliHaberleriCek() {
       canliHaberleriOlustur(res);
   } else {
       canliHaberleriOlustur([
-          {title:"Küresel İklim ve Enerji Mutabakatı Onaylandı", description:"Yenilenebilir akıllı şebekelere geçişi hızlandıracak dev altyapı fonu birleşmiş milletler nezdinde onaylandı.\n\nKarbon salınımını azaltmayı hedefleyen projeler kapsamında gelişmekte olan ülkelere teknoloji transferi de sağlanacak.\n\nFosil yakıtlara olan devasa bağımlılığı kırmak için dev bütçeler ayrıldı."}, 
-          {title:"Asya-Pasifik Yeni Pakt Anlaşması", description:"Yarı iletken tedarik zincirini güvence altına alan stratejik gümrük anlaşması imzalandı.\n\nTicaret savaşlarının gölgesinde atılan bu imza, bölgesel bloklaşmayı da beraberinde getiriyor.\n\nÜlkeler teknolojik üstünlüğü elinde tutmak adına millileştirme adımlarını hızlandırıyor."}
+          {title:"Küresel İklim ve Enerji Mutabakatı Onaylandı", description:"Yenilenebilir akıllı şebekelere geçişi hızlandıracak dev altyapı fonu birleşmiş milletler nezdinde onaylandı.\n\nKarbon salınımını azaltmayı hedefleyen projeler kapsamında gelişmekte olan ülkelere teknoloji transferi de sağlanacak.\n\nFosil yakıtlara olan devasa bağımlılığı kırmak için dev bütçeler ayrıldı.", link: null}, 
+          {title:"Asya-Pasifik Yeni Pakt Anlaşması", description:"Yarı iletken tedarik zincirini güvence altına alan stratejik gümrük anlaşması imzalandı.\n\nTicaret savaşlarının gölgesinde atılan bu imza, bölgesel bloklaşmayı da beraberinde getiriyor.\n\nÜlkeler teknolojik üstünlüğü elinde tutmak adına millileştirme adımlarını hızlandırıyor.", link: null}
       ]);
   }
 }
@@ -1455,15 +1453,26 @@ const sporHaberleriHavuzu = [
     { k: "E-SPOR", t: "Küresel E-Spor Turnuvasında Türk Takımı Fırtınası", m: "Dünyanın en büyük uluslararası taktiksel nişancı turnuvasında mücadele eden Türk temsilcisi, grup aşamasını namağlup lider tamamladı.\n\nTakım kaptanının maç sonu yaptığı açıklamada, aylardır süren yoğun kamp döneminin meyvelerini aldıklarını belirtti. Yarı finalde eşleşecekleri Asya temsilcisine karşı özel stratejiler geliştirdikleri konuşuluyor.\n\nE-sporun Türkiye'de ulaştığı devasa pazar payı, geleneksel spor kulüplerini de bu alana ciddi yatırımlar yapmaya zorlamaya başladı." }
 ];
 
-function futbolHaberleriGuncelle() {
+async function futbolHaberleriGuncelle() {
     const grid = document.getElementById('futbol-grid-alan'); if(!grid) return;
+    let haberler = await apiIstekAt(`${WORKER_URL}/?kategori=sports&country=tr`, true);
+    
+    let kaynakHaberler;
+    if (haberler && haberler.length >= 3) {
+        kaynakHaberler = haberler.slice(0, 3).map(h => ({
+            k: guvenliMetin(h.source_id || "SPOR"),
+            t: guvenliMetin(h.title),
+            m: guvenliMetin(h.description || ""),
+            link: h.link
+        }));
+    } else {
+        kaynakHaberler = [...sporHaberleriHavuzu].sort(() => 0.5 - Math.random()).slice(0, 3);
+    }
+    
     grid.innerHTML = '';
-    
-    let rastgeleHaberler = [...sporHaberleriHavuzu].sort(() => 0.5 - Math.random()).slice(0, 3);
-    
-    rastgeleHaberler.forEach((h, idx) => {
+    kaynakHaberler.forEach((h, idx) => {
         const c = document.createElement('div'); c.className = 'standart-makale-kart anim-up goster'; c.style.transitionDelay = `${idx*0.1}s`;
-        c.onclick = () => makaleAc('FUTBOL', h.t, h.m, "TuranHaber Spor Departmanı");
+        c.onclick = () => makaleAc('FUTBOL', h.t, h.m, "TuranHaber Spor Departmanı", h.link);
         c.innerHTML = `<div class="smk-serit spor-renk"></div><div class="smk-icerik"><span class="smk-badge spor-badge">${h.k}</span><h4>${h.t}</h4><p>${h.m}</p></div>`;
         grid.appendChild(c);
     });
@@ -1483,7 +1492,7 @@ function tarihiOlaylariYenile() {
     grid.innerHTML = '';
     [...tHavuz].sort(()=>0.5-Math.random()).slice(0,3).forEach((o, idx) => {
         const c = document.createElement('div'); c.className = 'standart-makale-kart anim-up goster'; c.style.transitionDelay = `${idx*0.1}s`;
-        c.onclick = () => makaleAc('TARİH', o.t, o.m, "Tarih & Kültür Araştırmaları Merkezi");
+        c.onclick = () => makaleAc('TARİH', o.t, o.m, "Tarih & Kültür Araştırmaları Merkezi", null);
         c.innerHTML = `<div class="smk-serit"></div><div class="smk-icerik"><span class="smk-badge">${o.d}</span><h4>${o.t}</h4><p>${o.m}</p></div>`;
         grid.appendChild(c);
     });
@@ -1597,34 +1606,14 @@ const devSoruHavuzu = [
 ];
 
 async function oyunuBaslat() {
-    const gunlukBaslangicIndeksi = mutlakGunIndeksi * 5;
-    
-    if (gunlukBaslangicIndeksi + 5 <= devSoruHavuzu.length) {
-        gunlukSorular = devSoruHavuzu.slice(gunlukBaslangicIndeksi, gunlukBaslangicIndeksi + 5);
-    } 
-    else {
-        try {
-            let res = await fetch(`${WORKER_URL}/sorular`); 
-            if (res.ok) {
-                let data = await res.json();
-                gunlukSorular = data.sorular; 
-            } else {
-                throw new Error("Soru API'si henüz aktif değil.");
-            }
-        } catch(e) {
-            let seed = mutlakGunIndeksi;
-            let random = () => { let x = Math.sin(seed++) * 10000; return x - Math.floor(x); };
-            let kopyaHavuz = [...devSoruHavuzu];
-            
-            for (let i = kopyaHavuz.length - 1; i > 0; i--) {
-                const j = Math.floor(random() * (i + 1));
-                [kopyaHavuz[i], kopyaHavuz[j]] = [kopyaHavuz[j], kopyaHavuz[i]];
-            }
-            
-            gunlukSorular = kopyaHavuz.slice(0, 5); 
-        }
+    let seed = mutlakGunIndeksi;
+    let random = () => { let x = Math.sin(seed++) * 10000; return x - Math.floor(x); };
+    let kopyaHavuz = [...devSoruHavuzu];
+    for (let i = kopyaHavuz.length - 1; i > 0; i--) {
+        const j = Math.floor(random() * (i + 1));
+        [kopyaHavuz[i], kopyaHavuz[j]] = [kopyaHavuz[j], kopyaHavuz[i]];
     }
-
+    gunlukSorular = kopyaHavuz.slice(0, 5);
     mevcutSoruIndeksi = 0; oyunSkoru = 0; oyunBittiMi = false;
     document.getElementById('oyun-skor').textContent = oyunSkoru;
     document.getElementById('oyun-toplam-soru').textContent = gunlukSorular.length;
