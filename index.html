@@ -1196,7 +1196,7 @@ function heroSliderOlustur(veriler) {
 }
 
 async function heroSliderGuncelle() {
-  let res = await apiIstekAt(`${WORKER_URL}/?kategori=top`);
+  let res = await apiIstekAt(`${WORKER_URL}/?kategori=top&q=${encodeURIComponent('ekonomi OR kriz OR anlaşma OR teknoloji OR diplomasi')}`);
   
   if(res && res.length > 0) {
       heroSliderOlustur(res); 
@@ -1432,7 +1432,7 @@ function canliHaberleriOlustur(veriler) {
 }
 
 async function canliHaberleriCek() {
-  let res = await apiIstekAt(`${WORKER_URL}/?kategori=top`);
+  let res = await apiIstekAt(`${WORKER_URL}/?kategori=world`);
   
   if(res && res.length > 0) {
       canliHaberleriOlustur(res);
