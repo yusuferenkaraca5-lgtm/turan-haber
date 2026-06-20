@@ -550,7 +550,7 @@ footer {
           <text x="583" y="165" text-anchor="middle" fill="#fff" font-size="11" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">İsrail-Lübnan</text>
         </g>
         
-        <g class="harita-nokta" onclick="makaleAc('RADAR','Doğu Avrupa Sınır Tahkimatı','Sınır hattı boyunca hava devriyeleri yoğunlaştırıldı.','Analiz Masası')" style="cursor:pointer">
+        <g class="harita-nokta" onclick="makaleAc('RADAR','Doğu Avrupa Sınır Tahkimatı','Sınır hattı boyunca hava devriy fulllaştırıldı.','Analiz Masası')" style="cursor:pointer">
           <circle cx="560" cy="120" r="6" fill="#C0392B" opacity="0.9"/>
           <circle cx="560" cy="120" r="11" fill="none" stroke="#C0392B" stroke-width="2" opacity="0.5">
             <animate attributeName="r" values="6;16;6" dur="1.5s" repeatCount="indefinite"/>
@@ -1196,7 +1196,6 @@ function heroSliderOlustur(veriler) {
 }
 
 async function heroSliderGuncelle() {
-  // Sadece Türkiye değil; küresel çapta manşet değeri olan büyük olayları (dünya, kriz, lider, ekonomi vb.) harmanlıyoruz.
   let res = await apiIstekAt(`${WORKER_URL}/?kategori=top&q=${encodeURIComponent('dünya OR küresel OR kriz OR ekonomi OR savaş OR diplomasi OR teknoloji OR lider OR siyaset')}`);
   
   if(res && res.length > 0) {
@@ -1607,14 +1606,28 @@ const devSoruHavuzu = [
 ];
 
 async function oyunuBaslat() {
-    let seed = mutlakGunIndeksi;
-    let random = () => { let x = Math.sin(seed++) * 10000; return x - Math.floor(x); };
-    let kopyaHavuz = [...devSoruHavuzu];
-    for (let i = kopyaHavuz.length - 1; i > 0; i--) {
-        const j = Math.floor(random() * (i + 1));
-        [kopyaHavuz[i], kopyaHavuz[j]] = [kopyaHavuz[j], kopyaHavuz[i]];
+    try {
+        let res = await fetch(`${WORKER_URL}/sorular`);
+        let data = await res.json();
+        
+        if (data && data.sorular && Array.isArray(data.sorular) && data.sorular.length >= 5) {
+            gunlukSorular = data.sorular.sort(() => 0.5 - Math.random()).slice(0, 5);
+        } else {
+            throw new Error("API'den geçerli soru formatı gelmedi.");
+        }
+    } catch (e) {
+        let seed = mutlakGunIndeksi;
+        let random = () => { let x = Math.sin(seed++) * 10000; return x - Math.floor(x); };
+        let kopyaHavuz = [...devSoruHavuzu];
+        
+        for (let i = kopyaHavuz.length - 1; i > 0; i--) {
+            const j = Math.floor(random() * (i + 1));
+            [kopyaHavuz[i], kopyaHavuz[j]] = [kopyaHavuz[j], kopyaHavuz[i]];
+        }
+        
+        gunlukSorular = kopyaHavuz.slice(0, 5);
     }
-    gunlukSorular = kopyaHavuz.slice(0, 5);
+    
     mevcutSoruIndeksi = 0; oyunSkoru = 0; oyunBittiMi = false;
     document.getElementById('oyun-skor').textContent = oyunSkoru;
     document.getElementById('oyun-toplam-soru').textContent = gunlukSorular.length;
