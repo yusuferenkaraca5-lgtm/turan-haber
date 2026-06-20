@@ -1429,18 +1429,19 @@ async function kureselBilimGuncelle() {
 
 // CANLI HABERLER
 async function canliHaberleriCek() {
-  let res = await apiIstekAt(`${WORKER_URL}/?kategori=top`);
+  // Canlı akış için hem genel dünya kategorisini çekiyoruz hem de arama kelimeleriyle gündemi ciddileştiriyoruz
+  let res = await apiIstekAt(`${WORKER_URL}/?kategori=world&q=${encodeURIComponent('diplomasi OR kriz OR ekonomi OR küresel OR dünya OR ittifak OR lider')}`);
   
   if(res && res.length > 0) {
       canliHaberleriOlustur(res);
   } else {
+      // Eğer API geçici olarak boş dönerse yedek küresel akış havuzu devreye girer
       canliHaberleriOlustur([
           {title:"Küresel İklim ve Enerji Mutabakatı Onaylandı", description:"Yenilenebilir akıllı şebekelere geçişi hızlandıracak dev altyapı fonu birleşmiş milletler nezdinde onaylandı.\n\nKarbon salınımını azaltmayı hedefleyen projeler kapsamında gelişmekte olan ülkelere teknoloji transferi de sağlanacak.\n\nFosil yakıtlara olan devasa bağımlılığı kırmak için dev bütçeler ayrıldı.", link: null}, 
           {title:"Asya-Pasifik Yeni Pakt Anlaşması", description:"Yarı iletken tedarik zincirini güvence altına alan stratejik gümrük anlaşması imzalandı.\n\nTicaret savaşlarının gölgesinde atılan bu imza, bölgesel bloklaşmayı da beraberinde getiriyor.\n\nÜlkeler teknolojik üstünlüğü elinde tutmak adına millileştirme adımlarını hızlandırıyor.", link: null}
       ]);
   }
 }
-
 function canliHaberleriOlustur(veriler) {
   const alan = document.getElementById('canli-haber-alani'); if(!alan) return;
   alan.innerHTML = ''; 
