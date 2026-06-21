@@ -309,7 +309,7 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .sy-icerik { padding: 0.8rem 1.2rem; display: flex; flex-direction: column; justify-content: center; overflow: hidden; flex: 1; }
 .sy-etiket { font-size: 11px; font-weight: 700; color: var(--altin); text-transform: uppercase; margin-bottom: 6px; }
 .sy-icerik h4 { font-size: 15px; font-weight: 700; color: var(--lacivert); line-height: 1.3; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.sy-icerik p { font-size: 13px; color: var(--ikincil); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0; }
+.sy-icerik p { font-size: 13px; color: var(--ikincil); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: margin: 0; }
 
 /* FOOTER */
 footer { 
@@ -525,6 +525,11 @@ footer {
   </div>
   <div class="dunya-grid" id="canli-haber-alani"></div>
 
+  <div class="bolum-baslik anim-up" id="siyaset">
+      <div class="bolum-sembol">🏛️</div><h2>Türkiye Siyaseti & Ankara Kulisleri</h2>
+  </div>
+  <div class="siyaset-kompleks-alan anim-up" id="siyaset-vitrin"></div>
+
   <div class="bolum-baslik anim-up" id="kuresel-bilim">
     <div class="bolum-sembol">🚀</div><h2>Küresel Bilim Gündemi</h2>
   </div>
@@ -599,12 +604,6 @@ footer {
       </div>
     </div>
   </div>
-
-  <div class="bolum-baslik anim-up" id="siyaset">
-      <div class="bolum-sembol">🏛️</div><h2>Türkiye Siyaseti & Ankara Kulisleri</h2>
-  </div>
-  <div class="siyaset-kompleks-alan anim-up" id="siyaset-vitrin">
-      </div>
 
   <div class="bolum-baslik anim-up" id="futbol">
       <div class="bolum-sembol">⚽</div><h2>Spor & Futbol Gündemi</h2>
@@ -1196,11 +1195,9 @@ function heroSliderOlustur(veriler) {
 }
 
 async function heroSliderGuncelle() {
-  // Manşet için SADECE DÜNYA (world) kategorisini çekiyoruz.
   let res = await apiIstekAt(`${WORKER_URL}/?kategori=world`);
   
   if(res && res.length > 0) {
-      // Manşete Türkiye iç siyasetinin ve yerel olayların sızmasını kesin olarak engelliyoruz
       const yerelKelimeler = [
           'erdoğan', 'chp', 'ak parti', 'akp', 'mhp', 'iyi parti', 'dem parti', 
           'milletvekili', 'tbmm', 'belediye', 'özgür özel', 'imamoğlu', 'yavaş', 
@@ -1209,22 +1206,18 @@ async function heroSliderGuncelle() {
       
       let globalMansetler = res.filter(h => {
           const metin = (h.title + " " + (h.description || "")).toLowerCase();
-          // Eğer içinde bu yerel kelimelerden biri varsa, o haberi manşete alma
           return !yerelKelimeler.some(sk => metin.includes(sk));
       });
 
-      // Eğer filtreden sonra elimizde yeterince küresel haber kaldıysa onu göster
       if (globalMansetler.length >= 3) {
           heroSliderOlustur(globalMansetler); 
           return;
       } else if (res.length > 0) {
-          // Filtre çok sert geldiyse ve haber kalmadıysa, en azından api'den gelen dünya kategorisini direkt bas
           heroSliderOlustur(res);
           return;
       }
   } 
   
-  // API boş dönerse yedek küresel manşetler
   heroSliderOlustur([
       {title: "Yapay Zeka Otomobil Sektörünün Oyun Kurallarını Yeniden Yazıyor", description: "Otonom sürüş teknolojileri ve akıllı batarya yönetimi sistemlerinde yapay zekanın hakimiyeti artıyor. Geleneksel markalar rekabette zorlanıyor.\n\nYeni nesil yazılım destekli araçlar artık sadece bir ulaşım aracı değil, aynı zamanda hareketli bir veri merkezine dönüşmüş durumda.", source_id: "TEKNOLOJİ & EKONOMİ", link: null}, 
       {title: "Kuantum Şifreleme Ağlarında İlk Kıtalararası Başarı", description: "Avrupa ve Asya arasındaki fiber optik hatlarda kuantum anahtar dağıtımı (QKD) ile hacklenmesi imkansız ilk veri transferi gerçekleştirildi.\n\nBu tarihi hamle, siber güvenlikte yeni bir çağın başlangıcı olarak kabul ediliyor.", source_id: "KÜRESEL SİBER RAPOR", link: null}
@@ -1312,15 +1305,15 @@ async function siyasetHaberleriOlustur() {
     try {
         let apiHaberleri = await apiIstekAt(`${WORKER_URL}/?kategori=politics&country=tr`);
         if (apiHaberleri && apiHaberleri.length > 0) {
-            const siyasiKelimeler = ['meclis', 'bakan', 'parti', 'ankara', 'başkan', 'milletvekili', 'hükümet', 'muhalefet', 'seçim', 'chp', 'ak parti', 'akp', 'mhp', 'iyi parti', 'dem parti', 'diplomasi', 'tbmm', 'kabine', 'politika', 'genel kurul', 'anayasa', 'yargıtay', 'cumhurbaşkanı', 'erdoğan', 'özgür özel'];
+            const siyasiKelimeler = ['meclis', 'bakan', 'parti', 'ankara', 'başkan', 'milletvekili', 'hükümet', 'muhalefet', 'seçim', 'chp', 'ak parti', 'akp', 'mhp', 'iyi parti', 'dem parti', 'diplomasi', 'tbmm', 'kabine', 'politika', 'genel kurul', 'anayasa', 'yargıtay', 'cumhurbaşkanı', 'erdoğan', 'özgür özel', 'kurultay'];
             
-            // eşleşenleri öne sırala, ama API'den geleni eleme
-            let siralanmis = [...apiHaberleri].sort((a, b) => {
-                let aE = siyasiKelimeler.some(sk => (a.title+" "+(a.description||"")).toLowerCase().includes(sk)) ? 1 : 0;
-                let bE = siyasiKelimeler.some(sk => (b.title+" "+(b.description||"")).toLowerCase().includes(sk)) ? 1 : 0;
-                return bE - aE;
+            // KESİN FİLTRE: İçinde kesinlikle Türkiye siyasetinden bir kelime geçmek ZORUNDA
+            let gercekSiyaset = apiHaberleri.filter(h => {
+                let metin = (h.title + " " + (h.description || "")).toLowerCase();
+                return siyasiKelimeler.some(sk => metin.includes(sk));
             });
-            siyasetVerileri = siralanmis.slice(0, 4).map(h => ({
+
+            siyasetVerileri = gercekSiyaset.slice(0, 4).map(h => ({
                 k: guvenliMetin(h.source_id),
                 t: guvenliMetin(h.title),
                 m: guvenliMetin(h.description || ""),
@@ -1328,6 +1321,7 @@ async function siyasetHaberleriOlustur() {
                 orijinal: h
             }));
             
+            // Eğer filtreden geçen 4'ten az ise eksikleri yedek havuzdan tamamla
             if (siyasetVerileri.length < 4) {
                 const eksik = 4 - siyasetVerileri.length;
                 siyasetVerileri = [...siyasetVerileri, ...siyasetYedekHavuz.slice(0, eksik)];
@@ -1429,19 +1423,18 @@ async function kureselBilimGuncelle() {
 
 // CANLI HABERLER
 async function canliHaberleriCek() {
-  // Canlı akış için hem genel dünya kategorisini çekiyoruz hem de arama kelimeleriyle gündemi ciddileştiriyoruz
   let res = await apiIstekAt(`${WORKER_URL}/?kategori=world&q=${encodeURIComponent('diplomasi OR kriz OR ekonomi OR küresel OR dünya OR ittifak OR lider')}`);
   
   if(res && res.length > 0) {
       canliHaberleriOlustur(res);
   } else {
-      // Eğer API geçici olarak boş dönerse yedek küresel akış havuzu devreye girer
       canliHaberleriOlustur([
           {title:"Küresel İklim ve Enerji Mutabakatı Onaylandı", description:"Yenilenebilir akıllı şebekelere geçişi hızlandıracak dev altyapı fonu birleşmiş milletler nezdinde onaylandı.\n\nKarbon salınımını azaltmayı hedefleyen projeler kapsamında gelişmekte olan ülkelere teknoloji transferi de sağlanacak.\n\nFosil yakıtlara olan devasa bağımlılığı kırmak için dev bütçeler ayrıldı.", link: null}, 
           {title:"Asya-Pasifik Yeni Pakt Anlaşması", description:"Yarı iletken tedarik zincirini güvence altına alan stratejik gümrük anlaşması imzalandı.\n\nTicaret savaşlarının gölgesinde atılan bu imza, bölgesel bloklaşmayı da beraberinde getiriyor.\n\nÜlkeler teknolojik üstünlüğü elinde tutmak adına millileştirme adımlarını hızlandırıyor.", link: null}
       ]);
   }
 }
+
 function canliHaberleriOlustur(veriler) {
   const alan = document.getElementById('canli-haber-alani'); if(!alan) return;
   alan.innerHTML = ''; 
