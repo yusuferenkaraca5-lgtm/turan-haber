@@ -309,7 +309,7 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .sy-icerik { padding: 0.8rem 1.2rem; display: flex; flex-direction: column; justify-content: center; overflow: hidden; flex: 1; }
 .sy-etiket { font-size: 11px; font-weight: 700; color: var(--altin); text-transform: uppercase; margin-bottom: 6px; }
 .sy-icerik h4 { font-size: 15px; font-weight: 700; color: var(--lacivert); line-height: 1.3; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.sy-icerik p { font-size: 13px; color: var(--ikincil); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: margin: 0; }
+.sy-icerik p { font-size: 13px; color: var(--ikincil); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0; }
 
 /* FOOTER */
 footer { 
@@ -950,7 +950,8 @@ function resimArkaPlandaGuncelle(haberLink, haberBaslik, imgElement) {
     .catch(() => {});
 }
 
-let aktifMakaleObjesi = null;
+window.aktifSiyasetVerileri = [];
+
 function okumaListesiniGetir() { return JSON.parse(localStorage.getItem('turanOkumaListesi') || '[]'); }
 function okumaListesiniKaydet(liste) { localStorage.setItem('turanOkumaListesi', JSON.stringify(liste)); }
 
@@ -1008,7 +1009,7 @@ function makaleAc(kat, bas, met, kay, link) {
   document.getElementById('modal-metin').innerHTML = ''; 
   
   const habereGitAlan = document.getElementById('modal-link-btn');
-  if (link) {
+  if (link && link !== 'null' && link !== '') {
     habereGitAlan.style.display = 'inline-flex';
     habereGitAlan.onclick = () => window.open(link, '_blank');
   } else {
@@ -1195,7 +1196,7 @@ function heroSliderOlustur(veriler) {
 }
 
 async function heroSliderGuncelle() {
-  let res = await apiIstekAt(`${WORKER_URL}/?kategori=world`);
+  let res = await apiIstekAt(`${WORKER_URL}/?kategori=world&q=${encodeURIComponent('dünya OR küresel OR kriz OR ekonomi OR savaş OR diplomasi OR teknoloji OR lider OR siyaset')}`);
   
   if(res && res.length > 0) {
       const yerelKelimeler = [
@@ -1305,9 +1306,12 @@ async function siyasetHaberleriOlustur() {
     try {
         let apiHaberleri = await apiIstekAt(`${WORKER_URL}/?kategori=politics&country=tr`);
         if (apiHaberleri && apiHaberleri.length > 0) {
-            const siyasiKelimeler = ['meclis', 'bakan', 'parti', 'ankara', 'başkan', 'milletvekili', 'hükümet', 'muhalefet', 'seçim', 'chp', 'ak parti', 'akp', 'mhp', 'iyi parti', 'dem parti', 'diplomasi', 'tbmm', 'kabine', 'politika', 'genel kurul', 'anayasa', 'yargıtay', 'cumhurbaşkanı', 'erdoğan', 'özgür özel', 'kurultay'];
+            const siyasiKelimeler = [
+                'tbmm', 'milletvekili', 'ak parti', 'chp', 'mhp', 'iyi parti', 'dem parti', 
+                'cumhurbaşkanı', 'erdoğan', 'özgür özel', 'devlet bahçeli', 'kabine', 
+                'bakanlığı', 'genel başkan', 'anayasa mahkemesi', 'yargıtay', 'seçim', 'siyasi'
+            ];
             
-            // KESİN FİLTRE: İçinde kesinlikle Türkiye siyasetinden bir kelime geçmek ZORUNDA
             let gercekSiyaset = apiHaberleri.filter(h => {
                 let metin = (h.title + " " + (h.description || "")).toLowerCase();
                 return siyasiKelimeler.some(sk => metin.includes(sk));
@@ -1318,10 +1322,9 @@ async function siyasetHaberleriOlustur() {
                 t: guvenliMetin(h.title),
                 m: guvenliMetin(h.description || ""),
                 r: haberdenResimCikar(h) || "https://images.unsplash.com/photo-1541887089-8b204df86b02",
-                orijinal: h
+                link: h.link || null
             }));
             
-            // Eğer filtreden geçen 4'ten az ise eksikleri yedek havuzdan tamamla
             if (siyasetVerileri.length < 4) {
                 const eksik = 4 - siyasetVerileri.length;
                 siyasetVerileri = [...siyasetVerileri, ...siyasetYedekHavuz.slice(0, eksik)];
@@ -1333,36 +1336,44 @@ async function siyasetHaberleriOlustur() {
         siyasetVerileri = [...siyasetYedekHavuz];
     }
 
-    const anaHaber = siyasetVerileri[0];
-    const yanHaberler = siyasetVerileri.slice(1, 4);
+    alan.innerHTML = ''; 
 
-    let html = `
-        <div class="siyaset-ana-kart" onclick="makaleAc('SİYASET', '${attrGuvenli(anaHaber.t)}', '${attrGuvenli(anaHaber.m)}', '${attrGuvenli(anaHaber.k)}', '${anaHaber.orijinal && anaHaber.orijinal.link ? attrGuvenli(anaHaber.orijinal.link) : ''}')">
+    if (siyasetVerileri.length > 0) {
+        const anaHaber = siyasetVerileri[0];
+        const anaDiv = document.createElement('div');
+        anaDiv.className = 'siyaset-ana-kart';
+        anaDiv.onclick = () => makaleAc('SİYASET', anaHaber.t, anaHaber.m, anaHaber.k, anaHaber.link);
+        anaDiv.innerHTML = `
             <div class="sa-resim" style="background-image: url('${gorselUrlOptimize(anaHaber.r)}')"></div>
             <div class="sa-icerik">
                 <span class="sa-etiket">⚡ ${anaHaber.k}</span>
                 <h3>${anaHaber.t}</h3>
                 <p>${anaHaber.m}</p>
             </div>
-        </div>
-        <div class="siyaset-yan-liste">
-    `;
+        `;
+        alan.appendChild(anaDiv);
 
-    yanHaberler.forEach(h => {
-        html += `
-            <div class="siyaset-yan-kart" onclick="makaleAc('SİYASET', '${attrGuvenli(h.t)}', '${attrGuvenli(h.m)}', '${attrGuvenli(h.k)}', '${h.orijinal && h.orijinal.link ? attrGuvenli(h.orijinal.link) : ''}')">
+        const yanListe = document.createElement('div');
+        yanListe.className = 'siyaset-yan-liste';
+
+        const yanHaberler = siyasetVerileri.slice(1, 4);
+        yanHaberler.forEach(h => {
+            const yanDiv = document.createElement('div');
+            yanDiv.className = 'siyaset-yan-kart';
+            yanDiv.onclick = () => makaleAc('SİYASET', h.t, h.m, h.k, h.link);
+            yanDiv.innerHTML = `
                 <div class="sy-resim" style="background-image: url('${gorselUrlOptimize(h.r)}')"></div>
                 <div class="sy-icerik">
                     <span class="sy-etiket">${h.k}</span>
                     <h4>${h.t}</h4>
                     <p>${h.m}</p>
                 </div>
-            </div>
-        `;
-    });
+            `;
+            yanListe.appendChild(yanDiv);
+        });
 
-    html += `</div>`;
-    alan.innerHTML = html;
+        alan.appendChild(yanListe);
+    }
 }
 
 // BİLİM HABERLERİ YEDEK HAVUZU
@@ -1423,7 +1434,7 @@ async function kureselBilimGuncelle() {
 
 // CANLI HABERLER
 async function canliHaberleriCek() {
-  let res = await apiIstekAt(`${WORKER_URL}/?kategori=world&q=${encodeURIComponent('diplomasi OR kriz OR ekonomi OR küresel OR dünya OR ittifak OR lider')}`);
+  let res = await apiIstekAt(`${WORKER_URL}/?kategori=top&q=${encodeURIComponent('diplomasi OR kriz OR ekonomi OR küresel OR dünya OR ittifak OR lider')}`);
   
   if(res && res.length > 0) {
       canliHaberleriOlustur(res);
