@@ -354,15 +354,54 @@ footer {
 .ebulten-btn { background: var(--altin); color: var(--koyu); font-weight: 700; border: none; padding: 8px 15px; border-radius: 6px; width: 100%; cursor: pointer; transition: var(--gecis); font-size: 13px; }
 .ebulten-btn:hover { background: #fff; }
 
-.modal-arkaplan { position: fixed; inset: 0; background: rgba(10, 17, 26, 0.9); z-index: 9999; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; padding: 1rem;}
+/* MODAL / AYRI SAYFA CSS YENİLEMESİ */
+.modal-arkaplan {
+  position: fixed; inset: 0;
+  background: var(--arkaplan);
+  z-index: 9999;
+  display: block;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+  overflow-y: auto;
+  padding: 0;
+}
 .modal-arkaplan.goster { opacity: 1; visibility: visible; }
-.modal-kutu { background: var(--kart-bg); width: 100%; max-width: 750px; max-height: 90vh; border-radius: 12px; overflow-y: auto; position: relative; transform: translateY(20px); transition: transform 0.3s ease; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5); }
-.modal-arkaplan.goster .modal-kutu { transform: translateY(0); }
+.modal-kutu {
+  background: var(--kart-bg);
+  width: 100%;
+  max-width: 100%;
+  max-height: none;
+  border-radius: 0;
+  overflow-y: visible;
+  transform: none;
+  box-shadow: none;
+  min-height: 100vh;
+}
+.modal-arkaplan.goster .modal-kutu { transform: none; }
+.modal-icerik {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+.haber-ust-cubuk { 
+  position: sticky; top: 0; z-index: 20; 
+  background: var(--kart-bg); 
+  padding: 1rem 0; 
+  margin-bottom: 1rem; 
+  border-bottom: 1px solid var(--cizgi); 
+}
+.geri-don-btn { 
+  background: none; border: none; cursor: pointer; 
+  color: var(--altin); font-weight: 700; font-size: 14px; 
+  display: flex; align-items: center; gap: 6px; 
+  font-family: inherit; 
+}
+.geri-don-btn:hover { color: var(--kizil); }
+
 .modal-header-kisim { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;}
 .modal-kapat { font-size: 24px; color: var(--ikincil); cursor: pointer; background: rgba(0,0,0,0.05); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: none; z-index: 10; transition: var(--gecis);}
 [data-theme="dark"] .modal-kapat { background: rgba(255,255,255,0.1); }
 .modal-kapat:hover { background: var(--kizil); color: #fff; transform: rotate(90deg);}
-.modal-icerik { padding: 3rem; }
 .modal-kategori { font-size: 12px; font-weight: 700; color: var(--altin); display: inline-block; background: rgba(200,150,58,0.1); padding: 6px 12px; border-radius: 6px; text-transform: uppercase;}
 .kaydet-btn { background: none; border: 1px solid var(--ikincil); color: var(--ikincil); padding: 6px 12px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; transition: var(--gecis); display: flex; align-items: center; gap: 5px; }
 .kaydet-btn:hover { background: var(--altin); color: #fff; border-color: var(--altin); }
@@ -589,7 +628,7 @@ footer {
         
         <image href="https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg" x="0" y="0" width="1000" height="507" opacity="0.85" id="jeopolitik-harita-img" />
         
-        <g class="harita-nokta" onclick="makaleAc('RADAR','Orta Doğu Kriz Hattı','Bölgedeki sınır çatışmaları ve askeri hareketlilik artıyor.','Analiz Masası')" style="cursor:pointer">
+        <g class="harita-nokta" onclick="makaleAc('RADAR','Orta Doğu Kriz Hattı','Bölgedeki sınır çatışmaları ve askeri hareketlilik artıyor.\n\nSon 48 saat içerisinde karşılıklı topçu atışlarında gözle görülür bir artış yaşanırken, bölge halkı güvenli alanlara tahliye ediliyor.\n\nUluslararası gözlemciler, sivil altyapıların hedef alınmasının diplomatik çözüm yollarını tamamen tıkayabileceği konusunda uyarıyor.','Analiz Masası')" style="cursor:pointer">
           <circle cx="583" cy="180" r="6" fill="#C0392B" opacity="0.9"/>
           <circle cx="583" cy="180" r="11" fill="none" stroke="#C0392B" stroke-width="2" opacity="0.5">
             <animate attributeName="r" values="6;16;6" dur="1.5s" repeatCount="indefinite"/>
@@ -598,7 +637,7 @@ footer {
           <text x="583" y="165" text-anchor="middle" fill="#fff" font-size="11" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">İsrail-Lübnan</text>
         </g>
         
-        <g class="harita-nokta" onclick="makaleAc('RADAR','Doğu Avrupa Sınır Tahkimatı','Sınır hattı boyunca hava devriyeleri yoğunlaştırıldı.','Analiz Masası')" style="cursor:pointer">
+        <g class="harita-nokta" onclick="makaleAc('RADAR','Doğu Avrupa Sınır Tahkimatı','Sınır hattı boyunca hava devriyeleri yoğunlaştırıldı.\n\nÖzellikle drone ve insansız hava araçlarının sınır ihlalleri yapması, iki tarafın hava savunma sistemlerini teyakkuza geçirdi.\n\nNATO ve bölge ülkeleri, artan bu elektronik ve konvansiyonel hareketliliğin, olası bir enerji krizine dönüşmesini engellemek adına yoğun bir kriz masası toplantısı düzenliyor.','Analiz Masası')" style="cursor:pointer">
           <circle cx="560" cy="120" r="6" fill="#C0392B" opacity="0.9"/>
           <circle cx="560" cy="120" r="11" fill="none" stroke="#C0392B" stroke-width="2" opacity="0.5">
             <animate attributeName="r" values="6;16;6" dur="1.5s" repeatCount="indefinite"/>
@@ -607,7 +646,7 @@ footer {
           <text x="560" y="105" text-anchor="middle" fill="#fff" font-size="11" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Doğu Avrupa</text>
         </g>
         
-        <g class="harita-nokta" onclick="makaleAc('RADAR','Tayvan Boğazı Gerilimi','Karşılıklı deniz devriyeleri uluslararası ticareti tehdit ediyor.','Analiz Masası')" style="cursor:pointer">
+        <g class="harita-nokta" onclick="makaleAc('RADAR','Tayvan Boğazı Gerilimi','Karşılıklı deniz devriyeleri uluslararası ticareti tehdit ediyor.\n\nKüresel mikroçip tedarikinin kalbi konumundaki bu dar su yolu üzerindeki askeri hareketlilik, teknoloji şirketlerini yeni üretim alternatifleri aramaya itiyor.\n\nDiplomatik çevreler, kazara yaşanabilecek küçük bir ateşlemenin dahi, zincirleme bir küresel reaksiyon başlatabileceğini belirtiyor.','Analiz Masası')" style="cursor:pointer">
           <circle cx="833" cy="214" r="6" fill="#C0392B" opacity="0.9"/>
           <circle cx="833" cy="214" r="11" fill="none" stroke="#C0392B" stroke-width="2" opacity="0.5">
             <animate attributeName="r" values="6;16;6" dur="1.5s" repeatCount="indefinite"/>
@@ -616,7 +655,7 @@ footer {
           <text x="833" y="199" text-anchor="middle" fill="#fff" font-size="11" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Tayvan</text>
         </g>
         
-        <g class="harita-nokta" onclick="makaleAc('RADAR','Kızıldeniz Ticaret Hattı','Ticari gemilere yönelik müdahaleler lojistiği tıkıyor.','Analiz Masası')" style="cursor:pointer">
+        <g class="harita-nokta" onclick="makaleAc('RADAR','Kızıldeniz Ticaret Hattı','Ticari gemilere yönelik müdahaleler lojistiği tıkıyor.\n\nSüveyş Kanalı bağlantılı deniz taşımacılığının sekteye uğraması, navlun fiyatlarında son ayların en sert yükselişine sebep oldu.\n\nBirçok küresel lojistik devi, rotasını Ümit Burnu üzerinden güneye uzatmak zorunda kaldı, bu durum özellikle Avrupa pazarında emtia tedarik zincirinde belirgin bir yavaşlama ve maliyet enflasyonu yaratıyor.','Analiz Masası')" style="cursor:pointer">
           <circle cx="597" cy="225" r="6" fill="#C0392B" opacity="0.9"/>
           <circle cx="597" cy="225" r="11" fill="none" stroke="#C0392B" stroke-width="2" opacity="0.5">
             <animate attributeName="r" values="6;16;6" dur="1.5s" repeatCount="indefinite"/>
@@ -641,9 +680,9 @@ footer {
       <div class="bolum-baslik"><div class="bolum-sembol">📡</div><h2>Sıcak Radar</h2></div>
       <div class="catisma-radar">
         <div class="cr-baslik"><div class="cr-dot"></div>Sıcak Çatışma Radarı</div>
-        <div class="cr-madde" onclick="makaleAc('RADAR', 'Kızıldeniz Tedarik Hattı Baskı Altında', 'Ticari gemilerin seyrüsefer sistemlerine yönelik yanıltıcı sinyal müdahaleleri sürüyor.\n\nBölgedeki deniz taşımacılığı şirketleri, güvenlik endişeleri sebebiyle rotalarını Ümit Burnu üzerinden güneye kaydırmak zorunda kalıyor.\n\nUzmanlar, lojistik gecikmelerin kısa vadede küresel konteyner ve navlun fiyatlarında %30 oranında artışa neden olabileceği konusunda uyarıyor.', 'Bölge Raporu')"><div class="bolge">🌐 Kızıldeniz</div><h5>Kızıldeniz Tedarik Hattı Baskı Altında</h5></div>
-        <div class="cr-madde" onclick="makaleAc('RADAR', 'Doğu Avrupa Sınır Hattı Tahkimat Süreci', 'Bölgede lojistik destek ve ikmal yolları üzerindeki insansız hava aracı devriyeleri artırıldı.\n\nSınır hattı boyunca yeni nesil elektronik harp sistemleri ve hava savunma bataryaları aktif konuma getirildi.\n\nKritik enerji altyapısına yönelik potansiyel sabotaj girişimlerine karşı özel güvenlik protokolleri uygulamaya konuldu.', 'Bölge Raporu')"><div class="bolge">🇪🇺 Doğu Avrupa</div><h5>Sınır Hattı Tahkimat Süreci</h5></div>
-        <div class="cr-madde" style="border-bottom:none;" onclick="makaleAc('RADAR', 'Tayvan Boğazı Askeri Tatbikatları', 'Bölgede gerilim tırmanıyor. Karşılıklı deniz devriyeleri ve hava ihlalleri iddiaları peş peşe geliyor.\n\nStratejik olarak dünyanın en büyük çip üretim tesislerine ev sahipliği yapan bölge, küresel teknoloji tedariğini derinden tehdit etme potansiyeline sahip.', 'Pasifik Güvenlik Ajansı')"><div class="bolge">🌏 Asya-Pasifik</div><h5>Tayvan Boğazı Askeri Tatbikatları</h5></div>
+        <div class="cr-madde" onclick="makaleAc('RADAR', 'Kızıldeniz Tedarik Hattı Baskı Altında', 'Ticari gemilerin seyrüsefer sistemlerine yönelik yanıltıcı sinyal müdahaleleri sürüyor.\n\nBölgedeki deniz taşımacılığı şirketleri, güvenlik endişeleri sebebiyle rotalarını Ümit Burnu üzerinden güneye kaydırmak zorunda kalıyor. Bu alternatif rota, teslimat sürelerini ortalama 12 ila 15 gün uzatıyor.\n\nUzmanlar, lojistik gecikmelerin kısa vadede küresel konteyner ve navlun fiyatlarında %30 oranında artışa neden olabileceği konusunda uyarıyor. Avrupalı üretim tesisleri ise parça eksikliği yüzünden geçici üretime ara verme senaryolarını değerlendiriyor.', 'Bölge Raporu')"><div class="bolge">🌐 Kızıldeniz</div><h5>Kızıldeniz Tedarik Hattı Baskı Altında</h5></div>
+        <div class="cr-madde" onclick="makaleAc('RADAR', 'Doğu Avrupa Sınır Hattı Tahkimat Süreci', 'Bölgede lojistik destek ve ikmal yolları üzerindeki insansız hava aracı devriyeleri artırıldı.\n\nSınır hattı boyunca yeni nesil elektronik harp sistemleri ve hava savunma bataryaları aktif konuma getirildi. Radarlar, düşük irtifalı hava unsurlarını tespit etmek üzere hassaslaştırıldı.\n\nKritik enerji altyapısına yönelik potansiyel sabotaj girişimlerine karşı özel güvenlik protokolleri uygulamaya konuldu. Kış aylarına yaklaşırken, sınır hatlarındaki bu gergin bekleyiş, bölgesel enerji tedarik zincirlerinin güvenilirliğini bir kez daha sorgulatıyor.', 'Bölge Raporu')"><div class="bolge">🇪🇺 Doğu Avrupa</div><h5>Sınır Hattı Tahkimat Süreci</h5></div>
+        <div class="cr-madde" style="border-bottom:none;" onclick="makaleAc('RADAR', 'Tayvan Boğazı Askeri Tatbikatları', 'Bölgede gerilim tırmanıyor. Karşılıklı deniz devriyeleri ve hava ihlalleri iddiaları peş peşe geliyor.\n\nUluslararası deniz ticaretinin yaklaşık beşte birinin geçtiği bu dar koridorda yaşanan sivil ve askeri gemi yakınlaşmaları, bölgedeki diplomatik temasların hızlanmasına yol açtı.\n\nStratejik olarak dünyanın en büyük çip üretim tesislerine ev sahipliği yapan bölge, küresel teknoloji tedariğini derinden tehdit etme potansiyeline sahip. Tüketici elektroniğinden otomotiv sanayisine kadar pek çok sektör, buradaki krizi yakından ve endişeyle takip ediyor.', 'Pasifik Güvenlik Ajansı')"><div class="bolge">🌏 Asya-Pasifik</div><h5>Tayvan Boğazı Askeri Tatbikatları</h5></div>
       </div>
     </div>
   </div>
@@ -706,6 +745,9 @@ footer {
 <div class="modal-arkaplan" id="makale-modal" onclick="if(event.target===this) modalKapat()">
   <div class="modal-kutu">
     <div class="modal-icerik">
+      <div class="haber-ust-cubuk">
+        <button onclick="modalKapat()" class="geri-don-btn">← Ana Sayfaya Dön</button>
+      </div>
       <div class="modal-header-kisim">
          <div class="modal-kategori" id="modal-kat">KATEGORİ</div>
          <div style="display:flex; gap: 8px; flex-wrap:wrap;">
@@ -756,7 +798,6 @@ document.getElementById('tarih-goster').textContent = `${bugunTarihi.getDate()} 
 const referansTarihi = new Date(2024, 0, 1);
 const mutlakGunIndeksi = Math.floor((bugunTarihi - referansTarihi) / (1000 * 60 * 60 * 24));
 
-// Merkezi haber önbelleği (URL paylaşımı geldiğinde eşleşme yapabilmek için)
 window.haberKash = window.haberKash || {};
 
 function turlestir(str) {
@@ -1146,6 +1187,8 @@ function okumaListesiniAc() {
             div.appendChild(h5); div.appendChild(silBtn); metinAlan.appendChild(div);
         });
     }
+    
+    document.getElementById('makale-modal').scrollTop = 0;
     document.getElementById('makale-modal').classList.add('goster'); 
     document.body.style.overflow = 'hidden';
 }
@@ -1206,10 +1249,12 @@ function makaleAc(kat, bas, met, kay, link, isPopState = false) {
   const ig = document.getElementById('ilgili-haberler-grid'); ig.innerHTML = '';
   [{t:"Tedarik Zincirinde Rota Arayışları", k:"Ekonomi"}, {t:"Yarı İletken Pazarında Rekabet", k:"Teknoloji"}, {t:"Yapay Zeka ve Veri Yasaları", k:"Hukuk"}].sort(()=>0.5-Math.random()).slice(0,3).forEach(ih => {
      const k = document.createElement('div'); k.className = 'ilgili-kart';
-     k.onclick = () => makaleAc(ih.k, ih.t, "Detaylı analiz veritabanından çekiliyor. Bölgesel dinamikler ve uluslararası ticaret yollarındaki değişimler bu süreçte belirleyici olacak.\n\nYeni nesil tedarik zinciri modellerinin önümüzdeki 10 yıl içinde tamamen dijitalleşmesi bekleniyor.", "Arşiv", null);
+     k.onclick = () => makaleAc(ih.k, ih.t, "Detaylı analiz veritabanından çekiliyor. Bölgesel dinamikler ve uluslararası ticaret yollarındaki değişimler bu süreçte belirleyici olacak.\n\nYeni nesil tedarik zinciri modellerinin önümüzdeki 10 yıl içinde tamamen dijitalleşmesi bekleniyor.\n\nSektörel araştırmalar, yapay zeka destekli süreç yönetiminin (API entegrasyonları, bulut sistemleri) maliyetleri %40'a kadar düşüreceğini gösteriyor. Yatırımcılar özellikle teknolojik altyapısını hızla yenileyebilen aktörlere odaklanmış durumda.", "Arşiv", null);
      k.innerHTML = `<span class="i-kaynak">${ih.k}</span><h5>${ih.t}</h5>`;
      ig.appendChild(k);
   });
+  
+  document.getElementById('makale-modal').scrollTop = 0;
   document.getElementById('makale-modal').classList.add('goster'); 
   document.body.style.overflow = 'hidden';
 }
@@ -1295,14 +1340,14 @@ async function havaDurumuGetir() {
 }
 
 const gunlukMakaleler = [
-  { t: "Evrenin Sınırlarının Ötesinde Ne Var?", e: "Astrofizik", r: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa", m: "Bilim insanları gözlemlenebilir evrenin 93 milyar ışık yılı genişliğinde olduğunu biliyor. Ancak bu devasa hacmin ötesinde ne olduğu, modern fizikteki en büyük sırlardan biridir.\n\nBazı teorisyenler, kozmik enflasyon modeli uyarınca evrenin sonsuz bir 'çoklu evren' (multiverse) okyanusundaki küçük bir kabarcık olabileceğini savunuyor. Bu kabarcıkların her birinde fizik yasaları bile farklı işleyebilir.\n\nJames Webb Uzay Teleskobu'nun derin alan gözlemleri, her geçen gün Big Bang'in ilk anlarına daha yakından bakmamızı sağlıyor, ancak sınırların ötesini görmek için tamamen yeni bir fizik paradigmasına ihtiyacımız olabilir." },
-  { t: "İnsan Beyni %10'unu mu Kullanıyor?", e: "Nörobilim", r: "https://images.unsplash.com/photo-1507413245164-6160d8298b31", m: "Popüler kültürde yaygın olan 'insan beyni kapasitesinin sadece yüzde onunu kullanır' inancı tamamen bir efsanedir. FMRI taramaları, uyurken bile beynimizin neredeyse tamamının aktif olduğunu gösteriyor.\n\nAncak beynin asıl mucizesi kullanım yüzdesinde değil, nöroplastisite yeteneğindedir. Yani kullanılmayan ya da hasar gören nöron ağlarının görevlerini diğer nöronların devralarak beyni sürekli 'yeniden kablolaması' durumudur.\n\nBu yetenek sayesinde felçli hastalar yeniden hareket yetisi kazanabiliyor veya insanlar çok ileri yaşlarda bile tamamen yeni diller ve beceriler öğrenebiliyorlar." },
-  { t: "Yarı İletken Savaşları: Çipler Neden Dünyayı Yönetiyor?", e: "Jeopolitik", r: "https://images.unsplash.com/photo-1518770660439-4636190af475", m: "Modern dünyanın petrolü artık fosil yakıtlar değil, silikon vadilerinden ve Tayvan'daki devasa dökümhanelerden çıkan yarı iletkenlerdir.\n\nNeredeyse mikroskobik boyutlardaki bu çipler, akıllı telefonlardan nükleer füzelere kadar her şeyin beynini oluşturuyor. Çin'in Asya Pasifik'teki hamleleri ve ABD'nin uyguladığı ihracat ambargoları, tarihin gördüğü en büyük teknolojik soğuk savaşı tetiklemiş durumda.\n\nTSMC gibi devlerin ürettiği 3 nanometrelik çiplerin tedariği kesilirse, küresel ekonomi aylar içinde tamamen durma noktasına gelebilir." },
-  { t: "Kuantum Bilgisayarlar Kriptografiyi Nasıl Çökertecek?", e: "Siber Güvenlik", r: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb", m: "Mevcut bankacılık sistemleri, devlet sırları ve blockchain ağları 'RSA' adı verilen bir şifreleme algoritması ile korunur. Bu sistem, devasa asal sayıları çarpanlarına ayırmanın standart bilgisayarlar için binlerce yıl süreceği varsayımına dayanır.\n\nAncak kuantum bilgisayarlar 'Shor Algoritması' kullanarak aynı işlemi saniyeler içinde çözebilir. Bu durum 'Q-Day' (Kuantum Günü) olarak adlandırılıyor ve siber güvenlik uzmanları, o gün geldiğinde dünyadaki hiçbir dijital verinin güvende olmayacağını belirtiyor.\n\nDevletler şimdiden 'post-kuantum' şifreleme yöntemlerine devasa bütçeler ayırmaya başladı." },
-  { t: "Roma İmparatorluğu Neden Gerçekte Çökmedi?", e: "Tarih", r: "https://images.unsplash.com/photo-1552832230-c0197dd311b5", m: "Okullarda öğretilenin aksine, Roma İmparatorluğu 476 yılında MS aniden yok olmadı. Sadece Batı kanadı barbar istilaları ve iç isyanlarla yönetimi devretti.\n\nDoğu kanadı, başkenti Konstantinopolis (İstanbul) olan Bizans İmparatorluğu olarak tam bin yıl daha, 1453'e kadar medeniyetin, ticaretin ve Roma hukukunun meşalesini taşımaya devam etti.\n\nHatta Fatih Sultan Mehmet, İstanbul'u fethettikten sonra kendine 'Kayser-i Rum' (Roma İmparatoru) unvanını alarak, Roma'nın meşru varisi olduğunu tüm Avrupa'ya ilan etmiştir." },
-  { t: "Yapay Zekanın Kara Kutusu: Model Kendi Kendine Karar Verirse Ne Olur?", e: "Yapay Zeka", r: "https://images.unsplash.com/photo-1620712948343-0008ce8a285b", m: "Büyük dil modellerinin ve sinir ağlarının en büyük sorunu bir 'kara kutu' (black box) olmalarıdır. Bir AI modeline girdi verdiğinizde size muazzam bir çıktı sunar, ancak mühendisler bile modelin o çıktıya ulaşırken trilyonlarca parametre arasında hangi mantıksal yolu izlediğini tam olarak haritalandıramaz.\n\nYapay zeka askeri stratejilere, adalet sistemlerine ve tıbbi teşhislere entegre edildikçe bu durum büyük bir etik sorun yaratıyor.\n\n'Açıklanabilir Yapay Zeka' (XAI) şu an Silikon Vadisi'nin en çok para harcadığı araştırma alanı konumunda. İnsanlık, kontrol edemediği bir zekaya güvenmenin sınırlarını test ediyor." },
-  { t: "Karanlık Madde ve Evrenin Görünmez İskeleti", e: "Kozmoloji", r: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564", m: "Teleskoplarla görebildiğimiz galaksiler, yıldızlar, gezegenler ve biz insanlar; evrendeki toplam kütle ve enerjinin yalnızca yüzde 5'ini oluşturuyoruz. Geriye kalan muazzam boşluğun karanlık madde ve karanlık enerji ile dolu olduğu hesaplanıyor.\n\nKaranlık madde ışıkla etkileşime girmez, onu göremeyiz. Ancak devasa kütleçekim kuvveti sayesinde galaksilerin dağılmasını önleyen görünmez bir iskelet görevi görür.\n\nBilim insanları yerin metrelerce altındaki devasa laboratuvarlarda bu hayalet parçacıkları tespit etmeye çalışırken, fizik dünyası tarihin en büyük gizemlerinden birini çözmenin eşiğinde bekliyor." },
-  { t: "CRISPR ile İnsan Genomunu Yeniden Yazmak", e: "Genetik", r: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28", m: "CRISPR-Cas9 teknolojisi, genetik biliminde bir devrim yaratarak bilim insanlarının DNA kodunda tıpkı bir metin belgesinde olduğu gibi kes, kopyala ve yapıştır yapmasına olanak tanıdı.\n\nBu yöntemle genetik hastalıkların embriyo aşamasında düzeltilmesi, tarımda yüksek verimli ürünler elde edilmesi ve hatta soyu tükenmiş canlıların geri getirilmesi teorik olarak mümkün hale geldi.\n\nAncak bu gücün etik sınırları büyük tartışma konusu. 'Tasarım bebekler' dönemi insanlığın doğal evrim sürecine yapılmış en tehlikeli müdahale olabilir mi?" }
+  { t: "Evrenin Sınırlarının Ötesinde Ne Var?", e: "Astrofizik", r: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa", m: "Bilim insanları gözlemlenebilir evrenin 93 milyar ışık yılı genişliğinde olduğunu biliyor. Ancak bu devasa hacmin ötesinde ne olduğu, modern fizikteki en büyük sırlardan biridir.\n\nBazı teorisyenler, kozmik enflasyon modeli uyarınca evrenin sonsuz bir 'çoklu evren' (multiverse) okyanusundaki küçük bir kabarcık olabileceğini savunuyor. Bu kabarcıkların her birinde fizik yasaları bile farklı işleyebilir.\n\nJames Webb Uzay Teleskobu'nun derin alan gözlemleri, her geçen gün Big Bang'in ilk anlarına daha yakından bakmamızı sağlıyor, ancak sınırların ötesini görmek için tamamen yeni bir fizik paradigmasına ihtiyacımız olabilir.\n\nKozmik mikrodalga arka plan ışımasındaki (CMB) 'soğuk lekeler', başka bir evrenle çarpışmamızın izleri olabilir mi? String (Sicim) teorisi üzerine çalışan fizikçiler, uzay-zamanın sadece 4 değil, 11 boyutlu bir zardan oluştuğunu öne sürerek bu soruya devrimsel matematik modelleriyle yanıt arıyorlar." },
+  { t: "İnsan Beyni %10'unu mu Kullanıyor?", e: "Nörobilim", r: "https://images.unsplash.com/photo-1507413245164-6160d8298b31", m: "Popüler kültürde yaygın olan 'insan beyni kapasitesinin sadece yüzde onunu kullanır' inancı tamamen bir efsanedir. FMRI taramaları, uyurken bile beynimizin neredeyse tamamının aktif olduğunu gösteriyor.\n\nAncak beynin asıl mucizesi kullanım yüzdesinde değil, nöroplastisite yeteneğindedir. Yani kullanılmayan ya da hasar gören nöron ağlarının görevlerini diğer nöronların devralarak beyni sürekli 'yeniden kablolaması' durumudur.\n\nBu yetenek sayesinde felçli hastalar yeniden hareket yetisi kazanabiliyor veya insanlar çok ileri yaşlarda bile tamamen yeni diller ve beceriler öğrenebiliyorlar.\n\nSon araştırmalar, yeni bir şey öğrenirken (örneğin bir programlama dili veya yabancı dil) nöronlar arasında fiziksel olarak yeni köprüler kurulduğunu görselleştirmeyi başardı. Öğrenme süreci aslında biyolojik düzeyde fiziksel bir inşadır." },
+  { t: "Yarı İletken Savaşları: Çipler Neden Dünyayı Yönetiyor?", e: "Jeopolitik", r: "https://images.unsplash.com/photo-1518770660439-4636190af475", m: "Modern dünyanın petrolü artık fosil yakıtlar değil, silikon vadilerinden ve Tayvan'daki devasa dökümhanelerden çıkan yarı iletkenlerdir.\n\nNeredeyse mikroskobik boyutlardaki bu çipler, akıllı telefonlardan nükleer füzelere kadar her şeyin beynini oluşturuyor. Çin'in Asya Pasifik'teki hamleleri ve ABD'nin uyguladığı ihracat ambargoları, tarihin gördüğü en büyük teknolojik soğuk savaşı tetiklemiş durumda.\n\nTSMC gibi devlerin ürettiği 3 nanometrelik çiplerin tedariği kesilirse, küresel ekonomi aylar içinde tamamen durma noktasına gelebilir.\n\nÇip tedarik zincirindeki herhangi bir aksama, bulut oyun sunucularından hastanedeki MR cihazlarına kadar tüm dijital altyapıyı felç etme potansiyeline sahip. Yarı iletken endüstrisi, 21. yüzyılın en büyük milli güvenlik meselesi olarak kabul ediliyor." },
+  { t: "Kuantum Bilgisayarlar Kriptografiyi Nasıl Çökertecek?", e: "Siber Güvenlik", r: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb", m: "Mevcut bankacılık sistemleri, devlet sırları ve blockchain ağları 'RSA' adı verilen bir şifreleme algoritması ile korunur. Bu sistem, devasa asal sayıları çarpanlarına ayırmanın standart bilgisayarlar için binlerce yıl süreceği varsayımına dayanır.\n\nAncak kuantum bilgisayarlar 'Shor Algoritması' kullanarak aynı işlemi saniyeler içinde çözebilir. Bu durum 'Q-Day' (Kuantum Günü) olarak adlandırılıyor ve siber güvenlik uzmanları, o gün geldiğinde dünyadaki hiçbir dijital verinin güvende olmayacağını belirtiyor.\n\nDevletler şimdiden 'post-kuantum' şifreleme yöntemlerine devasa bütçeler ayırmaya başladı.\n\nBugün \"şimdi çal, sonra şifresini çöz\" (harvest now, decrypt later) stratejisiyle devasa veri tabanları arşivleniyor. Hükümetler ve teknoloji devleri, donanımsal güvenlik altyapılarını sıfırdan inşa etmek için mühendislik yarışına girmiş durumda." },
+  { t: "Roma İmparatorluğu Neden Gerçekte Çökmedi?", e: "Tarih", r: "https://images.unsplash.com/photo-1552832230-c0197dd311b5", m: "Okullarda öğretilenin aksine, Roma İmparatorluğu 476 yılında MS aniden yok olmadı. Sadece Batı kanadı barbar istilaları ve iç isyanlarla yönetimi devretti.\n\nDoğu kanadı, başkenti Konstantinopolis (İstanbul) olan Bizans İmparatorluğu olarak tam bin yıl daha, 1453'e kadar medeniyetin, ticaretin ve Roma hukukunun meşalesini taşımaya devam etti.\n\nHatta Fatih Sultan Mehmet, İstanbul'u fethettikten sonra kendine 'Kayser-i Rum' (Roma İmparatoru) unvanını alarak, Roma'nın meşru varisi olduğunu tüm Avrupa'ya ilan etmiştir.\n\nBu devamlılık fikri, Osmanlı'nın devlet teşkilatlanmasından mimarisine kadar pek çok alanda kendini gösterir. Tarih okumaları, imparatorlukların bir gecede yıkılmadığını, sadece kültürel ve idari bir evrim geçirerek başka formlara dönüştüğünü kanıtlamaktadır." },
+  { t: "Yapay Zekanın Kara Kutusu: Model Kendi Kendine Karar Verirse Ne Olur?", e: "Yapay Zeka", r: "https://images.unsplash.com/photo-1620712948343-0008ce8a285b", m: "Büyük dil modellerinin ve sinir ağlarının en büyük sorunu bir 'kara kutu' (black box) olmalarıdır. Bir AI modeline girdi verdiğinizde size muazzam bir çıktı sunar, ancak mühendisler bile modelin o çıktıya ulaşırken trilyonlarca parametre arasında hangi mantıksal yolu izlediğini tam olarak haritalandıramaz.\n\nYapay zeka askeri stratejilere, adalet sistemlerine ve tıbbi teşhislere entegre edildikçe bu durum büyük bir etik sorun yaratıyor.\n\n'Açıklanabilir Yapay Zeka' (XAI) şu an Silikon Vadisi'nin en çok para harcadığı araştırma alanı konumunda. İnsanlık, kontrol edemediği bir zekaya güvenmenin sınırlarını test ediyor.\n\nÖzellikle yazılım geliştirme süreçlerinde C# veya Python API'leri ile kod yazan AI araçlarının karar mekanizmaları, mühendisleri bile hayrete düşüren verimlilik sıçramaları yaratıyor. Ancak sistemin \"neden\" o şekilde çalıştığı sırrını korumaya devam ediyor." },
+  { t: "Karanlık Madde ve Evrenin Görünmez İskeleti", e: "Kozmoloji", r: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564", m: "Teleskoplarla görebildiğimiz galaksiler, yıldızlar, gezegenler ve biz insanlar; evrendeki toplam kütle ve enerjinin yalnızca yüzde 5'ini oluşturuyoruz. Geriye kalan muazzam boşluğun karanlık madde ve karanlık enerji ile dolu olduğu hesaplanıyor.\n\nKaranlık madde ışıkla etkileşime girmez, onu göremeyiz. Ancak devasa kütleçekim kuvveti sayesinde galaksilerin dağılmasını önleyen görünmez bir iskelet görevi görür.\n\nBilim insanları yerin metrelerce altındaki devasa laboratuvarlarda bu hayalet parçacıkları tespit etmeye çalışırken, fizik dünyası tarihin en büyük gizemlerinden birini çözmenin eşiğinde bekliyor.\n\nEvrensel simülasyonlar, devasa veri tabanları kullanılarak (SQL ve yapay zeka harmanlanarak) karanlık maddenin haritasını çıkarmak üzere süper bilgisayarlarla işleniyor. Çıkacak sonuç, modern fiziği baştan yazabilir." },
+  { t: "CRISPR ile İnsan Genomunu Yeniden Yazmak", e: "Genetik", r: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28", m: "CRISPR-Cas9 teknolojisi, genetik biliminde bir devrim yaratarak bilim insanlarının DNA kodunda tıpkı bir metin belgesinde olduğu gibi kes, kopyala ve yapıştır yapmasına olanak tanıdı.\n\nBu yöntemle genetik hastalıkların embriyo aşamasında düzeltilmesi, tarımda yüksek verimli ürünler elde edilmesi ve hatta soyu tükenmiş canlıların geri getirilmesi teorik olarak mümkün hale geldi.\n\nAncak bu gücün etik sınırları büyük tartışma konusu. 'Tasarım bebekler' dönemi insanlığın doğal evrim sürecine yapılmış en tehlikeli müdahale olabilir mi?\n\nEvrimsel biyoloji perspektifinden bakıldığında türlerin doğal seçilim süreçlerini laboratuvar ortamında yapay zeka modelleriyle atlamak, uzun vadeli biyo-çeşitlilik üzerinde öngörülemez sonuçlar doğurma riski taşıyor." }
 ];
 
 async function gununMakalesiniYukle() {
@@ -1406,8 +1451,8 @@ async function heroSliderGuncelle() {
   } 
   
   heroSliderOlustur([
-      {title: "Yapay Zeka Otomobil Sektörünün Oyun Kurallarını Yeniden Yazıyor", description: "Otonom sürüş teknolojileri ve akıllı batarya yönetimi sistemlerinde yapay zekanın hakimiyeti artıyor. Geleneksel markalar rekabette zorlanıyor.", source_id: "TEKNOLOJİ & EKONOMİ", link: null}, 
-      {title: "Kuantum Şifreleme Ağlarında İlk Kıtalararası Başarı", description: "Avrupa ve Asya arasındaki fiber optik hatlarda kuantum anahtar dağıtımı (QKD) ile hacklenmesi imkansız ilk veri transferi gerçekleştirildi.", source_id: "KÜRESEL SİBER RAPOR", link: null}
+      {title: "Yapay Zeka Otomobil Sektörünün Oyun Kurallarını Yeniden Yazıyor", description: "Otonom sürüş teknolojileri ve akıllı batarya yönetimi sistemlerinde yapay zekanın hakimiyeti artıyor. Geleneksel markalar rekabette zorlanıyor.\n\nElektrikli araç pazarında Çinli üreticilerin sunduğu gelişmiş yazılım mimarileri, Avrupalı devleri yeni stratejiler geliştirmeye mecbur bırakıyor.", source_id: "TEKNOLOJİ & EKONOMİ", link: null}, 
+      {title: "Kuantum Şifreleme Ağlarında İlk Kıtalararası Başarı", description: "Avrupa ve Asya arasındaki fiber optik hatlarda kuantum anahtar dağıtımı (QKD) ile hacklenmesi imkansız ilk veri transferi gerçekleştirildi.\n\nFinansal verilerin korunması açısından çığır açıcı kabul edilen bu gelişme, global siber güvenlik standartlarının tamamen değişeceğinin sinyalini veriyor.", source_id: "KÜRESEL SİBER RAPOR", link: null}
   ]);
 }
 
@@ -1460,18 +1505,18 @@ async function savasHaberleriniGuncelle() {
       savasHaberleriOlustur(sH);
   } else {
       savasHaberleriOlustur([
-          { title: "Orta Doğu'da Çatışma Çemberi Genişliyor: İsrail - Lübnan Sınırında Sıcak Saatler", description: "İsrail ordusu ile Hizbullah güçleri arasında karşılıklı topçu atışları ve hava saldırıları şiddetini artırdı.\n\nBölgedeki gerilimin bölgesel bir savaşa evrilmemesi için Doğu Akdeniz'deki donanma unsurları teyakkuza geçirildi.", source_id: "Ortadoğu İstihbarat Ağı", link: null },
-          { title: "ABD ve İran Arasında Basra Körfezi'nde Stratejik Gerilim", description: "Hürmüz Boğazı'nda devriye gezen ABD Donanması'na ait muhripler ile İran Devrim Muhafızları arasında tehlikeli bir yakınlaşma yaşandı.", source_id: "Küresel Güvenlik Raporu", link: null },
-          { title: "Kızıldeniz'de Lojistik Kriz: Ticaret Rotaları Vuruluyor", description: "Yemen'deki Husi güçleri, Kızıldeniz üzerinden geçen ticari gemilere yönelik kamikaze dron ve balistik füze saldırılarına devam ediyor.", source_id: "Bölgesel Çatışma Analizi", link: null }
+          { title: "Orta Doğu'da Çatışma Çemberi Genişliyor: İsrail - Lübnan Sınırında Sıcak Saatler", description: "İsrail ordusu ile Hizbullah güçleri arasında karşılıklı topçu atışları ve hava saldırıları şiddetini artırdı.\n\nBölgedeki gerilimin bölgesel bir savaşa evrilmemesi için Doğu Akdeniz'deki donanma unsurları teyakkuza geçirildi. İstihbarat raporlarına göre sivil altyapıların isabet alması, sınır köylerinde büyük çaplı göç dalgalarını tetiklemiş durumda.\n\nBM Barış Gücü devriyeleri, sınır hattındaki hareketliliğin kontrolden çıkmasını engellemek üzere acil kriz yönetimi protokollerini devreye soktu. Bölgedeki sivil kayıplar endişe verici boyutlara ulaşıyor.", source_id: "Ortadoğu İstihbarat Ağı", link: null },
+          { title: "ABD ve İran Arasında Basra Körfezi'nde Stratejik Gerilim", description: "Hürmüz Boğazı'nda devriye gezen ABD Donanması'na ait muhripler ile İran Devrim Muhafızları arasında tehlikeli bir yakınlaşma yaşandı.\n\nKüresel petrol ticaretinin ana damarı konumundaki körfezde yaşanan bu taciz olayları, Brent petrol varil fiyatlarında gün içi dalgalanmalara yol açtı.\n\nKarşılıklı telsiz uyarılarıyla son anda önlenen olası bir çatışma, bölgedeki askeri hesaplaşmanın ne kadar kırılgan bir zeminde durduğunu bir kez daha gözler önüne serdi.", source_id: "Küresel Güvenlik Raporu", link: null },
+          { title: "Kızıldeniz'de Lojistik Kriz: Ticaret Rotaları Vuruluyor", description: "Yemen'deki Husi güçleri, Kızıldeniz üzerinden geçen ticari gemilere yönelik kamikaze dron ve balistik füze saldırılarına devam ediyor.\n\nUluslararası koalisyon güçleri hava savunma şemsiyesi oluştursa da, sigorta şirketlerinin artan risk primleri nedeniyle lojistik firmaları mecburen Ümit Burnu rotasına yöneliyor.\n\nBu durum Avrupa limanlarındaki kargo trafiğini durma noktasına getirirken, otomotiv sanayii ve teknoloji perakendecileri kısa vadeli tedarik krizleriyle yüzleşiyor.", source_id: "Bölgesel Çatışma Analizi", link: null }
       ]);
   }
 }
 
 const siyasetYedekHavuz = [
-    { k: "ANKARA KULİSİ", t: "Milli Savunma Stratejisi ve Yeni Teşvik Paketleri", m: "Yerli savunma sanayii ekosisteminin geliştirilmesi ve yarı iletken tedarik güvenliği kabinede masaya yatırıldı. Mikroçip üretiminde dışa bağımlılığın azaltılması hedefleniyor.", r: "https://images.unsplash.com/photo-1541887089-8b204df86b02", resimGercekMi: true },
-    { k: "SİBER GÜVENLİK", t: "Milli Siber Altyapı: Kuantum Şifreleme Dönemi Başlıyor", m: "Sağlık, Enerji ve İletişim Bakanlıklarının kritik veri altyapıları, tamamen milli Linux dağıtımı olan Pardus sunucularına ve yeni nesil kuantum şifreleme algoritmalarına taşınıyor.", r: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b", resimGercekMi: true },
-    { k: "DIŞ POLİTİKA", t: "Doğu Akdeniz'de Yeni Enerji ve Diplomasi Doktrini", m: "Türkiye'nin Doğu Akdeniz'deki sismik araştırma ve derin deniz sondaj faaliyetleri, bölgedeki yeni diplomatik müzakerelerin gölgesinde stratejik olarak yeniden şekilleniyor.", r: "https://images.unsplash.com/photo-1572004245648-522f7902146e", resimGercekMi: true },
-    { k: "MECLİS GÜNDEMİ", t: "Yapay Zeka Etik Yasası Komisyondan Geçti", m: "Bilişim ve Teknoloji Komisyonu'nda haftalardır tartışılan ulusal yapay zeka denetim yasası oy birliğiyle kabul edildi. Veri mahremiyeti güvence altına alınıyor.", r: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73", resimGercekMi: true }
+    { k: "ANKARA KULİSİ", t: "Milli Savunma Stratejisi ve Yeni Teşvik Paketleri", m: "Yerli savunma sanayii ekosisteminin geliştirilmesi ve yarı iletken tedarik güvenliği kabinede masaya yatırıldı. Mikroçip üretiminde dışa bağımlılığın azaltılması hedefleniyor.\n\nBu bağlamda teknokentlere verilecek olan yüksek katma değerli AR-GE teşviklerinin kapsamı genişletiliyor. Özellikle elektronik harp ve insansız hava/deniz araçlarında kullanılacak gömülü sistem (C#, C++ ve RTOS tabanlı) mühendisliği yatırımlarına stratejik öncelik verileceği kulislerde konuşuluyor.\n\nYeni yasal düzenleme ile bilişim bölümü öğrencileri ve yeni mezun mühendislere yönelik 'Milli Teknoloji Hamlesi' istihdam seferberliği başlatılması öngörülüyor.", r: "https://images.unsplash.com/photo-1541887089-8b204df86b02", resimGercekMi: true },
+    { k: "SİBER GÜVENLİK", t: "Milli Siber Altyapı: Kuantum Şifreleme Dönemi Başlıyor", m: "Sağlık, Enerji ve İletişim Bakanlıklarının kritik veri altyapıları, tamamen milli Linux dağıtımı olan Pardus sunucularına ve yeni nesil kuantum şifreleme algoritmalarına taşınıyor.\n\nUlusal Siber Olaylara Müdahale Merkezi (USOM) destekli yürütülen projede, sunucular arası veri akışında yüksek güvenlikli API entegrasyonları zorunlu hale getiriliyor.\n\nÖnümüzdeki üç yıl içerisinde kamu kurumlarındaki yabancı menşeli veritabanı yazılımlarının tamamen yerli alternatiflerle değiştirilmesi ve siber bağımsızlığın perçinlenmesi hedefleniyor.", r: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b", resimGercekMi: true },
+    { k: "DIŞ POLİTİKA", t: "Doğu Akdeniz'de Yeni Enerji ve Diplomasi Doktrini", m: "Türkiye'nin Doğu Akdeniz'deki sismik araştırma ve derin deniz sondaj faaliyetleri, bölgedeki yeni diplomatik müzakerelerin gölgesinde stratejik olarak yeniden şekilleniyor.\n\nYeni çıkarılan Mavi Vatan enerji konseptine göre sismik tarama filoları donanma eskortluğunda operasyonlarına hız kesmeden devam edecek. Ayrıca çıkarılan doğal gazın Avrupa pazarına taşınması için kurulacak yeni enerji hub'ı, bölgesel denklemde Türkiye'nin elini son derece güçlendiriyor.\n\nUzmanlar, bu adımın Avrupa'nın enerji krizine alternatif bir nefes borusu olacağını belirtiyor.", r: "https://images.unsplash.com/photo-1572004245648-522f7902146e", resimGercekMi: true },
+    { k: "MECLİS GÜNDEMİ", t: "Yapay Zeka Etik Yasası Komisyondan Geçti", m: "Bilişim ve Teknoloji Komisyonu'nda haftalardır tartışılan ulusal yapay zeka denetim yasası oy birliğiyle kabul edildi. Veri mahremiyeti güvence altına alınıyor.\n\nYeni yasa ile şirketlerin ticari sırları ve kişisel verilerin otonom sistemler (Büyük Dil Modelleri) tarafından işlenmesine katı denetimler getiriliyor. Geliştiriciler kullandıkları eğitim verilerinin şeffaflığını belgelemek zorunda kalacak.\n\nAvrupa Birliği'nin AI Act standartlarıyla uyumlu hale getirilen yasa tasarısının, yerli yapay zeka pazarındaki güveni artırması ve uluslararası yatırımları teşvik etmesi bekleniyor.", r: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73", resimGercekMi: true }
 ];
 
 async function siyasetHaberleriOlustur() {
@@ -1532,9 +1577,9 @@ async function siyasetHaberleriOlustur() {
 }
 
 const bilimHaberleriHavuzu = [
-    { title: "Nükleer Füzyon Reaktörlerinde Yapay Zeka ile Plazma İstikrarı Sağlandı", description: "ITER projesindeki bilim insanları, füzyon reaktörlerinin içindeki 150 milyon derecelik plazmayı kontrol etmek için yeni bir algoritma entegre ettiler.", source_id: "Avrupa Nükleer Araştırma Ajansı", link: null },
-    { title: "Oda Sıcaklığında Çalışabilen İlk Ticari Kuantum İşlemci Tanıtıldı", description: "Laboratuvarlar, mutlak sıfır soğutma sistemlerine ihtiyaç duymayan oda sıcaklığı kuantum işlemcisini piyasaya sürdü.", source_id: "Kuantum Teknolojileri Enstitüsü", link: null },
-    { title: "Yapay Zeka Destekli Proteomik Şifreleme ile Kişiselleştirilmiş Kanser Aşısı", description: "Biyoteknoloji laboratuvarları, kanserli hücrelerin yüzeyindeki mutasyonları 24 saat içinde tarayan yapay zeka motorunu devreye soktu.", source_id: "Global Biyomedikal Arşiv", link: null }
+    { title: "Nükleer Füzyon Reaktörlerinde Yapay Zeka ile Plazma İstikrarı Sağlandı", description: "ITER projesindeki bilim insanları, füzyon reaktörlerinin içindeki 150 milyon derecelik plazmayı kontrol etmek için yeni bir algoritma entegre ettiler.\n\nMakine öğrenmesi modelleri kullanılarak eğitilen yeni nesil algoritmalar, plazmadaki kararsızlıkları milisaniyeler öncesinden tespit ederek manyetik alanı anında yeniden düzenleyebiliyor.\n\nSınırsız, temiz ve güvenli füzyon enerjisinin şebekelere entegrasyonu yolunda bu gelişme, insanoğlunun enerji tarihindeki en büyük dönüm noktalarından biri olarak kabul ediliyor.", source_id: "Avrupa Nükleer Araştırma Ajansı", link: null },
+    { title: "Oda Sıcaklığında Çalışabilen İlk Ticari Kuantum İşlemci Tanıtıldı", description: "Laboratuvarlar, mutlak sıfır soğutma sistemlerine ihtiyaç duymayan oda sıcaklığı kuantum işlemcisini piyasaya sürdü.\n\nElmas tabanlı nitrojen-boşluk merkezleri kullanılarak geliştirilen bu mimari, devasa soğutma kuleleri olmadan standart sunucu kabinlerine kuantum gücünü getirmeyi hedefliyor.\n\nŞu anda kubit sayısı düşük olsa da lojistik, ilaç modelleme ve malzeme bilimi araştırmalarında inanılmaz bir hızlanma yaratması beklenen bu donanımlar teknoloji devlerini alarma geçirmiş durumda.", source_id: "Kuantum Teknolojileri Enstitüsü", link: null },
+    { title: "Yapay Zeka Destekli Proteomik Şifreleme ile Kişiselleştirilmiş Kanser Aşısı", description: "Biyoteknoloji laboratuvarları, kanserli hücrelerin yüzeyindeki mutasyonları 24 saat içinde tarayan yapay zeka motorunu devreye soktu.\n\nHastanın kendi genetik dizilimi ve tümör profilinden yola çıkarak mRNA tabanlı aşılar artık tamamen hastaya özel üretilebiliyor. Bağışıklık sistemi, bu aşılar sayesinde tümörlü hücreleri nokta atışıyla tanıyıp yok etme kapasitesine ulaşıyor.\n\nFaz 2 klinik deneylerinde elde edilen başarılı sonuçlar, onkolojide kemoterapisiz dönemin kapılarını aralıyor.", source_id: "Global Biyomedikal Arşiv", link: null }
 ];
 
 function bilimHaberleriOlustur(veriler) {
@@ -1573,10 +1618,10 @@ async function canliHaberleriCek() {
       canliHaberleriOlustur(res);
   } else {
       canliHaberleriOlustur([
-          {title:"Küresel İklim ve Enerji Mutabakatı Onaylandı", description:"Yenilenebilir akıllı şebekelere geçişi hızlandıracak dev altyapı fonu birleşmiş milletler nezdinde onaylandı.", source_id: "Birleşmiş Milletler", link: null}, 
-          {title:"Asya-Pasifik Yeni Pakt Anlaşması", description:"Yarı iletken tedarik zincirini güvence altına alan stratejik gümrük anlaşması imzalandı.", source_id: "Asya Ticaret Örgütü", link: null},
-          {title:"Avrupa Merkez Bankası'ndan Kritik Faiz Kararı", description:"Enflasyon endişeleri sebebiyle politika faizinde beklenmedik bir artışa gidildi.", source_id: "Ekonomi Masası", link: null},
-          {title:"Yapay Zeka Düzenlemeleri İçin Uluslararası Zirve", description:"Otonom sistemler ve veri mahremiyeti konusunda global standartlar belirleniyor.", source_id: "Teknoloji Radar", link: null}
+          {title:"Küresel İklim ve Enerji Mutabakatı Onaylandı", description:"Yenilenebilir akıllı şebekelere geçişi hızlandıracak dev altyapı fonu birleşmiş milletler nezdinde onaylandı.\n\nKurulan uluslararası fon sayesinde özellikle gelişmekte olan ülkelerdeki fosil yakıt bağımlılığının 2035 yılına kadar yarı yarıya düşürülmesi planlanıyor. Temiz enerji depolama ve batarya geri dönüşüm teknolojilerine ayrılan bütçe rekor seviyede.\n\nSürdürülebilirlik ilkelerinin teknolojik üretimle entegre edilmesi, küresel ticaret kotalarını da doğrudan etkileyecek.", source_id: "Birleşmiş Milletler", link: null}, 
+          {title:"Asya-Pasifik Yeni Pakt Anlaşması", description:"Yarı iletken tedarik zincirini güvence altına alan stratejik gümrük anlaşması imzalandı.\n\nUzak Doğu'nun ekonomik devleri, aralarındaki teknoloji kısıtlamalarını esneterek Amerika ve Avrupa'ya karşı yeni bir ekonomik cephe oluşturuyor.\n\nYapay zeka donanımları ve lityum-iyon piller gibi kritik kalemlerdeki vergi muafiyetleri, teknoloji borsalarında sert yükselişlere neden oldu. Dünya ekonomisinin sıklet merkezi doğuya kaymaya devam ediyor.", source_id: "Asya Ticaret Örgütü", link: null},
+          {title:"Avrupa Merkez Bankası'ndan Kritik Faiz Kararı", description:"Enflasyon endişeleri sebebiyle politika faizinde beklenmedik bir artışa gidildi.\n\nEnerji krizinin ve navlun fiyatlarındaki artışın tetiklediği üretici fiyat endeksindeki (ÜFE) yükseliş, AMB'yi şahin adımlar atmaya mecbur bıraktı.\n\nPiyasalar, faiz artışının kredi faizlerini yukarı çekmesiyle yatırım ikliminde yaşanacak daralmayı fiyatlarken, Euro para birimi Dolar karşısında kısa süreli bir ivmelenme yaşadı.", source_id: "Ekonomi Masası", link: null},
+          {title:"Yapay Zeka Düzenlemeleri İçin Uluslararası Zirve", description:"Otonom sistemler ve veri mahremiyeti konusunda global standartlar belirleniyor.\n\nDevlet başkanları ve teknoloji devlerinin CEO'ları katılımıyla gerçekleşen zirvede, askeri yapay zeka sistemlerinin denetimi ve sentetik medya (deepfake) manipülasyonlarına karşı ortak acil eylem planı onaylandı.\n\nİnternetin tamamen AI tabanlı bir içerik denizine dönüşmemesi adına, üretken modellere dijital filigran zorunluluğu getirilmesi hedefleniyor.", source_id: "Teknoloji Radar", link: null}
       ]);
   }
 }
@@ -1608,11 +1653,11 @@ function canliHaberleriOlustur(veriler) {
 }
 
 const sporHaberleriHavuzu = [
-    { k: "SÜPER LİG", t: "Fenerbahçe'de Yeni Sezon Yapılanması Hız Kazandı", m: "UEFA Şampiyonlar Ligi ön eleme turları öncesinde sarı-lacivertli ekip transfer çalışmalarına hız verdi.", resim: "https://images.unsplash.com/photo-1518605368461-1e1e3eceb516" },
-    { k: "AVRUPA ŞAMPİYONASI", t: "A Milli Takım'da Taktik Provalar Sürüyor", m: "Uluslararası turnuva öncesi hazırlık kampını sürdüren takım, son taktik antrenmanda geçiş hücumları üzerinde durdu.", resim: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55" },
-    { k: "SPOR EKONOMİSİ", t: "Kulüplerin Dijital Gelirlerinde Rekor Artış", m: "Kulüp kartları, dijital taraftar tokenları ve lisanslı e-ticaret satışları kulüplerin bütçesinde kritik bir paya ulaştı.", resim: "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e" },
-    { k: "BASKETBOL", t: "Avrupa Arenasında Kritik Dörtlü Final Eşleşmeleri", m: "THY Avrupa Ligi'nde heyecan dorukta. Temsilcilerimizin de yer aldığı çeyrek final serileri tamamlanmak üzere.", resim: "https://images.unsplash.com/photo-1504450758481-7338eba7524a" },
-    { k: "E-SPOR", t: "Küresel E-Spor Turnuvasında Türk Takımı Fırtınası", m: "Dünyanın en büyük uluslararası taktiksel nişancı turnuvasında mücadele eden Türk temsilcisi, grup aşamasını namağlup lider tamamladı.", resim: "https://images.unsplash.com/photo-1542751371-adc38448a05e" }
+    { k: "SÜPER LİG", t: "Fenerbahçe'de Yeni Sezon Yapılanması Hız Kazandı", m: "UEFA Şampiyonlar Ligi ön eleme turları öncesinde sarı-lacivertli ekip transfer çalışmalarına hız verdi.\n\nTeknik heyetin sunduğu detaylı veri analizi raporları doğrultusunda, özellikle orta saha ve hücum hattı arasındaki geçiş oyununu hızlandıracak takviyeler üzerinde duruluyor. Kulüp yönetimi, geçmiş yıllardaki istatistiksel verileri baz alarak dinamik bir kadro mühendisliği yürütüyor.\n\nSıkışık fikstürde takımın fiziksel dayanıklılığını üst seviyede tutmak adına modern antrenman metotları ve yeni nesil kondisyon cihazları tesislere entegre edildi. Taraftarların beklentisi, bu sezon hem yerel ligde hem de Avrupa arenasında dominant bir oyun anlayışının sahaya yansıtılması yönünde.", resim: "https://images.unsplash.com/photo-1518605368461-1e1e3eceb516" },
+    { k: "AVRUPA ŞAMPİYONASI", t: "A Milli Takım'da Taktik Provalar Sürüyor", m: "Uluslararası turnuva öncesi hazırlık kampını sürdüren takım, son taktik antrenmanda geçiş hücumları üzerinde durdu.\n\nTeknik direktör liderliğindeki ekip, kanat organizasyonları ve merkezden pres mekanizmaları üzerinde yoğun mesai harcıyor. Oyuncuların dar alandaki paslaşmaları ve fiziksel dayanıklılık seviyeleri sağlık heyeti tarafından detaylı olarak ölçümleniyor.\n\nTurnuvada gruptan çıkma hedefiyle yola çıkan Milliler, defansif hataları minimize etmek için yoğun video analizi seansları gerçekleştiriyor.", resim: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55" },
+    { k: "SPOR EKONOMİSİ", t: "Kulüplerin Dijital Gelirlerinde Rekor Artış", m: "Kulüp kartları, dijital taraftar tokenları ve lisanslı e-ticaret satışları kulüplerin bütçesinde kritik bir paya ulaştı.\n\nMaç günü bilet satışlarının yanı sıra markaların e-spor takımları üzerinden ve özel NFT koleksiyonlarından kazandığı gelirler devasa boyutlara vardı. Yönetim kurulları, Z kuşağına ulaşmak için stadyum içi sanal gerçeklik tecrübeleri ve artırılmış gerçeklik destekli mobil uygulamalara ciddi yatırımlar yapıyor.\n\nDijitalleşmeye ayak uyduramayan köklü kulüplerin ekonomik rekabette geriye düşeceği finans otoritelerince vurgulanıyor.", resim: "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e" },
+    { k: "BASKETBOL", t: "Avrupa Arenasında Kritik Dörtlü Final Eşleşmeleri", m: "THY Avrupa Ligi'nde heyecan dorukta. Temsilcilerimizin de yer aldığı çeyrek final serileri tamamlanmak üzere.\n\nZorlu deplasman serilerinde gösterilen dirençli savunma ve yüksek isabetli dış atış yüzdesi takımlarımıza avantaj sağladı. Final Four yolunda rakibin taktiksel kurgusunu bozmayı hedefleyen antrenörler, pota altı sertliğini artırarak ribaund üstünlüğünü kurmayı planlıyor.\n\nBasketbolseverler, ekran başında saniye saniye şut saatini takip ederken, Avrupa kupasının bir kez daha ülkemize gelip gelmeyeceğini büyük bir merakla bekliyor.", resim: "https://images.unsplash.com/photo-1504450758481-7338eba7524a" },
+    { k: "E-SPOR", t: "Küresel E-Spor Turnuvasında Türk Takımı Fırtınası", m: "Dünyanın en büyük uluslararası taktiksel nişancı turnuvasında mücadele eden Türk temsilcisi, grup aşamasını namağlup lider tamamladı.\n\nÖzellikle Valorant ve CS2 gibi üst düzey refleks ve milisaniyelik karar alma yetisi gerektiren FPS (First Person Shooter) arenasında, takımımızın gösterdiği stratejik derinlik otoritelerden tam not aldı. Oyuncuların harita kontrolleri, oyun içi infoları ve kritik anlardaki soğukkanlılıkları rakiplerine adeta nefes aldırmadı.\n\nAyrıca bulut oyun altyapısı ve düşük ping avantajı sağlayan yeni nesil fiber şebekelerin gelişimi, yerli oyuncuların mekanik yeteneklerini en üst seviyeye çıkarmasında büyük rol oynuyor. Temsilcimizin yarı final maçları on binlerce kişi tarafından canlı yayınla takip edilecek.", resim: "https://images.unsplash.com/photo-1542751371-adc38448a05e" }
 ];
 
 async function futbolHaberleriGuncelle() {
@@ -1643,12 +1688,12 @@ async function futbolHaberleriGuncelle() {
 }
 
 const tHavuz = [
-  { d: "Göktürkler", t: "Orhun Yazıtları'ndaki Stratejik Şifreler", m: "Bilge Kağan ve Kül Tigin adına dikilen yazıtlar, bir devletin krizlerden nasıl çıkacağını anlatan diplomatik bir manifesto niteliğindedir.", r: "https://images.unsplash.com/photo-1564399580075-5dfe19c205f3" },
-  { d: "Babür İmparatorluğu", t: "Ateşli Silahlar ve Hint Altkıtasının Dönüşümü", m: "Babür Şah'ın Panipat Muharebesi'nde topçu arabası ve tüfekli asker düzeni, askeri strateji tarihini kökten değiştirmiştir.", r: "https://images.unsplash.com/photo-1620612668583-0498707db0bc" },
-  { d: "Selçuklular", t: "Nizamülmülk ve Siyasetname Paradigması", m: "Nizamülmülk'ün kaleme aldığı Siyasetname eseri, devlet aklının ve istihbarat teşkilatlanmasının yazılı anayasası olmuştur.", r: "https://images.unsplash.com/photo-1568213816046-0ee1c42bd559" },
-  { d: "Avrasya Tarihi", t: "İpek Yolu Üzerindeki Erken Siber-Lojistik Altyapı", m: "Mete Han döneminden itibaren kervansaraylar ve ulak sistemleri, Asya'nın en hızlı bilgi aktarım ağını oluşturarak üstünlük sağladı.", r: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf" },
-  { d: "Yakın Tarih", t: "Enver Paşa ve Kafkas İslam Ordusu Harekatı", m: "Nuri Paşa komutasındaki ordu, zorlu lojistik şartlara rağmen, Türk dünyasının doğu kapısını güvence altına alarak tarihi bir zafere imza atmıştır.", r: "https://images.unsplash.com/photo-1596726270631-cbb612f02931" },
-  { d: "Dünya Tarihi", t: "Endülüs'te Bilimsel Rönesansın Doğuşu", m: "Kurtuba Kütüphanesi'ndeki matematik ve astronomi çevirileri, Avrupa'nın karanlık çağdan çıkışının tetikleyicisi olmuştu.", r: "https://images.unsplash.com/photo-1549427301-44703a95bf84" }
+  { d: "Göktürkler", t: "Orhun Yazıtları'ndaki Stratejik Şifreler", m: "Bilge Kağan ve Kül Tigin adına dikilen yazıtlar, bir devletin krizlerden nasıl çıkacağını anlatan diplomatik bir manifesto niteliğindedir.\n\nTaşlara kazınan metinler sadece askeri zaferleri övmez; bilakis, Çin entrikalarına karşı nasıl tedbir alınması gerektiğini, boylar arası birliğin önemini ve yöneticilerin halkına hesap vermesi gerektiğini (kut anlayışı) en şeffaf haliyle ortaya koyar.\n\nYazıtlar, Türk dili ve medeniyetinin o dönemde sahip olduğu yüksek ifade gücünü, devlet felsefesini ve tarih bilincini yansıtan en kadim yol gösterici pusuladır.", r: "https://images.unsplash.com/photo-1564399580075-5dfe19c205f3" },
+  { d: "Babür İmparatorluğu", t: "Ateşli Silahlar ve Hint Altkıtasının Dönüşümü", m: "Babür Şah'ın Panipat Muharebesi'nde topçu arabası ve tüfekli asker düzeni, askeri strateji tarihini kökten değiştirmiştir.\n\nSultan İbrahim Lodi'nin devasa fil ordusuna karşı, Babür'ün Osmanlı'dan ilham alarak uyguladığı araba (tabur) düzeni ve ateşli silah kullanımı teknolojik üstünlüğün sayısal çokluğa galip geldiği anların en somut örneğidir.\n\nBu zafer sadece askeri değil, mimari ve kültürel olarak da Hint altkıtasına muazzam bir Rönesans yaşatacak olan Babür İmparatorluğu'nun tohumlarını atmıştır.", r: "https://images.unsplash.com/photo-1620612668583-0498707db0bc" },
+  { d: "Selçuklular", t: "Nizamülmülk ve Siyasetname Paradigması", m: "Nizamülmülk'ün kaleme aldığı Siyasetname eseri, devlet aklının ve istihbarat teşkilatlanmasının yazılı anayasası olmuştur.\n\nAlparslan ve Melikşah dönemlerinde başvezirlik yapan Nizamülmülk, nizamiye medreselerini kurarak ilim ile devlet idaresini birbirine bağlamış, Hasan Sabbah ve Bâtınilik gibi asimetrik tehditlere karşı fikri bir cephe inşa etmiştir.\n\nDevlet memurlarının seçimi, istihbarat (berid) teşkilatının gizliliği ve vergi sisteminin adaleti üzerine yazdığı satırlar, günümüz siyaset bilimcileri tarafından hâlâ devlet idaresi başucu eseri olarak kabul edilmektedir.", r: "https://images.unsplash.com/photo-1568213816046-0ee1c42bd559" },
+  { d: "Avrasya Tarihi", t: "İpek Yolu Üzerindeki Erken Siber-Lojistik Altyapı", m: "Mete Han döneminden itibaren kervansaraylar ve ulak sistemleri, Asya'nın en hızlı bilgi aktarım ağını oluşturarak üstünlük sağladı.\n\nGünümüz fiber optik kablolarının veri ilettiği gibi, atlı ulaklar belirli menzillerdeki (yam) dinlenme istasyonlarında at değiştirerek Asya'nın bir ucundan diğerine haberalma ve ticaret akışını kesintisiz hale getirdiler.\n\nBu lojistik harikası; Çin'den Avrupa'ya sadece ipek ve baharatın değil, aynı zamanda barut, pusula, matbaa ve medeniyet tasavvurlarının taşınmasını sağlamış, dünya ticaret ağının ilk interneti olarak tarihe geçmiştir.", r: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf" },
+  { d: "Yakın Tarih", t: "Enver Paşa ve Kafkas İslam Ordusu Harekatı", m: "Nuri Paşa komutasındaki ordu, zorlu lojistik şartlara rağmen, Türk dünyasının doğu kapısını güvence altına alarak tarihi bir zafere imza atmıştır.\n\n1918 yılında Harbiye Nazırı Enver Paşa'nın stratejik vizyonu doğrultusunda kurulan Kafkas İslam Ordusu, sadece askeri bir harekat değil, aynı zamanda jeopolitik bir varoluş mücadelesiydi. Bolşevik ve Ermeni Taşnak çetelerin işgali altındaki Bakü'nün kurtarılması, Hazar Denizi'nin enerji kaynaklarının ve stratejik limanlarının güvenliği açısından hayati öneme sahipti.\n\nAskerlerin kavurucu iklim koşulları, mühimmat eksikliği ve lojistik darboğazlara rağmen gösterdiği sarsılmaz irade, askeri harp akademilerinde bugün bile ders olarak okutulmaktadır. Bu harekat, Türk dünyasının fiziksel bağlarını yeniden tesis eden ve bağımsız Azerbaycan'ın temellerini atan en kritik adımlardan biri olarak tarihteki şanlı yerini almıştır.", r: "https://images.unsplash.com/photo-1596726270631-cbb612f02931" },
+  { d: "Dünya Tarihi", t: "Endülüs'te Bilimsel Rönesansın Doğuşu", m: "Kurtuba Kütüphanesi'ndeki matematik ve astronomi çevirileri, Avrupa'nın karanlık çağdan çıkışının tetikleyicisi olmuştu.\n\nAntik Yunan ve Roma felsefesi metinlerinin Arapçaya, oradan da Latinceye çevrilmesiyle Avrupa kaybettiği bilgi mirasıyla Endülüs Emevileri sayesinde yeniden tanıştı.\n\nTıp (İbn Sina), optik (İbn el-Heysem) ve cebir alanlarındaki buluşlar bu köprü üzerinden aktarılarak bugünkü modern bilimsel metodolojinin ve üniversite sistemlerinin doğmasına öncülük etmiştir.", r: "https://images.unsplash.com/photo-1549427301-44703a95bf84" }
 ];
 
 function tarihiOlaylariYenile() {
@@ -1666,26 +1711,26 @@ function tarihiOlaylariYenile() {
 }
 
 const tarihteBugunVerileri = {
-  "1 Ocak": "1 Ocak 1923 — Türkiye Futbol Federasyonu (TFF) Yusuf Ziya Öniş başkanlığında kuruldu.",
-  "11 Ocak": "11 Ocak 1055 — Tuğrul Bey komutasındaki Büyük Selçuklu Ordusu Bağdat'a girdi.",
-  "18 Mart": "18 Mart 1915 — Çanakkale Deniz Zaferi. Nusret Mayın Gemisi ve topçu birlikleri İtilaf donanmasına geçit vermedi.",
-  "23 Nisan": "23 Nisan 1920 — Türkiye Büyük Millet Meclisi (TBMM) Ankara'da açıldı.",
-  "29 Mayıs": "29 Mayıs 1453 — Fatih Sultan Mehmet komutasındaki Osmanlı Ordusu İstanbul'u fethetti. Doğu Roma İmparatorluğu yıkıldı.",
-  "26 Ağustos": "26 Ağustos 1071 / 1922 — Sultan Alparslan komutasındaki Selçuklu Ordusu Malazgirt Zaferi'ni kazandı.",
-  "30 Ağustos": "30 Ağustos 1922 — Başkomutanlık Meydan Muharebesi (Dumlupınar) zaferle sonuçlandı.",
-  "29 Ekim": "29 Ekim 1923 — Cumhuriyet ilan edildi. Gazi Mustafa Kemal Atatürk, Türkiye'nin ilk Cumhurbaşkanı seçildi.",
-  "10 Kasım": "10 Kasım 1938 — Türkiye Cumhuriyeti'nin kurucusu Gazi Mustafa Kemal Atatürk hayata gözlerini yumdu."
+  "1 Ocak": "1 Ocak 1923 — Türkiye Futbol Federasyonu (TFF) Yusuf Ziya Öniş başkanlığında kuruldu.\n\nTürk sporunun kurumsallaşması adına atılan bu ilk adım, cumhuriyetin ilanından önce bile milli spor teşkilatlanmasının ne kadar önemsendiğini gösteriyor. İlk milli maç ise bu tarihten sadece aylar sonra, 26 Ekim 1923'te Romanya ile oynanacaktır.",
+  "11 Ocak": "11 Ocak 1055 — Tuğrul Bey komutasındaki Büyük Selçuklu Ordusu Bağdat'a girdi.\n\nAbbasi Halifeliğini Büveyhilerin tahakkümünden kurtaran bu tarihi hamle ile Tuğrul Bey'e 'Doğu'nun ve Batı'nın Sultanı' unvanı verilmiş, İslam dünyasının siyasi ve askeri liderliği resmen Türklere geçmiştir.",
+  "18 Mart": "18 Mart 1915 — Çanakkale Deniz Zaferi.\n\nNusret Mayın Gemisi'nin boğaza zekice döşediği mayın hattı ve kıyıdaki topçu bataryalarının kahramanca direnişi, dünyanın en güçlü zırhlı donanmalarını boğazın karanlık sularına gömdü. 'Çanakkale Geçilmez' destanının denizdeki büyük mührüdür.",
+  "23 Nisan": "23 Nisan 1920 — Türkiye Büyük Millet Meclisi (TBMM) Ankara'da açıldı.\n\nİşgal altındaki bir ülkede 'Egemenlik kayıtsız şartsız milletindir' şiarıyla kurulan meclis, Kurtuluş Savaşı'nı bizzat yöneten dünyadaki tek 'Gazi' meclistir. Aynı zamanda millet iradesinin devlete dönüştüğü tarihtir.",
+  "29 Mayıs": "29 Mayıs 1453 — Fatih Sultan Mehmet komutasındaki Osmanlı Ordusu İstanbul'u fethetti.\n\nOrta Çağ'ı kapatıp Yeni Çağ'ı başlatan bu fetih, dev topların surları yıkabileceğini göstererek Avrupa'daki feodalitenin de sonunu hazırlamıştır. İstanbul, Doğu ve Batı sentezinin yeni küresel başkenti oldu.",
+  "26 Ağustos": "26 Ağustos 1071 / 1922 — Malazgirt ve Büyük Taarruz.\n\nTesadüfün ötesinde bir kader birliği: 1071'de Sultan Alparslan'ın Malazgirt Zaferi ile Anadolu'nun kapıları Türklere açılırken, tam 851 yıl sonra aynı gün Gazi Mustafa Kemal Atatürk'ün başlattığı Büyük Taarruz ile Anadolu'nun sonsuza dek Türk yurdu kalacağı tüm dünyaya ilan edilmiştir.",
+  "30 Ağustos": "30 Ağustos 1922 — Başkomutanlık Meydan Muharebesi (Dumlupınar) zaferle sonuçlandı.\n\nYunan ordusunun ana kuvvetlerinin imha edildiği ve esir alındığı bu zafer, Kurtuluş Savaşı'nın askeri safhasını bitiren en kesin darbedir. Atatürk'ün 'Ordular ilk hedefiniz Akdeniz'dir, ileri!' emriyle Anadolu işgalden tamamen temizlenmiştir.",
+  "29 Ekim": "29 Ekim 1923 — Cumhuriyet ilan edildi.\n\nGazi Mustafa Kemal Atatürk'ün önderliğinde, meclis oylamasıyla 'Türkiye Devleti'nin hükümet şekli Cumhuriyettir' maddesi anayasaya eklendi. Atatürk Türkiye'nin ilk Cumhurbaşkanı seçilerek modern devletin inşası resmiyet kazandı.",
+  "10 Kasım": "10 Kasım 1938 — Türkiye Cumhuriyeti'nin kurucusu Gazi Mustafa Kemal Atatürk hayata gözlerini yumdu.\n\nBedeni aramızdan ayrılsa da, fikirleri, ilke ve inkılapları, kurduğu bağımsız devletin temellerinde ve Türk milletinin kalbinde sonsuza dek yaşamaya devam edecektir."
 };
 
 const dunyaTarihiVerileri = {
-  "18 Haziran": "18 Haziran 1815 — Waterloo Muharebesi'nde Napolyon Bonapart kesin bir yenilgiye uğradı.",
-  "28 Haziran": "28 Haziran 1914 — Avusturya Arşidükü Franz Ferdinand Saraybosna'da suikasta uğradı."
+  "18 Haziran": "18 Haziran 1815 — Waterloo Muharebesi.\n\nNapolyon Bonapart'ın Avrupa'ya yeniden hakim olma hayalleri, Belçika kırsalındaki bu savaşta İngiliz ve Prusya ordularının koalisyonu tarafından kesin olarak bitirilmiştir. Avrupa haritasını yüzyıl boyunca şekillendirecek olan Viyana Kongresi düzeninin tescilidir.",
+  "28 Haziran": "28 Haziran 1914 — Saraybosna Suikastı.\n\nAvusturya Arşidükü Franz Ferdinand ve eşinin, Sırp milliyetçisi Gavrilo Princip tarafından öldürülmesi. Bu kurşun, Avrupa'daki ittifak zincirlerini tetikleyerek milyonlarca insanın ölümüne sebep olacak olan I. Dünya Savaşı'nın fitilini ateşlemiştir."
 };
 
 const genelDunyaHavuzu = [
-  "12 Ekim 1492 — Kristof Kolomb Amerika'yı keşfetti ve Yeni Dünya'nın kapılarını araladı.",
-  "20 Temmuz 1969 — Apollo 11 göreviyle Neil Armstrong Ay'a ayak basan ilk insan oldu.",
-  "9 Kasım 1989 — Soğuk Savaş'ın sembolü olan Berlin Duvarı yıkıldı."
+  "12 Ekim 1492 — Kristof Kolomb Amerika'yı keşfetti.\n\nHindistan'a ulaşmak amacıyla yola çıkan Kolomb, Bahamalar'a ulaşarak Yeni Dünya'nın kapılarını araladı. Bu rastlantısal keşif, küresel ticaretin eksenini Akdeniz'den Atlantik'e kaydırarak dünya tarihini tamamen değiştirdi.",
+  "20 Temmuz 1969 — İnsanoğlu Ay'da.\n\nApollo 11 göreviyle Neil Armstrong Ay yüzeyine ayak basan ilk insan oldu. 'Benim için küçük, insanlık için dev bir adım' sözüyle özetlenen bu an, Soğuk Savaş dönemindeki Uzay Yarışı'nın Amerika lehine kazanıldığı sembolik zirvedir.",
+  "9 Kasım 1989 — Berlin Duvarı yıkıldı.\n\nSoğuk Savaş'ın, bölünmüşlüğün ve 'Demir Perde'nin en büyük sembolü olan duvar, Doğu Alman vatandaşlarının baskısıyla yıkıldı. Bu olay, Sovyetler Birliği'nin dağılma sürecini hızlandırmış ve iki Almanya'nın birleşmesini sağlamıştır."
 ];
 
 function tarihteBugunYukle() {
@@ -1712,7 +1757,7 @@ function tarihteBugunYukle() {
       olayMetni = secilenOlay;
   }
   
-  document.getElementById('tb-olay-metni').innerHTML = `${etiket} <span style="display:block; margin-top:5px;">${olayMetni}</span>`;
+  document.getElementById('tb-olay-metni').innerHTML = `${etiket} <span style="display:block; margin-top:5px;">${olayMetni.replace(/\n\n/g, "<br><br>")}</span>`;
 }
 
 const devSoruHavuzu = [
@@ -1866,7 +1911,6 @@ window.addEventListener('load', () => {
               const h = window.haberKash[urlHaber];
               makaleAc(h.kat, h.bas, h.met, h.kay, h.link, true);
           } else {
-              // Mevcut SPA yapısında API'den dönen güncel havuzda haber yoksa (Örn: Eski bir link tıklanmışsa)
               alert("Uyarı: Tıkladığınız bağlantıdaki haberin süresi dolmuş veya arşivde olabilir.");
               history.pushState(null, '', window.location.pathname);
           }
