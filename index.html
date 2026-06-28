@@ -387,8 +387,13 @@ footer {
   position: sticky; top: 0; z-index: 20; 
   background: var(--kart-bg); 
   padding: 1rem 0; 
-  margin-bottom: 1rem; 
-  border-bottom: 1px solid var(--cizgi); 
+  margin-bottom: 2rem; 
+  border-bottom: 1px solid var(--cizgi);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 .geri-don-btn { 
   background: none; border: none; cursor: pointer; 
@@ -398,18 +403,44 @@ footer {
 }
 .geri-don-btn:hover { color: var(--kizil); }
 
-.modal-header-kisim { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;}
-.modal-kapat { font-size: 24px; color: var(--ikincil); cursor: pointer; background: rgba(0,0,0,0.05); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: none; z-index: 10; transition: var(--gecis);}
-[data-theme="dark"] .modal-kapat { background: rgba(255,255,255,0.1); }
-.modal-kapat:hover { background: var(--kizil); color: #fff; transform: rotate(90deg);}
-.modal-kategori { font-size: 12px; font-weight: 700; color: var(--altin); display: inline-block; background: rgba(200,150,58,0.1); padding: 6px 12px; border-radius: 6px; text-transform: uppercase;}
+.modal-aksiyonlar { display: flex; gap: 8px; flex-wrap: wrap; }
+.modal-kategori { font-size: 12px; font-weight: 700; color: var(--altin); display: inline-block; background: rgba(200,150,58,0.1); padding: 6px 12px; border-radius: 6px; text-transform: uppercase; margin-bottom: 15px;}
 .kaydet-btn { background: none; border: 1px solid var(--ikincil); color: var(--ikincil); padding: 6px 12px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; transition: var(--gecis); display: flex; align-items: center; gap: 5px; }
 .kaydet-btn:hover { background: var(--altin); color: #fff; border-color: var(--altin); }
 .kaydet-btn.kaydedildi { background: var(--lacivert); color: var(--altin); border-color: var(--lacivert); }
-.modal-baslik { font-size: 30px; font-weight: 700; color: var(--lacivert); line-height: 1.3; margin-bottom: 15px; }
-.modal-meta { display: flex; flex-wrap: wrap; gap: 15px; font-size: 14px; color: var(--ucuncul); font-weight: 500; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid var(--cizgi); }
-.modal-metin { font-size: 16px; color: var(--yazi); line-height: 1.8; }
-.modal-metin p { margin-bottom: 1.5rem; text-align: justify; }
+.modal-baslik { font-size: 36px; font-weight: 800; color: var(--lacivert); line-height: 1.25; margin-bottom: 20px; letter-spacing: -0.5px; }
+.modal-meta { display: flex; flex-wrap: wrap; gap: 20px; font-size: 14px; color: var(--ucuncul); font-weight: 600; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid var(--cizgi); text-transform: uppercase; letter-spacing: 0.5px; align-items: center;}
+.modal-meta span { display: flex; align-items: center; gap: 6px; }
+
+.modal-hero-resim {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+@media(max-width: 768px) {
+  .modal-hero-resim { height: 250px; }
+}
+
+.modal-metin {
+  font-size: 1.15rem;
+  color: var(--yazi);
+  line-height: 1.9;
+  letter-spacing: 0.2px;
+}
+.modal-metin p { margin-bottom: 1.8rem; text-align: left; }
+.modal-metin p:first-of-type::first-letter {
+  float: left;
+  font-size: 4rem;
+  line-height: 0.85;
+  font-weight: 800;
+  color: var(--kizil);
+  margin-right: 12px;
+  margin-top: 6px;
+  font-family: 'Georgia', serif;
+}
 
 .ilgili-haberler-alani { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--cizgi); }
 .ilgili-haberler-alani h4 { font-size: 20px; font-weight: 700; color: var(--lacivert); margin-bottom: 1.5rem; }
@@ -628,7 +659,7 @@ footer {
         
         <image href="https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg" x="0" y="0" width="1000" height="507" opacity="0.85" id="jeopolitik-harita-img" />
         
-        <g class="harita-nokta" onclick="makaleAc('RADAR','Orta Doğu Kriz Hattı','Bölgedeki sınır çatışmaları ve askeri hareketlilik artıyor.\n\nSon 48 saat içerisinde karşılıklı topçu atışlarında gözle görülür bir artış yaşanırken, bölge halkı güvenli alanlara tahliye ediliyor.\n\nUluslararası gözlemciler, sivil altyapıların hedef alınmasının diplomatik çözüm yollarını tamamen tıkayabileceği konusunda uyarıyor.','Analiz Masası')" style="cursor:pointer">
+        <g class="harita-nokta" onclick="makaleAc('RADAR','Orta Doğu Kriz Hattı','Bölgedeki sınır çatışmaları ve askeri hareketlilik artıyor.\n\nSon 48 saat içerisinde karşılıklı topçu atışlarında gözle görülür bir artış yaşanırken, bölge halkı güvenli alanlara tahliye ediliyor.\n\nUluslararası gözlemciler, sivil altyapıların hedef alınmasının diplomatik çözüm yollarını tamamen tıkayabileceği konusunda uyarıyor.','Analiz Masası', null, false, 'https://images.unsplash.com/photo-1518770660439-4636190af475')" style="cursor:pointer">
           <circle cx="583" cy="180" r="6" fill="#C0392B" opacity="0.9"/>
           <circle cx="583" cy="180" r="11" fill="none" stroke="#C0392B" stroke-width="2" opacity="0.5">
             <animate attributeName="r" values="6;16;6" dur="1.5s" repeatCount="indefinite"/>
@@ -637,7 +668,7 @@ footer {
           <text x="583" y="165" text-anchor="middle" fill="#fff" font-size="11" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">İsrail-Lübnan</text>
         </g>
         
-        <g class="harita-nokta" onclick="makaleAc('RADAR','Doğu Avrupa Sınır Tahkimatı','Sınır hattı boyunca hava devriyeleri yoğunlaştırıldı.\n\nÖzellikle drone ve insansız hava araçlarının sınır ihlalleri yapması, iki tarafın hava savunma sistemlerini teyakkuza geçirdi.\n\nNATO ve bölge ülkeleri, artan bu elektronik ve konvansiyonel hareketliliğin, olası bir enerji krizine dönüşmesini engellemek adına yoğun bir kriz masası toplantısı düzenliyor.','Analiz Masası')" style="cursor:pointer">
+        <g class="harita-nokta" onclick="makaleAc('RADAR','Doğu Avrupa Sınır Tahkimatı','Sınır hattı boyunca hava devriyeleri yoğunlaştırıldı.\n\nÖzellikle drone ve insansız hava araçlarının sınır ihlalleri yapması, iki tarafın hava savunma systems teyakkuza geçirdi.\n\nNATO ve bölge ülkeleri, artan bu elektronik ve konvansiyonel hareketliliğin, olası bir enerji krizine dönüşmesini engellemek adına yoğun bir kriz masası toplantısı düzenliyor.','Analiz Masası', null, false, 'https://images.unsplash.com/photo-1612831455740-a2f6cb1252ae')" style="cursor:pointer">
           <circle cx="560" cy="120" r="6" fill="#C0392B" opacity="0.9"/>
           <circle cx="560" cy="120" r="11" fill="none" stroke="#C0392B" stroke-width="2" opacity="0.5">
             <animate attributeName="r" values="6;16;6" dur="1.5s" repeatCount="indefinite"/>
@@ -646,7 +677,7 @@ footer {
           <text x="560" y="105" text-anchor="middle" fill="#fff" font-size="11" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Doğu Avrupa</text>
         </g>
         
-        <g class="harita-nokta" onclick="makaleAc('RADAR','Tayvan Boğazı Gerilimi','Karşılıklı deniz devriyeleri uluslararası ticareti tehdit ediyor.\n\nKüresel mikroçip tedarikinin kalbi konumundaki bu dar su yolu üzerindeki askeri hareketlilik, teknoloji şirketlerini yeni üretim alternatifleri aramaya itiyor.\n\nDiplomatik çevreler, kazara yaşanabilecek küçük bir ateşlemenin dahi, zincirleme bir küresel reaksiyon başlatabileceğini belirtiyor.','Analiz Masası')" style="cursor:pointer">
+        <g class="harita-nokta" onclick="makaleAc('RADAR','Tayvan Boğazı Gerilimi','Karşılıklı deniz devriyeleri uluslararası ticareti tehdit ediyor.\n\nKüresel mikroçip tedarikinin kalbi konumundaki bu dar su yolu üzerindeki askeri hareketlilik, teknoloji şirketlerini yeni üretim alternatifleri aramaya itiyor.\n\nDiplomatik çevreler, kazara yaşanabilecek küçük bir ateşlemenin dahi, zincirleme bir küresel reaksiyon başlatabileceğini belirtiyor.','Analiz Masası', null, false, 'https://images.unsplash.com/photo-1504711434969-e33886168f5c')" style="cursor:pointer">
           <circle cx="833" cy="214" r="6" fill="#C0392B" opacity="0.9"/>
           <circle cx="833" cy="214" r="11" fill="none" stroke="#C0392B" stroke-width="2" opacity="0.5">
             <animate attributeName="r" values="6;16;6" dur="1.5s" repeatCount="indefinite"/>
@@ -655,7 +686,7 @@ footer {
           <text x="833" y="199" text-anchor="middle" fill="#fff" font-size="11" font-family="Outfit,sans-serif" font-weight="700" style="pointer-events:none">Tayvan</text>
         </g>
         
-        <g class="harita-nokta" onclick="makaleAc('RADAR','Kızıldeniz Ticaret Hattı','Ticari gemilere yönelik müdahaleler lojistiği tıkıyor.\n\nSüveyş Kanalı bağlantılı deniz taşımacılığının sekteye uğraması, navlun fiyatlarında son ayların en sert yükselişine sebep oldu.\n\nBirçok küresel lojistik devi, rotasını Ümit Burnu üzerinden güneye uzatmak zorunda kaldı, bu durum özellikle Avrupa pazarında emtia tedarik zincirinde belirgin bir yavaşlama ve maliyet enflasyonu yaratıyor.','Analiz Masası')" style="cursor:pointer">
+        <g class="harita-nokta" onclick="makaleAc('RADAR','Kızıldeniz Ticaret Hattı','Ticari gemilere yönelik müdahaleler lojistiği tıkıyor.\n\nSüveyş Kanalı bağlantılı deniz taşımacılığının sekteye uğraması, navlun fiyatlarında son ayların en sert yükselişine sebep oldu.\n\nBirçok küresel lojistik devi, rotasını Ümit Burnu üzerinden güneye uzatmak zorunda kaldı, bu durum özellikle Avrupa pazarında emtia tedarik zincirinde belirgin bir yavaşlama ve maliyet enflasyonu yaratıyor.','Analiz Masası', null, false, 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf')" style="cursor:pointer">
           <circle cx="597" cy="225" r="6" fill="#C0392B" opacity="0.9"/>
           <circle cx="597" cy="225" r="11" fill="none" stroke="#C0392B" stroke-width="2" opacity="0.5">
             <animate attributeName="r" values="6;16;6" dur="1.5s" repeatCount="indefinite"/>
@@ -680,9 +711,9 @@ footer {
       <div class="bolum-baslik"><div class="bolum-sembol">📡</div><h2>Sıcak Radar</h2></div>
       <div class="catisma-radar">
         <div class="cr-baslik"><div class="cr-dot"></div>Sıcak Çatışma Radarı</div>
-        <div class="cr-madde" onclick="makaleAc('RADAR', 'Kızıldeniz Tedarik Hattı Baskı Altında', 'Ticari gemilerin seyrüsefer sistemlerine yönelik yanıltıcı sinyal müdahaleleri sürüyor.\n\nBölgedeki deniz taşımacılığı şirketleri, güvenlik endişeleri sebebiyle rotalarını Ümit Burnu üzerinden güneye kaydırmak zorunda kalıyor. Bu alternatif rota, teslimat sürelerini ortalama 12 ila 15 gün uzatıyor.\n\nUzmanlar, lojistik gecikmelerin kısa vadede küresel konteyner ve navlun fiyatlarında %30 oranında artışa neden olabileceği konusunda uyarıyor. Avrupalı üretim tesisleri ise parça eksikliği yüzünden geçici üretime ara verme senaryolarını değerlendiriyor.', 'Bölge Raporu')"><div class="bolge">🌐 Kızıldeniz</div><h5>Kızıldeniz Tedarik Hattı Baskı Altında</h5></div>
-        <div class="cr-madde" onclick="makaleAc('RADAR', 'Doğu Avrupa Sınır Hattı Tahkimat Süreci', 'Bölgede lojistik destek ve ikmal yolları üzerindeki insansız hava aracı devriyeleri artırıldı.\n\nSınır hattı boyunca yeni nesil elektronik harp sistemleri ve hava savunma bataryaları aktif konuma getirildi. Radarlar, düşük irtifalı hava unsurlarını tespit etmek üzere hassaslaştırıldı.\n\nKritik enerji altyapısına yönelik potansiyel sabotaj girişimlerine karşı özel güvenlik protokolleri uygulamaya konuldu. Kış aylarına yaklaşırken, sınır hatlarındaki bu gergin bekleyiş, bölgesel enerji tedarik zincirlerinin güvenilirliğini bir kez daha sorgulatıyor.', 'Bölge Raporu')"><div class="bolge">🇪🇺 Doğu Avrupa</div><h5>Sınır Hattı Tahkimat Süreci</h5></div>
-        <div class="cr-madde" style="border-bottom:none;" onclick="makaleAc('RADAR', 'Tayvan Boğazı Askeri Tatbikatları', 'Bölgede gerilim tırmanıyor. Karşılıklı deniz devriyeleri ve hava ihlalleri iddiaları peş peşe geliyor.\n\nUluslararası deniz ticaretinin yaklaşık beşte birinin geçtiği bu dar koridorda yaşanan sivil ve askeri gemi yakınlaşmaları, bölgedeki diplomatik temasların hızlanmasına yol açtı.\n\nStratejik olarak dünyanın en büyük çip üretim tesislerine ev sahipliği yapan bölge, küresel teknoloji tedariğini derinden tehdit etme potansiyeline sahip. Tüketici elektroniğinden otomotiv sanayisine kadar pek çok sektör, buradaki krizi yakından ve endişeyle takip ediyor.', 'Pasifik Güvenlik Ajansı')"><div class="bolge">🌏 Asya-Pasifik</div><h5>Tayvan Boğazı Askeri Tatbikatları</h5></div>
+        <div class="cr-madde" onclick="makaleAc('RADAR', 'Kızıldeniz Tedarik Hattı Baskı Altında', 'Ticari gemilerin seyrüsefer sistemlerine yönelik yanıltıcı sinyal müdahaleleri sürüyor.\n\nBölgedeki deniz taşımacılığı şirketleri, güvenlik endişeleri sebebiyle rotalarını Ümit Burnu üzerinden güneye kaydırmak zorunda kalıyor. Bu alternatif rota, teslimat sürelerini ortalama 12 ila 15 gün uzatıyor.\n\nUzmanlar, lojistik gecikmelerin kısa vadede küresel konteyner ve navlun fiyatlarında %30 oranında artışa neden olabileceği konusunda uyarıyor. Avrupalı üretim tesisleri ise parça eksikliği yüzünden geçici üretime ara verme senaryolarını değerlendiriyor.', 'Bölge Raporu', null, false, 'https://images.unsplash.com/photo-1518770660439-4636190af475')"><div class="bolge">🌐 Kızıldeniz</div><h5>Kızıldeniz Tedarik Hattı Baskı Altında</h5></div>
+        <div class="cr-madde" onclick="makaleAc('RADAR', 'Doğu Avrupa Sınır Hattı Tahkimat Süreci', 'Bölgede lojistik destek ve ikmal yolları üzerindeki insansız hava aracı devriyeleri artırıldı.\n\nSınır hattı boyunca yeni nesil elektronik harp sistemleri ve hava savunma bataryaları aktif konuma getirildi. Radarlar, düşük irtifalı hava unsurlarını tespit etmek üzere hassaslaştırıldı.\n\nKritik enerji altyapısına yönelik potansiyel sabotaj girişimlerine karşı özel güvenlik protokolleri uygulamaya konuldu. Kış aylarına yaklaşırken, sınır hatlarındaki bu gergin bekleyiş, bölgesel enerji tedarik zincirlerinin güvenilirliğini bir kez daha sorgulatıyor.', 'Bölge Raporu', null, false, 'https://images.unsplash.com/photo-1612831455740-a2f6cb1252ae')"><div class="bolge">🇪🇺 Doğu Avrupa</div><h5>Sınır Hattı Tahkimat Süreci</h5></div>
+        <div class="cr-madde" style="border-bottom:none;" onclick="makaleAc('RADAR', 'Tayvan Boğazı Askeri Tatbikatları', 'Bölgede gerilim tırmanıyor. Karşılıklı deniz devriyeleri ve hava ihlalleri iddiaları peş peşe geliyor.\n\nUluslararası deniz ticaretinin yaklaşık beşte birinin geçtiği bu dar koridorda yaşanan sivil ve askeri gemi yakınlaşmaları, bölgedeki diplomatik temasların hızlanmasına yol açtı.\n\nStratejik olarak dünyanın en büyük çip üretim tesislerine ev sahipliği yapan bölge, küresel teknoloji tedariğini derinden tehdit etme potansiyeline sahip. Tüketici elektroniğinden otomotiv sanayisine kadar pek çok sektör, buradaki krizi yakından ve endişeyle takip ediyor.', 'Pasifik Güvenlik Ajansı', null, false, 'https://images.unsplash.com/photo-1504711434969-e33886168f5c')"><div class="bolge">🌏 Asya-Pasifik</div><h5>Tayvan Boğazı Askeri Tatbikatları</h5></div>
       </div>
     </div>
   </div>
@@ -747,24 +778,22 @@ footer {
     <div class="modal-icerik">
       <div class="haber-ust-cubuk">
         <button onclick="modalKapat()" class="geri-don-btn">← Ana Sayfaya Dön</button>
-      </div>
-      <div class="modal-header-kisim">
-         <div class="modal-kategori" id="modal-kat">KATEGORİ</div>
-         <div style="display:flex; gap: 8px; flex-wrap:wrap;">
+        <div class="modal-aksiyonlar">
              <button class="kaydet-btn" id="modal-ses-btn" onclick="haberiSeslendir()">🔊 Dinle</button>
              <button class="kaydet-btn" id="modal-wp-btn" onclick="haberiPaylas('whatsapp')">💬 WP</button>
              <button class="kaydet-btn" id="modal-x-btn" onclick="haberiPaylas('twitter')">🐦 X</button>
              <button class="kaydet-btn" id="modal-link-btn" style="display:none;">Habere Git ↗</button>
              <button class="kaydet-btn" id="modal-kaydet-btn" onclick="haberiKaydetToggle()">🔖 Kaydet</button>
-             <button class="modal-kapat" onclick="modalKapat()">✖</button>
-         </div>
+        </div>
       </div>
+      <div class="modal-kategori" id="modal-kat">KATEGORİ</div>
       <h2 class="modal-baslik" id="modal-baslik">Haber Başlığı</h2>
       <div class="modal-meta">
           <span id="modal-tarih"></span>
-          <span id="modal-okuma-suresi" style="color:var(--kizil); font-weight:700;"></span>
+          <span id="modal-okuma-suresi" style="color:var(--kizil);"></span>
           <span id="modal-kaynak"></span>
       </div>
+      <div id="modal-resim-alan"></div>
       <div class="modal-metin" id="modal-metin"></div>
       <div class="ilgili-haberler-alani" id="ilgili-alan">
         <h4>İlgili Haberleri Keşfet</h4>
@@ -1167,6 +1196,7 @@ function okumaListesiniAc() {
     document.getElementById('modal-wp-btn').style.display = 'none';
     document.getElementById('modal-x-btn').style.display = 'none';
     document.getElementById('ilgili-alan').style.display = 'none';
+    document.getElementById('modal-resim-alan').style.display = 'none';
     
     const metinAlan = document.getElementById('modal-metin');
     metinAlan.innerHTML = ''; 
@@ -1177,7 +1207,7 @@ function okumaListesiniAc() {
         liste.forEach((m) => {
             const div = document.createElement('div'); div.className = 'okuma-listesi-kart';
             const h5 = document.createElement('h5'); h5.textContent = m.baslik;
-            h5.addEventListener('click', () => makaleAc(m.kat, m.baslik, m.metin, m.kaynak, m.link));
+            h5.addEventListener('click', () => makaleAc(m.kat, m.baslik, m.metin, m.kaynak, m.link, false, m.resim));
             const silBtn = document.createElement('button'); silBtn.className = 'okuma-sil-btn'; silBtn.textContent = '✖';
             silBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -1193,7 +1223,7 @@ function okumaListesiniAc() {
     document.body.style.overflow = 'hidden';
 }
 
-function makaleAc(kat, bas, met, kay, link, isPopState = false) {
+function makaleAc(kat, bas, met, kay, link, isPopState = false, resim = null) {
   if (!bas) return; 
   if(sesSentezi.speaking) sesSentezi.cancel(); document.getElementById('modal-ses-btn').textContent = "🔊 Dinle";
   
@@ -1214,30 +1244,35 @@ function makaleAc(kat, bas, met, kay, link, isPopState = false) {
 
   const guvenliBas = guvenliMetin(bas);
   const guvenliMetinIcerik = guvenliMetin(met);
+  const gosterilecekResim = resim || 'https://images.unsplash.com/photo-1451187580459-43490279c0fa';
   
   // URL senkronizasyonu
   document.title = guvenliBas + " | TuranHaber";
   if (!isPopState) {
       const slug = turlestir(guvenliBas);
-      history.pushState({kat, bas: guvenliBas, met: guvenliMetinIcerik, kay: guvenliMetin(kay), link}, '', '?haber=' + slug);
+      history.pushState({kat, bas: guvenliBas, met: guvenliMetinIcerik, kay: guvenliMetin(kay), link, resim: gosterilecekResim}, '', '?haber=' + slug);
   }
   
-  // URL'den direkt gelindiyse referans tutmak için havuza atıyoruz
   const refSlug = turlestir(guvenliBas);
-  window.haberKash[refSlug] = {kat, bas: guvenliBas, met: guvenliMetinIcerik, kay: guvenliMetin(kay), link};
+  window.haberKash[refSlug] = {kat, bas: guvenliBas, met: guvenliMetinIcerik, kay: guvenliMetin(kay), link, resim: gosterilecekResim};
 
   const kelimeSayisi = guvenliMetinIcerik.split(/\s+/).length;
   const okumaSuresiDk = Math.max(1, Math.ceil(kelimeSayisi / 180));
-  document.getElementById('modal-okuma-suresi').textContent = `⏳ ~${okumaSuresiDk} Dk Okuma`;
+  document.getElementById('modal-okuma-suresi').innerHTML = `<span>⏱️</span> ~${okumaSuresiDk} Dk Okuma`;
 
-  aktifMakaleObjesi = { kat, baslik: guvenliBas, metin: guvenliMetinIcerik, kaynak: guvenliMetin(kay), link: link };
+  aktifMakaleObjesi = { kat, baslik: guvenliBas, metin: guvenliMetinIcerik, kaynak: guvenliMetin(kay), link: link, resim: gosterilecekResim };
   document.getElementById('modal-kat').textContent = kat;
   document.getElementById('modal-baslik').textContent = guvenliBas;
   
+  // Resim Ekleme Alanı
+  const resimAlan = document.getElementById('modal-resim-alan');
+  resimAlan.style.display = 'block';
+  resimAlan.innerHTML = `<img src="${gorselUrlOptimize(gosterilecekResim)}" class="modal-hero-resim" alt="Haber Görseli">`;
+  
   document.getElementById('modal-metin').innerHTML = String(guvenliMetinIcerik).split('\n').filter(p=>p.trim()!=='').map(p=>`<p>${p}</p>`).join('');
   
-  document.getElementById('modal-tarih').textContent = `${bugunTarihi.getDate()} ${aylar[bugunTarihi.getMonth()]} ${bugunTarihi.getFullYear()}`;
-  document.getElementById('modal-kaynak').innerHTML = `<strong>Kaynak:</strong> ${guvenliMetin(kay)}`;
+  document.getElementById('modal-tarih').innerHTML = `<span>🗓️</span> ${bugunTarihi.getDate()} ${aylar[bugunTarihi.getMonth()]} ${bugunTarihi.getFullYear()}`;
+  document.getElementById('modal-kaynak').innerHTML = `<span>🏢</span> <strong>Kaynak:</strong> ${guvenliMetin(kay)}`;
   
   const btn = document.getElementById('modal-kaydet-btn');
   if(okumaListesiniGetir().some(m => m.baslik === guvenliBas)) {
@@ -1249,7 +1284,7 @@ function makaleAc(kat, bas, met, kay, link, isPopState = false) {
   const ig = document.getElementById('ilgili-haberler-grid'); ig.innerHTML = '';
   [{t:"Tedarik Zincirinde Rota Arayışları", k:"Ekonomi"}, {t:"Yarı İletken Pazarında Rekabet", k:"Teknoloji"}, {t:"Yapay Zeka ve Veri Yasaları", k:"Hukuk"}].sort(()=>0.5-Math.random()).slice(0,3).forEach(ih => {
      const k = document.createElement('div'); k.className = 'ilgili-kart';
-     k.onclick = () => makaleAc(ih.k, ih.t, "Detaylı analiz veritabanından çekiliyor. Bölgesel dinamikler ve uluslararası ticaret yollarındaki değişimler bu süreçte belirleyici olacak.\n\nYeni nesil tedarik zinciri modellerinin önümüzdeki 10 yıl içinde tamamen dijitalleşmesi bekleniyor.\n\nSektörel araştırmalar, yapay zeka destekli süreç yönetiminin (API entegrasyonları, bulut sistemleri) maliyetleri %40'a kadar düşüreceğini gösteriyor. Yatırımcılar özellikle teknolojik altyapısını hızla yenileyebilen aktörlere odaklanmış durumda.", "Arşiv", null);
+     k.onclick = () => makaleAc(ih.k, ih.t, "Detaylı analiz veritabanından çekiliyor. Bölgesel dinamikler ve uluslararası ticaret yollarındaki değişimler bu süreçte belirleyici olacak.\n\nYeni nesil tedarik zinciri modellerinin önümüzdeki 10 yıl içinde tamamen dijitalleşmesi bekleniyor.\n\nSektörel araştırmalar, yapay zeka destekli süreç yönetiminin maliyetleri %40'a kadar düşüreceğini gösteriyor.", "Arşiv", null, false, 'https://images.unsplash.com/photo-1451187580459-43490279c0fa');
      k.innerHTML = `<span class="i-kaynak">${ih.k}</span><h5>${ih.t}</h5>`;
      ig.appendChild(k);
   });
@@ -1273,7 +1308,7 @@ function modalKapat(isPopState = false) {
 // Tarayıcı Geri/İleri Tuşları İşleyicisi
 window.addEventListener('popstate', (e) => {
     if (e.state && e.state.bas) {
-        makaleAc(e.state.kat, e.state.bas, e.state.met, e.state.kay, e.state.link, true);
+        makaleAc(e.state.kat, e.state.bas, e.state.met, e.state.kay, e.state.link, true, e.state.resim);
     } else {
         modalKapat(true);
     }
@@ -1357,9 +1392,9 @@ async function gununMakalesiniYukle() {
    if (mutlakGunIndeksi < gunlukMakaleler.length) {
        const makale = gunlukMakaleler[mutlakGunIndeksi];
        const sure = Math.max(1, Math.ceil(makale.m.split(/\s+/).length / 180));
-       alan.onclick = () => makaleAc('GÜNÜN MAKALESİ', makale.t, makale.m, 'TuranHaber Bilim Arşivi', null);
+       alan.onclick = () => makaleAc('GÜNÜN MAKALESİ', makale.t, makale.m, 'TuranHaber Bilim Arşivi', null, false, makale.r);
        alan.innerHTML = `<div class="gm-resim" style="background-image: url('${gorselUrlOptimize(makale.r)}')"></div><div class="gm-icerik"><span class="gm-etiket">✦ ${makale.e}</span><h3 class="gm-baslik">${makale.t}</h3><p class="gm-metin">${makale.m.substring(0, 150)}...</p><div class="gm-okuma-suresi">⏳ ~${sure} Dk Okuma</div></div>`;
-       window.haberKash[turlestir(makale.t)] = {kat: 'GÜNÜN MAKALESİ', bas: makale.t, met: makale.m, kay: 'TuranHaber Bilim Arşivi', link: null};
+       window.haberKash[turlestir(makale.t)] = {kat: 'GÜNÜN MAKALESİ', bas: makale.t, met: makale.m, kay: 'TuranHaber Bilim Arşivi', link: null, resim: makale.r};
    } else {
        try {
            let res = await apiIstekAt(`${WORKER_URL}/?kategori=science`);
@@ -1370,18 +1405,18 @@ async function gununMakalesiniYukle() {
                let resimUrl = haberdenResimCikar(yepyeniMakale) || "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa";
                const sure = Math.max(1, Math.ceil((yepyeniMakale.description || "").split(/\s+/).length / 180));
                
-               alan.onclick = () => makaleAc('GÜNÜN MAKALESİ', yepyeniMakale.title, yepyeniMakale.description, yepyeniMakale.source_id, yepyeniMakale.link);
+               alan.onclick = () => makaleAc('GÜNÜN MAKALESİ', yepyeniMakale.title, yepyeniMakale.description, yepyeniMakale.source_id, yepyeniMakale.link, false, resimUrl);
                alan.innerHTML = `<div class="gm-resim" style="background-image: url('${gorselUrlOptimize(resimUrl)}')"></div><div class="gm-icerik"><span class="gm-etiket">✦ KÜRESEL GÜNDEM</span><h3 class="gm-baslik">${guvenliMetin(yepyeniMakale.title)}</h3><p class="gm-metin">${guvenliMetin(yepyeniMakale.description).substring(0, 150)}...</p><div class="gm-okuma-suresi">⏳ ~${sure} Dk Okuma</div></div>`;
-               window.haberKash[turlestir(yepyeniMakale.title)] = {kat: 'GÜNÜN MAKALESİ', bas: yepyeniMakale.title, met: yepyeniMakale.description, kay: yepyeniMakale.source_id, link: yepyeniMakale.link};
+               window.haberKash[turlestir(yepyeniMakale.title)] = {kat: 'GÜNÜN MAKALESİ', bas: yepyeniMakale.title, met: yepyeniMakale.description, kay: yepyeniMakale.source_id, link: yepyeniMakale.link, resim: resimUrl};
            } else {
                throw new Error("API boş döndü.");
            }
        } catch(err) {
            const yedekMakale = gunlukMakaleler[mutlakGunIndeksi % gunlukMakaleler.length];
            const sure = Math.max(1, Math.ceil(yedekMakale.m.split(/\s+/).length / 180));
-           alan.onclick = () => makaleAc('GÜNÜN MAKALESİ', yedekMakale.t, yedekMakale.m, 'TuranHaber Arşivi', null);
+           alan.onclick = () => makaleAc('GÜNÜN MAKALESİ', yedekMakale.t, yedekMakale.m, 'TuranHaber Arşivi', null, false, yedekMakale.r);
            alan.innerHTML = `<div class="gm-resim" style="background-image: url('${gorselUrlOptimize(yedekMakale.r)}')"></div><div class="gm-icerik"><span class="gm-etiket">✦ ${yedekMakale.e}</span><h3 class="gm-baslik">${yedekMakale.t}</h3><p class="gm-metin">${yedekMakale.m.substring(0, 150)}...</p><div class="gm-okuma-suresi">⏳ ~${sure} Dk Okuma</div></div>`;
-           window.haberKash[turlestir(yedekMakale.t)] = {kat: 'GÜNÜN MAKALESİ', bas: yedekMakale.t, met: yedekMakale.m, kay: 'TuranHaber Arşivi', link: null};
+           window.haberKash[turlestir(yedekMakale.t)] = {kat: 'GÜNÜN MAKALESİ', bas: yedekMakale.t, met: yedekMakale.m, kay: 'TuranHaber Arşivi', link: null, resim: yedekMakale.r};
        }
    }
 }
@@ -1403,10 +1438,14 @@ function heroSliderOlustur(veriler) {
         const rawUrl = resimUrl || sahte[i%sahte.length];
         
         sl.style.backgroundImage = `url('${gorselUrlOptimize(rawUrl)}')`;
-        sl.onclick = () => makaleAc('MANŞET', h.title, h.description||'', h.source_id, h.link);
+        sl.onclick = () => {
+            const bg = sl.style.backgroundImage;
+            const currentResim = bg.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+            makaleAc('MANŞET', h.title, h.description||'', h.source_id, h.link, false, currentResim);
+        };
         sl.innerHTML = `<div class="hero-icerik"><div class="hero-etiket">⚡ ${guvenliMetin(h.source_id)}</div><h2 class="hero-baslik">${guvenliMetin(h.title)}</h2><p class="hero-ozet">${guvenliMetin(h.description)}</p></div>`;
         al.appendChild(sl);
-        window.haberKash[turlestir(h.title)] = {kat: 'MANŞET', bas: h.title, met: h.description||'', kay: h.source_id, link: h.link};
+        window.haberKash[turlestir(h.title)] = {kat: 'MANŞET', bas: h.title, met: h.description||'', kay: h.source_id, link: h.link, resim: rawUrl};
     
         if (resimUrl) {
            const dummyImg = new Image();
@@ -1476,8 +1515,11 @@ function savasHaberleriOlustur(veriler) {
           const imgId = `sk-img-${Date.now()}-${i}`;
           
           const c = document.createElement('div'); 
-          c.onclick = () => makaleAc('SAVAŞ', h.title, h.description, h.source_id, h.link);
-          window.haberKash[turlestir(h.title)] = {kat: 'SAVAŞ', bas: h.title, met: h.description, kay: h.source_id, link: h.link};
+          c.onclick = () => {
+              const currentResim = document.getElementById(imgId) ? document.getElementById(imgId).src : gosterilecekUrl;
+              makaleAc('SAVAŞ', h.title, h.description, h.source_id, h.link, false, currentResim);
+          };
+          window.haberKash[turlestir(h.title)] = {kat: 'SAVAŞ', bas: h.title, met: h.description, kay: h.source_id, link: h.link, resim: gosterilecekUrl};
           
           const imgHtml = `<img id="${imgId}" class="sk-resim" src="${gosterilecekUrl}" onerror="this.src='${gorselUrlOptimize(sahte[i%3])}'">`;
           
@@ -1547,8 +1589,12 @@ async function siyasetHaberleriOlustur() {
         const anaImgId = `sa-img-${Date.now()}`;
         
         anaDiv.className = 'siyaset-ana-kart';
-        anaDiv.onclick = () => makaleAc('SİYASET', anaHaber.t, anaHaber.m, anaHaber.k, anaHaber.link);
-        window.haberKash[turlestir(anaHaber.t)] = {kat: 'SİYASET', bas: anaHaber.t, met: anaHaber.m, kay: anaHaber.k, link: anaHaber.link};
+        anaDiv.onclick = () => {
+            const bg = document.getElementById(anaImgId).style.backgroundImage;
+            const currentResim = bg.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+            makaleAc('SİYASET', anaHaber.t, anaHaber.m, anaHaber.k, anaHaber.link, false, currentResim);
+        };
+        window.haberKash[turlestir(anaHaber.t)] = {kat: 'SİYASET', bas: anaHaber.t, met: anaHaber.m, kay: anaHaber.k, link: anaHaber.link, resim: anaHaber.r};
         anaDiv.innerHTML = `<div id="${anaImgId}" class="sa-resim" style="background-image: url('${gorselUrlOptimize(anaHaber.r)}')"></div><div class="sa-icerik"><span class="sa-etiket">⚡ ${anaHaber.k}</span><h3>${anaHaber.t}</h3><p>${anaHaber.m}</p></div>`;
         alan.appendChild(anaDiv);
         
@@ -1563,8 +1609,12 @@ async function siyasetHaberleriOlustur() {
             const yanImgId = `sy-img-${Date.now()}-${i}`;
             
             yanDiv.className = 'siyaset-yan-kart';
-            yanDiv.onclick = () => makaleAc('SİYASET', h.t, h.m, h.k, h.link);
-            window.haberKash[turlestir(h.t)] = {kat: 'SİYASET', bas: h.t, met: h.m, kay: h.k, link: h.link};
+            yanDiv.onclick = () => {
+                const bg = document.getElementById(yanImgId).style.backgroundImage;
+                const currentResim = bg.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+                makaleAc('SİYASET', h.t, h.m, h.k, h.link, false, currentResim);
+            };
+            window.haberKash[turlestir(h.t)] = {kat: 'SİYASET', bas: h.t, met: h.m, kay: h.k, link: h.link, resim: h.r};
             yanDiv.innerHTML = `<div id="${yanImgId}" class="sy-resim" style="background-image: url('${gorselUrlOptimize(h.r)}')"></div><div class="sy-icerik"><span class="sy-etiket">${h.k}</span><h4>${h.t}</h4><p>${h.m}</p></div>`;
             yanListe.appendChild(yanDiv);
             
@@ -1594,8 +1644,12 @@ function bilimHaberleriOlustur(veriler) {
          const imgId = `bo-img-${Date.now()}-${idx}`;
           
          const c = document.createElement('div'); c.className = `bilim-ozel-kart anim-up goster`; c.style.transitionDelay = `${idx*0.1}s`;
-         c.onclick = () => makaleAc('BİLİM', h.title, h.description, h.source_id, h.link);
-         window.haberKash[turlestir(h.title)] = {kat: 'BİLİM', bas: h.title, met: h.description, kay: h.source_id, link: h.link};
+         c.onclick = () => {
+             const currentResim = document.getElementById(imgId) ? document.getElementById(imgId).src : gosterilecekUrl;
+             makaleAc('BİLİM', h.title, h.description, h.source_id, h.link, false, currentResim);
+         };
+         window.haberKash[turlestir(h.title)] = {kat: 'BİLİM', bas: h.title, met: h.description, kay: h.source_id, link: h.link, resim: gosterilecekUrl};
+         
          c.innerHTML = `<img id="${imgId}" class="bo-resim" src="${gosterilecekUrl}" onerror="this.src='${gorselUrlOptimize(sahte[idx%3])}'">
                         <div class="bo-ulke">🔬 KÜRESEL BİLİM RAPORU</div><h4>${guvenliMetin(h.title)}</h4><p>${guvenliMetin(h.description)}</p>`;
          grid.appendChild(c);
@@ -1640,8 +1694,12 @@ function canliHaberleriOlustur(veriler) {
         const imgId = `dk-img-${Date.now()}-${idx}`;
     
         const c = document.createElement('div'); c.className = 'dunya-kart anim-up goster'; c.style.transitionDelay = `${idx*0.1}s`;
-        c.onclick = () => makaleAc('DÜNYA', h.title, h.description, h.source_id, h.link);
-        window.haberKash[turlestir(h.title)] = {kat: 'DÜNYA', bas: h.title, met: h.description, kay: h.source_id, link: h.link};
+        c.onclick = () => {
+            const currentResim = document.getElementById(imgId) ? document.getElementById(imgId).src : proxyUrl;
+            makaleAc('DÜNYA', h.title, h.description, h.source_id, h.link, false, currentResim);
+        };
+        window.haberKash[turlestir(h.title)] = {kat: 'DÜNYA', bas: h.title, met: h.description, kay: h.source_id, link: h.link, resim: proxyUrl};
+        
         c.innerHTML = `<div class="dk-resim-wrapper"><img id="${imgId}" src="${proxyUrl}" class="dk-resim" alt="${attrGuvenli(h.title)}" onerror="${onerrorKodu}"></div><div class="dk-serit"></div><div class="dk-icerik"><div class="dk-catisma-yazi">🌐 KÜRESEL AKIŞ</div><h4>${guvenliMetin(h.title)}</h4><p>${guvenliMetin(h.description)}</p></div>`;
         alan.appendChild(c);
         
@@ -1674,8 +1732,12 @@ async function futbolHaberleriGuncelle() {
         const imgId = `smk-img-spor-${Date.now()}-${idx}`;
         
         const c = document.createElement('div'); c.className = 'standart-makale-kart anim-up goster'; c.style.transitionDelay = `${idx*0.1}s`;
-        c.onclick = () => makaleAc('FUTBOL', h.t, h.m, "TuranHaber Spor Departmanı", h.link);
-        window.haberKash[turlestir(h.t)] = {kat: 'FUTBOL', bas: h.t, met: h.m, kay: "TuranHaber Spor Departmanı", link: h.link};
+        c.onclick = () => {
+            const currentResim = document.getElementById(imgId) ? document.getElementById(imgId).src : gosterilecekUrl;
+            makaleAc('FUTBOL', h.t, h.m, "TuranHaber Spor Departmanı", h.link, false, currentResim);
+        };
+        window.haberKash[turlestir(h.t)] = {kat: 'FUTBOL', bas: h.t, met: h.m, kay: "TuranHaber Spor Departmanı", link: h.link, resim: gosterilecekUrl};
+        
         c.innerHTML = `<div class="smk-serit spor-renk"></div>
                        <div class="smk-resim-wrapper"><img id="${imgId}" class="smk-resim" src="${gosterilecekUrl}" onerror="this.src='${gorselUrlOptimize(sahte[idx%3])}'"></div>
                        <div class="smk-icerik"><span class="smk-badge spor-badge">${h.k}</span><h4>${h.t}</h4><p>${h.m}</p></div>`;
@@ -1701,8 +1763,9 @@ function tarihiOlaylariYenile() {
     grid.innerHTML = '';
     [...tHavuz].sort(()=>0.5-Math.random()).slice(0,3).forEach((o, idx) => {
         const c = document.createElement('div'); c.className = 'standart-makale-kart anim-up goster'; c.style.transitionDelay = `${idx*0.1}s`;
-        c.onclick = () => makaleAc('TARİH', o.t, o.m, "Tarih & Kültür Araştırmaları Merkezi", null);
-        window.haberKash[turlestir(o.t)] = {kat: 'TARİH', bas: o.t, met: o.m, kay: "Tarih & Kültür Araştırmaları Merkezi", link: null};
+        c.onclick = () => makaleAc('TARİH', o.t, o.m, "Tarih & Kültür Araştırmaları Merkezi", null, false, o.r);
+        window.haberKash[turlestir(o.t)] = {kat: 'TARİH', bas: o.t, met: o.m, kay: "Tarih & Kültür Araştırmaları Merkezi", link: null, resim: o.r};
+        
         c.innerHTML = `<div class="smk-serit"></div>
                        <div class="smk-resim-wrapper"><img class="smk-resim" src="${gorselUrlOptimize(o.r)}"></div>
                        <div class="smk-icerik"><span class="smk-badge">${o.d}</span><h4>${o.t}</h4><p>${o.m}</p></div>`;
@@ -1909,7 +1972,7 @@ window.addEventListener('load', () => {
       if (urlHaber) {
           if(window.haberKash && window.haberKash[urlHaber]) {
               const h = window.haberKash[urlHaber];
-              makaleAc(h.kat, h.bas, h.met, h.kay, h.link, true);
+              makaleAc(h.kat, h.bas, h.met, h.kay, h.link, true, h.resim);
           } else {
               alert("Uyarı: Tıkladığınız bağlantıdaki haberin süresi dolmuş veya arşivde olabilir.");
               history.pushState(null, '', window.location.pathname);
