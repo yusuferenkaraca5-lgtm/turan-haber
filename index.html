@@ -909,7 +909,10 @@ function bildirimIzinIste() {
 }
 
 function gorselUrlOptimize(url) {
-  if (!url) return 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=900&q=70'; 
+  if (!url || url === 'null' || url === 'undefined') return 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=900&q=70'; 
+  if (url.includes(WORKER_URL)) return url; // ZATEN PROXYLİ İSE DOKUNMA (Double Encoding koruması)
+  if (url.startsWith('data:')) return url;
+  
   const mobil = window.innerWidth < 768;
   const w = mobil ? '600' : '900';
   if (url.includes('unsplash.com')) {
@@ -1264,10 +1267,11 @@ function makaleAc(kat, bas, met, kay, link, isPopState = false, resim = null) {
   document.getElementById('modal-kat').textContent = kat;
   document.getElementById('modal-baslik').textContent = guvenliBas;
   
-  // Resim Ekleme Alanı
+  // Resim Ekleme Alanı (DOUBLE ENCODING KORUMALI)
   const resimAlan = document.getElementById('modal-resim-alan');
   resimAlan.style.display = 'block';
-  resimAlan.innerHTML = `<img src="${gorselUrlOptimize(gosterilecekResim)}" class="modal-hero-resim" alt="Haber Görseli">`;
+  const proxyUrl = gorselUrlOptimize(gosterilecekResim);
+  resimAlan.innerHTML = `<img src="${proxyUrl}" class="modal-hero-resim" alt="Haber Görseli" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=900&q=70'">`;
   
   document.getElementById('modal-metin').innerHTML = String(guvenliMetinIcerik).split('\n').filter(p=>p.trim()!=='').map(p=>`<p>${p}</p>`).join('');
   
