@@ -321,21 +321,6 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .dk-icerik h4 { font-size: 20px; font-weight: 700; color: var(--lacivert); line-height: 1.3; margin-bottom: 12px; }
 .dk-icerik p { font-size: 15px; color: var(--ikincil); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 15px; flex-grow: 1;}
 
-.mini-oyun-kapsayici { background: linear-gradient(135deg, var(--lacivert) 0%, #1a2a40 100%); border-radius: 16px; padding: 3rem 2rem; margin-bottom: 3.5rem; position: relative; overflow: hidden; box-shadow: var(--golge); color: #fff; text-align: center; border: 1px solid rgba(200,150,58,0.3);}
-.mini-oyun-kapsayici::before { content: '🎯'; font-size: 150px; position: absolute; right: -20px; top: -20px; opacity: 0.05; transform: rotate(15deg); pointer-events: none;}
-.oyun-baslik-alan { margin-bottom: 2rem; position: relative; z-index: 2; }
-.oyun-baslik-alan h3 { font-size: 26px; font-weight: 700; color: var(--altin); margin-bottom: 10px; }
-.oyun-baslik-alan p { font-size: 15px; color: rgba(255,255,255,0.7); }
-.oyun-soru-metni { font-size: 19px; font-weight: 500; margin-bottom: 2rem; line-height: 1.5; min-height: 54px; position: relative; z-index: 2; }
-.oyun-secenekler { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; position: relative; z-index: 2; }
-.oyun-secenek { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); padding: 12px 25px; border-radius: 8px; cursor: pointer; transition: var(--gecis); color: #fff; font-weight: 500; flex: 1; min-width: 200px; max-width: 300px; }
-.oyun-secenek:hover { background: var(--altin); border-color: var(--altin); color: var(--koyu); transform: translateY(-2px); }
-.oyun-secenek.dogru { background: #10b981; border-color: #10b981; color: #fff; }
-.oyun-secenek.yanlis { background: var(--kizil); border-color: var(--kizil); color: #fff; }
-.oyun-skor-alan { margin-top: 2rem; font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.5); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; display: flex; justify-content: space-between; align-items: center; max-width: 600px; margin-left: auto; margin-right: auto;}
-.skor-vurgu { color: var(--altin); font-size: 20px; }
-.oyun-liderlik { background: rgba(200,150,58,0.15); padding: 6px 12px; border-radius: 6px; font-size: 13px; color: var(--altin); border: 1px dashed var(--altin); }
-
 .siyaset-kompleks-alan { display: grid; grid-template-columns: 1.5fr 1fr; gap: 2rem; margin-bottom: 3.5rem; }
 .siyaset-ana-kart { position: relative; border-radius: 16px; overflow: hidden; box-shadow: var(--golge); cursor: pointer; display: flex; align-items: flex-end; min-height: 420px; background-color: var(--koyu); }
 .siyaset-ana-kart::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,17,26,0.95) 0%, rgba(10,17,26,0.3) 60%, transparent 100%); z-index: 1; transition: var(--gecis); }
@@ -357,6 +342,21 @@ main { max-width: 1300px; margin: 0 auto; padding: 2.5rem 2rem; }
 .sy-etiket { font-size: 11px; font-weight: 700; color: var(--altin); text-transform: uppercase; margin-bottom: 6px; }
 .sy-icerik h4 { font-size: 15px; font-weight: 700; color: var(--lacivert); line-height: 1.3; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .sy-icerik p { font-size: 13px; color: var(--ikincil); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0; }
+
+.mini-oyun-kapsayici { background: linear-gradient(135deg, var(--lacivert) 0%, #1a2a40 100%); border-radius: 16px; padding: 3rem 2rem; margin-bottom: 3.5rem; position: relative; overflow: hidden; box-shadow: var(--golge); color: #fff; text-align: center; border: 1px solid rgba(200,150,58,0.3);}
+.mini-oyun-kapsayici::before { content: '🎯'; font-size: 150px; position: absolute; right: -20px; top: -20px; opacity: 0.05; transform: rotate(15deg); pointer-events: none;}
+.oyun-baslik-alan { margin-bottom: 2rem; position: relative; z-index: 2; }
+.oyun-baslik-alan h3 { font-size: 26px; font-weight: 700; color: var(--altin); margin-bottom: 10px; }
+.oyun-baslik-alan p { font-size: 15px; color: rgba(255,255,255,0.7); }
+.oyun-soru-metni { font-size: 19px; font-weight: 500; margin-bottom: 2rem; line-height: 1.5; min-height: 54px; position: relative; z-index: 2; }
+.oyun-secenekler { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; position: relative; z-index: 2; }
+.oyun-secenek { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); padding: 12px 25px; border-radius: 8px; cursor: pointer; transition: var(--gecis); color: #fff; font-weight: 500; flex: 1; min-width: 200px; max-width: 300px; }
+.oyun-secenek:hover { background: var(--altin); border-color: var(--altin); color: var(--koyu); transform: translateY(-2px); }
+.oyun-secenek.dogru { background: #10b981; border-color: #10b981; color: #fff; }
+.oyun-secenek.yanlis { background: var(--kizil); border-color: var(--kizil); color: #fff; }
+.oyun-skor-alan { margin-top: 2rem; font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.5); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; display: flex; justify-content: space-between; align-items: center; max-width: 600px; margin-left: auto; margin-right: auto;}
+.skor-vurgu { color: var(--altin); font-size: 20px; }
+.oyun-liderlik { background: rgba(200,150,58,0.15); padding: 6px 12px; border-radius: 6px; font-size: 13px; color: var(--altin); border: 1px dashed var(--altin); }
 
 footer { 
     background-color: var(--koyu); 
@@ -748,6 +748,11 @@ footer {
   </div>
   <div class="uc-kolon-grid" id="futbol-grid-alan"></div>
 
+  <div class="bolum-baslik anim-up" id="tarih">
+      <div class="bolum-sembol">🕌</div><h2>Tarih & Kültür Arşivi</h2>
+  </div>
+  <div class="uc-kolon-grid" id="tarih-grid-alan"></div>
+
   <div class="mini-oyun-kapsayici anim-up" id="oyun">
       <div class="oyun-baslik-alan">
           <h3>🎯 Günün Strateji & Tarih Testi</h3>
@@ -761,11 +766,6 @@ footer {
           <span>İstihbarat Puanı: <span class="skor-vurgu" id="oyun-skor">0</span></span>
       </div>
   </div>
-
-  <div class="bolum-baslik anim-up" id="tarih">
-      <div class="bolum-sembol">🕌</div><h2>Tarih & Kültür Arşivi</h2>
-  </div>
-  <div class="uc-kolon-grid" id="tarih-grid-alan"></div>
 
 </main>
 
@@ -1713,9 +1713,25 @@ async function kureselBilimGuncelle() {
 }
 
 async function canliHaberleriCek() {
-  let res = await apiIstekAt(`${WORKER_URL}/?kategori=top&q=${encodeURIComponent('diplomasi OR kriz OR ekonomi OR küresel OR dünya OR ittifak OR lider')}`);
-  if(res && res.length > 0) {
-      canliHaberleriOlustur(res);
+  const sorgular = [
+    'diplomasi OR kriz OR ittifak',
+    'ekonomi OR merkez bankası OR piyasa',
+    'teknoloji OR yapay zeka OR uzay'
+  ];
+  
+  const sonuclar = await Promise.all(sorgular.map(q => apiIstekAt(`${WORKER_URL}/?kategori=top&q=${encodeURIComponent(q)}`)));
+  
+  let birlesik = [];
+  sonuclar.forEach(r => { if (r) birlesik = birlesik.concat(r); });
+  
+  let tekil = [];
+  birlesik.forEach(h => {
+    const varMi = tekil.some(t => t.title === h.title);
+    if (!varMi) tekil.push(h);
+  });
+  
+  if (tekil.length > 0) {
+      canliHaberleriOlustur(tekil);
   } else {
       canliHaberleriOlustur([
           {title:"Küresel İklim ve Enerji Mutabakatı Onaylandı", description:"Yenilenebilir akıllı şebekelere geçişi hızlandıracak dev altyapı fonu birleşmiş milletler nezdinde onaylandı.\n\nKurulan uluslararası fon sayesinde özellikle gelişmekte olan ülkelerdeki fosil yakıt bağımlılığının 2035 yılına kadar yarı yarıya düşürülmesi planlanıyor. Temiz enerji depolama ve batarya geri dönüşüm teknolojilerine ayrılan bütçe rekor seviyede.\n\nSürdürülebilirlik ilkelerinin teknolojik üretimle entegre edilmesi, küresel ticaret kotalarını da doğrudan etkileyecek.", source_id: "Birleşmiş Milletler", link: null}, 
@@ -1731,7 +1747,7 @@ function canliHaberleriOlustur(veriler) {
   alan.innerHTML = ''; 
   const sahte = ["https://images.unsplash.com/photo-1451187580459-43490279c0fa", "https://images.unsplash.com/photo-1504711434969-e33886168f5c"];
   try {
-      veriler.slice(0, 4).forEach((h, idx) => {
+      veriler.slice(0, 8).forEach((h, idx) => {
         const resimUrl = haberdenResimCikar(h);
         const proxyUrl = resimUrl ? gorselUrlOptimize(resimUrl) : gorselUrlOptimize(sahte[idx%2]);
         const fallbackSrc = resimUrl ? resimUrl : sahte[idx%2];
