@@ -7,9 +7,35 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Ccircle cx='26' cy='26' r='26' fill='%2314213d'/%3E%3Ccircle cx='26' cy='26' r='24' stroke='%23C8963A' stroke-width='1.5' fill='none'/%3E%3Ccircle cx='26' cy='26' r='16' stroke='%23C8963A' stroke-width='1' fill='none'/%3E%3Ccircle cx='26' cy='26' r='5' fill='%23C8963A'/%3E%3Cline x1='26' y1='6' x2='26' y2='12' stroke='%23C8963A' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='26' y1='40' x2='26' y2='46' stroke='%23C8963A' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='6' y1='26' x2='12' y2='26' stroke='%23C8963A' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='40' y1='26' x2='46' y2='26' stroke='%23C8963A' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
 
 <title>TuranHaber — Türk Dünyası, Siyaset, Teknoloji ve Dünya Gündemi</title>
-<meta name="description" content="TuranHaber ile Türk Dünyası, küresel bilim, teknoloji, jeopolitik risk radarı, Türkiye siyaseti ve spor gündemini kesintisiz, bağımsız và anlık olarak takip edin.">
+<meta name="description" content="TuranHaber ile Türk Dünyası, küresel bilim, teknoloji, jeopolitik risk radarı, Türkiye siyaseti ve spor gündemini kesintisiz, bağımsız ve anlık olarak takip edin.">
 <meta name="keywords" content="haber, türk dünyası, dünya gündemi, son dakika haberleri, teknoloji haberleri, savaş radarı, siyaset, turan haber">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+<link rel="preconnect" href="https://turan-cache.yusuferenkaraca5.workers.dev">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsMediaOrganization",
+  "name": "TuranHaber",
+  "url": "https://turanhaber.com",
+  "logo": "https://turanhaber.com/logo.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "https://turanhaber.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://turanhaber.com/?ara={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
 <link rel="canonical" href="https://turanhaber.com">
 
 <meta property="og:type" content="website">
@@ -354,7 +380,6 @@ footer {
 .ebulten-btn { background: var(--altin); color: var(--koyu); font-weight: 700; border: none; padding: 8px 15px; border-radius: 6px; width: 100%; cursor: pointer; transition: var(--gecis); font-size: 13px; }
 .ebulten-btn:hover { background: #fff; }
 
-/* MODAL / AYRI SAYFA CSS YENİLEMESİ */
 .modal-arkaplan {
   position: fixed; inset: 0;
   background: var(--arkaplan);
@@ -1248,24 +1273,9 @@ function makaleAc(kat, bas, met, kay, link, isPopState = false, resim = null) {
   const guvenliBas = guvenliMetin(bas);
   let guvenliMetinIcerik = guvenliMetin(met);
   
-  // AKILLI KESİKLİK KONTROLÜ VE YAPAY ZEKA TAMAMLAMA ALGORİTMASI
   const kesiklikRegex = /(\.\.\.|devamı için|tıklayınız|okumak için)/i;
-  if (kesiklikRegex.test(guvenliMetinIcerik) || guvenliMetinIcerik.length < 250) {
-      // Kesik kısımları temizle
+  if (kesiklikRegex.test(guvenliMetinIcerik)) {
       guvenliMetinIcerik = guvenliMetinIcerik.replace(/(\.\.\..*|devamı için.*|tıklayınız.*|okumak için.*)/gi, '').trim();
-      
-      // Haber başlığından konuyu analiz et ve derin içerik üret
-      const baslikLower = guvenliBas.toLowerCase();
-      if (baslikLower.includes('hull') || baslikLower.includes('ersin') || baslikLower.includes('transfer')) {
-          guvenliMetinIcerik += "\n\nYaşanılan son dakika gelişmesine göre, Hull City teknik heyetinin kaleci departmanında daha deneyimli bir isme yönelme kararı aldığı bildirildi. İngiliz temsilcisinin listesinde ilk sıralarda yer alan Çekyalı file bekçisinin mali şartları ve Premier Lig tecrübesi, Ersin transferinin askıya alınmasındaki en büyük etken oldu.\n\nAcun Ilıcalı'nın kulübün finansal sürdürülebilirliğini koruma ve doğrudan ilk 11'e monte edilecek bir eldiven bulma stratejisi, Ersin Destanoğlu cephesinde de rotayı yeniden Beşiktaş idari yönetimine çevirdi. Siyah-beyazlı kulübün, oyuncunun geleceğiyle ilgili önümüzdeki günlerde resmi bir menajer zirvesi gerçekleştirmesi bekleniyor.";
-      } else if (baslikLower.includes('kuantum') || baslikLower.includes('şifrele') || baslikLower.includes('siber')) {
-          guvenliMetinIcerik += "\n\nUzmanlar, gerçekleştirilen bu kıtalararası veri transferinin siber istihbarat alanında yeni bir çağ başlattığını vurguluyor. Kuantum anahtar dağıtımı (QKD) teknolojisi sayesinde, fiber hatlara yapılacak herhangi bir sızma girişimi fotonların kuantum durumunu bozduğu için saniyeler içinde fark ediliyor.\n\nÖzellikle küresel finans kuruluşları ve savunma sanayii devleri, mevcut RSA şifreleme altyapılarını tamamen geride bırakacak bu post-kuantum koruma kalkanına geçiş süreçlerini hızlandırma kararı aldı.";
-      } else if (baslikLower.includes('kriz') || baslikLower.includes('ekonomi') || baslikLower.includes('merkez')) {
-          guvenliMetinIcerik += "\n\nEkonomi kurmayları, makroekonomik dengelerin oturtulması ve piyasadaki likidite sıkışıklığının giderilmesi adına koordineli bir sıkılaşma programının şart olduğunu belirtiyor. Merkez Bankası yetkilileri, dijital para entegrasyonu ve faiz koridoru uygulamalarıyla enflasyonist baskıyı dizginlemeyi hedefliyor.\n\nUluslararası kredi derecelendirme kuruluşlarının ve yabancı yatırım fonlarının Türkiye'nin bu kararlı mali duruşunu yakından izlediği, yapısal reformların hayata geçirilmesi durumunda sermaye girişlerinin hız kazanabileceği öngörülüyor.";
-      } else {
-          // Genel içerik tamamlama katmanı
-          guvenliMetinIcerik += "\n\nKonuya yakın diplomatik ve sektörel kaynaklardan edinilen bilgilere göre, küresel kriz masasındaki analistler bu durumun kısa vadede bir çözüme kavuşmasının zor olduğunu ifade ediyor. İlgili kurumlar, stratejik eylem planlarını devreye sokarak olası tedarik ve güvenlik açıklarını kapatmak adına koordineli bir çalışma başlattı.\n\nGelişmelerin arka planındaki teknik analizler, önümüzdeki günlerde tarafların atacağı hukuki ve operasyonel adımların pazar dengelerini kalıcı olarak değiştireceğini gösteriyor. Gelişmeleri anlık olarak aktarmaya devam edeceğiz.";
-      }
   }
 
   const gosterilecekResim = resim || 'https://images.unsplash.com/photo-1451187580459-43490279c0fa';
@@ -1274,7 +1284,7 @@ function makaleAc(kat, bas, met, kay, link, isPopState = false, resim = null) {
   document.title = guvenliBas + " | TuranHaber";
   if (!isPopState) {
       const slug = turlestir(guvenliBas);
-      history.pushState({kat, bas: guvenliBas, met: guvenliMetinIcerik, kay: guvenliMetin(kay), link, resim: gosterilecekResim}, '', '?haber=' + slug);
+      history.pushState({kat, bas: guvenliBas, met: guvenliMetinIcerik, kay: guvenliMetin(kay), link, resim: gosterilecekResim}, '', '/haber/' + slug);
   }
   
   const refSlug = turlestir(guvenliBas);
@@ -1285,6 +1295,17 @@ function makaleAc(kat, bas, met, kay, link, isPopState = false, resim = null) {
   document.getElementById('modal-okuma-suresi').innerHTML = `<span>⏱️</span> ~${okumaSuresiDk} Dk Okuma`;
 
   aktifMakaleObjesi = { kat, baslik: guvenliBas, metin: guvenliMetinIcerik, kaynak: guvenliMetin(kay), link: link, resim: gosterilecekResim };
+  
+  // YENİ: Haberi kalıcı olarak kaydet (Google için)
+  fetch(`${WORKER_URL}/haber-kaydet`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      baslik: guvenliBas, kat, metin: guvenliMetinIcerik,
+      kaynak: guvenliMetin(kay), link, resim: gosterilecekResim
+    })
+  }).catch(() => {});
+
   document.getElementById('modal-kat').textContent = kat;
   document.getElementById('modal-baslik').textContent = guvenliBas;
   
@@ -1326,7 +1347,7 @@ function modalKapat(isPopState = false) {
   
   document.title = "TuranHaber — Türk Dünyası, Siyaset, Teknoloji ve Dünya Gündemi";
   if (!isPopState) {
-      history.pushState(null, '', window.location.pathname);
+      history.pushState(null, '', '/');
   }
 }
 
@@ -1546,7 +1567,7 @@ function savasHaberleriOlustur(veriler) {
           };
           window.haberKash[turlestir(h.title)] = {kat: 'SAVAŞ', bas: h.title, met: h.description, kay: h.source_id, link: h.link, resim: gosterilecekUrl};
           
-          const imgHtml = `<img id="${imgId}" class="sk-resim" src="${gosterilecekUrl}" onerror="this.src='${gorselUrlOptimize(sahte[i%3])}'">`;
+          const imgHtml = `<img id="${imgId}" class="sk-resim" src="${gosterilecekUrl}" loading="lazy" onerror="this.src='${gorselUrlOptimize(sahte[i%3])}'">`;
           
           if(i===0) { 
             c.className = 'sk-kart goster'; 
@@ -1667,7 +1688,7 @@ function bilimHaberleriOlustur(veriler) {
          const resimUrl = haberdenResimCikar(h);
          const gosterilecekUrl = resimUrl ? gorselUrlOptimize(resimUrl) : gorselUrlOptimize(sahte[idx%3]);
          const imgId = `bo-img-${Date.now()}-${idx}`;
-          
+         
          const c = document.createElement('div'); c.className = `bilim-ozel-kart anim-up goster`; c.style.transitionDelay = `${idx*0.1}s`;
          c.onclick = () => {
              const currentResim = document.getElementById(imgId) ? document.getElementById(imgId).src : gosterilecekUrl;
@@ -1675,7 +1696,7 @@ function bilimHaberleriOlustur(veriler) {
          };
          window.haberKash[turlestir(h.title)] = {kat: 'BİLİM', bas: h.title, met: h.description, kay: h.source_id, link: h.link, resim: gosterilecekUrl};
          
-         c.innerHTML = `<img id="${imgId}" class="bo-resim" src="${gosterilecekUrl}" onerror="this.src='${gorselUrlOptimize(sahte[idx%3])}'">
+         c.innerHTML = `<img id="${imgId}" class="bo-resim" src="${gosterilecekUrl}" loading="lazy" onerror="this.src='${gorselUrlOptimize(sahte[idx%3])}'">
                         <div class="bo-ulke">🔬 KÜRESEL BİLİM RAPORU</div><h4>${guvenliMetin(h.title)}</h4><p>${guvenliMetin(h.description)}</p>`;
          grid.appendChild(c);
          
@@ -1725,7 +1746,7 @@ function canliHaberleriOlustur(veriler) {
         };
         window.haberKash[turlestir(h.title)] = {kat: 'DÜNYA', bas: h.title, met: h.description, kay: h.source_id, link: h.link, resim: proxyUrl};
         
-        c.innerHTML = `<div class="dk-resim-wrapper"><img id="${imgId}" src="${proxyUrl}" class="dk-resim" alt="${attrGuvenli(h.title)}" onerror="${onerrorKodu}"></div><div class="dk-serit"></div><div class="dk-icerik"><div class="dk-catisma-yazi">🌐 KÜRESEL AKIŞ</div><h4>${guvenliMetin(h.title)}</h4><p>${guvenliMetin(h.description)}</p></div>`;
+        c.innerHTML = `<div class="dk-resim-wrapper"><img id="${imgId}" src="${proxyUrl}" class="dk-resim" alt="${attrGuvenli(h.title)}" loading="lazy" onerror="${onerrorKodu}"></div><div class="dk-serit"></div><div class="dk-icerik"><div class="dk-catisma-yazi">🌐 KÜRESEL AKIŞ</div><h4>${guvenliMetin(h.title)}</h4><p>${guvenliMetin(h.description)}</p></div>`;
         alan.appendChild(c);
         
         if (!resimUrl && h.link) {
@@ -1764,7 +1785,7 @@ async function futbolHaberleriGuncelle() {
         window.haberKash[turlestir(h.t)] = {kat: 'FUTBOL', bas: h.t, met: h.m, kay: "TuranHaber Spor Departmanı", link: h.link, resim: gosterilecekUrl};
         
         c.innerHTML = `<div class="smk-serit spor-renk"></div>
-                       <div class="smk-resim-wrapper"><img id="${imgId}" class="smk-resim" src="${gosterilecekUrl}" onerror="this.src='${gorselUrlOptimize(sahte[idx%3])}'"></div>
+                       <div class="smk-resim-wrapper"><img id="${imgId}" class="smk-resim" src="${gosterilecekUrl}" loading="lazy" onerror="this.src='${gorselUrlOptimize(sahte[idx%3])}'"></div>
                        <div class="smk-icerik"><span class="smk-badge spor-badge">${h.k}</span><h4>${h.t}</h4><p>${h.m}</p></div>`;
         grid.appendChild(c);
         
@@ -1792,61 +1813,44 @@ function tarihiOlaylariYenile() {
         window.haberKash[turlestir(o.t)] = {kat: 'TARİH', bas: o.t, met: o.m, kay: "Tarih & Kültür Araştırmaları Merkezi", link: null, resim: o.r};
         
         c.innerHTML = `<div class="smk-serit"></div>
-                       <div class="smk-resim-wrapper"><img class="smk-resim" src="${gorselUrlOptimize(o.r)}"></div>
+                       <div class="smk-resim-wrapper"><img class="smk-resim" src="${gorselUrlOptimize(o.r)}" loading="lazy"></div>
                        <div class="smk-icerik"><span class="smk-badge">${o.d}</span><h4>${o.t}</h4><p>${o.m}</p></div>`;
         grid.appendChild(c);
     });
 }
 
-const tarihteBugunVerileri = {
-  "1 Ocak": "1 Ocak 1923 — Türkiye Futbol Federasyonu (TFF) Yusuf Ziya Öniş başkanlığında kuruldu.\n\nTürk sporunun kurumsallaşması adına atılan bu ilk adım, cumhuriyetin ilanından önce bile milli spor teşkilatlanmasının ne kadar önemsendiğini gösteriyor. İlk milli maç ise bu tarihten sadece aylar sonra, 26 Ekim 1923'te Romanya ile oynanacaktır.",
-  "11 Ocak": "11 Ocak 1055 — Tuğrul Bey komutasındaki Büyük Selçuklu Ordusu Bağdat'a girdi.\n\nAbbasi Halifeliğini Büveyhilerin tahakkümünden kurtaran bu tarihi hamle ile Tuğrul Bey'e 'Doğu'nun ve Batı'nın Sultanı' unvanı verilmiş, İslam dünyasının siyasi ve askeri liderliği resmen Türklere geçmiştir.",
-  "18 Mart": "18 Mart 1915 — Çanakkale Deniz Zaferi.\n\nNusret Mayın Gemisi'nin boğaza zekice döşediği mayın hattı ve kıyıdaki topçu bataryalarının kahramanca direnişi, dünyanın en güçlü zırhlı donanmalarını boğazın karanlık sularına gömdü. 'Çanakkale Geçilmez' destanının denizdeki büyük mührüdür.",
-  "23 Nisan": "23 Nisan 1920 — Türkiye Büyük Millet Meclisi (TBMM) Ankara'da açıldı.\n\nİşgal altındaki bir ülkede 'Egemenlik kayıtsız şartsız milletindir' şiarıyla kurulan meclis, Kurtuluş Savaşı'nı bizzat yöneten dünyadaki tek 'Gazi' meclistir. Aynı zamanda millet iradesinin devlete dönüştüğü tarihtir.",
-  "29 Mayıs": "29 Mayıs 1453 — Fatih Sultan Mehmet komutasındaki Osmanlı Ordusu İstanbul'u fethetti.\n\nOrta Çağ'ı kapatıp Yeni Çağ'ı başlatan bu fetih, dev topların surları yıkabileceğini göstererek Avrupa'daki feodalitenin de sonunu hazırlamıştır. İstanbul, Doğu ve Batı sentezinin yeni küresel başkenti oldu.",
-  "26 Ağustos": "26 Ağustos 1071 / 1922 — Malazgirt ve Büyük Taarruz.\n\nTesadüfün ötesinde bir kader birliği: 1071'de Sultan Alparslan'ın Malazgirt Zaferi ile Anadolu'nun kapıları Türklere açılırken, tam 851 yıl sonra aynı gün Gazi Mustafa Kemal Atatürk'ün başlattığı Büyük Taarruz ile Anadolu'nun sonsuza dek Türk yurdu kalacağı tüm dünyaya ilan edilmiştir.",
-  "30 Ağustos": "30 Ağustos 1922 — Başkomutanlık Meydan Muharebesi (Dumlupınar) zaferle sonuçlandı.\n\nYunan ordusunun ana kuvvetlerinin imha edildiği ve esir alındığı bu zafer, Kurtuluş Savaşı'nın askeri safhasını bitiren en kesin darbedir. Atatürk'ün 'Ordular ilk hedefiniz Akdeniz'dir, ileri!' emriyle Anadolu işgalden tamamen temizlenmiştir.",
-  "29 Ekim": "29 Ekim 1923 — Cumhuriyet ilan edildi.\n\nGazi Mustafa Kemal Atatürk'ün önderliğinde, meclis oylamasıyla 'Türkiye Devleti'nin hükümet şekli Cumhuriyettir' maddesi anayasaya eklendi. Atatürk Türkiye'nin ilk Cumhurbaşkanı seçilerek modern devletin inşası resmiyet kazandı.",
-  "10 Kasım": "10 Kasım 1938 — Türkiye Cumhuriyeti'nin kurucusu Gazi Mustafa Kemal Atatürk hayata gözlerini yumdu.\n\nBedeni aramızdan ayrılsa da, fikirleri, ilke ve inkılapları, kurduğu bağımsız devletin temellerinde ve Türk milletinin kalbinde sonsuza dek yaşamaya devam edecektir."
-};
-
-const dunyaTarihiVerileri = {
-  "18 Haziran": "18 Haziran 1815 — Waterloo Muharebesi.\n\nNapolyon Bonapart'ın Avrupa'ya yeniden hakim olma hayalleri, Belçika kırsalındaki bu savaşta İngiliz ve Prusya ordularının koalisyonu tarafından kesin olarak bitirilmiştir. Avrupa haritasını yüzyıl boyunca şekillendirecek olan Viyana Kongresi düzeninin tescilidir.",
-  "28 Haziran": "28 Haziran 1914 — Saraybosna Suikastı.\n\nAvusturya Arşidükü Franz Ferdinand ve eşinin, Sırp milliyetçisi Gavrilo Princip tarafından öldürülmesi. Bu kurşun, Avrupa'daki ittifak zincirlerini tetikleyerek milyonlarca insanın ölümüne sebep olacak olan I. Dünya Savaşı'nın fitilini ateşlemiştir."
-};
-
-const genelDunyaHavuzu = [
-  "12 Ekim 1492 — Kristof Kolomb Amerika'yı keşfetti.\n\nHindistan'a ulaşmak amacıyla yola çıkan Kolomb, Bahamalar'a ulaşarak Yeni Dünya'nın kapılarını araladı. Bu rastlantısal keşif, küresel ticaretin eksenini Akdeniz'den Atlantik'e kaydırarak dünya tarihini tamamen değiştirdi.",
-  "20 Temmuz 1969 — İnsanoğlu Ay'da.\n\nApollo 11 göreviyle Neil Armstrong Ay yüzeyine ayak basan ilk insan oldu. 'Benim için küçük, insanlık için dev bir adım' sözüyle özetlenen bu an, Soğuk Savaş dönemindeki Uzay Yarışı'nın Amerika lehine kazanıldığı sembolik zirvedir.",
-  "9 Kasım 1989 — Berlin Duvarı yıkıldı.\n\nSoğuk Savaş'ın, bölünmüşlüğün ve 'Demir Perde'nin en büyük sembolü olan duvar, Doğu Alman vatandaşlarının baskısıyla yıkıldı. This event led to the collapse of the Soviet Union.",
-  "28 Haziran 1919 — Versay Antlaşması imzalandı.\n\nI. Dünya Savaşı'nın ardından İtilaf Devletleri ile Almanya arasında imzalanan bu barış antlaşması, Almanya'ya ağır ekonomik ve askeri yaptırımlar yüklemiştir. Bu yaptırımların yarattığı istikrarsızlık, sonraki yıllarda II. Dünya Savaşı'na giden yolu döşeyen en büyük jeopolitik etken olmuştur."
-];
-
-function tarihteBugunYukle() {
+// YENİ DİNAMİK "TARİHTE BUGÜN" YÜKLEYİCİSİ
+async function tarihteBugunYukle() {
   const gun = bugunTarihi.getDate();
+  const ay = bugunTarihi.getMonth() + 1;
   const ayIsmi = aylar[bugunTarihi.getMonth()];
-  const anahtar = `${gun} ${ayIsmi}`;
   
   document.getElementById('tb-gun').textContent = gun;
   document.getElementById('tb-ay').textContent = ayIsmi;
   
-  let olayMetni = "";
-  let etiket = "";
-
-  if (tarihteBugunVerileri[anahtar]) {
-      etiket = `<span style="color:var(--altin); font-size:11px; font-weight:700; border:1px solid var(--altin); padding:2px 6px; border-radius:4px; margin-right:8px; vertical-align:middle; display:inline-block; margin-bottom: 5px;">TÜRK TARİHİ</span><br>`;
-      olayMetni = tarihteBugunVerileri[anahtar];
-  } else if (dunyaTarihiVerileri[anahtar]) {
-      etiket = `<span style="color:#60a5fa; font-size:11px; font-weight:700; border:1px solid #60a5fa; padding:2px 6px; border-radius:4px; margin-right:8px; vertical-align:middle; display:inline-block; margin-bottom: 5px;">DÜNYA TARİHİ</span><br>`;
-      olayMetni = dunyaTarihiVerileri[anahtar];
-  } else {
-      let seed = bugunTarihi.getFullYear() * 100 + bugunTarihi.getMonth() * 10 + gun;
-      let secilenOlay = genelDunyaHavuzu[seed % genelDunyaHavuzu.length];
-      etiket = `<span style="color:#60a5fa; font-size:11px; font-weight:700; border:1px solid #60a5fa; padding:2px 6px; border-radius:4px; margin-right:8px; vertical-align:middle; display:inline-block; margin-bottom: 5px;">DÜNYA TARİHİNDEN</span><br>`;
-      olayMetni = secilenOlay;
+  try {
+      // Wikipedia API üzerinden tam da bugüne ait gerçek tarihi olayları çekiyoruz
+      const res = await fetch(`https://tr.wikipedia.org/api/rest_v1/feed/onthisday/events/${ay}/${gun}`);
+      if (!res.ok) throw new Error("Wiki API Hatası");
+      const data = await res.json();
+      
+      if (data && data.events && data.events.length > 0) {
+          // Gelen olaylar arasından rastgele birini seç
+          const rastgeleIndeks = Math.floor(Math.random() * Math.min(5, data.events.length));
+          const secilenOlay = data.events[rastgeleIndeks];
+          
+          const yil = secilenOlay.year;
+          const metin = secilenOlay.text;
+          
+          const etiket = `<span style="color:#60a5fa; font-size:11px; font-weight:700; border:1px solid #60a5fa; padding:2px 6px; border-radius:4px; margin-right:8px; vertical-align:middle; display:inline-block; margin-bottom: 5px;">TARİHTE BUGÜN</span><br>`;
+          document.getElementById('tb-olay-metni').innerHTML = `${etiket} <span style="display:block; margin-top:5px; font-weight:bold; color:var(--altin);">${yil}</span> <span style="display:block; margin-top:5px;">${metin}</span>`;
+          return;
+      }
+  } catch (error) {
+      console.error("Tarihte bugün verisi çekilemedi, yedek metin yükleniyor:", error);
   }
   
-  document.getElementById('tb-olay-metni').innerHTML = `${etiket} <span style="display:block; margin-top:5px;">${olayMetni.replace(/\n\n/g, "<br><br>")}</span>`;
+  document.getElementById('tb-olay-metni').innerHTML = "Tarih arşivine şu an ulaşılamıyor, ancak her yeni gün yeni bir tarih yazmaktır.";
 }
 
 const devSoruHavuzu = [
@@ -1867,18 +1871,18 @@ const devSoruHavuzu = [
     { soru: "Günümüzde dünyanın en değerli teknoloji şirketlerinin üretiminde rekabet ettiği temel donanım bileşeni hangisidir?", secenekler: ["Grafik İşlemci (GPU/Çip)", "Fiber Optik Kablo", "Lityum İyon Batarya", "Sensör Ağları"], dogru: 0 },
     { soru: "İlişkisel veritabanı sistemlerini yönetmek için geliştirilen, günümüzde yazılım dünyasının temeli olan sorgu dili hangisidir?", secenekler: ["HTML", "Python", "SQL", "Java"], dogru: 2 },
     { soru: "Bilgisayar biliminin temeli sayılan 'algoritma' kavramını kuran ve cebirin atası kabul edilen İslam alimi kimdir?", secenekler: ["Harezmi", "Farabi", "İbn Sina", "Kindi"], dogru: 0 },
-    { soru: "Linux çekirdeği üzerine kurulan và TÜBİTAK tarafından geliştirilen milli işletim sistemimizin adı nedir?", secenekler: ["Pardus", "Kızılelma", "Ulus", "Bora"], dogru: 0 },
+    { soru: "Linux çekirdeği üzerine kurulan ve TÜBİTAK tarafından geliştirilen milli işletim sistemimizin adı nedir?", secenekler: ["Pardus", "Kızılelma", "Ulus", "Bora"], dogru: 0 },
     { soru: "Modern yapay zeka modellerinin eğitilmesinde insan beynindeki nöronları taklit eden sistemlere ne ad verilir?", secenekler: ["Blockchain", "Sinir Ağları", "Bulut Bilişim", "Kuantum Şifreleme"], dogru: 1 },
     { soru: "İnternette cihazların birbirini bulmasını sağlayan sayısal adresleme sisteminin (örn: 192.168.1.1) kısaltması nedir?", secenekler: ["MAC", "DNS", "IP", "FTP"], dogru: 2 },
     { soru: "Güneş sistemindeki en büyük kanyon olan Valles Marineris hangi gezegende bulunur?", secenekler: ["Venüs", "Mars", "Jüpiter", "Satürn"], dogru: 1 },
     { soru: "Maddenin en küçük yapı taşlarından olan ve 'Tanrı Parçacığı' olarak da bilinen bozonun bilimsel adı nedir?", secenekler: ["Foton", "Gluon", "Higgs Bozonu", "Nötrino"], dogru: 2 },
     { soru: "DNA molekülünün çift sarmallı yapısını X-ışını kırınımı ile ilk kez net olarak fotoğraflayan bilim insanı kimdir?", secenekler: ["Marie Curie", "Rosalind Franklin", "Ada Lovelace", "Lise Meitner"], dogru: 1 },
-    { soru: "Günümüzde web sayfalarına dinamik özellikler kazandıran và tarayıcıda çalışan en yaygın programlama dili hangisidir?", secenekler: ["PHP", "JavaScript", "C++", "Ruby"], dogru: 1 },
-    { soru: "Türkiye'nin ilk yerli và milli yüksek çözünürlüklü yer gözlem uydusunun adı nedir?", secenekler: ["Göktürk-2", "Rasat", "İmece", "Türksat 4A"], dogru: 2 },
-    { soru: "Kripto paraların arkasındaki merkeziyetsiz và değiştirilemez kayıt defteri teknolojisine ne ad verilir?", secenekler: ["Büyük Veri", "Blockchain", "Nesnelerin İnterneti", "Derin Öğrenme"], dogru: 1 },
-    { soru: "Dünya ticaretinin yaklaşık %12'sinin geçtiği và Mısır'da bulunan kritik su yolunun adı nedir?", secenekler: ["Panama Kanalı", "Hürmüz Boğazı", "Süveyş Kanalı", "Cebelitarık"], dogru: 2 },
+    { soru: "Günümüzde web sayfalarına dinamik özellikler kazandıran ve tarayıcıda çalışan en yaygın programlama dili hangisidir?", secenekler: ["PHP", "JavaScript", "C++", "Ruby"], dogru: 1 },
+    { soru: "Türkiye'nin ilk yerli ve milli yüksek çözünürlüklü yer gözlem uydusunun adı nedir?", secenekler: ["Göktürk-2", "Rasat", "İmece", "Türksat 4A"], dogru: 2 },
+    { soru: "Kripto paraların arkasındaki merkeziyetsiz ve değiştirilemez kayıt defteri teknolojisine ne ad verilir?", secenekler: ["Büyük Veri", "Blockchain", "Nesnelerin İnterneti", "Derin Öğrenme"], dogru: 1 },
+    { soru: "Dünya ticaretinin yaklaşık %12'sinin geçtiği ve Mısır'da bulunan kritik su yolunun adı nedir?", secenekler: ["Panama Kanalı", "Hürmüz Boğazı", "Süveyş Kanalı", "Cebelitarık"], dogru: 2 },
     { soru: "Küresel çip üretiminin tartışmasız başkenti olan Asya ülkesi/bölgesi hangisidir?", secenekler: ["Güney Kore", "Tayvan", "Singapur", "Japonya"], dogru: 1 },
-    { soru: "Petrol taşımacılığında Basra Körfezi'ni dünyaya bağlayan và jeopolitik olarak en riskli dar boğaz neresidir?", secenekler: ["Malakka Boğazı", "Hürmüz Boğazı", "Babülmendep", "Bering Boğazı"], dogru: 1 },
+    { soru: "Petrol taşımacılığında Basra Körfezi'ni dünyaya bağlayan ve jeopolitik olarak en riskli dar boğaz neresidir?", secenekler: ["Malakka Boğazı", "Hürmüz Boğazı", "Babülmendep", "Bering Boğazı"], dogru: 1 },
     { soru: "Avrupa kıtasının en uzun nehri hangisidir?", secenekler: ["Tuna", "Ren", "Volga", "Dinyeper"], dogru: 2 },
     { soru: "Asya ile Amerika kıtalarını birbirine çok yaklaştıran ancak okyanusla ayıran boğazın adı nedir?", secenekler: ["Macellan", "Bering", "Drake", "Cook"], dogru: 1 },
     { soru: "Türkiye'nin en doğusundaki komşusu ile olan sınırını hangi dağ silsilesi belirler?", secenekler: ["Amanos Dağları", "Zağros Dağları", "Kafkas Dağları", "Ağrı (Ararat) Dağı bölgesi"], dogru: 3 },
@@ -1889,16 +1893,16 @@ const devSoruHavuzu = [
     { soru: "Olimpiyat oyunlarının amblemindeki 5 halka neyi temsil eder?", secenekler: ["5 Kıtanın Kardeşliğini", "5 Temel Spor Dalını", "5 Okyanusu", "Kurucu 5 Ülkeyi"], dogru: 0 },
     { soru: "Satranç oyununda başlangıç dizilişinde her iki oyuncunun toplam kaç adet piyonu bulunur?", secenekler: ["8", "12", "16", "20"], dogru: 2 },
     { soru: "Teniste rakibin şahını doğrudan tehdit ederek oyunu bitirme potansiyeli en yüksek taş hangisidir?", secenekler: ["Kale", "Vezir", "At", "Fil"], dogru: 1 },
-    { soru: "Fenerbahçe Spor Kulübü'nün efsanevi başkanı và Şükrü Saracoğlu stadyumuna adını veren devlet adamı hangi görevi yapmıştır?", secenekler: ["Cumhurbaşkanı", "Başbakan", "Genelkurmay Başkanı", "Milli Eğitim Bakanı"], dogru: 1 },
+    { soru: "Fenerbahçe Spor Kulübü'nün efsanevi başkanı ve Şükrü Saracoğlu stadyumuna adını veren devlet adamı hangi görevi yapmıştır?", secenekler: ["Cumhurbaşkanı", "Başbakan", "Genelkurmay Başkanı", "Milli Eğitim Bakanı"], dogru: 1 },
     { soru: "NBA tarihinde bir maçta 100 sayı atarak kırılamaz bir rekora imza atan efsanevi basketbolcu kimdir?", secenekler: ["Michael Jordan", "Kobe Bryant", "LeBron James", "Wilt Chamberlain"], dogru: 3 },
     { soru: "Bir ülkenin para biriminin, yabancı para birimleri karşısında değerinin devlet kararıyla düşürülmesine ne ad verilir?", secenekler: ["Enflasyon", "Revalüasyon", "Devalüasyon", "Stagflasyon"], dogru: 2 },
     { soru: "Uluslararası ticarette malların fiziksel teslimatını değil, gelecekteki bir fiyattan alım-satım sözleşmesini ifade eden piyasa hangisidir?", secenekler: ["Spot Piyasa", "Vadeli (Futures) Piyasa", "Tahvil Piyasası", "Döviz Kuru Piyasası"], dogru: 1 },
     { soru: "Bir şirketin hisse senetlerini ilk kez halka arz ederek borsada işlem görmeye başlaması işlemine kısaca ne denir?", secenekler: ["CEO", "B2B", "IPO", "Ar-Ge"], dogru: 2 },
     { soru: "Ekonomide büyümenin durması ile birlikte yüksek enflasyonun aynı anda yaşanması krizine ne ad verilir?", secenekler: ["Resesyon", "Stagflasyon", "Deflasyon", "Depresyon"], dogru: 1 },
     { soru: "Uluslararası hukukta devletlerin deniz kıyısından itibaren ekonomik hak iddia edebildikleri 200 deniz millik alana ne denir?", secenekler: ["Karasuları", "Münhasır Ekonomik Bölge (MEB)", "Uluslararası Sular", "Kıta Sahanlığı"], dogru: 1 },
-    { soru: "Türkiye Cumhuriyeti Merkez Bankası'nın (TCMB) temel kuruluş amacı và yasayla belirlenmiş en önemli görevi nedir?", secenekler: ["Fiyat istikrarını sağlamak", "Büyümeyi artırmak", "İşsizliği düşürmek", "Döviz kurunu sabitlemek"], dogru: 0 },
-    { soru: "Bir devletin borçlarını ödeyemeyeceğini và iflas ettiğini uluslararası piyasalara resmen ilan etmesine ne ad verilir?", secenekler: ["Moratoryum", "Konsolidasyon", "Amortisman", "Emisyon"], dogru: 0 },
-    { soru: "1944 yılında küresel para sistemini dolara endeksleyen và IMF'nin kurulmasına yol açan tarihi anlaşmanın adı nedir?", secenekler: ["Versay", "Bretton Woods", "Yalta", "Maastricht"], dogru: 1 },
+    { soru: "Türkiye Cumhuriyeti Merkez Bankası'nın (TCMB) temel kuruluş amacı ve yasayla belirlenmiş en önemli görevi nedir?", secenekler: ["Fiyat istikrarını sağlamak", "Büyümeyi artırmak", "İşsizliği düşürmek", "Döviz kurunu sabitlemek"], dogru: 0 },
+    { soru: "Bir devletin borçlarını ödeyemeyeceğini ve iflas ettiğini uluslararası piyasalara resmen ilan etmesine ne ad verilir?", secenekler: ["Moratoryum", "Konsolidasyon", "Amortisman", "Emisyon"], dogru: 0 },
+    { soru: "1944 yılında küresel para sistemini dolara endeksleyen ve IMF'nin kurulmasına yol açan tarihi anlaşmanın adı nedir?", secenekler: ["Versay", "Bretton Woods", "Yalta", "Maastricht"], dogru: 1 },
     { soru: "Küresel piyasalarda en yaygın kullanılan petrol fiyatlandırma standardı (kriteri) hangisidir?", secenekler: ["WTI (Batı Teksas)", "Brent Petrol", "OPEC Sepeti", "Dubai Ham Petrolü"], dogru: 1 }
 ];
 
@@ -1982,7 +1986,6 @@ window.addEventListener('load', () => {
   tarihteBugunYukle();
   gununSozunuYukle();
   
-  // Tüm modülleri başlatan và bekleyen ana blok
   Promise.all([
       gununMakalesiniYukle(), 
       futbolHaberleriGuncelle(), 
@@ -1992,16 +1995,16 @@ window.addEventListener('load', () => {
       savasHaberleriniGuncelle(),
       canliHaberleriCek()
   ]).then(() => {
-      // URL'de "?haber=" var mı kontrol et, varsa otomatik aç
-      const urlParams = new URLSearchParams(window.location.search);
-      const urlHaber = urlParams.get('haber');
+      // YENİ: URL Pathname kontrolü (C6 Güncellemesi)
+      const yol = window.location.pathname;
+      const urlHaber = yol.startsWith('/haber/') ? yol.replace('/haber/', '').replace(/\/$/, '') : null;
       if (urlHaber) {
           if(window.haberKash && window.haberKash[urlHaber]) {
               const h = window.haberKash[urlHaber];
               makaleAc(h.kat, h.bas, h.met, h.kay, h.link, true, h.resim);
           } else {
               alert("Uyarı: Tıkladığınız bağlantıdaki haberin süresi dolmuş veya arşivde olabilir.");
-              history.pushState(null, '', window.location.pathname);
+              history.pushState(null, '', '/');
           }
       }
   });
